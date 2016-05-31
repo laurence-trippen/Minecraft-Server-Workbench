@@ -12,6 +12,7 @@ public class Program extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		// Kommentar
 		primaryStage.setScene(new Scene(new MainWindow(), 1024, 768));
 		primaryStage.setMaximized(true);
 		primaryStage.setTitle("LTE: MCSM");
