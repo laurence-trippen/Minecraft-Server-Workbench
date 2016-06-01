@@ -15,6 +15,8 @@ import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
@@ -22,6 +24,7 @@ import javafx.scene.layout.RowConstraints;
 public class MainWindow extends AnchorPane {
 
 	private static final String NEW_SERVER_PNG = "src/program-images/newServer.png";
+	private static final String BACKGROUND_PNG = "src/program-images/Background.png";
 	private static int x = 0;
 	private static int y = 0;
 	private ToolBar toolBar;
@@ -31,7 +34,7 @@ public class MainWindow extends AnchorPane {
 	private AnchorPane anchorPane;
 	private GridPane gridPane;
 
-	public MainWindow() {
+	public MainWindow() throws FileNotFoundException {
 		try {
 			this.newServerImage = new Image(new FileInputStream(NEW_SERVER_PNG));
 		} catch (FileNotFoundException e) {
@@ -45,7 +48,8 @@ public class MainWindow extends AnchorPane {
 		);
 		this.gridPane.getRowConstraints().add(new RowConstraints(312));
 		this.anchorPane = new AnchorPane();
-		this.anchorPane.setStyle("-fx-background-color: gray");
+		//this.anchorPane.setStyle("-fx-background-color: gray");
+		this.anchorPane.setBackground(new Background(new BackgroundImage(new Image(new FileInputStream(BACKGROUND_PNG)), null, null, null, null)));
 		this.anchorPane.setPrefWidth(1905);
 		this.anchorPane.setPrefHeight(2000);
 		this.anchorPane.getChildren().add(gridPane);
