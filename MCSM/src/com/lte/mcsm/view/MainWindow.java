@@ -39,14 +39,14 @@ public class MainWindow extends AnchorPane {
 		}
 		this.gridPane = new GridPane();
 		this.gridPane.getColumnConstraints().addAll(
-				new ColumnConstraints(252), 
-				new ColumnConstraints(252),
-				new ColumnConstraints(252), 
-				new ColumnConstraints(252)
+				new ColumnConstraints(635), 
+				new ColumnConstraints(635),
+				new ColumnConstraints(635) 
 		);
-		this.gridPane.getRowConstraints().add(new RowConstraints(256));
+		this.gridPane.getRowConstraints().add(new RowConstraints(312));
 		this.anchorPane = new AnchorPane();
-		this.anchorPane.setPrefWidth(1009);
+		this.anchorPane.setStyle("-fx-background-color: gray");
+		this.anchorPane.setPrefWidth(1905);
 		this.anchorPane.setPrefHeight(2000);
 		this.anchorPane.getChildren().add(gridPane);
 		this.scrollPane = new ScrollPane();
@@ -80,13 +80,13 @@ public class MainWindow extends AnchorPane {
 	}
 	
 	private void loadServer() {
-		int counter = 4;
+		int counter = 3;
 		ServerList serverList = ServerList.getInstance();
 		if (serverList.getServerCount() != 0) {
 			for (Server server : serverList.getServer()) {
 				if (serverList.getServerCount() > counter) {
-					counter += 4;
-					this.gridPane.getRowConstraints().add(new RowConstraints(256));
+					counter += 3;
+					this.gridPane.getRowConstraints().add(new RowConstraints(312));
 				}
 				ServerItem serverItem = new ServerItem(server);
 				GridPane.setConstraints(serverItem, x, y);
@@ -98,10 +98,10 @@ public class MainWindow extends AnchorPane {
 	}
 	
 	private static int calcX(int x) {
-		if (x < 5) {
+		if (x < 4) {
 			++x;
 		}
-		if (x == 4) {
+		if (x == 3) {
 			x = 0;
 		}
 		return x;

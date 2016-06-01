@@ -323,7 +323,167 @@
   <Server id="9">
     <name>Inge-Server</name>
     <description>leer</description>
-    <creationDate>29.05.2016 - 18:13:17</creationDate>
+    <creationDate />
+    <properties>
+      <generator />
+      <opLevel>Four</opLevel>
+      <allowNether>true</allowNether>
+      <rpHash />
+      <levelName>world</levelName>
+      <enableQuery>false</enableQuery>
+      <allowFlight>true</allowFlight>
+      <showAchievements>true</showAchievements>
+      <serverPort>25565</serverPort>
+      <maxWorldSize>29999984</maxWorldSize>
+      <worldType>Default</worldType>
+      <enableRcon>false</enableRcon>
+      <levelSeed />
+      <forceGameMode>false</forceGameMode>
+      <serverIp />
+      <networkCompression>256</networkCompression>
+      <maxBuildHeight>256</maxBuildHeight>
+      <spawnNPCs>true</spawnNPCs>
+      <whitelist>false</whitelist>
+      <enabledSnooper>true</enabledSnooper>
+      <onlineMode>true</onlineMode>
+      <resourcePack />
+      <enabledPVP>true</enabledPVP>
+      <difficulty>Easy</difficulty>
+      <enabledCommandBlock>false</enabledCommandBlock>
+      <gameMode>Survival</gameMode>
+      <playerIdleTime>0</playerIdleTime>
+      <maxPlayers>20</maxPlayers>
+      <maxTickTime>60000</maxTickTime>
+      <spawnMonsters>true</spawnMonsters>
+      <generateStructs>true</generateStructs>
+      <viewDistance>10</viewDistance>
+      <motd>A Minecraft Server</motd>
+    </properties>
+  </Server>
+  <Server id="10">
+    <name>Test-Server</name>
+    <description>leer</description>
+    <creationDate />
+    <properties>
+      <generator />
+      <opLevel>Four</opLevel>
+      <allowNether>true</allowNether>
+      <rpHash />
+      <levelName>world</levelName>
+      <enableQuery>false</enableQuery>
+      <allowFlight>true</allowFlight>
+      <showAchievements>true</showAchievements>
+      <serverPort>25565</serverPort>
+      <maxWorldSize>29999984</maxWorldSize>
+      <worldType>Default</worldType>
+      <enableRcon>false</enableRcon>
+      <levelSeed />
+      <forceGameMode>false</forceGameMode>
+      <serverIp />
+      <networkCompression>256</networkCompression>
+      <maxBuildHeight>256</maxBuildHeight>
+      <spawnNPCs>true</spawnNPCs>
+      <whitelist>false</whitelist>
+      <enabledSnooper>true</enabledSnooper>
+      <onlineMode>true</onlineMode>
+      <resourcePack />
+      <enabledPVP>true</enabledPVP>
+      <difficulty>Easy</difficulty>
+      <enabledCommandBlock>false</enabledCommandBlock>
+      <gameMode>Survival</gameMode>
+      <playerIdleTime>0</playerIdleTime>
+      <maxPlayers>20</maxPlayers>
+      <maxTickTime>60000</maxTickTime>
+      <spawnMonsters>true</spawnMonsters>
+      <generateStructs>true</generateStructs>
+      <viewDistance>10</viewDistance>
+      <motd>A Minecraft Server</motd>
+    </properties>
+  </Server>
+  <Server id="11">
+    <name>World-Server</name>
+    <description>leer</description>
+    <creationDate />
+    <properties>
+      <generator />
+      <opLevel>Four</opLevel>
+      <allowNether>true</allowNether>
+      <rpHash />
+      <levelName>world</levelName>
+      <enableQuery>false</enableQuery>
+      <allowFlight>true</allowFlight>
+      <showAchievements>true</showAchievements>
+      <serverPort>25565</serverPort>
+      <maxWorldSize>29999984</maxWorldSize>
+      <worldType>Default</worldType>
+      <enableRcon>false</enableRcon>
+      <levelSeed />
+      <forceGameMode>false</forceGameMode>
+      <serverIp />
+      <networkCompression>256</networkCompression>
+      <maxBuildHeight>256</maxBuildHeight>
+      <spawnNPCs>true</spawnNPCs>
+      <whitelist>false</whitelist>
+      <enabledSnooper>true</enabledSnooper>
+      <onlineMode>true</onlineMode>
+      <resourcePack />
+      <enabledPVP>true</enabledPVP>
+      <difficulty>Easy</difficulty>
+      <enabledCommandBlock>false</enabledCommandBlock>
+      <gameMode>Survival</gameMode>
+      <playerIdleTime>0</playerIdleTime>
+      <maxPlayers>20</maxPlayers>
+      <maxTickTime>60000</maxTickTime>
+      <spawnMonsters>true</spawnMonsters>
+      <generateStructs>true</generateStructs>
+      <viewDistance>10</viewDistance>
+      <motd>A Minecraft Server</motd>
+    </properties>
+  </Server>
+  <Server id="12">
+    <name>Worlds-Server</name>
+    <description>leer</description>
+    <creationDate />
+    <properties>
+      <generator />
+      <opLevel>Four</opLevel>
+      <allowNether>true</allowNether>
+      <rpHash />
+      <levelName>world</levelName>
+      <enableQuery>false</enableQuery>
+      <allowFlight>true</allowFlight>
+      <showAchievements>true</showAchievements>
+      <serverPort>25565</serverPort>
+      <maxWorldSize>29999984</maxWorldSize>
+      <worldType>Default</worldType>
+      <enableRcon>false</enableRcon>
+      <levelSeed />
+      <forceGameMode>false</forceGameMode>
+      <serverIp />
+      <networkCompression>256</networkCompression>
+      <maxBuildHeight>256</maxBuildHeight>
+      <spawnNPCs>true</spawnNPCs>
+      <whitelist>false</whitelist>
+      <enabledSnooper>true</enabledSnooper>
+      <onlineMode>true</onlineMode>
+      <resourcePack />
+      <enabledPVP>true</enabledPVP>
+      <difficulty>Easy</difficulty>
+      <enabledCommandBlock>false</enabledCommandBlock>
+      <gameMode>Survival</gameMode>
+      <playerIdleTime>0</playerIdleTime>
+      <maxPlayers>20</maxPlayers>
+      <maxTickTime>60000</maxTickTime>
+      <spawnMonsters>true</spawnMonsters>
+      <generateStructs>true</generateStructs>
+      <viewDistance>10</viewDistance>
+      <motd>A Minecraft Server</motd>
+    </properties>
+  </Server>
+  <Server id="13">
+    <name>Welt-Server</name>
+    <description>leer</description>
+    <creationDate>31.05.2016 - 23:33:36</creationDate>
     <properties>
       <generator />
       <opLevel>Four</opLevel>

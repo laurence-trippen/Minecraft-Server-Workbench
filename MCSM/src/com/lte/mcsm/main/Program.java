@@ -12,7 +12,6 @@ public class Program extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		// Kommentar AlternateGUI
 		primaryStage.setScene(new Scene(new MainWindow(), 1024, 768));
 		primaryStage.setMaximized(true);
 		primaryStage.setTitle("LTE: MCSM");
@@ -20,7 +19,7 @@ public class Program extends Application {
 	}
 
 	public static void main(String[] args) {
-		ServerList.getInstance().addServer(new Server("Inge-Server"));
+		ServerList.getInstance().addServer(new Server("Welt-Server"));
 		launch(args);
 	}
 
