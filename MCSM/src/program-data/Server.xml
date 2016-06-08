@@ -483,7 +483,7 @@
   <Server id="13">
     <name>Welt-Server</name>
     <description>leer</description>
-    <creationDate>31.05.2016 - 23:33:36</creationDate>
+    <creationDate />
     <properties>
       <generator />
       <opLevel>Four</opLevel>

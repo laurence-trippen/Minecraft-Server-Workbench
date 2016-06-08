@@ -20,6 +20,7 @@ public class Server {
 //	private Date runtime;
 	private ServerState serverState;
 	private ServerProperties serverProperties;
+	private ServerOPS serverOPS;
 	private Image serverImage;
 
 	public Server(String name) {
@@ -29,6 +30,7 @@ public class Server {
 		this.creationDate = dateFormat.format(new Date());
 		this.serverState = ServerState.Stopped;
 		this.serverProperties = new ServerProperties();
+		this.serverOPS = new ServerOPS();
 		this.serverImage = null;
 	}
 	
@@ -39,6 +41,7 @@ public class Server {
 		this.creationDate = dateFormat.format(new Date());
 		this.serverState = ServerState.Stopped;
 		this.serverProperties = new ServerProperties();
+		this.serverOPS = new ServerOPS();
 		this.serverImage = null;
 	}
 
@@ -112,6 +115,14 @@ public class Server {
 
 	public void setServerProperties(ServerProperties serverProperties) {
 		this.serverProperties = serverProperties;
+	}
+	
+	public ServerOPS getServerOPS() {
+		return serverOPS;
+	}
+
+	public void setServerOPS(ServerOPS serverOPS) {
+		this.serverOPS = serverOPS;
 	}
 
 	public Image getServerImage() {
