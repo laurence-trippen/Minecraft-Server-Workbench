@@ -45,7 +45,7 @@ public class ServerOPS {
 			} else {				
 				for (ServerOPEntry existingEntry : serverOPEntries) {
 					if (serverOPEntry.getUuid().equals(existingEntry.getUuid())) {
-						System.out.println("Spieler hat schon OP-Eintrag!");
+						System.out.println("Spieler " + serverOPEntry.getName() + " hat schon OP-Eintrag!");
 						return;
 					} else {
 						this.serverOPEntries.add(serverOPEntry);

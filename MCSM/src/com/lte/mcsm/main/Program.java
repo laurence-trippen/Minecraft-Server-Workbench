@@ -20,8 +20,8 @@ public class Program extends Application {
 	}
 
 	public static void main(String[] args) {
-		Server server = null;
-		ServerList.getInstance().addServer(server = new Server("JSON-Server"));
+		Server server = new Server("JSON-Server");
+		ServerList.getInstance().addServer(server);
 		server.getServerOPS().readOPSEntries();
 		server.getServerOPS().printOPEntries();
 		launch(args);
