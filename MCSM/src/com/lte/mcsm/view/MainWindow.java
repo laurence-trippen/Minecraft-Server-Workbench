@@ -3,6 +3,7 @@ package com.lte.mcsm.view;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import com.lte.mcsm.model.Path;
 import com.lte.mcsm.model.Server;
 import com.lte.mcsm.model.ServerList;
 import com.lte.mcsm.view.components.ServerItem;
@@ -23,8 +24,6 @@ import javafx.scene.layout.RowConstraints;
 
 public class MainWindow extends AnchorPane {
 
-	private static final String NEW_SERVER_PNG = "src/program-images/newServer.png";
-	private static final String BACKGROUND_PNG = "src/program-images/Background.png";
 	private static int x = 0;
 	private static int y = 0;
 	private ToolBar toolBar;
@@ -36,7 +35,7 @@ public class MainWindow extends AnchorPane {
 
 	public MainWindow() throws FileNotFoundException {
 		try {
-			this.newServerImage = new Image(new FileInputStream(NEW_SERVER_PNG));
+			this.newServerImage = new Image(new FileInputStream(Path.NewServerPNG));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -49,7 +48,7 @@ public class MainWindow extends AnchorPane {
 		this.gridPane.getRowConstraints().add(new RowConstraints(312));
 		this.anchorPane = new AnchorPane();
 		//this.anchorPane.setStyle("-fx-background-color: gray");
-		this.anchorPane.setBackground(new Background(new BackgroundImage(new Image(new FileInputStream(BACKGROUND_PNG)), null, null, null, null)));
+		this.anchorPane.setBackground(new Background(new BackgroundImage(new Image(new FileInputStream(Path.BACKGROUND)), null, null, null, null)));
 		this.anchorPane.setPrefWidth(1905);
 		this.anchorPane.setPrefHeight(2000);
 		this.anchorPane.getChildren().add(gridPane);

@@ -21,7 +21,6 @@ import com.lte.mcsm.model.enums.WorldType;
 
 public class ServerList {
 	
-	private static final String XML_PATH = "src/program-data/Server.xml";
 	private static ServerList instance = null;
 	private List<Server> serverList;
 	private int serverCounter;
@@ -108,7 +107,7 @@ public class ServerList {
 		}
 		XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
 		try {
-			xmlOutputter.output(xml, new FileOutputStream(new File(XML_PATH)));
+			xmlOutputter.output(xml, new FileOutputStream(new File(Path.XML)));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -116,7 +115,7 @@ public class ServerList {
 	
 	private void loadXML() {
 		try {
-			Document xml = new SAXBuilder().build(XML_PATH);
+			Document xml = new SAXBuilder().build(Path.XML);
 			if (xml.hasRootElement()) {
 				Element root = xml.getRootElement();
 				List<Element> xmlServers = root.getChildren();

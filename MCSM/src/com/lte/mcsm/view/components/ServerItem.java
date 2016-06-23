@@ -3,6 +3,7 @@ package com.lte.mcsm.view.components;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import com.lte.mcsm.model.Path;
 import com.lte.mcsm.model.Server;
 
 import javafx.event.ActionEvent;
@@ -20,7 +21,6 @@ import javafx.scene.text.FontWeight;
 
 public class ServerItem extends AnchorPane {
 
-	private static final String SERVER_PNG = "src/program-images/Server.png";
 	private AnchorPane serverPane;
 	private MenuBar serverBar;
 	private Menu serverMenu;
@@ -38,7 +38,7 @@ public class ServerItem extends AnchorPane {
 	public ServerItem(Server server) {
 		this.server = server;
 		try {
-			this.imageView = new ImageView(new Image(new FileInputStream(SERVER_PNG)));
+			this.imageView = new ImageView(new Image(new FileInputStream(Path.ServerPNG)));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

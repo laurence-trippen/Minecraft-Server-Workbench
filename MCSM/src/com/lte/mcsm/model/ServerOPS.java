@@ -1,5 +1,6 @@
 package com.lte.mcsm.model;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,7 +13,6 @@ import org.json.simple.parser.ParseException;
 
 public class ServerOPS {
 	
-	private static final String OPS_JSON_PATH = "src/test-files/ops.json";
 	private List<ServerOPEntry> serverOPEntries;
 	
 	public ServerOPS() {
@@ -20,40 +20,38 @@ public class ServerOPS {
 	}
 	
 	public void readOPSEntries() {
+		JSONParser parser = new JSONParser();
 		try {
-			JSONParser parser = new JSONParser();
-			Object obj = parser.parse(new FileReader(OPS_JSON_PATH));
-			JSONArray jsonArray = (JSONArray)obj;
-			for (int i = 0; i < jsonArray.size(); i++) {
-				JSONObject jsonEntry = (JSONObject)jsonArray.get(i);
+			Object obj = parser.parse(new FileReader(Path.OPS));
+			JSONArray array = (JSONArray)obj;
+			for (int i = 0; i < array.size(); i++) {
+				JSONObject jsonEntry = (JSONObject)array.get(i);
 				this.addOPSEntry(new ServerOPEntry(
 						jsonEntry.get("uuid").toString(), 
 						jsonEntry.get("name").toString(), 
 						jsonEntry.get("level").toString()
 				));
 			}
-		} catch (IOException | ParseException e) {
+		} catch (ParseException pe) {
+			pe.printStackTrace();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
 	private void addOPSEntry(ServerOPEntry serverOPEntry) {
 		if (serverOPEntries != null && serverOPEntry != null) {
-			if (serverOPEntries.isEmpty()) {
-				this.serverOPEntries.add(serverOPEntry);
-				return;
-			} else {				
-				for (ServerOPEntry existingEntry : serverOPEntries) {
-					if (serverOPEntry.getUuid().equals(existingEntry.getUuid())) {
-						System.out.println("Spieler " + serverOPEntry.getName() + " hat schon OP-Eintrag!");
-						return;
-					} else {
-						this.serverOPEntries.add(serverOPEntry);
-					}
+			for (ServerOPEntry existingEntry : serverOPEntries) {
+				if (serverOPEntry.getUuid().equals(existingEntry.getUuid())) {
+					System.out.println("Spieler " + serverOPEntry.getName() + " hat schon OP-Eintrag!");
+					return;
 				}
 			}
+			this.serverOPEntries.add(serverOPEntry);
 		} else {
-			System.out.println("Op Eintrag darf nicht null sein!");
+			System.out.println("OP-Eintrag darf nicht null sein!");
 		}
 	}
 	
