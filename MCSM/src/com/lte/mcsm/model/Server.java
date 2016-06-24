@@ -22,6 +22,7 @@ public class Server {
 	private ServerProperties serverProperties;
 	private ServerOPS serverOPS;
 	private ServerWhitelist serverWhitelist;
+	private ServerBannedIps serverBannedIps;
 	private ServerBannedPlayers serverBannedPlayers;
 	private Image serverImage;
 
@@ -34,6 +35,7 @@ public class Server {
 		this.serverProperties = new ServerProperties();
 		this.serverOPS = new ServerOPS();
 		this.serverWhitelist = new ServerWhitelist();
+		this.serverBannedIps = new ServerBannedIps();
 		this.serverBannedPlayers = new ServerBannedPlayers();
 		this.serverImage = null;
 	}
@@ -47,6 +49,7 @@ public class Server {
 		this.serverProperties = new ServerProperties();
 		this.serverOPS = new ServerOPS();
 		this.serverWhitelist = new ServerWhitelist();
+		this.serverBannedIps = new ServerBannedIps();
 		this.serverBannedPlayers = new ServerBannedPlayers();
 		this.serverImage = null;
 	}
@@ -137,6 +140,14 @@ public class Server {
 
 	public void setServerWhitelist(ServerWhitelist serverWhitelist) {
 		this.serverWhitelist = serverWhitelist;
+	}
+
+	public ServerBannedIps getServerBannedIps() {
+		return serverBannedIps;
+	}
+
+	public void setServerBannedIps(ServerBannedIps serverBannedIps) {
+		this.serverBannedIps = serverBannedIps;
 	}
 
 	public ServerBannedPlayers getServerBannedPlayers() {

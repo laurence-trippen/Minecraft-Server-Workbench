@@ -28,6 +28,8 @@ public class Program extends Application {
 		server.getServerWhitelist().printEntries();
 		server.getServerBannedPlayers().readEntries();
 		server.getServerBannedPlayers().printEntries();
+		server.getServerBannedIps().readEntries();
+		server.getServerBannedIps().printEntries();
 		launch(args);
 	}
 
