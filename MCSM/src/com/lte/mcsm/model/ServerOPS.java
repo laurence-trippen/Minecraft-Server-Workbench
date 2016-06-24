@@ -11,7 +11,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class ServerOPS {
+import com.lte.mcsm.model.abstracts.ServerJSON;
+
+public class ServerOPS extends ServerJSON {
 	
 	private List<ServerOPEntry> serverOPEntries;
 	
@@ -19,7 +21,8 @@ public class ServerOPS {
 		this.serverOPEntries = new ArrayList<ServerOPEntry>();
 	}
 	
-	public void readOPSEntries() {
+	@Override
+	public void readEntries() {
 		JSONParser parser = new JSONParser();
 		try {
 			Object obj = parser.parse(new FileReader(Path.OPS));
@@ -55,18 +58,19 @@ public class ServerOPS {
 		}
 	}
 	
-	public void printOPEntries() {
+	@Override
+	public void printEntries() {
 		if (!serverOPEntries.isEmpty()) {	
 			for (ServerOPEntry entry : serverOPEntries) {
 				System.out.println(
 						"uuid: " + entry.getUuid() + "\n" +
 						"name: " + entry.getName() + "\n" +
-						"level: " + entry.getLevel()
+						"level: " + entry.getLevel() + "\n"
 				);
 			}
 		}
 	}
-
+	
 	public List<ServerOPEntry> getServerOPEntries() {
 		return serverOPEntries;
 	}

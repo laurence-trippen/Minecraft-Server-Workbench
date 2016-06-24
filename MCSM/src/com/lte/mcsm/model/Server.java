@@ -21,6 +21,7 @@ public class Server {
 	private ServerState serverState;
 	private ServerProperties serverProperties;
 	private ServerOPS serverOPS;
+	private ServerWhitelist serverWhitelist;
 	private Image serverImage;
 
 	public Server(String name) {
@@ -31,6 +32,7 @@ public class Server {
 		this.serverState = ServerState.Stopped;
 		this.serverProperties = new ServerProperties();
 		this.serverOPS = new ServerOPS();
+		this.serverWhitelist = new ServerWhitelist();
 		this.serverImage = null;
 	}
 	
@@ -42,6 +44,7 @@ public class Server {
 		this.serverState = ServerState.Stopped;
 		this.serverProperties = new ServerProperties();
 		this.serverOPS = new ServerOPS();
+		this.serverWhitelist = new ServerWhitelist();
 		this.serverImage = null;
 	}
 
@@ -123,6 +126,14 @@ public class Server {
 
 	public void setServerOPS(ServerOPS serverOPS) {
 		this.serverOPS = serverOPS;
+	}
+
+	public ServerWhitelist getServerWhitelist() {
+		return serverWhitelist;
+	}
+
+	public void setServerWhitelist(ServerWhitelist serverWhitelist) {
+		this.serverWhitelist = serverWhitelist;
 	}
 
 	public Image getServerImage() {
