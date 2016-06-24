@@ -26,6 +26,8 @@ public class Program extends Application {
 		server.getServerOPS().printEntries();
 		server.getServerWhitelist().readEntries();
 		server.getServerWhitelist().printEntries();
+		server.getServerBannedPlayers().readEntries();
+		server.getServerBannedPlayers().printEntries();
 		launch(args);
 	}
 
