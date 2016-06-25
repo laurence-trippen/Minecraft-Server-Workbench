@@ -77,7 +77,7 @@ public class MainWindow extends Scene {
 		this.showServerVersions.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-
+				Program.getMainStage().setScene(new ServerVersionsWindow());
 			}
 		});
 		this.toolBar = new ToolBar();
