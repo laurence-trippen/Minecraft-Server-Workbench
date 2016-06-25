@@ -2,6 +2,8 @@ package com.lte.mcsm.model;
 
 public class Path {
 	
+	public static final String ServerVERSIONS = "src/program-serverversions/";
+	public static final String ServerDIRECTORY = "src/program-server/";
 	public static final String OPS = "src/test-files/ops.json";
 	public static final String XML = "src/program-data/Server.xml";
 	public static final String WHITELIST = "src/test-files/whitelist.json";

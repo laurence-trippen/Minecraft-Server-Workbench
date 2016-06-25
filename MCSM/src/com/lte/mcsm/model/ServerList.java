@@ -23,7 +23,9 @@ public class ServerList {
 	
 	private static ServerList instance = null;
 	private List<Server> serverList;
+	private List<ServerVersion> serverVersions;
 	private int serverCounter;
+	private int serverVersionCounter;
 	
 	public static ServerList getInstance() {
 		if (instance == null) {
@@ -34,7 +36,9 @@ public class ServerList {
 	
 	private ServerList() {
 		this.serverList = new ArrayList<Server>();
+		this.serverVersions = new ArrayList<ServerVersion>();
 		this.serverCounter = 0;
+		this.serverVersionCounter = 0;
 		loadXML();
 	}
 	
@@ -59,9 +63,26 @@ public class ServerList {
 //	public void deleteServer() {}
 //	private void initXML() {}
 	
+	public void addServerVersion(ServerVersion serverVersion) {
+		if (serverVersion != null && serverVersions != null) {
+			for (ServerVersion existingVersion : serverVersions) {
+				if (serverVersion.getName().equals(existingVersion.getName())) {
+					System.out.println("Serverversion existiert schon!");
+					return;
+				}
+			}
+			serverVersionCounter++;
+			serverVersion.setId(serverVersionCounter);
+			serverVersions.add(serverVersion);
+			saveXML();
+		}
+	}
+	
 	private void saveXML() {
 		Document xml = new Document();
-		xml.setRootElement(new Element("MCServer"));
+		xml.setRootElement(new Element("MCSM"));
+		xml.getRootElement().addContent(new Element("MCServer"));
+		xml.getRootElement().addContent(new Element("MCVersions"));
 		for (Server saveServer : serverList) {
 			Element properties = new Element("properties");
 			properties.addContent(new Element("generator").setText(saveServer.getServerProperties().getGenerator()));
@@ -103,7 +124,14 @@ public class ServerList {
 			server.addContent(new Element("description").setText(saveServer.getDescription()));
 			server.addContent(new Element("creationDate").setText(saveServer.getCreationDate()));
 			server.addContent(properties);
-			xml.getRootElement().addContent(server);
+			xml.getRootElement().getChild("MCServer").addContent(server);
+		}
+		for (ServerVersion saveVersion : serverVersions) {
+			Element serverVersion = new Element("ServerVersion");
+			serverVersion.setAttribute("id", ""+saveVersion.getId());
+			serverVersion.addContent(new Element("name").setText(saveVersion.getName()));
+			serverVersion.addContent(new Element("path").setText(saveVersion.getPath()));
+			xml.getRootElement().getChild("MCVersions").addContent(serverVersion);
 		}
 		XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
 		try {
@@ -118,7 +146,8 @@ public class ServerList {
 			Document xml = new SAXBuilder().build(Path.XML);
 			if (xml.hasRootElement()) {
 				Element root = xml.getRootElement();
-				List<Element> xmlServers = root.getChildren();
+				List<Element> xmlServers = root.getChild("MCServer").getChildren();
+				List<Element> xmlVersions = root.getChild("MCVersions").getChildren();
 				for (Element xmlServer : xmlServers) {
 					serverCounter++;
 					Element properties = xmlServer.getChild("properties");
@@ -162,6 +191,12 @@ public class ServerList {
 					serverProperties.setMotd(properties.getChildText("motd"));
 					serverList.add(loadServer);		
 				}
+				for (Element xmlVersion : xmlVersions) {
+					serverVersionCounter++;
+					ServerVersion serverVersion = new ServerVersion(xmlVersion.getChildText("name"), serverVersionCounter);
+					serverVersion.setPath(xmlVersion.getChildText("path"));
+					serverVersions.add(serverVersion);
+				}
 			}
 		} catch (JDOMParseException jdpe) {
 			jdpe.printStackTrace();
@@ -198,12 +233,28 @@ public class ServerList {
 		this.serverList = server;
 	}
 
+	public List<ServerVersion> getServerVersions() {
+		return serverVersions;
+	}
+
+	public void setServerVersions(List<ServerVersion> serverVersions) {
+		this.serverVersions = serverVersions;
+	}
+
 	public int getServerCount() {
 		return serverCounter;
 	}
 
 	public void setServerCount(int serverCount) {
 		this.serverCounter = serverCount;
+	}
+
+	public int getServerVersionCounter() {
+		return serverVersionCounter;
+	}
+
+	public void setServerVersionCounter(int serverVersionCounter) {
+		this.serverVersionCounter = serverVersionCounter;
 	}
 
 	public static void setInstance(ServerList instance) {

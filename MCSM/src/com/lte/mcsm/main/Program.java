@@ -2,6 +2,7 @@ package com.lte.mcsm.main;
 
 import com.lte.mcsm.model.Server;
 import com.lte.mcsm.model.ServerList;
+import com.lte.mcsm.model.ServerVersion;
 import com.lte.mcsm.view.MainWindow;
 
 import javafx.application.Application;
@@ -23,6 +24,7 @@ public class Program extends Application {
 	public static void main(String[] args) {
 		Server server = new Server("JSON-Server");
 		ServerList.getInstance().addServer(server);
+		ServerList.getInstance().addServerVersion(new ServerVersion("1.7.9"));
 		server.getServerOPS().readEntries();
 		server.getServerOPS().printEntries();
 		server.getServerWhitelist().readEntries();
