@@ -3,13 +3,16 @@ package com.lte.mcsm.view;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import com.lte.mcsm.main.Program;
 import com.lte.mcsm.model.Path;
 import com.lte.mcsm.model.Server;
 import com.lte.mcsm.model.ServerList;
+import com.lte.mcsm.view.components.Desktop;
 import com.lte.mcsm.view.components.ServerItem;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToolBar;
@@ -22,20 +25,25 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 
-public class MainWindow extends AnchorPane {
+public class MainWindow extends Scene {
 
 	private static int x = 0;
 	private static int y = 0;
+	private static AnchorPane mainPane = new AnchorPane();
 	private ToolBar toolBar;
 	private Button addServerButton;
+	private Button showServerVersions;
 	private Image newServerImage;
+	private Image showServerVersionsImage;
 	private ScrollPane scrollPane;
 	private AnchorPane anchorPane;
 	private GridPane gridPane;
 
 	public MainWindow() throws FileNotFoundException {
+		super(mainPane, Desktop.getScreenSize().getWidth(), Desktop.getScreenSize().getHeight());
 		try {
 			this.newServerImage = new Image(new FileInputStream(Path.NewServerPNG));
+			this.showServerVersionsImage = new Image(new FileInputStream(Path.ServerVersionsPNG));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -61,24 +69,32 @@ public class MainWindow extends AnchorPane {
 		this.addServerButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				
+				Program.getMainStage().setScene(new CreateServerWindow());
+			}
+		});
+		this.showServerVersions = new Button("Server Versionen");
+		this.showServerVersions.setGraphic(new ImageView(showServerVersionsImage));
+		this.showServerVersions.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+
 			}
 		});
 		this.toolBar = new ToolBar();
 		this.toolBar.setLayoutX(0.00);
 		this.toolBar.setLayoutY(0.00);
-		this.toolBar.getItems().add(addServerButton);
-		this.getChildren().addAll(toolBar, scrollPane);
-		setLeftAnchor(toolBar, 0.00);
-		setTopAnchor(toolBar, 0.00);
-		setRightAnchor(toolBar, 0.00);
-		setLeftAnchor(scrollPane, 0.00);
-		setTopAnchor(scrollPane, 41.0);
-		setRightAnchor(scrollPane, 0.00);
-		setBottomAnchor(scrollPane, 0.00);
-		setLeftAnchor(gridPane, 0.00);
-		setTopAnchor(gridPane, 0.00);
-		setRightAnchor(gridPane, 0.00);
+		this.toolBar.getItems().addAll(addServerButton, showServerVersions);
+		mainPane.getChildren().addAll(toolBar, scrollPane);
+		AnchorPane.setLeftAnchor(toolBar, 0.00);
+		AnchorPane.setTopAnchor(toolBar, 0.00);
+		AnchorPane.setRightAnchor(toolBar, 0.00);
+		AnchorPane.setLeftAnchor(scrollPane, 0.00);
+		AnchorPane.setTopAnchor(scrollPane, 41.0);
+		AnchorPane.setRightAnchor(scrollPane, 0.00);
+		AnchorPane.setBottomAnchor(scrollPane, 0.00);
+		AnchorPane.setLeftAnchor(gridPane, 0.00);
+		AnchorPane.setTopAnchor(gridPane, 0.00);
+		AnchorPane.setRightAnchor(gridPane, 0.00);
 		loadServer();
 	}
 	

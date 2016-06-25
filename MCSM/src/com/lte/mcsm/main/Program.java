@@ -5,15 +5,16 @@ import com.lte.mcsm.model.ServerList;
 import com.lte.mcsm.view.MainWindow;
 
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Program extends Application {
-
+	
+	private static Stage mainStage = null;
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		primaryStage.setScene(new Scene(new MainWindow(), 1024, 768));
-		primaryStage.setFullScreen(true); 
+		mainStage = primaryStage;
+		primaryStage.setScene(new MainWindow());
 		primaryStage.setMaximized(true);
 		primaryStage.setTitle("LTE: MCSM");
 		primaryStage.show();
@@ -31,6 +32,10 @@ public class Program extends Application {
 		server.getServerBannedIps().readEntries();
 		server.getServerBannedIps().printEntries();
 		launch(args);
+	}
+	
+	public static Stage getMainStage() {
+		return mainStage;
 	}
 
 }
