@@ -69,7 +69,7 @@ public class ServerVersionsWindow extends Scene {
 		this.installVersionButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				
+				Program.getMainStage().setScene(Program.getVersionInstallWindow());
 			}
 		});
 		this.closeButton = new Button("Zurück");

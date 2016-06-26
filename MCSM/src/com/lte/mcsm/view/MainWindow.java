@@ -55,7 +55,6 @@ public class MainWindow extends Scene {
 		);
 		this.gridPane.getRowConstraints().add(new RowConstraints(312));
 		this.anchorPane = new AnchorPane();
-		//this.anchorPane.setStyle("-fx-background-color: gray");
 		this.anchorPane.setBackground(new Background(new BackgroundImage(new Image(new FileInputStream(Path.BACKGROUND)), null, null, null, null)));
 		this.anchorPane.setPrefWidth(1905);
 		this.anchorPane.setPrefHeight(2000);
