@@ -69,7 +69,7 @@ public class MainWindow extends Scene {
 		this.addServerButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				Program.getMainStage().setScene(new CreateServerWindow());
+				Program.getMainStage().setScene(Program.getCreateServerWindow());
 			}
 		});
 		this.showServerVersions = new Button("Server Versionen");
@@ -77,7 +77,7 @@ public class MainWindow extends Scene {
 		this.showServerVersions.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				Program.getMainStage().setScene(new ServerVersionsWindow());
+				Program.getMainStage().setScene(Program.getServerVersionsWindow());
 			}
 		});
 		this.toolBar = new ToolBar();

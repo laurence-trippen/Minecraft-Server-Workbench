@@ -3,6 +3,7 @@ package com.lte.mcsm.view;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import com.lte.mcsm.main.Program;
 import com.lte.mcsm.model.Path;
 import com.lte.mcsm.view.components.Desktop;
 
@@ -35,7 +36,7 @@ public class CreateServerWindow extends Scene {
 		this.closeButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				System.out.println("[Event] CreateServerWindow.closeButton");
+				Program.getMainStage().setScene(Program.getMainWindow());
 			}
 		});
 		this.toolBar = new ToolBar();

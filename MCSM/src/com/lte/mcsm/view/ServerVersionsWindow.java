@@ -3,6 +3,7 @@ package com.lte.mcsm.view;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import com.lte.mcsm.main.Program;
 import com.lte.mcsm.model.Path;
 import com.lte.mcsm.model.ServerList;
 import com.lte.mcsm.model.ServerVersion;
@@ -75,7 +76,7 @@ public class ServerVersionsWindow extends Scene {
 		this.closeButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				
+				Program.getMainStage().setScene(Program.getMainWindow());
 			}
 		});
 		this.leftSpacerPane = new Pane();
