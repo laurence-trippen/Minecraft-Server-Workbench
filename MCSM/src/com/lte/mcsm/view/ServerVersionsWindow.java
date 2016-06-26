@@ -4,7 +4,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 import com.lte.mcsm.model.Path;
+import com.lte.mcsm.model.ServerList;
+import com.lte.mcsm.model.ServerVersion;
 import com.lte.mcsm.view.components.Desktop;
+import com.lte.mcsm.view.components.ServerVersionItem;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -46,7 +49,7 @@ public class ServerVersionsWindow extends Scene {
 		}
 		this.gridPane = new GridPane();
 		this.gridPane.getColumnConstraints().add(new ColumnConstraints(1905));
-		this.gridPane.getRowConstraints().add(new RowConstraints(312));
+		this.gridPane.getRowConstraints().add(new RowConstraints(210));
 		this.anchorPane = new AnchorPane();
 		try {
 			this.anchorPane.setBackground(new Background(new BackgroundImage(new Image(new FileInputStream(Path.BACKGROUND)), null, null, null, null)));
@@ -94,6 +97,23 @@ public class ServerVersionsWindow extends Scene {
 		AnchorPane.setLeftAnchor(gridPane, 0.00);
 		AnchorPane.setTopAnchor(gridPane, 0.00);
 		AnchorPane.setRightAnchor(gridPane, 0.00);
+		loadServerVersions();
+	}
+	
+	private void loadServerVersions() {
+		int counter = 0;
+		ServerList serverList = ServerList.getInstance();
+		if (serverList.getServerVersionCounter() != 0) {
+			for (ServerVersion serverVersion : serverList.getServerVersions()) {
+				if (counter > 0) {
+					this.gridPane.getRowConstraints().add(new RowConstraints(210));
+				}
+				ServerVersionItem serverVersionItem = new ServerVersionItem(serverVersion);
+				GridPane.setConstraints(serverVersionItem, 0, counter);
+				this.gridPane.getChildren().add(serverVersionItem);
+				counter++;
+			}
+		}
 	}
 
 }
