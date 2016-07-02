@@ -383,5 +383,9 @@
       <name>1.5.2</name>
       <path />
     </ServerVersion>
+    <ServerVersion id="6">
+      <name>1.4.7</name>
+      <path />
+    </ServerVersion>
   </MCVersions>
 </MCSM>
