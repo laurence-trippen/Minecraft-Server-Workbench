@@ -7,8 +7,10 @@ import com.lte.mcsm.main.Program;
 import com.lte.mcsm.model.Path;
 import com.lte.mcsm.model.Server;
 import com.lte.mcsm.model.ServerList;
+import com.lte.mcsm.model.interfaces.IRefreshable;
 import com.lte.mcsm.view.components.Desktop;
 import com.lte.mcsm.view.components.ServerItem;
+import com.lte.mcsm.view.components.WindowManager;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -25,7 +27,7 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 
-public class MainWindow extends Scene {
+public class MainWindow extends Scene implements IRefreshable {
 
 	private static int x = 0;
 	private static int y = 0;
@@ -39,11 +41,16 @@ public class MainWindow extends Scene {
 	private AnchorPane anchorPane;
 	private GridPane gridPane;
 
-	public MainWindow() throws FileNotFoundException {
+	public MainWindow() {
 		super(mainPane, Desktop.getScreenSize().getWidth(), Desktop.getScreenSize().getHeight());
+		this.anchorPane = new AnchorPane();
+		this.anchorPane.setPrefWidth(1905);
+		this.anchorPane.setPrefHeight(2000);
 		try {
 			this.newServerImage = new Image(new FileInputStream(Path.NewServerPNG));
 			this.showServerVersionsImage = new Image(new FileInputStream(Path.ServerVersionsPNG));
+			this.anchorPane.setBackground(new Background(new BackgroundImage(new Image(new FileInputStream(Path.BACKGROUND)), null, null, null, null)));
+
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -54,10 +61,6 @@ public class MainWindow extends Scene {
 				new ColumnConstraints(635) 
 		);
 		this.gridPane.getRowConstraints().add(new RowConstraints(312));
-		this.anchorPane = new AnchorPane();
-		this.anchorPane.setBackground(new Background(new BackgroundImage(new Image(new FileInputStream(Path.BACKGROUND)), null, null, null, null)));
-		this.anchorPane.setPrefWidth(1905);
-		this.anchorPane.setPrefHeight(2000);
 		this.anchorPane.getChildren().add(gridPane);
 		this.scrollPane = new ScrollPane();
 		this.scrollPane.setLayoutX(0.00);
@@ -68,7 +71,7 @@ public class MainWindow extends Scene {
 		this.addServerButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				Program.getMainStage().setScene(Program.getCreateServerWindow());
+				Program.getMainStage().setScene(WindowManager.getInstance().getCreateServerWindow());
 			}
 		});
 		this.showServerVersions = new Button("Server Versionen");
@@ -76,7 +79,7 @@ public class MainWindow extends Scene {
 		this.showServerVersions.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				Program.getMainStage().setScene(Program.getServerVersionsWindow());
+				Program.getMainStage().setScene(WindowManager.getInstance().getServerVersionsWindow());
 			}
 		});
 		this.toolBar = new ToolBar();
@@ -95,6 +98,11 @@ public class MainWindow extends Scene {
 		AnchorPane.setTopAnchor(gridPane, 0.00);
 		AnchorPane.setRightAnchor(gridPane, 0.00);
 		loadServer();
+	}
+	
+	@Override
+	public void refresh() {
+		
 	}
 	
 	private void loadServer() {

@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import com.lte.mcsm.main.Program;
 import com.lte.mcsm.model.Path;
 import com.lte.mcsm.view.components.Desktop;
+import com.lte.mcsm.view.components.WindowManager;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -36,7 +37,7 @@ public class CreateServerWindow extends Scene {
 		this.closeButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				Program.getMainStage().setScene(Program.getMainWindow());
+				Program.getMainStage().setScene(WindowManager.getInstance().getMainWindow());
 			}
 		});
 		this.toolBar = new ToolBar();

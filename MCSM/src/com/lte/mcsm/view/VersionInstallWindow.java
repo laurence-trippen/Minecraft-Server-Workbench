@@ -5,7 +5,9 @@ import java.io.FileNotFoundException;
 
 import com.lte.mcsm.main.Program;
 import com.lte.mcsm.model.Path;
+import com.lte.mcsm.model.interfaces.IRefreshable;
 import com.lte.mcsm.view.components.Desktop;
+import com.lte.mcsm.view.components.WindowManager;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -25,7 +27,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class VersionInstallWindow extends Scene {
+public class VersionInstallWindow extends Scene implements IRefreshable {
 	
 	private static AnchorPane mainPane = new AnchorPane();
 	private Pane installSetupPane;
@@ -68,7 +70,14 @@ public class VersionInstallWindow extends Scene {
 		this.versionJarButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				
+//				Stage fileChooserStage = new Stage();
+//				fileChooserStage.centerOnScreen();
+//				FileChooser fileChooser = new FileChooser();
+//				fileChooser.setTitle("Minecraft Server JAR auswählen");
+//				fileChooser.getExtensionFilters().addAll(
+//				         new ExtensionFilter("JAR Archive", "*.jar")
+//				);
+//				File selectedFile = fileChooser.showOpenDialog(fileChooserStage);
 			}
 		});
 		this.headerSeperator = new Separator();
@@ -93,7 +102,8 @@ public class VersionInstallWindow extends Scene {
 		this.installVersionButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				
+				versionNameTextField.setDisable(true);
+				versionJarButton.setDisable(true);
 			}
 		});
 		this.installSetupPane = new Pane();
@@ -117,7 +127,8 @@ public class VersionInstallWindow extends Scene {
 		this.closeButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				Program.getMainStage().setScene(Program.getServerVersionsWindow());
+				refresh();
+				Program.getMainStage().setScene(WindowManager.getInstance().getServerVersionsWindow());
 			}
 		});
 		this.toolBar = new ToolBar();
@@ -129,6 +140,13 @@ public class VersionInstallWindow extends Scene {
 		AnchorPane.setLeftAnchor(toolBar, 0.00);
 		AnchorPane.setTopAnchor(toolBar, 0.00);
 		AnchorPane.setRightAnchor(toolBar, 0.00);
+	}
+	
+	@Override
+	public void refresh() {
+		versionNameTextField.setText(null);
+		versionNameTextField.setDisable(false);
+		versionJarButton.setDisable(false);
 	}
 	
 }

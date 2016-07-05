@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 
 import com.lte.mcsm.model.Path;
 import com.lte.mcsm.model.Server;
+import com.lte.mcsm.model.interfaces.IRefreshable;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -19,7 +20,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class ServerItem extends AnchorPane {
+public class ServerItem extends AnchorPane implements IRefreshable {
 
 	private AnchorPane serverPane;
 	private MenuBar serverBar;
@@ -127,6 +128,11 @@ public class ServerItem extends AnchorPane {
 				splitMenuButton
 		);
 		this.getChildren().add(serverPane);
+	}
+	
+	@Override
+	public void refresh() {
+			
 	}
 
 	public AnchorPane getServerPane() {

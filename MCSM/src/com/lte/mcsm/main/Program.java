@@ -3,10 +3,7 @@ package com.lte.mcsm.main;
 import com.lte.mcsm.model.Server;
 import com.lte.mcsm.model.ServerList;
 import com.lte.mcsm.model.ServerVersion;
-import com.lte.mcsm.view.CreateServerWindow;
-import com.lte.mcsm.view.MainWindow;
-import com.lte.mcsm.view.ServerVersionsWindow;
-import com.lte.mcsm.view.VersionInstallWindow;
+import com.lte.mcsm.view.components.WindowManager;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -14,19 +11,11 @@ import javafx.stage.Stage;
 public class Program extends Application {
 	
 	private static Stage mainStage = null;
-	private static MainWindow mainWindow = null;
-	private static CreateServerWindow createServerWindow = null;
-	private static ServerVersionsWindow serverVersionsWindow = null;
-	private static VersionInstallWindow versionInstallWindow = null;
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		mainStage = primaryStage;
-		mainWindow = new MainWindow();
-		createServerWindow = new CreateServerWindow();
-		serverVersionsWindow = new ServerVersionsWindow();
-		versionInstallWindow = new VersionInstallWindow();
-		primaryStage.setScene(mainWindow);
+		primaryStage.setScene(WindowManager.getInstance().getMainWindow());
 		primaryStage.setMaximized(true);
 		primaryStage.setTitle("LTE: MCSM");
 		primaryStage.show();
@@ -49,22 +38,6 @@ public class Program extends Application {
 	
 	public static Stage getMainStage() {
 		return mainStage;
-	}
-
-	public static MainWindow getMainWindow() {
-		return mainWindow;
-	}
-
-	public static CreateServerWindow getCreateServerWindow() {
-		return createServerWindow;
-	}
-
-	public static ServerVersionsWindow getServerVersionsWindow() {
-		return serverVersionsWindow;
-	}
-
-	public static VersionInstallWindow getVersionInstallWindow() {
-		return versionInstallWindow;
 	}
 
 }

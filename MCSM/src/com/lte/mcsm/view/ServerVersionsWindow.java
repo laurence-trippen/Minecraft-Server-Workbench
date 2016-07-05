@@ -9,6 +9,7 @@ import com.lte.mcsm.model.ServerList;
 import com.lte.mcsm.model.ServerVersion;
 import com.lte.mcsm.view.components.Desktop;
 import com.lte.mcsm.view.components.ServerVersionItem;
+import com.lte.mcsm.view.components.WindowManager;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -69,14 +70,14 @@ public class ServerVersionsWindow extends Scene {
 		this.installVersionButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				Program.getMainStage().setScene(Program.getVersionInstallWindow());
+				Program.getMainStage().setScene(WindowManager.getInstance().getVersionInstallWindow());
 			}
 		});
 		this.closeButton = new Button("Zurück");
 		this.closeButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				Program.getMainStage().setScene(Program.getMainWindow());
+				Program.getMainStage().setScene(WindowManager.getInstance().getMainWindow());
 			}
 		});
 		this.leftSpacerPane = new Pane();
