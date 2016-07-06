@@ -11,11 +11,17 @@ public class ServerVersion {
 		this.name = name;
 	}
 	
-	public ServerVersion(String name, int id) {
+	public ServerVersion(int id, String name) {
 		this.id = id;
 		this.name = name;
 	}
 	
+	public ServerVersion(int id, String name, String path) {
+		this.id = id;
+		this.name = name;
+		this.path = path;
+	}
+
 	public int getId() {
 		return id;
 	}

@@ -2,6 +2,7 @@ package com.lte.mcsm.view;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 import com.lte.mcsm.main.Program;
 import com.lte.mcsm.model.Path;
@@ -10,6 +11,7 @@ import com.lte.mcsm.model.ServerList;
 import com.lte.mcsm.model.interfaces.IRefreshable;
 import com.lte.mcsm.view.components.Desktop;
 import com.lte.mcsm.view.components.ServerItem;
+import com.lte.mcsm.view.components.ServerMenu;
 import com.lte.mcsm.view.components.WindowManager;
 
 import javafx.event.ActionEvent;
@@ -40,17 +42,24 @@ public class MainWindow extends Scene implements IRefreshable {
 	private ScrollPane scrollPane;
 	private AnchorPane anchorPane;
 	private GridPane gridPane;
+	private ArrayList<ServerItem> serverItems;
 
 	public MainWindow() {
 		super(mainPane, Desktop.getScreenSize().getWidth(), Desktop.getScreenSize().getHeight());
+		this.serverItems = new ArrayList<ServerItem>();
 		this.anchorPane = new AnchorPane();
 		this.anchorPane.setPrefWidth(1905);
 		this.anchorPane.setPrefHeight(2000);
 		try {
 			this.newServerImage = new Image(new FileInputStream(Path.NewServerPNG));
 			this.showServerVersionsImage = new Image(new FileInputStream(Path.ServerVersionsPNG));
-			this.anchorPane.setBackground(new Background(new BackgroundImage(new Image(new FileInputStream(Path.BACKGROUND)), null, null, null, null)));
-
+			this.anchorPane.setBackground(new Background(new BackgroundImage(new Image(
+					new FileInputStream(Path.BACKGROUND)), 
+					null, 
+					null, 
+					null, 
+					null
+			)));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -71,6 +80,7 @@ public class MainWindow extends Scene implements IRefreshable {
 		this.addServerButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
+				refresh();
 				Program.getMainStage().setScene(WindowManager.getInstance().getCreateServerWindow());
 			}
 		});
@@ -79,6 +89,7 @@ public class MainWindow extends Scene implements IRefreshable {
 		this.showServerVersions.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
+				refresh();
 				Program.getMainStage().setScene(WindowManager.getInstance().getServerVersionsWindow());
 			}
 		});
@@ -102,7 +113,9 @@ public class MainWindow extends Scene implements IRefreshable {
 	
 	@Override
 	public void refresh() {
-		
+		for (ServerItem sItem : serverItems) {
+			sItem.refresh();
+		}
 	}
 	
 	private void loadServer() {
@@ -115,6 +128,7 @@ public class MainWindow extends Scene implements IRefreshable {
 					this.gridPane.getRowConstraints().add(new RowConstraints(312));
 				}
 				ServerItem serverItem = new ServerItem(server);
+				serverItems.add(serverItem);
 				GridPane.setConstraints(serverItem, x, y);
 				x = calcX(x);
 				y = calcY(y, x);

@@ -1,7 +1,11 @@
 package com.lte.mcsm.view;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import com.lte.mcsm.main.Program;
 import com.lte.mcsm.model.Path;
@@ -26,6 +30,9 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Stage;
 
 public class VersionInstallWindow extends Scene implements IRefreshable {
 	
@@ -78,6 +85,14 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 //				         new ExtensionFilter("JAR Archive", "*.jar")
 //				);
 //				File selectedFile = fileChooser.showOpenDialog(fileChooserStage);
+//				try {
+//					File serverCheckFile = new File(Path.ServerCHECK + selectedFile.getName());
+//					Files.copy(Paths.get(selectedFile.getAbsolutePath()), Paths.get(Path.ServerCHECK + selectedFile.getName()));
+//					ProcessBuilder processBuilder = new ProcessBuilder("java -Xmx1024M -Xms1024M -jar " + serverCheckFile.getAbsolutePath());
+//					Process p = processBuilder.start();
+//				} catch (IOException e) {
+//					e.printStackTrace();
+//				}
 			}
 		});
 		this.headerSeperator = new Separator();

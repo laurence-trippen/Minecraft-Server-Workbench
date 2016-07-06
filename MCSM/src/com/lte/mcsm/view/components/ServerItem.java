@@ -132,7 +132,7 @@ public class ServerItem extends AnchorPane implements IRefreshable {
 	
 	@Override
 	public void refresh() {
-			
+		splitMenuButton.setText(ServerMenu.OPTIONS);
 	}
 
 	public AnchorPane getServerPane() {

@@ -193,7 +193,7 @@ public class ServerList {
 				}
 				for (Element xmlVersion : xmlVersions) {
 					serverVersionCounter++;
-					ServerVersion serverVersion = new ServerVersion(xmlVersion.getChildText("name"), serverVersionCounter);
+					ServerVersion serverVersion = new ServerVersion(serverVersionCounter, xmlVersion.getChildText("name"));
 					serverVersion.setPath(xmlVersion.getChildText("path"));
 					serverVersions.add(serverVersion);
 				}
