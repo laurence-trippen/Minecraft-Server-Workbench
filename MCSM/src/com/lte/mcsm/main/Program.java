@@ -1,9 +1,9 @@
 package com.lte.mcsm.main;
 
+import com.lte.mcsm.controller.WindowManager;
 import com.lte.mcsm.model.Server;
 import com.lte.mcsm.model.ServerList;
 import com.lte.mcsm.model.ServerVersion;
-import com.lte.mcsm.view.components.WindowManager;
 
 import javafx.application.Application;
 import javafx.stage.Stage;

@@ -3,10 +3,10 @@ package com.lte.mcsm.view;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import com.lte.mcsm.controller.DesktopManager;
+import com.lte.mcsm.controller.WindowManager;
 import com.lte.mcsm.main.Program;
 import com.lte.mcsm.model.Path;
-import com.lte.mcsm.view.components.Desktop;
-import com.lte.mcsm.view.components.WindowManager;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -27,7 +27,7 @@ public class CreateServerWindow extends Scene {
 	private Button closeButton;
 	
 	public CreateServerWindow() {
-		super(mainPane, Desktop.getScreenSize().getWidth(), Desktop.getScreenSize().getHeight());
+		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
 		try {
 			mainPane.setBackground(new Background(new BackgroundImage(new Image(new FileInputStream(Path.BACKGROUND)), null, null, null, null)));
 		} catch (FileNotFoundException e) {

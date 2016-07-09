@@ -3,13 +3,13 @@ package com.lte.mcsm.view;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import com.lte.mcsm.controller.DesktopManager;
+import com.lte.mcsm.controller.WindowManager;
 import com.lte.mcsm.main.Program;
 import com.lte.mcsm.model.Path;
 import com.lte.mcsm.model.ServerList;
 import com.lte.mcsm.model.ServerVersion;
-import com.lte.mcsm.view.components.Desktop;
 import com.lte.mcsm.view.components.ServerVersionItem;
-import com.lte.mcsm.view.components.WindowManager;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -43,7 +43,7 @@ public class ServerVersionsWindow extends Scene {
 	private Image installVersionImage;
 		
 	public ServerVersionsWindow() {
-		super(mainPane, Desktop.getScreenSize().getWidth(), Desktop.getScreenSize().getHeight());
+		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
 		try {
 			this.installVersionImage = new Image(new FileInputStream(Path.ServerVersionsPNG));
 		} catch (FileNotFoundException e) {

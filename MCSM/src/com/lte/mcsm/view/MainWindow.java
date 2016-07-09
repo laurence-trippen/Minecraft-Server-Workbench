@@ -4,15 +4,14 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
+import com.lte.mcsm.controller.DesktopManager;
+import com.lte.mcsm.controller.WindowManager;
 import com.lte.mcsm.main.Program;
 import com.lte.mcsm.model.Path;
 import com.lte.mcsm.model.Server;
 import com.lte.mcsm.model.ServerList;
 import com.lte.mcsm.model.interfaces.IRefreshable;
-import com.lte.mcsm.view.components.Desktop;
 import com.lte.mcsm.view.components.ServerItem;
-import com.lte.mcsm.view.components.ServerMenu;
-import com.lte.mcsm.view.components.WindowManager;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -45,7 +44,7 @@ public class MainWindow extends Scene implements IRefreshable {
 	private ArrayList<ServerItem> serverItems;
 
 	public MainWindow() {
-		super(mainPane, Desktop.getScreenSize().getWidth(), Desktop.getScreenSize().getHeight());
+		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
 		this.serverItems = new ArrayList<ServerItem>();
 		this.anchorPane = new AnchorPane();
 		this.anchorPane.setPrefWidth(1905);

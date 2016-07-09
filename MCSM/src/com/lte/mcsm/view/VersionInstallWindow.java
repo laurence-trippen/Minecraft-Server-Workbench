@@ -1,17 +1,19 @@
 package com.lte.mcsm.view;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import com.lte.mcsm.controller.DesktopManager;
+import com.lte.mcsm.controller.WindowManager;
 import com.lte.mcsm.main.Program;
 import com.lte.mcsm.model.Path;
 import com.lte.mcsm.model.interfaces.IRefreshable;
-import com.lte.mcsm.view.components.Desktop;
-import com.lte.mcsm.view.components.WindowManager;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -51,7 +53,7 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 	private Separator footerSeperator;
 	
 	public VersionInstallWindow() {
-		super(mainPane, Desktop.getScreenSize().getWidth(), Desktop.getScreenSize().getHeight());
+		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
 		try {
 			mainPane.setBackground(new Background(new BackgroundImage(new Image(new FileInputStream(Path.BACKGROUND)), null, null, null, null)));
 			this.installVersionImageView = new ImageView(new Image(new FileInputStream(Path.InstallVersionPNG)));
@@ -77,22 +79,36 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 		this.versionJarButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-//				Stage fileChooserStage = new Stage();
-//				fileChooserStage.centerOnScreen();
-//				FileChooser fileChooser = new FileChooser();
-//				fileChooser.setTitle("Minecraft Server JAR auswählen");
-//				fileChooser.getExtensionFilters().addAll(
-//				         new ExtensionFilter("JAR Archive", "*.jar")
-//				);
-//				File selectedFile = fileChooser.showOpenDialog(fileChooserStage);
-//				try {
-//					File serverCheckFile = new File(Path.ServerCHECK + selectedFile.getName());
-//					Files.copy(Paths.get(selectedFile.getAbsolutePath()), Paths.get(Path.ServerCHECK + selectedFile.getName()));
-//					ProcessBuilder processBuilder = new ProcessBuilder("java -Xmx1024M -Xms1024M -jar " + serverCheckFile.getAbsolutePath());
-//					Process p = processBuilder.start();
-//				} catch (IOException e) {
-//					e.printStackTrace();
-//				}
+				Stage fileChooserStage = new Stage();
+				fileChooserStage.centerOnScreen();
+				FileChooser fileChooser = new FileChooser();
+				fileChooser.setTitle("Minecraft Server JAR auswählen");
+				fileChooser.getExtensionFilters().addAll(
+				         new ExtensionFilter("JAR Archive", "*.jar")
+				);
+				File selectedFile = fileChooser.showOpenDialog(fileChooserStage);
+				ProcessBuilder processBuilder = new ProcessBuilder(
+						"java",
+						"-Xmx1024M",
+						"-Xms1024M",
+						"-jar",
+						new File(Path.ServerCHECK).getAbsolutePath() + "\\" + selectedFile.getName()
+//						,"nogui"
+				);
+				try {
+					Files.copy(Paths.get(selectedFile.getAbsolutePath()), Paths.get(Path.ServerCHECK + selectedFile.getName()));
+					Process process = processBuilder.start();
+					BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
+					String line = null;
+					StringBuilder stringBuilder = null;
+					while ((line = br.readLine()) != null) {
+						stringBuilder = new StringBuilder().append(line).append("\n");
+					}
+					System.out.println("Minecraft Server Console:\n" + stringBuilder.toString());
+					//process.destroy();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		});
 		this.headerSeperator = new Separator();
