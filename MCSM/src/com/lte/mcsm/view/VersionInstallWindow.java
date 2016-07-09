@@ -95,6 +95,7 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 						new File(Path.ServerCHECK).getAbsolutePath() + "\\" + selectedFile.getName()
 //						,"nogui"
 				);
+				processBuilder.directory(new File(Path.ServerCHECK));
 				try {
 					Files.copy(Paths.get(selectedFile.getAbsolutePath()), Paths.get(Path.ServerCHECK + selectedFile.getName()));
 					Process process = processBuilder.start();
