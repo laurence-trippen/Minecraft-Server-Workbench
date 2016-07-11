@@ -8,7 +8,6 @@ import com.lte.mcsm.controller.DesktopManager;
 import com.lte.mcsm.controller.WindowManager;
 import com.lte.mcsm.main.Program;
 import com.lte.mcsm.model.Path;
-import com.lte.mcsm.model.ServerVersionTester;
 import com.lte.mcsm.model.interfaces.IRefreshable;
 
 import javafx.event.ActionEvent;
