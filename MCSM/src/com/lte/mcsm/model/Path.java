@@ -16,5 +16,6 @@ public class Path {
 	public static final String ServerVersionPNG = "src/program-images/serverVersion.png";
 	public static final String ServerVersionsPNG = "src/program-images/serverVersions.png";
 	public static final String BACKGROUND = "src/program-images/Background.png";
+	public static final String JarPNG = "src/program-images/jar.png";
 
 }
