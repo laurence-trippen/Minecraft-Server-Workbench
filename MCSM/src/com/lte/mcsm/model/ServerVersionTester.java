@@ -1,9 +1,7 @@
 package com.lte.mcsm.model;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -16,6 +14,7 @@ public class ServerVersionTester {
 	final static File versionPropertiesFile = new File(Path.ServerCHECK + "server.properties");
 	
 	private static boolean runVersion() {
+		Process process = null;
 		ProcessBuilder processBuilder = new ProcessBuilder(
 				"java",
 				"-Xmx1024M",
@@ -25,15 +24,7 @@ public class ServerVersionTester {
 		);
 		processBuilder.directory(new File(Path.ServerCHECK));
 		try {
-			Process process = processBuilder.start();
-			BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
-			String line = null;
-			StringBuilder stringBuilder = null;
-			while ((line = br.readLine()) != null) {
-				stringBuilder = new StringBuilder().append(line).append("\n");
-			}
-			System.out.println("Minecraft Server Console:\n" + stringBuilder.toString());
-			process.destroy();
+			process = processBuilder.start();
 			return true;
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -41,6 +32,12 @@ public class ServerVersionTester {
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 			return false;
+		} finally {
+			try {
+				process.waitFor();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	

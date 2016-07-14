@@ -8,6 +8,7 @@ import com.lte.mcsm.controller.DesktopManager;
 import com.lte.mcsm.controller.WindowManager;
 import com.lte.mcsm.main.Program;
 import com.lte.mcsm.model.Path;
+import com.lte.mcsm.model.ServerVersionTester;
 import com.lte.mcsm.model.interfaces.IRefreshable;
 
 import javafx.event.ActionEvent;
@@ -16,6 +17,7 @@ import javafx.geometry.NodeOrientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToolBar;
@@ -43,6 +45,7 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 	private Label versionJarLabel;
 	private Label installVersionLabel;
 	private Label jarNameLabel;
+	private Label progressLabel;
 	private TextField versionNameTextField;
 	private Button versionJarButton;
 	private Button installVersionButton;
@@ -50,6 +53,7 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 	private ImageView jarVersionImageView;
 	private Separator headerSeperator;
 	private Separator footerSeperator;
+	private ProgressBar progressBar;
 	
 	public VersionInstallWindow() {
 		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
@@ -60,6 +64,15 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		this.progressLabel = new Label("JAR Datei wird überprüft ...");
+		this.progressLabel.setFont(Font.font("System", FontWeight.BOLD, 14));
+		this.progressLabel.setLayoutX(400);
+		this.progressLabel.setLayoutY(40);
+		this.progressBar = new ProgressBar(0);
+		this.progressBar.setLayoutX(40);
+		this.progressBar.setLayoutY(40);
+		this.progressBar.setPrefWidth(340);
+		this.progressBar.setPrefHeight(20);
 		this.installationPane = new Pane();
 		this.installationPane.setStyle("-fx-background-color: white; -fx-background-radius: 5");
 		this.installationPane.setPrefWidth(600);
@@ -67,6 +80,7 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 		this.installationPane.setLayoutX(660);
 		this.installationPane.setLayoutY(740);
 		this.installationPane.setVisible(false);
+		this.installationPane.getChildren().addAll(progressBar, progressLabel);
 		this.jarVersionImageView.setLayoutX(80);
 		this.jarVersionImageView.setLayoutY(278);
 		this.jarVersionImageView.setVisible(false);
@@ -131,10 +145,17 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 		this.installVersionButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
+				closeButton.setDisable(true);
 				versionNameTextField.setDisable(true);
 				versionJarButton.setDisable(true);
+				installVersionButton.setDisable(true);
 				installationPane.setVisible(true);
-				// Installationcode
+				if (selectedJarFile != null) {
+					progressBar.setProgress(0.20);
+					if (ServerVersionTester.testVersion(selectedJarFile)) {
+						System.out.println("Is JAr");
+					}
+				}
 			}
 		});
 		this.installSetupPane = new Pane();
@@ -177,6 +198,8 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 	
 	@Override
 	public void refresh() {
+		closeButton.setDisable(false);
+		installVersionButton.setDisable(false);
 		versionNameTextField.setText(null);
 		versionNameTextField.setDisable(false);
 		versionJarButton.setDisable(false);
