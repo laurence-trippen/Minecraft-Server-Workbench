@@ -7,13 +7,26 @@ import java.nio.file.Paths;
 
 public class ServerVersionTester {
 	
-	static File versionTestFile = null;
-	final static File versionLogsDir = new File(Path.ServerCHECK + "logs");
-	final static File versionLogOldFile = new File(Path.ServerCHECK + "server.log");
-	final static File versionEulaFile = new File(Path.ServerCHECK + "eula.txt");
-	final static File versionPropertiesFile = new File(Path.ServerCHECK + "server.properties");
+	private final static File versionLogsDir = new File(Path.ServerCHECK + "logs");
+	private final static File versionLogOldFile = new File(Path.ServerCHECK + "server.log");
+	private final static File versionEulaFile = new File(Path.ServerCHECK + "eula.txt");
+	private final static File versionPropertiesFile = new File(Path.ServerCHECK + "server.properties");
+	private File versionTestFile;
 	
-	private static boolean runVersion() {
+	public ServerVersionTester() {
+		this.versionTestFile = null;
+	}
+	
+	private boolean checkVersion() {
+		if (versionEulaFile.exists() && versionPropertiesFile.exists() && versionLogsDir.exists() ||
+			versionPropertiesFile.exists() && versionLogOldFile.exists()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	private boolean runVersion() {
 		Process process = null;
 		ProcessBuilder processBuilder = new ProcessBuilder(
 				"java",
@@ -25,6 +38,7 @@ public class ServerVersionTester {
 		processBuilder.directory(new File(Path.ServerCHECK));
 		try {
 			process = processBuilder.start();
+			process.waitFor();
 			return true;
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -32,25 +46,13 @@ public class ServerVersionTester {
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 			return false;
-		} finally {
-			try {
-				process.waitFor();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-	
-	private static boolean checkVersion() {
-		if (versionEulaFile.exists() && versionPropertiesFile.exists() && versionLogsDir.exists() ||
-			versionPropertiesFile.exists() && versionLogOldFile.exists()) {
-			return true;
-		} else {
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 			return false;
 		}
 	}
 	
-	public static boolean testVersion(File selectedVersionJar) {
+	public boolean testVersion(File selectedVersionJar) {
 		if (selectedVersionJar != null) {
 			versionTestFile = new File(Path.ServerCHECK + selectedVersionJar.getName());
 			try {

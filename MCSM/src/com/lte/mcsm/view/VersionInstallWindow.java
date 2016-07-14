@@ -36,7 +36,7 @@ import javafx.stage.Stage;
 public class VersionInstallWindow extends Scene implements IRefreshable {
 	
 	private static AnchorPane mainPane = new AnchorPane();
-	private static File selectedJarFile;
+	private File selectedJarFile;
 	private Pane installSetupPane;
 	private Pane installationPane;
 	private ToolBar toolBar;
@@ -145,15 +145,25 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 		this.installVersionButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				closeButton.setDisable(true);
-				versionNameTextField.setDisable(true);
-				versionJarButton.setDisable(true);
-				installVersionButton.setDisable(true);
-				installationPane.setVisible(true);
-				if (selectedJarFile != null) {
+				if (versionNameTextField.getText().equals("")) {
+					versionNameTextField.setStyle("-fx-border-color: red; -fx-border-radius: 3");
+				} else {
+					versionNameTextField.setStyle("");
+				}
+				if (selectedJarFile == null) {
+					versionJarButton.setStyle("-fx-border-color: red; -fx-border-radius: 3");
+				} else {
+					versionJarButton.setStyle("");
+				}
+				if ((!versionNameTextField.getText().equals("")) && selectedJarFile != null) {					
+					installationPane.setVisible(true);
 					progressBar.setProgress(0.20);
-					if (ServerVersionTester.testVersion(selectedJarFile)) {
-						System.out.println("Is JAr");
+					closeButton.setDisable(true);
+					versionNameTextField.setDisable(true);
+					versionJarButton.setDisable(true);
+					installVersionButton.setDisable(true);
+					if (new ServerVersionTester().testVersion(selectedJarFile)) {
+						System.out.println("JAR");
 					}
 				}
 			}
