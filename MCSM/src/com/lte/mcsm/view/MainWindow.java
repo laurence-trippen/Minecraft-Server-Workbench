@@ -10,6 +10,7 @@ import com.lte.mcsm.main.Program;
 import com.lte.mcsm.model.Path;
 import com.lte.mcsm.model.Server;
 import com.lte.mcsm.model.ServerList;
+import com.lte.mcsm.model.interfaces.IFetchable;
 import com.lte.mcsm.model.interfaces.IRefreshable;
 import com.lte.mcsm.view.components.ServerItem;
 
@@ -28,7 +29,7 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 
-public class MainWindow extends Scene implements IRefreshable {
+public class MainWindow extends Scene implements IRefreshable, IFetchable {
 
 	private static int x = 0;
 	private static int y = 0;
@@ -151,6 +152,11 @@ public class MainWindow extends Scene implements IRefreshable {
 			++y;
 		}
 		return y;
+	}
+
+	@Override
+	public void fetch() {
+		
 	}
 
 }

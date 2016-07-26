@@ -15,6 +15,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.NodeOrientation;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -113,7 +115,7 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 				FileChooser fileChooser = new FileChooser();
 				fileChooser.setTitle("Minecraft Server JAR auswählen");
 				fileChooser.getExtensionFilters().addAll(
-				         new ExtensionFilter("JAR Archive", "*.jar")
+				         new ExtensionFilter("Minecraft Server JAR", "*.jar")
 				);
 				selectedJarFile = fileChooser.showOpenDialog(fileChooserStage);
 				if (selectedJarFile != null) {
@@ -157,13 +159,29 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 				}
 				if ((!versionNameTextField.getText().equals("")) && selectedJarFile != null) {					
 					installationPane.setVisible(true);
-					progressBar.setProgress(0.20);
+					progressBar.setProgress(0.2);
 					closeButton.setDisable(true);
 					versionNameTextField.setDisable(true);
 					versionJarButton.setDisable(true);
 					installVersionButton.setDisable(true);
 					if (new ServerVersionTester().testVersion(selectedJarFile)) {
-						System.out.println("JAR");
+						progressBar.setProgress(1.0);
+						progressLabel.setText("Installation erfolgreich!");
+						Alert alert = new Alert(AlertType.INFORMATION);
+						alert.setTitle("Installation Erfolgreich!");
+						alert.setHeaderText(versionNameTextField.getText());
+						alert.setContentText("Minecraft Version " + versionNameTextField.getText() + " wurde erfolgreich installiert!\n");
+						alert.showAndWait();
+						refresh();
+						Program.getMainStage().setScene(WindowManager.getWindowManager().getServerVersionsWindow());
+					} else {
+						Alert alert = new Alert(AlertType.ERROR);
+						alert.setTitle("Falsches JAR Archive");
+						alert.setHeaderText("Keine Minecraft Server JAR");
+						alert.setContentText(selectedJarFile.getName() + " ist keine Minecraft Server JAR!");
+						alert.showAndWait();
+						refresh();
+						Program.getMainStage().setScene(WindowManager.getWindowManager().getServerVersionsWindow());
 					}
 				}
 			}
@@ -218,6 +236,8 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 		jarNameLabel.setText("");
 		selectedJarFile = null;
 		installationPane.setVisible(false);
+		versionNameTextField.setStyle("");
+		versionJarButton.setStyle("");
 	}
 	
 }

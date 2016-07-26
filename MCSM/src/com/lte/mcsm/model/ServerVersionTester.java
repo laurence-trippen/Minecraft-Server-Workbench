@@ -17,6 +17,15 @@ public class ServerVersionTester {
 		this.versionTestFile = null;
 	}
 	
+	private void cleanTestArea(File path) {
+		for (File file : path.listFiles()) {
+			if (file.isDirectory()) {
+				cleanTestArea(file);
+			}
+			file.delete();
+		}
+	}
+	
 	private boolean checkVersion() {
 		if (versionEulaFile.exists() && versionPropertiesFile.exists() && versionLogsDir.exists() ||
 			versionPropertiesFile.exists() && versionLogOldFile.exists()) {
@@ -33,7 +42,7 @@ public class ServerVersionTester {
 				"-Xmx1024M",
 				"-Xms1024M",
 				"-jar",
-				new File(Path.ServerCHECK).getAbsolutePath() + "\\" + versionTestFile.getName()
+				new File(Path.ServerCHECK).getAbsolutePath() + "/" + versionTestFile.getName()
 		);
 		processBuilder.directory(new File(Path.ServerCHECK));
 		try {
@@ -66,11 +75,13 @@ public class ServerVersionTester {
 			if (versionTestFile.exists()) {
 				if (runVersion()) {
 					if (checkVersion()) {
+						cleanTestArea(new File(Path.ServerCHECK));
 						return true;
 					}
 				}
 			}
 		}
+		cleanTestArea(new File(Path.ServerCHECK));
 		return false;
 	}
 	

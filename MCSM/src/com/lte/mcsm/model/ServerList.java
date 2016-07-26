@@ -54,14 +54,8 @@ public class ServerList {
 			newServer.setId(serverCounter);
 			serverList.add(newServer);
 			saveXML();
-		} else {
-			System.out.println("[ERROR]\tServer darf nicht null sein!");
 		}
 	}
-	
-//	public void editServer() {}
-//	public void deleteServer() {}
-//	private void initXML() {}
 	
 	public void addServerVersion(ServerVersion serverVersion) {
 		if (serverVersion != null && serverVersions != null) {
@@ -206,24 +200,6 @@ public class ServerList {
 			ioe.printStackTrace();
 		}
 	}
-	
-//	private void repairXML() {
-//		XMLOutputFactory outFactory = XMLOutputFactory.newInstance();
-//		try {
-//			XMLStreamWriter xwriter = outFactory.createXMLStreamWriter(new FileOutputStream(XML_PATH));
-//			xwriter.writeStartDocument("1.0", "UTF8");
-//			xwriter.writeStartElement("MCServer");
-//			xwriter.writeEndElement();
-//			xwriter.writeEndDocument();
-//			xwriter.close();
-//			loadXML();
-//		} catch (FileNotFoundException | XMLStreamException e) {
-//			e.printStackTrace();
-//		}
-//	}
-	
-//	private void compressXML() {}
-//	private void uncompressXML() {}
 
 	public List<Server> getServer() {
 		return serverList;

@@ -9,6 +9,7 @@ import com.lte.mcsm.main.Program;
 import com.lte.mcsm.model.Path;
 import com.lte.mcsm.model.ServerList;
 import com.lte.mcsm.model.ServerVersion;
+import com.lte.mcsm.model.interfaces.IFetchable;
 import com.lte.mcsm.view.components.ServerVersionItem;
 
 import javafx.event.ActionEvent;
@@ -29,7 +30,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 
-public class ServerVersionsWindow extends Scene {
+public class ServerVersionsWindow extends Scene implements IFetchable {
 	
 	private static AnchorPane mainPane = new AnchorPane();
 	private ToolBar toolBar;
@@ -116,6 +117,11 @@ public class ServerVersionsWindow extends Scene {
 				counter++;
 			}
 		}
+	}
+
+	@Override
+	public void fetch() {
+		
 	}
 
 }
