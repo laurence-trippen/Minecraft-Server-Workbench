@@ -27,7 +27,7 @@ public class ServerList {
 	private int serverCounter;
 	private int serverVersionCounter;
 	
-	public static ServerList getInstance() {
+	public static ServerList getServerList() {
 		if (instance == null) {
 			instance = new ServerList();
 		}

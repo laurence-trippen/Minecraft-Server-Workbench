@@ -80,7 +80,7 @@ public class MainWindow extends Scene implements IRefreshable {
 			@Override
 			public void handle(ActionEvent event) {
 				refresh();
-				Program.getMainStage().setScene(WindowManager.getInstance().getCreateServerWindow());
+				Program.getMainStage().setScene(WindowManager.getWindowManager().getCreateServerWindow());
 			}
 		});
 		this.showServerVersions = new Button("Server Versionen");
@@ -89,7 +89,7 @@ public class MainWindow extends Scene implements IRefreshable {
 			@Override
 			public void handle(ActionEvent event) {
 				refresh();
-				Program.getMainStage().setScene(WindowManager.getInstance().getServerVersionsWindow());
+				Program.getMainStage().setScene(WindowManager.getWindowManager().getServerVersionsWindow());
 			}
 		});
 		this.toolBar = new ToolBar();
@@ -119,7 +119,7 @@ public class MainWindow extends Scene implements IRefreshable {
 	
 	private void loadServer() {
 		int counter = 3;
-		ServerList serverList = ServerList.getInstance();
+		ServerList serverList = ServerList.getServerList();
 		if (serverList.getServerCount() != 0) {
 			for (Server server : serverList.getServer()) {
 				if (serverList.getServerCount() > counter) {

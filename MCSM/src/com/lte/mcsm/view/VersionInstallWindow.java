@@ -192,7 +192,7 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 			@Override
 			public void handle(ActionEvent event) {
 				refresh();
-				Program.getMainStage().setScene(WindowManager.getInstance().getServerVersionsWindow());
+				Program.getMainStage().setScene(WindowManager.getWindowManager().getServerVersionsWindow());
 			}
 		});
 		this.toolBar = new ToolBar();

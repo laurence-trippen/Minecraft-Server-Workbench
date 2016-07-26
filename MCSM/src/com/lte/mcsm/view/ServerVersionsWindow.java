@@ -70,14 +70,14 @@ public class ServerVersionsWindow extends Scene {
 		this.installVersionButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				Program.getMainStage().setScene(WindowManager.getInstance().getVersionInstallWindow());
+				Program.getMainStage().setScene(WindowManager.getWindowManager().getVersionInstallWindow());
 			}
 		});
 		this.closeButton = new Button("Zurück");
 		this.closeButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				Program.getMainStage().setScene(WindowManager.getInstance().getMainWindow());
+				Program.getMainStage().setScene(WindowManager.getWindowManager().getMainWindow());
 			}
 		});
 		this.leftSpacerPane = new Pane();
@@ -104,7 +104,7 @@ public class ServerVersionsWindow extends Scene {
 	
 	private void loadServerVersions() {
 		int counter = 0;
-		ServerList serverList = ServerList.getInstance();
+		ServerList serverList = ServerList.getServerList();
 		if (serverList.getServerVersionCounter() != 0) {
 			for (ServerVersion serverVersion : serverList.getServerVersions()) {
 				if (counter > 0) {

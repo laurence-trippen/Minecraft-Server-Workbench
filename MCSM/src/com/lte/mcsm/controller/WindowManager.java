@@ -13,7 +13,7 @@ public class WindowManager {
 	private ServerVersionsWindow serverVersionsWindow;
 	private VersionInstallWindow versionInstallWindow;
 	
-	public static WindowManager getInstance() {
+	public static WindowManager getWindowManager() {
 		if (instance == null) {
 			instance = new WindowManager();
 		}

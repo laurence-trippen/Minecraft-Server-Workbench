@@ -15,7 +15,7 @@ public class Program extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		mainStage = primaryStage;
-		primaryStage.setScene(WindowManager.getInstance().getMainWindow());
+		primaryStage.setScene(WindowManager.getWindowManager().getMainWindow());
 		primaryStage.setMaximized(true);
 		primaryStage.setTitle("LTE: MCSM");
 		primaryStage.show();
@@ -23,8 +23,8 @@ public class Program extends Application {
 
 	public static void main(String[] args) {
 		Server server = new Server("JSON-Server");
-		ServerList.getInstance().addServer(server);
-		ServerList.getInstance().addServerVersion(new ServerVersion("1.7.9"));
+		ServerList.getServerList().addServer(server);
+		ServerList.getServerList().addServerVersion(new ServerVersion("1.7.9"));
 		server.getServerOPS().readEntries();
 		server.getServerOPS().printEntries();
 		server.getServerWhitelist().readEntries();

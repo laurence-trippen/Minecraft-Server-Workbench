@@ -37,7 +37,7 @@ public class CreateServerWindow extends Scene {
 		this.closeButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				Program.getMainStage().setScene(WindowManager.getInstance().getMainWindow());
+				Program.getMainStage().setScene(WindowManager.getWindowManager().getMainWindow());
 			}
 		});
 		this.toolBar = new ToolBar();
