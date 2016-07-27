@@ -14,6 +14,7 @@ import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
+import com.lte.mcsm.model.enums.DataStatus;
 import com.lte.mcsm.model.enums.Difficulty;
 import com.lte.mcsm.model.enums.GameMode;
 import com.lte.mcsm.model.enums.OpLevel;
@@ -42,34 +43,38 @@ public class ServerList {
 		loadXML();
 	}
 	
-	public void addServer(Server newServer) {
+	public DataStatus addServer(Server newServer) {
 		if (newServer != null && serverList != null) {
 			for (Server server : serverList) {
 				if (newServer.getName().equals(server.getName())) {
 					System.out.println("Server existiert schon!");
-					return;
+					return DataStatus.Exists;
 				}
 			}	
 			serverCounter++;
 			newServer.setId(serverCounter);
 			serverList.add(newServer);
 			saveXML();
+			return DataStatus.Succcess;
 		}
+		return DataStatus.Exists;
 	}
 	
-	public void addServerVersion(ServerVersion serverVersion) {
+	public DataStatus addServerVersion(ServerVersion serverVersion) {
 		if (serverVersion != null && serverVersions != null) {
 			for (ServerVersion existingVersion : serverVersions) {
 				if (serverVersion.getName().equals(existingVersion.getName())) {
 					System.out.println("Serverversion existiert schon!");
-					return;
+					return DataStatus.Exists;
 				}
 			}
 			serverVersionCounter++;
 			serverVersion.setId(serverVersionCounter);
 			serverVersions.add(serverVersion);
 			saveXML();
+			return DataStatus.Succcess;
 		}
+		return DataStatus.Error;
 	}
 	
 	private void saveXML() {
@@ -187,8 +192,11 @@ public class ServerList {
 				}
 				for (Element xmlVersion : xmlVersions) {
 					serverVersionCounter++;
-					ServerVersion serverVersion = new ServerVersion(serverVersionCounter, xmlVersion.getChildText("name"));
-					serverVersion.setPath(xmlVersion.getChildText("path"));
+					ServerVersion serverVersion = new ServerVersion(
+							serverVersionCounter, 
+							xmlVersion.getChildText("name"),
+							xmlVersion.getChildText("path")
+					);
 					serverVersions.add(serverVersion);
 				}
 			}

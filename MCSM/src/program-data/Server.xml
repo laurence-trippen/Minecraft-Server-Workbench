@@ -363,5 +363,9 @@
     </Server>
   </MCServer>
   <MCVersions>
+    <ServerVersion id="1">
+      <name>1.10.2</name>
+      <path />
+    </ServerVersion>
   </MCVersions>
 </MCSM>

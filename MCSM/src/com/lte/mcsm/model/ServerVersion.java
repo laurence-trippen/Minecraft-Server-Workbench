@@ -6,14 +6,9 @@ public class ServerVersion {
 	private String name;
 	private String path;
 	
-	public ServerVersion(String name) {
-		this.id = 0;
+	public ServerVersion(String name, String path) {
 		this.name = name;
-	}
-	
-	public ServerVersion(int id, String name) {
-		this.id = id;
-		this.name = name;
+		this.path = path;
 	}
 	
 	public ServerVersion(int id, String name, String path) {

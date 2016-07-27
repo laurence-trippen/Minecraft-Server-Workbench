@@ -8,7 +8,10 @@ import com.lte.mcsm.controller.DesktopManager;
 import com.lte.mcsm.controller.WindowManager;
 import com.lte.mcsm.main.Program;
 import com.lte.mcsm.model.Path;
+import com.lte.mcsm.model.ServerList;
+import com.lte.mcsm.model.ServerVersion;
 import com.lte.mcsm.model.ServerVersionTester;
+import com.lte.mcsm.model.enums.DataStatus;
 import com.lte.mcsm.model.interfaces.IRefreshable;
 
 import javafx.event.ActionEvent;
@@ -157,7 +160,8 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 				} else {
 					versionJarButton.setStyle("");
 				}
-				if ((!versionNameTextField.getText().equals("")) && selectedJarFile != null) {					
+				if ((!versionNameTextField.getText().equals("")) && selectedJarFile != null) {		
+					Alert alert = new Alert(AlertType.INFORMATION);
 					installationPane.setVisible(true);
 					progressBar.setProgress(0.2);
 					closeButton.setDisable(true);
@@ -166,16 +170,30 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 					installVersionButton.setDisable(true);
 					if (new ServerVersionTester().testVersion(selectedJarFile)) {
 						progressBar.setProgress(1.0);
-						progressLabel.setText("Installation erfolgreich!");
-						Alert alert = new Alert(AlertType.INFORMATION);
-						alert.setTitle("Installation Erfolgreich!");
-						alert.setHeaderText(versionNameTextField.getText());
-						alert.setContentText("Minecraft Version " + versionNameTextField.getText() + " wurde erfolgreich installiert!\n");
-						alert.showAndWait();
+						DataStatus status = ServerList.getServerList().addServerVersion(new ServerVersion(
+								versionNameTextField.getText(), ""));
+						switch (status) {
+						case Succcess:
+							progressLabel.setText("Installation erfolgreich!");
+							alert.setTitle("Installation Erfolgreich!");
+							alert.setHeaderText(versionNameTextField.getText());
+							alert.setContentText("Minecraft Version " + versionNameTextField.getText() + " wurde erfolgreich installiert!\n");
+							alert.showAndWait();
+							break;
+						case Exists:
+							progressLabel.setText("Installation fehlgeschlagen!");
+							alert.setAlertType(AlertType.ERROR);
+							alert.setTitle("Installation fehlgeschlagen!");
+							alert.setHeaderText(versionNameTextField.getText());
+							alert.setContentText("Minecraft Version " + versionNameTextField.getText() + " existiert schon!\n");
+							alert.showAndWait();
+						default:
+							break;
+						}
 						refresh();
 						Program.getMainStage().setScene(WindowManager.getWindowManager().getServerVersionsWindow());
 					} else {
-						Alert alert = new Alert(AlertType.ERROR);
+						alert.setAlertType(AlertType.ERROR);
 						alert.setTitle("Falsches JAR Archive");
 						alert.setHeaderText("Keine Minecraft Server JAR");
 						alert.setContentText(selectedJarFile.getName() + " ist keine Minecraft Server JAR!");
