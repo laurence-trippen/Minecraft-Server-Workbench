@@ -365,7 +365,7 @@
   <MCVersions>
     <ServerVersion id="1">
       <name>1.10.2</name>
-      <path />
+      <path>src/program-serverversions/minecraft_server.1.10.2.jar</path>
     </ServerVersion>
   </MCVersions>
 </MCSM>

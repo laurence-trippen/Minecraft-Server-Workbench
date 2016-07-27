@@ -118,6 +118,11 @@ public class MainWindow extends Scene implements IRefreshable, IFetchable {
 		}
 	}
 	
+	@Override
+	public void fetch() {
+		
+	}
+	
 	private void loadServer() {
 		int counter = 3;
 		ServerList serverList = ServerList.getServerList();
@@ -152,11 +157,6 @@ public class MainWindow extends Scene implements IRefreshable, IFetchable {
 			++y;
 		}
 		return y;
-	}
-
-	@Override
-	public void fetch() {
-		
 	}
 
 }

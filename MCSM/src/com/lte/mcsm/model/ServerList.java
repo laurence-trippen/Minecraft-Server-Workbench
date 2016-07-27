@@ -63,7 +63,10 @@ public class ServerList {
 	public DataStatus addServerVersion(ServerVersion serverVersion) {
 		if (serverVersion != null && serverVersions != null) {
 			for (ServerVersion existingVersion : serverVersions) {
-				if (serverVersion.getName().equals(existingVersion.getName())) {
+				if (
+						serverVersion.getName().equals(existingVersion.getName()) || 
+						serverVersion.getPath().equals(existingVersion.getPath())
+				) {
 					System.out.println("Serverversion existiert schon!");
 					return DataStatus.Exists;
 				}
@@ -74,7 +77,7 @@ public class ServerList {
 			saveXML();
 			return DataStatus.Succcess;
 		}
-		return DataStatus.Error;
+		return DataStatus.Exists;
 	}
 	
 	private void saveXML() {

@@ -3,6 +3,9 @@ package com.lte.mcsm.view;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import com.lte.mcsm.controller.DesktopManager;
 import com.lte.mcsm.controller.WindowManager;
@@ -171,9 +174,19 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 					if (new ServerVersionTester().testVersion(selectedJarFile)) {
 						progressBar.setProgress(1.0);
 						DataStatus status = ServerList.getServerList().addServerVersion(new ServerVersion(
-								versionNameTextField.getText(), ""));
+								versionNameTextField.getText(), 
+								Path.ServerVERSIONS + selectedJarFile.getName()
+						));
 						switch (status) {
 						case Succcess:
+							try {
+								Files.copy(
+									Paths.get(selectedJarFile.getAbsolutePath()),
+									Paths.get(Path.ServerVERSIONS + selectedJarFile.getName()
+								));
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
 							progressLabel.setText("Installation erfolgreich!");
 							alert.setTitle("Installation Erfolgreich!");
 							alert.setHeaderText(versionNameTextField.getText());
