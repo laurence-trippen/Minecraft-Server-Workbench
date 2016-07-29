@@ -361,11 +361,46 @@
         <motd>A Minecraft Server</motd>
       </properties>
     </Server>
+    <Server id="10">
+      <name>hallodasfds</name>
+      <description>leer</description>
+      <creationDate>29.07.2016 - 14:03:54</creationDate>
+      <properties>
+        <generator />
+        <opLevel>Four</opLevel>
+        <allowNether>true</allowNether>
+        <rpHash />
+        <levelName>world</levelName>
+        <enableQuery>false</enableQuery>
+        <allowFlight>true</allowFlight>
+        <showAchievements>true</showAchievements>
+        <serverPort>25565</serverPort>
+        <maxWorldSize>29999984</maxWorldSize>
+        <worldType>Default</worldType>
+        <enableRcon>false</enableRcon>
+        <levelSeed />
+        <forceGameMode>false</forceGameMode>
+        <serverIp />
+        <networkCompression>256</networkCompression>
+        <maxBuildHeight>256</maxBuildHeight>
+        <spawnNPCs>true</spawnNPCs>
+        <whitelist>false</whitelist>
+        <enabledSnooper>true</enabledSnooper>
+        <onlineMode>true</onlineMode>
+        <resourcePack />
+        <enabledPVP>true</enabledPVP>
+        <difficulty>Easy</difficulty>
+        <enabledCommandBlock>false</enabledCommandBlock>
+        <gameMode>Survival</gameMode>
+        <playerIdleTime>0</playerIdleTime>
+        <maxPlayers>20</maxPlayers>
+        <maxTickTime>60000</maxTickTime>
+        <spawnMonsters>true</spawnMonsters>
+        <generateStructs>true</generateStructs>
+        <viewDistance>10</viewDistance>
+        <motd>A Minecraft Server</motd>
+      </properties>
+    </Server>
   </MCServer>
-  <MCVersions>
-    <ServerVersion id="1">
-      <name>1.10.2</name>
-      <path>src/program-serverversions/minecraft_server.1.10.2.jar</path>
-    </ServerVersion>
-  </MCVersions>
+  <MCVersions />
 </MCSM>

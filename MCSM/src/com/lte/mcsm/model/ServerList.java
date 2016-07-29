@@ -14,6 +14,7 @@ import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
+import com.lte.mcsm.controller.WindowManager;
 import com.lte.mcsm.model.enums.DataStatus;
 import com.lte.mcsm.model.enums.Difficulty;
 import com.lte.mcsm.model.enums.GameMode;
@@ -55,6 +56,7 @@ public class ServerList {
 			newServer.setId(serverCounter);
 			serverList.add(newServer);
 			saveXML();
+			WindowManager.getWindowManager().getMainWindow().fetch();
 			return DataStatus.Succcess;
 		}
 		return DataStatus.Exists;
@@ -75,6 +77,7 @@ public class ServerList {
 			serverVersion.setId(serverVersionCounter);
 			serverVersions.add(serverVersion);
 			saveXML();
+			WindowManager.getWindowManager().getServerVersionsWindow().fetch();
 			return DataStatus.Succcess;
 		}
 		return DataStatus.Exists;

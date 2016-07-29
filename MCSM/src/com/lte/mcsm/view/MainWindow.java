@@ -81,6 +81,7 @@ public class MainWindow extends Scene implements IRefreshable, IFetchable {
 			@Override
 			public void handle(ActionEvent event) {
 				refresh();
+				ServerList.getServerList().addServer(new Server("hallodasfds"));
 				Program.getMainStage().setScene(WindowManager.getWindowManager().getCreateServerWindow());
 			}
 		});
@@ -108,7 +109,7 @@ public class MainWindow extends Scene implements IRefreshable, IFetchable {
 		AnchorPane.setLeftAnchor(gridPane, 0.00);
 		AnchorPane.setTopAnchor(gridPane, 0.00);
 		AnchorPane.setRightAnchor(gridPane, 0.00);
-		loadServer();
+		fetch();
 	}
 	
 	@Override
@@ -120,24 +121,46 @@ public class MainWindow extends Scene implements IRefreshable, IFetchable {
 	
 	@Override
 	public void fetch() {
-		
-	}
-	
-	private void loadServer() {
+		System.out.println("fetch");
 		int counter = 3;
 		ServerList serverList = ServerList.getServerList();
 		if (serverList.getServerCount() != 0) {
-			for (Server server : serverList.getServer()) {
-				if (serverList.getServerCount() > counter) {
-					counter += 3;
-					this.gridPane.getRowConstraints().add(new RowConstraints(312));
+			if (serverItems.size() == 0) {				
+				for (Server server : serverList.getServer()) {
+					if (serverList.getServerCount() > counter) {
+						counter += 3;
+						this.gridPane.getRowConstraints().add(new RowConstraints(312));
+					}
+					ServerItem serverItem = new ServerItem(server);
+					serverItems.add(serverItem);
+					GridPane.setConstraints(serverItem, x, y);
+					x = calcX(x);
+					y = calcY(y, x);
+					gridPane.getChildren().add(serverItem);
 				}
-				ServerItem serverItem = new ServerItem(server);
-				serverItems.add(serverItem);
-				GridPane.setConstraints(serverItem, x, y);
-				x = calcX(x);
-				y = calcY(y, x);
-				gridPane.getChildren().add(serverItem);
+			}
+			if (serverItems.size() > 0) {
+				for (Server server : serverList.getServer()) {
+					if (serverList.getServerCount() > counter) {
+						counter += 3;
+						this.gridPane.getRowConstraints().add(new RowConstraints(312));
+					}
+					boolean inList = false;
+					for (ServerItem item : serverItems) {
+						if (item.getServer().getId() == server.getId()) {
+							inList = true;
+						}
+					}
+					if (!inList) {
+						ServerItem serverItem = new ServerItem(server);
+						serverItems.add(serverItem);
+						GridPane.setConstraints(serverItem, x, y);
+						x = calcX(x);
+						y = calcY(y, x);
+						gridPane.getChildren().add(serverItem);
+						inList = false;
+					}
+				}
 			}
 		}
 	}

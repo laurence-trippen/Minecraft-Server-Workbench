@@ -2,6 +2,7 @@ package com.lte.mcsm.view;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 import com.lte.mcsm.controller.DesktopManager;
 import com.lte.mcsm.controller.WindowManager;
@@ -42,9 +43,11 @@ public class ServerVersionsWindow extends Scene implements IFetchable {
 	private AnchorPane anchorPane;
 	private GridPane gridPane;
 	private Image installVersionImage;
+	private ArrayList<ServerVersionItem> serverVersionItems;
 		
 	public ServerVersionsWindow() {
 		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
+		this.serverVersionItems = new ArrayList<ServerVersionItem>();
 		try {
 			this.installVersionImage = new Image(new FileInputStream(Path.ServerVersionsPNG));
 		} catch (FileNotFoundException e) {
@@ -100,10 +103,11 @@ public class ServerVersionsWindow extends Scene implements IFetchable {
 		AnchorPane.setLeftAnchor(gridPane, 0.00);
 		AnchorPane.setTopAnchor(gridPane, 0.00);
 		AnchorPane.setRightAnchor(gridPane, 0.00);
-		loadServerVersions();
+		fetch();
 	}
-	
-	private void loadServerVersions() {
+
+	@Override
+	public void fetch() {
 		int counter = 0;
 		ServerList serverList = ServerList.getServerList();
 		if (serverList.getServerVersionCounter() != 0) {
@@ -112,16 +116,12 @@ public class ServerVersionsWindow extends Scene implements IFetchable {
 					this.gridPane.getRowConstraints().add(new RowConstraints(210));
 				}
 				ServerVersionItem serverVersionItem = new ServerVersionItem(serverVersion);
+				serverVersionItems.add(serverVersionItem);
 				GridPane.setConstraints(serverVersionItem, 0, counter);
 				this.gridPane.getChildren().add(serverVersionItem);
 				counter++;
 			}
 		}
-	}
-
-	@Override
-	public void fetch() {
-		
 	}
 
 }
