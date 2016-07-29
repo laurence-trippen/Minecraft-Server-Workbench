@@ -111,6 +111,8 @@ public class ServerVersionsWindow extends Scene implements IFetchable {
 		int counter = 0;
 		ServerList serverList = ServerList.getServerList();
 		if (serverList.getServerVersionCounter() != 0) {
+			gridPane.getChildren().clear();
+			serverVersionItems.clear();
 			for (ServerVersion serverVersion : serverList.getServerVersions()) {
 				if (counter > 0) {
 					this.gridPane.getRowConstraints().add(new RowConstraints(210));
