@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MCSM>
-  <MCServer />
-  <MCVersions>
-    <ServerVersion id="1">
-      <name>1.10.2</name>
-      <path>src/program-serverversions/minecraft_server.1.10.2.jar</path>
-    </ServerVersion>
-  </MCVersions>
+  <MCServer>
+  </MCServer>
+  <MCVersions />
 </MCSM>

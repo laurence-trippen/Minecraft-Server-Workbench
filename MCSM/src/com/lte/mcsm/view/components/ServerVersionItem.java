@@ -66,8 +66,6 @@ public class ServerVersionItem extends AnchorPane {
 					default:
 						break;
 					}
-				} else {
-					
 				}
 			}
 		});

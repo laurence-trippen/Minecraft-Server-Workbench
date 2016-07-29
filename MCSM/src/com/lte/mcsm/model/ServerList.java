@@ -62,6 +62,24 @@ public class ServerList {
 		return DataStatus.Exists;
 	}
 	
+	public DataStatus deleteServer(Server deleteServer) {
+		if (deleteServer != null && serverList != null) {
+			int counter = 0;
+			if (serverList.remove(deleteServer)) {
+				for (Server server : serverList) {
+					counter++;
+					server.setId(counter);
+				}
+				saveXML();
+				WindowManager.getWindowManager().getMainWindow().fetch();
+				return DataStatus.Succcess;
+			} else {
+				return DataStatus.Error;
+			}
+		}
+		return DataStatus.Error;
+	}
+	
 	public DataStatus addServerVersion(ServerVersion serverVersion) {
 		if (serverVersion != null && serverVersions != null) {
 			for (ServerVersion existingVersion : serverVersions) {
@@ -86,7 +104,11 @@ public class ServerList {
 	public DataStatus deleteServerVersion(ServerVersion serverVersion) {
 		if (serverVersion != null && serverVersions != null) {
 			int counter = 0;
+			File versionFile = new File(serverVersion.getPath());
 			if (serverVersions.remove(serverVersion)) {
+				if (versionFile.exists()) {
+					versionFile.delete();
+				}
 				for (ServerVersion version : serverVersions) {
 					counter++;
 					version.setId(counter);
