@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import com.lte.mcsm.controller.DesktopManager;
+import com.lte.mcsm.controller.GridManager;
 import com.lte.mcsm.controller.WindowManager;
 import com.lte.mcsm.main.Program;
 import com.lte.mcsm.model.Path;
@@ -133,8 +134,8 @@ public class MainWindow extends Scene implements IRefreshable, IFetchable {
 					ServerItem serverItem = new ServerItem(server);
 					serverItems.add(serverItem);
 					GridPane.setConstraints(serverItem, x, y);
-					x = calcX(x);
-					y = calcY(y, x);
+					x = GridManager.getX(x);
+					y = GridManager.getY(y, x);
 					gridPane.getChildren().add(serverItem);
 				}
 			}
@@ -154,31 +155,14 @@ public class MainWindow extends Scene implements IRefreshable, IFetchable {
 						ServerItem serverItem = new ServerItem(server);
 						serverItems.add(serverItem);
 						GridPane.setConstraints(serverItem, x, y);
-						x = calcX(x);
-						y = calcY(y, x);
+						x = GridManager.getX(x);
+						y = GridManager.getY(y, x);
 						gridPane.getChildren().add(serverItem);
 						inList = false;
 					}
 				}
 			}
 		}
-	}
-	
-	private static int calcX(int x) {
-		if (x < 4) {
-			++x;
-		}
-		if (x == 3) {
-			x = 0;
-		}
-		return x;
-	}
-
-	private static int calcY(int y, int x) {
-		if (x == 0) {
-			++y;
-		}
-		return y;
 	}
 
 }
