@@ -83,6 +83,24 @@ public class ServerList {
 		return DataStatus.Exists;
 	}
 	
+	public DataStatus deleteServerVersion(ServerVersion serverVersion) {
+		if (serverVersion != null && serverVersions != null) {
+			int counter = 0;
+			if (serverVersions.remove(serverVersion)) {
+				for (ServerVersion version : serverVersions) {
+					counter++;
+					version.setId(counter);
+				}
+				saveXML();
+				WindowManager.getWindowManager().getServerVersionsWindow().fetch();
+				return DataStatus.Succcess;
+			} else {
+				return DataStatus.Error;
+			}
+		}
+		return DataStatus.Error;
+	}
+	
 	private void saveXML() {
 		Document xml = new Document();
 		xml.setRootElement(new Element("MCSM"));

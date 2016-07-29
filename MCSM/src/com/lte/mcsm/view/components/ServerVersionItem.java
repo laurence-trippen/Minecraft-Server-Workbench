@@ -2,13 +2,19 @@ package com.lte.mcsm.view.components;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.Optional;
 
 import com.lte.mcsm.model.Path;
+import com.lte.mcsm.model.ServerList;
 import com.lte.mcsm.model.ServerVersion;
+import com.lte.mcsm.model.enums.DataStatus;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -35,7 +41,34 @@ public class ServerVersionItem extends AnchorPane {
 		this.deleteVersionButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				System.out.println("[" + serverVersion.getName() + "] deinstalled");
+				Alert alert = new Alert(AlertType.CONFIRMATION);
+				alert.setTitle("Minecraft Server Version deinstallieren");
+				alert.setHeaderText("Wollen Sie die Minecraft Server Version " + serverVersion.getName() + " wirklich deinstallieren?");
+				ButtonType buttonTypeYes = new ButtonType("Ja");
+				ButtonType buttonTypeNo = new ButtonType("Nein");
+				alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+				Optional<ButtonType> result = alert.showAndWait();
+				if (result.get() == buttonTypeYes) {
+					DataStatus status = ServerList.getServerList().deleteServerVersion(serverVersion);
+					switch (status) {
+					case Succcess:
+						Alert successAlert = new Alert(AlertType.INFORMATION);
+						successAlert.setTitle("Deinstallation erfolgreich!");
+						successAlert.setHeaderText("Minecraft Server Version " + serverVersion.getName() + " wurde erfolgreich deinstalliert!");
+						successAlert.showAndWait();
+						break;
+					case Error:
+						Alert errorAlert = new Alert(AlertType.ERROR);
+						errorAlert.setTitle("Deinstallation fehgeschlagen!");
+						errorAlert.setHeaderText("Minecraft Server Version " + serverVersion.getName() + " konnte nicht deinstalliert werden!");
+						errorAlert.showAndWait();
+						break;
+					default:
+						break;
+					}
+				} else {
+					
+				}
 			}
 		});
 		this.versionTextlabel = new Label("Minecraft Server Version - " + serverVersion.getName());
