@@ -81,7 +81,6 @@ public class MainWindow extends Scene implements IRefreshable, IFetchable {
 			@Override
 			public void handle(ActionEvent event) {
 				refresh();
-				ServerList.getServerList().addServer(new Server("hallodasfds"));
 				Program.getMainStage().setScene(WindowManager.getWindowManager().getCreateServerWindow());
 			}
 		});
