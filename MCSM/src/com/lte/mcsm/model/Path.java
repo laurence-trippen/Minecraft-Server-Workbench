@@ -4,6 +4,7 @@ public class Path {
 	
 	public static final String ServerCHECK = "src/program-servercheck/";
 	public static final String InstallVersionPNG = "src/program-images/InstallVersion.png";
+	public static final String InstallVersionPNG2 = "src/program-images/InstallVersion2.png";
 	public static final String ServerVERSIONS = "src/program-serverversions/";
 	public static final String ServerDIRECTORY = "src/program-server/";
 	public static final String OPS = "src/test-files/ops.json";

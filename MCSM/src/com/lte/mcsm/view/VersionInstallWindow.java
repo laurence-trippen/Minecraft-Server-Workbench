@@ -67,7 +67,7 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
 		try {
 			mainPane.setBackground(new Background(new BackgroundImage(new Image(new FileInputStream(Path.BACKGROUND)), null, null, null, null)));
-			this.installVersionImageView = new ImageView(new Image(new FileInputStream(Path.InstallVersionPNG)));
+			this.installVersionImageView = new ImageView(new Image(new FileInputStream(Path.InstallVersionPNG2)));
 			this.jarVersionImageView = new ImageView(new Image(new FileInputStream(Path.JarPNG)));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -90,29 +90,29 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 		this.installationPane.setVisible(false);
 		this.installationPane.getChildren().addAll(progressBar, progressLabel);
 		this.jarVersionImageView.setLayoutX(80);
-		this.jarVersionImageView.setLayoutY(278);
+		this.jarVersionImageView.setLayoutY(318);
 		this.jarVersionImageView.setVisible(false);
 		this.jarNameLabel = new Label();
 		this.jarNameLabel.setFont(Font.font("System", FontWeight.BOLD, 14));
 		this.jarNameLabel.setLayoutX(120);
-		this.jarNameLabel.setLayoutY(285);
+		this.jarNameLabel.setLayoutY(325);
 		this.jarNameLabel.setVisible(false);
 		this.versionNameLabel = new Label("Server Versions Name:");
 		this.versionNameLabel.setFont(Font.font("System", FontWeight.BOLD, 18));
 		this.versionNameLabel.setLayoutX(80);
-		this.versionNameLabel.setLayoutY(140);
+		this.versionNameLabel.setLayoutY(180);
 		this.versionNameTextField = new TextField();
 		this.versionNameTextField.setPrefWidth(210);
 		this.versionNameTextField.setLayoutX(290);
-		this.versionNameTextField.setLayoutY(140);
+		this.versionNameTextField.setLayoutY(180);
 		this.versionJarLabel = new Label("Server Version: (*.jar)");
 		this.versionJarLabel.setFont(Font.font("System", FontWeight.BOLD, 18));
 		this.versionJarLabel.setLayoutX(80);
-		this.versionJarLabel.setLayoutY(200);
+		this.versionJarLabel.setLayoutY(240);
 		this.versionJarButton = new Button("Minecraft-Server JAR auswählen ...");
 		this.versionJarButton.setPrefWidth(210);
 		this.versionJarButton.setLayoutX(290);
-		this.versionJarButton.setLayoutY(200);
+		this.versionJarButton.setLayoutY(240);
 		this.versionJarButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -133,23 +133,23 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 		});
 		this.headerSeperator = new Separator();
 		this.headerSeperator.setLayoutX(80);
-		this.headerSeperator.setLayoutY(105);
+		this.headerSeperator.setLayoutY(145);
 		this.headerSeperator.setPrefWidth(420);
 		this.footerSeperator = new Separator();
 		this.footerSeperator.setLayoutX(80);
-		this.footerSeperator.setLayoutY(260);
+		this.footerSeperator.setLayoutY(300);
 		this.footerSeperator.setPrefWidth(420);
 		this.installVersionLabel = new Label("Server Version installieren");
 		this.installVersionLabel.setFont(Font.font("System", FontWeight.BOLD, 24));
-		this.installVersionLabel.setLayoutX(165);
-		this.installVersionLabel.setLayoutY(37);
+		this.installVersionLabel.setLayoutX(175);
+		this.installVersionLabel.setLayoutY(62);
 		this.installVersionImageView.setLayoutX(80);
-		this.installVersionImageView.setLayoutY(30);
+		this.installVersionImageView.setLayoutY(50);
 		this.installVersionButton = new Button("Installieren");
 		this.installVersionButton.setPrefWidth(100);
 		this.installVersionButton.setPrefHeight(30);
 		this.installVersionButton.setLayoutX(400);
-		this.installVersionButton.setLayoutY(280);
+		this.installVersionButton.setLayoutY(320);
 		this.installVersionButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {

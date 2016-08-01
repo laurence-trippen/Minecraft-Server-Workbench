@@ -7,6 +7,7 @@ import com.lte.mcsm.controller.DesktopManager;
 import com.lte.mcsm.controller.WindowManager;
 import com.lte.mcsm.main.Program;
 import com.lte.mcsm.model.Path;
+import com.lte.mcsm.model.interfaces.IRefreshable;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -18,18 +19,26 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.Pane;
 
 
-public class CreateServerWindow extends Scene {
+public class CreateServerWindow extends Scene implements IRefreshable {
 	
 	private static AnchorPane mainPane = new AnchorPane();
 	private ToolBar toolBar;
 	private Button closeButton;
+	private Pane createServerPane;
 	
 	public CreateServerWindow() {
 		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
 		try {
-			mainPane.setBackground(new Background(new BackgroundImage(new Image(new FileInputStream(Path.BACKGROUND)), null, null, null, null)));
+			mainPane.setBackground(new Background(new BackgroundImage(new Image(
+					new FileInputStream(Path.BACKGROUND)), 
+					null,
+					null,
+					null,
+					null
+			)));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -45,10 +54,21 @@ public class CreateServerWindow extends Scene {
 		this.toolBar.setLayoutY(0.00);
 		this.toolBar.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
 		this.toolBar.getItems().add(closeButton);
-		mainPane.getChildren().add(toolBar);
+		this.createServerPane = new Pane();
+		this.createServerPane.setStyle("-fx-background-color: white; -fx-background-radius: 5");
+		this.createServerPane.setPrefWidth(600);
+		this.createServerPane.setPrefHeight(400);
+		this.createServerPane.setLayoutX(660);
+		this.createServerPane.setLayoutY(300);
+		mainPane.getChildren().addAll(toolBar, createServerPane);
 		AnchorPane.setLeftAnchor(toolBar, 0.00);
 		AnchorPane.setTopAnchor(toolBar, 0.00);
 		AnchorPane.setRightAnchor(toolBar, 0.00);
+	}
+	
+	@Override
+	public void refresh() {
+		
 	}
 	
 }

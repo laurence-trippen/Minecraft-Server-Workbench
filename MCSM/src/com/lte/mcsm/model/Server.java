@@ -18,6 +18,7 @@ public class Server {
 //	private Date lastRunDate;
 //	private Date startDate;
 //	private Date runtime;
+	private ServerVersion serverVersion;
 	private ServerState serverState;
 	private ServerProperties serverProperties;
 	private ServerOPS serverOPS;
@@ -31,6 +32,7 @@ public class Server {
 		this.name = name;
 		this.description = "leer";
 		this.creationDate = dateFormat.format(new Date());
+		this.serverVersion = null;
 		this.serverState = ServerState.Stopped;
 		this.serverProperties = new ServerProperties();
 		this.serverOPS = new ServerOPS();
@@ -45,6 +47,7 @@ public class Server {
 		this.name = name;
 		this.description = "leer";
 		this.creationDate = dateFormat.format(new Date());
+		this.serverVersion = null;
 		this.serverState = ServerState.Stopped;
 		this.serverProperties = new ServerProperties();
 		this.serverOPS = new ServerOPS();
@@ -112,6 +115,14 @@ public class Server {
 
 	public ServerState getServerState() {
 		return serverState;
+	}
+
+	public ServerVersion getServerVersion() {
+		return serverVersion;
+	}
+
+	public void setServerVersion(ServerVersion serverVersion) {
+		this.serverVersion = serverVersion;
 	}
 
 	public void setServerState(ServerState serverState) {

@@ -11,9 +11,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import com.lte.mcsm.model.abstracts.ServerJSON;
+import com.lte.mcsm.model.abstracts.JsonIO;
 
-public class ServerBannedPlayers extends ServerJSON {
+public class ServerBannedPlayers extends JsonIO {
 	
 	private List<ServerBannedPlayerEntry> serverBannedPlayerEntries;
 	
