@@ -220,7 +220,7 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 		this.installSetupPane = new Pane();
 		this.installSetupPane.setStyle("-fx-background-color: white; -fx-background-radius: 5");
 		this.installSetupPane.setPrefWidth(600);
-		this.installSetupPane.setPrefHeight(400);
+		this.installSetupPane.setPrefHeight(410);
 		this.installSetupPane.setLayoutX(660);
 		this.installSetupPane.setLayoutY(300);
 		this.installSetupPane.getChildren().addAll(

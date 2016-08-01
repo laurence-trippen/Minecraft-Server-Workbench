@@ -16,6 +16,11 @@ public class ServerVersion {
 		this.name = name;
 		this.path = path;
 	}
+	
+	@Override
+	public String toString() {
+		return name;
+	}
 
 	public int getId() {
 		return id;

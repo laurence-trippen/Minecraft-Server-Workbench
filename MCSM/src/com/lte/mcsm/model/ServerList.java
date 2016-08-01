@@ -21,11 +21,14 @@ import com.lte.mcsm.model.enums.GameMode;
 import com.lte.mcsm.model.enums.OpLevel;
 import com.lte.mcsm.model.enums.WorldType;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public class ServerList {
 	
 	private static ServerList instance = null;
 	private List<Server> serverList;
-	private List<ServerVersion> serverVersions;
+	private ObservableList<ServerVersion> serverVersions;
 	private int serverCounter;
 	private int serverVersionCounter;
 	
@@ -38,7 +41,7 @@ public class ServerList {
 	
 	private ServerList() {
 		this.serverList = new ArrayList<Server>();
-		this.serverVersions = new ArrayList<ServerVersion>();
+		this.serverVersions = FXCollections.observableArrayList();
 		this.serverCounter = 0;
 		this.serverVersionCounter = 0;
 		loadXML();
@@ -263,11 +266,11 @@ public class ServerList {
 		this.serverList = server;
 	}
 
-	public List<ServerVersion> getServerVersions() {
+	public ObservableList<ServerVersion> getServerVersions() {
 		return serverVersions;
 	}
 
-	public void setServerVersions(List<ServerVersion> serverVersions) {
+	public void setServerVersions(ObservableList<ServerVersion> serverVersions) {
 		this.serverVersions = serverVersions;
 	}
 

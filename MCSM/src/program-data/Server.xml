@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MCSM>
   <MCServer />
-  <MCVersions />
+  <MCVersions>
+    <ServerVersion id="1">
+      <name>1.10.2</name>
+      <path>src/program-serverversions/minecraft_server.1.10.2.jar</path>
+    </ServerVersion>
+    <ServerVersion id="2">
+      <name>1.9.4</name>
+      <path>src/program-serverversions/minecraft_server.1.9.4.jar</path>
+    </ServerVersion>
+  </MCVersions>
 </MCSM>
