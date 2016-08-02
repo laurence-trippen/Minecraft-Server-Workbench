@@ -80,7 +80,7 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 		this.serverNameTextField.setPrefWidth(215);
 		this.serverNameTextField.setLayoutX(260);
 		this.serverNameTextField.setLayoutY(170);
-		this.serverVersionLabel = new Label("Server Version:");
+		this.serverVersionLabel = new Label("Serverversion:");
 		this.serverVersionLabel.setFont(Font.font("System", FontWeight.BOLD, 18));
 		this.serverVersionLabel.setLayoutX(90);
 		this.serverVersionLabel.setLayoutY(230);
