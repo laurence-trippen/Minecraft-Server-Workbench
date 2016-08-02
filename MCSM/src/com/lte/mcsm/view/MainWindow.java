@@ -52,8 +52,8 @@ public class MainWindow extends Scene implements IRefreshable, IFetchable {
 		this.anchorPane.setPrefWidth(1905);
 		this.anchorPane.setPrefHeight(2000);
 		try {
-			this.newServerImage = new Image(new FileInputStream(Path.NewServerPNG));
-			this.showServerVersionsImage = new Image(new FileInputStream(Path.ServerVersionsPNG));
+			this.newServerImage = new Image(new FileInputStream(Path.NEW_SERVER_PNG));
+			this.showServerVersionsImage = new Image(new FileInputStream(Path.SERVER_VERSIONS_PNG));
 			this.anchorPane.setBackground(new Background(new BackgroundImage(new Image(
 					new FileInputStream(Path.BACKGROUND)), 
 					null, 

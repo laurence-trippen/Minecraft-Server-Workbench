@@ -67,8 +67,8 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
 		try {
 			mainPane.setBackground(new Background(new BackgroundImage(new Image(new FileInputStream(Path.BACKGROUND)), null, null, null, null)));
-			this.installVersionImageView = new ImageView(new Image(new FileInputStream(Path.InstallVersionPNG2)));
-			this.jarVersionImageView = new ImageView(new Image(new FileInputStream(Path.JarPNG)));
+			this.installVersionImageView = new ImageView(new Image(new FileInputStream(Path.INSTALL_VERSION_PNG)));
+			this.jarVersionImageView = new ImageView(new Image(new FileInputStream(Path.JAR_PNG)));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -175,14 +175,14 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 						progressBar.setProgress(1.0);
 						DataStatus status = ServerList.getServerList().addServerVersion(new ServerVersion(
 								versionNameTextField.getText(), 
-								Path.ServerVERSIONS + selectedJarFile.getName()
+								Path.SERVER_VERSIONS + selectedJarFile.getName()
 						));
 						switch (status) {
 						case Succcess:
 							try {
 								Files.copy(
 									Paths.get(selectedJarFile.getAbsolutePath()),
-									Paths.get(Path.ServerVERSIONS + selectedJarFile.getName()
+									Paths.get(Path.SERVER_VERSIONS + selectedJarFile.getName()
 								));
 							} catch (IOException e) {
 								e.printStackTrace();

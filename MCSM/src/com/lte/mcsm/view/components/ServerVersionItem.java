@@ -31,7 +31,7 @@ public class ServerVersionItem extends AnchorPane {
 	
 	public ServerVersionItem(ServerVersion serverVersion) {
 		try {
-			this.imageView = new ImageView(new Image(new FileInputStream(Path.ServerVersionPNG)));
+			this.imageView = new ImageView(new Image(new FileInputStream(Path.SERVER_VERSION_PNG)));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

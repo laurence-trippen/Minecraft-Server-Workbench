@@ -39,7 +39,7 @@ public class ServerItem extends AnchorPane implements IRefreshable {
 	public ServerItem(Server server) {
 		this.server = server;
 		try {
-			this.imageView = new ImageView(new Image(new FileInputStream(Path.ServerPNG)));
+			this.imageView = new ImageView(new Image(new FileInputStream(Path.SERVER_PNG)));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

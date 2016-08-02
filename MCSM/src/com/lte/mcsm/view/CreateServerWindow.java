@@ -1,6 +1,7 @@
 package com.lte.mcsm.view;
 
 import java.awt.Desktop;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -64,7 +65,7 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 					null
 			)));
 			this.createServerImageView = new ImageView(new Image(new FileInputStream(
-					Path.CreateServerPNG
+					Path.CREATE_SERVER_PNG
 			)));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -140,7 +141,20 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 		this.createServerButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				
+				if (serverNameTextField.getText().equals("")) {
+					serverNameTextField.setStyle("-fx-border-color: red; -fx-border-radius: 3");
+				} else {
+					serverNameTextField.setStyle("");
+				}
+				if (!serverEulaCheckBox.isSelected()) {
+					serverEulaCheckBox.setStyle("-fx-border-color: red; -fx-border-radius: 3");
+				} else {
+					serverEulaCheckBox.setStyle("");
+				}
+				if ((!serverNameTextField.getText().equals("")) && serverEulaCheckBox.isSelected()) {
+					createServerButton.setDisable(true);
+					File serverDirectory = new File(Path.SERVER_DIRECTORY);
+				}
 			}
 		});
 		this.closeButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -173,6 +187,7 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 		this.serverNameTextField.setText("");
 		this.serverEulaCheckBox.setSelected(false);
 		this.serverVersionChoiceBox.getSelectionModel().selectFirst();
+		this.createServerButton.setDisable(false);
 	}
 	
 }

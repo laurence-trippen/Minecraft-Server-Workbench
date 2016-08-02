@@ -25,7 +25,7 @@ public class ServerBannedIps extends JsonIO {
 	public void readEntries() {
 		JSONParser parser = new JSONParser();
 		try {
-			Object obj = parser.parse(new FileReader(Path.BannedIps));
+			Object obj = parser.parse(new FileReader(Path.BANNED_IPS));
 			JSONArray array = (JSONArray)obj;
 			for (int i = 0; i < array.size(); i++) {
 				JSONObject jsonEntry = (JSONObject)array.get(i);

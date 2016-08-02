@@ -49,7 +49,7 @@ public class ServerVersionsWindow extends Scene implements IFetchable {
 		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
 		this.serverVersionItems = new ArrayList<ServerVersionItem>();
 		try {
-			this.installVersionImage = new Image(new FileInputStream(Path.ServerVersionsPNG));
+			this.installVersionImage = new Image(new FileInputStream(Path.SERVER_VERSIONS_PNG));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

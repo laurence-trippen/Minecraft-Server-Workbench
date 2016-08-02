@@ -7,10 +7,10 @@ import java.nio.file.Paths;
 
 public class ServerVersionTester {
 	
-	private final static File versionLogsDir = new File(Path.ServerCHECK + "logs");
-	private final static File versionLogOldFile = new File(Path.ServerCHECK + "server.log");
-	private final static File versionEulaFile = new File(Path.ServerCHECK + "eula.txt");
-	private final static File versionPropertiesFile = new File(Path.ServerCHECK + "server.properties");
+	private final static File versionLogsDir = new File(Path.SERVER_CHECK + "logs");
+	private final static File versionLogOldFile = new File(Path.SERVER_CHECK + "server.log");
+	private final static File versionEulaFile = new File(Path.SERVER_CHECK + "eula.txt");
+	private final static File versionPropertiesFile = new File(Path.SERVER_CHECK + "server.properties");
 	private File versionTestFile;
 	
 	public ServerVersionTester() {
@@ -42,9 +42,9 @@ public class ServerVersionTester {
 				"-Xmx1024M",
 				"-Xms1024M",
 				"-jar",
-				new File(Path.ServerCHECK).getAbsolutePath() + "/" + versionTestFile.getName()
+				new File(Path.SERVER_CHECK).getAbsolutePath() + "/" + versionTestFile.getName()
 		);
-		processBuilder.directory(new File(Path.ServerCHECK));
+		processBuilder.directory(new File(Path.SERVER_CHECK));
 		try {
 			process = processBuilder.start();
 			process.waitFor();
@@ -63,11 +63,11 @@ public class ServerVersionTester {
 	
 	public boolean testVersion(File selectedVersionJar) {
 		if (selectedVersionJar != null) {
-			versionTestFile = new File(Path.ServerCHECK + selectedVersionJar.getName());
+			versionTestFile = new File(Path.SERVER_CHECK + selectedVersionJar.getName());
 			try {
 				Files.copy(
 						Paths.get(selectedVersionJar.getAbsolutePath()), 
-						Paths.get(Path.ServerCHECK + selectedVersionJar.getName())
+						Paths.get(Path.SERVER_CHECK + selectedVersionJar.getName())
 				);
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -75,13 +75,13 @@ public class ServerVersionTester {
 			if (versionTestFile.exists()) {
 				if (runVersion()) {
 					if (checkVersion()) {
-						cleanTestArea(new File(Path.ServerCHECK));
+						cleanTestArea(new File(Path.SERVER_CHECK));
 						return true;
 					}
 				}
 			}
 		}
-		cleanTestArea(new File(Path.ServerCHECK));
+		cleanTestArea(new File(Path.SERVER_CHECK));
 		return false;
 	}
 	
