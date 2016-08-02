@@ -1,7 +1,11 @@
 package com.lte.mcsm.view;
 
+import java.awt.Desktop;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import com.lte.mcsm.controller.DesktopManager;
 import com.lte.mcsm.controller.WindowManager;
@@ -16,7 +20,9 @@ import javafx.event.EventHandler;
 import javafx.geometry.NodeOrientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToolBar;
@@ -39,9 +45,12 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 	private Label createServerLabel;
 	private Label serverNameLabel;
 	private Label serverVersionLabel;
+	private Label serverEulaLabel;
 	private ImageView createServerImageView;
 	private TextField serverNameTextField;
 	private ChoiceBox<ServerVersion> serverVersionChoiceBox;
+	private CheckBox serverEulaCheckBox;
+	private Hyperlink serverEulaHyperlink;
 	
 	public CreateServerWindow() {
 		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
@@ -90,6 +99,26 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 		this.serverVersionChoiceBox.setPrefWidth(80);
 		this.serverVersionChoiceBox.setLayoutX(260);
 		this.serverVersionChoiceBox.setLayoutY(230);
+		this.serverEulaLabel = new Label("Server EULA:");
+		this.serverEulaLabel.setFont(Font.font("System", FontWeight.BOLD, 18));
+		this.serverEulaLabel.setLayoutX(90);
+		this.serverEulaLabel.setLayoutY(290);
+		this.serverEulaCheckBox = new CheckBox("EULA akzeptieren");
+		this.serverEulaCheckBox.setLayoutX(260);
+		this.serverEulaCheckBox.setLayoutY(295);
+		this.serverEulaHyperlink = new Hyperlink("Minecraft EULA lesen");
+		this.serverEulaHyperlink.setLayoutX(390);
+		this.serverEulaHyperlink.setLayoutY(293);
+		this.serverEulaHyperlink.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				try {
+					Desktop.getDesktop().browse(new URI("https://account.mojang.com/documents/minecraft_eula"));
+				} catch (IOException | URISyntaxException e) {
+					e.printStackTrace();
+				}	
+			}
+		});
 		this.createServerImageView.setLayoutX(90);
 		this.createServerImageView.setLayoutY(50);
 		this.createServerLabel = new Label("Minecraft Server erstellen");
@@ -108,7 +137,10 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 				serverNameLabel,
 				serverNameTextField,
 				serverVersionLabel,
-				serverVersionChoiceBox
+				serverVersionChoiceBox,
+				serverEulaLabel,
+				serverEulaCheckBox,
+				serverEulaHyperlink
 		);
 		mainPane.getChildren().addAll(toolBar, createServerPane);
 		AnchorPane.setLeftAnchor(toolBar, 0.00);
