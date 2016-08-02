@@ -232,9 +232,7 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 				installVersionImageView,
 				installVersionLabel,
 				jarNameLabel,
-				jarVersionImageView,
-				headerSeperator,
-				footerSeperator
+				jarVersionImageView
 		);
 		this.closeButton = new Button("Abbrechen");
 		this.closeButton.setOnAction(new EventHandler<ActionEvent>() {

@@ -42,6 +42,7 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 	private ToolBar toolBar;
 	private Button closeButton;
 	private Pane createServerPane;
+	private Button createServerButton;
 	private Label createServerLabel;
 	private Label serverNameLabel;
 	private Label serverVersionLabel;
@@ -106,8 +107,8 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 		this.serverEulaCheckBox = new CheckBox("EULA akzeptieren");
 		this.serverEulaCheckBox.setLayoutX(260);
 		this.serverEulaCheckBox.setLayoutY(295);
-		this.serverEulaHyperlink = new Hyperlink("Minecraft EULA lesen");
-		this.serverEulaHyperlink.setLayoutX(390);
+		this.serverEulaHyperlink = new Hyperlink("Minecraft EULA");
+		this.serverEulaHyperlink.setLayoutX(388);
 		this.serverEulaHyperlink.setLayoutY(293);
 		this.serverEulaHyperlink.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -131,8 +132,27 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 		this.createServerPane.setPrefHeight(450);
 		this.createServerPane.setLayoutX(660);
 		this.createServerPane.setLayoutY(300);
+		this.createServerButton = new Button("Server erstellen");
+		this.createServerButton.setPrefWidth(120);
+		this.createServerButton.setPrefHeight(30);
+		this.createServerButton.setLayoutX(355);
+		this.createServerButton.setLayoutY(350);
+		this.createServerButton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				
+			}
+		});
+		this.closeButton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				refresh();
+				Program.getMainStage().setScene(WindowManager.getWindowManager().getMainWindow());
+			}
+		});
 		this.createServerPane.getChildren().addAll(
-				createServerLabel, 
+				createServerLabel,
+				createServerButton,
 				createServerImageView, 
 				serverNameLabel,
 				serverNameTextField,
@@ -151,6 +171,8 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 	@Override
 	public void refresh() {
 		this.serverNameTextField.setText("");
+		this.serverEulaCheckBox.setSelected(false);
+		this.serverVersionChoiceBox.getSelectionModel().selectFirst();
 	}
 	
 }
