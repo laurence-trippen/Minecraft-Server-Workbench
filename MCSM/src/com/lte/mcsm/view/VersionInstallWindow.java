@@ -59,8 +59,6 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 	private Button installVersionButton;
 	private ImageView installVersionImageView;
 	private ImageView jarVersionImageView;
-	private Separator headerSeperator;
-	private Separator footerSeperator;
 	private ProgressBar progressBar;
 	
 	public VersionInstallWindow() {
@@ -131,14 +129,6 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 				}
 			}
 		});
-		this.headerSeperator = new Separator();
-		this.headerSeperator.setLayoutX(80);
-		this.headerSeperator.setLayoutY(145);
-		this.headerSeperator.setPrefWidth(420);
-		this.footerSeperator = new Separator();
-		this.footerSeperator.setLayoutX(80);
-		this.footerSeperator.setLayoutY(300);
-		this.footerSeperator.setPrefWidth(420);
 		this.installVersionLabel = new Label("Server Version installieren");
 		this.installVersionLabel.setFont(Font.font("System", FontWeight.BOLD, 24));
 		this.installVersionLabel.setLayoutX(175);

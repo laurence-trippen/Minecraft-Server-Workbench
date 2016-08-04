@@ -118,7 +118,7 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 					Desktop.getDesktop().browse(new URI("https://account.mojang.com/documents/minecraft_eula"));
 				} catch (IOException | URISyntaxException e) {
 					e.printStackTrace();
-				}	
+				}
 			}
 		});
 		this.createServerImageView.setLayoutX(90);
@@ -153,7 +153,10 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 				}
 				if ((!serverNameTextField.getText().equals("")) && serverEulaCheckBox.isSelected()) {
 					createServerButton.setDisable(true);
-					File serverDirectory = new File(Path.SERVER_DIRECTORY);
+					File serverDirectory = new File(Path.SERVER_DIRECTORY + serverNameTextField.getText());
+					if (!serverDirectory.exists()) {
+						serverDirectory.mkdir();
+					}
 				}
 			}
 		});
@@ -185,7 +188,9 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 	@Override
 	public void refresh() {
 		this.serverNameTextField.setText("");
+		this.serverNameTextField.setStyle("");
 		this.serverEulaCheckBox.setSelected(false);
+		this.serverEulaCheckBox.setStyle("");
 		this.serverVersionChoiceBox.getSelectionModel().selectFirst();
 		this.createServerButton.setDisable(false);
 	}
