@@ -12,6 +12,7 @@ import com.lte.mcsm.controller.DesktopManager;
 import com.lte.mcsm.controller.WindowManager;
 import com.lte.mcsm.main.Program;
 import com.lte.mcsm.model.Path;
+import com.lte.mcsm.model.ServerCreator;
 import com.lte.mcsm.model.ServerList;
 import com.lte.mcsm.model.ServerVersion;
 import com.lte.mcsm.model.interfaces.IRefreshable;
@@ -152,11 +153,20 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 					serverEulaCheckBox.setStyle("");
 				}
 				if ((!serverNameTextField.getText().equals("")) && serverEulaCheckBox.isSelected()) {
+					closeButton.setDisable(true);
 					createServerButton.setDisable(true);
-					File serverDirectory = new File(Path.SERVER_DIRECTORY + serverNameTextField.getText());
-					if (!serverDirectory.exists()) {
-						serverDirectory.mkdir();
-					}
+					serverNameTextField.setDisable(true);
+					serverVersionChoiceBox.setDisable(true);
+					serverEulaCheckBox.setDisable(true);
+					ServerCreator.createServerDirectory(
+							Path.SERVER_DIRECTORY + serverNameTextField.getText()
+					);
+					ServerCreator.copyServerJar(
+						serverVersionChoiceBox.getSelectionModel().getSelectedItem().getPath(), 
+						Path.SERVER_DIRECTORY + serverNameTextField.getText() + "/" + 
+						new File(serverVersionChoiceBox.getSelectionModel().getSelectedItem().getPath()).getName()
+					);
+					ServerCreator.runServerJar();
 				}
 			}
 		});
