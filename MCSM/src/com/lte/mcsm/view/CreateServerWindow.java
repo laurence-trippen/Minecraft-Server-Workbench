@@ -26,6 +26,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
@@ -56,6 +57,9 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 	private ChoiceBox<ServerVersion> serverVersionChoiceBox;
 	private CheckBox serverEulaCheckBox;
 	private Hyperlink serverEulaHyperlink;
+	private Pane installationPane;
+	private ProgressBar progressBar;
+	private Label progressLabel;
 	
 	public CreateServerWindow() {
 		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
@@ -73,14 +77,24 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		this.progressLabel = new Label();
+		this.progressLabel.setFont(Font.font("System", FontWeight.BOLD, 14));
+		this.progressLabel.setLayoutX(400);
+		this.progressLabel.setLayoutY(40);
+		this.progressBar = new ProgressBar(0);
+		this.progressBar.setLayoutX(40);
+		this.progressBar.setLayoutY(40);
+		this.progressBar.setPrefWidth(340);
+		this.progressBar.setPrefHeight(20);
+		this.installationPane = new Pane();
+		this.installationPane.setStyle("-fx-background-color: white; -fx-background-radius: 5");
+		this.installationPane.setPrefWidth(600);
+		this.installationPane.setPrefHeight(100);
+		this.installationPane.setLayoutX(660);
+		this.installationPane.setLayoutY(780);
+		this.installationPane.setVisible(false);
+		this.installationPane.getChildren().addAll(progressBar, progressLabel);
 		this.closeButton = new Button("Abbrechen");
-		this.closeButton.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				refresh();
-				Program.getMainStage().setScene(WindowManager.getWindowManager().getMainWindow());
-			}
-		});
 		this.toolBar = new ToolBar();
 		this.toolBar.setLayoutX(0.00);
 		this.toolBar.setLayoutY(0.00);
@@ -114,16 +128,6 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 		this.serverEulaHyperlink = new Hyperlink("Minecraft EULA");
 		this.serverEulaHyperlink.setLayoutX(388);
 		this.serverEulaHyperlink.setLayoutY(293);
-		this.serverEulaHyperlink.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				try {
-					Desktop.getDesktop().browse(new URI("https://account.mojang.com/documents/minecraft_eula"));
-				} catch (IOException | URISyntaxException e) {
-					e.printStackTrace();
-				}
-			}
-		});
 		this.createServerImageView.setLayoutX(90);
 		this.createServerImageView.setLayoutY(50);
 		this.createServerLabel = new Label("Minecraft Server erstellen");
@@ -141,6 +145,23 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 		this.createServerButton.setPrefHeight(30);
 		this.createServerButton.setLayoutX(355);
 		this.createServerButton.setLayoutY(350);
+		this.closeButton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				refresh();
+				Program.getMainStage().setScene(WindowManager.getWindowManager().getMainWindow());
+			}
+		});
+		this.serverEulaHyperlink.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				try {
+					Desktop.getDesktop().browse(new URI("https://account.mojang.com/documents/minecraft_eula"));
+				} catch (IOException | URISyntaxException e) {
+					e.printStackTrace();
+				}
+			}
+		});
 		this.createServerButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -194,7 +215,7 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 				serverEulaCheckBox,
 				serverEulaHyperlink
 		);
-		mainPane.getChildren().addAll(toolBar, createServerPane);
+		mainPane.getChildren().addAll(toolBar, createServerPane, installationPane);
 		AnchorPane.setLeftAnchor(toolBar, 0.00);
 		AnchorPane.setTopAnchor(toolBar, 0.00);
 		AnchorPane.setRightAnchor(toolBar, 0.00);
@@ -208,6 +229,9 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 		this.serverEulaCheckBox.setStyle("");
 		this.serverVersionChoiceBox.getSelectionModel().selectFirst();
 		this.createServerButton.setDisable(false);
+		this.installationPane.setDisable(true);
+		this.progressBar.setProgress(0.00);
+		this.progressLabel.setText("");
 	}
 	
 }

@@ -78,6 +78,11 @@ public class MainWindow extends Scene implements IRefreshable, IFetchable {
 		this.scrollPane.setContent(anchorPane);
 		this.addServerButton = new Button("Server erstellen");
 		this.addServerButton.setGraphic(new ImageView(newServerImage));
+		this.showServerVersions = new Button("Server Versionen");
+		this.showServerVersions.setGraphic(new ImageView(showServerVersionsImage));
+		this.toolBar = new ToolBar();
+		this.toolBar.setLayoutX(0.00);
+		this.toolBar.setLayoutY(0.00);
 		this.addServerButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -85,8 +90,6 @@ public class MainWindow extends Scene implements IRefreshable, IFetchable {
 				Program.getMainStage().setScene(WindowManager.getWindowManager().getCreateServerWindow());
 			}
 		});
-		this.showServerVersions = new Button("Server Versionen");
-		this.showServerVersions.setGraphic(new ImageView(showServerVersionsImage));
 		this.showServerVersions.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -94,9 +97,6 @@ public class MainWindow extends Scene implements IRefreshable, IFetchable {
 				Program.getMainStage().setScene(WindowManager.getWindowManager().getServerVersionsWindow());
 			}
 		});
-		this.toolBar = new ToolBar();
-		this.toolBar.setLayoutX(0.00);
-		this.toolBar.setLayoutY(0.00);
 		this.toolBar.getItems().addAll(addServerButton, showServerVersions);
 		mainPane.getChildren().addAll(toolBar, scrollPane);
 		AnchorPane.setLeftAnchor(toolBar, 0.00);
