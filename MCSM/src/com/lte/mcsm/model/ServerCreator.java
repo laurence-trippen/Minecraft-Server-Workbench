@@ -52,10 +52,8 @@ public class ServerCreator {
 			Thread thread = new Thread(logger, "ServerLogger");
 			thread.start();
 			if (initMode) {
-				System.out.println("Hallo 1");
 				process.waitFor();
 			} else {
-				System.out.println("Hallo 2");
 				Thread.sleep(30000);
 				process.destroy();
 			}
