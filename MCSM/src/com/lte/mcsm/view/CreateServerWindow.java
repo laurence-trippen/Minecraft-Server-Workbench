@@ -21,6 +21,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.NodeOrientation;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
@@ -41,6 +43,8 @@ import javafx.scene.text.FontWeight;
 public class CreateServerWindow extends Scene implements IRefreshable {
 	
 	private static AnchorPane mainPane = new AnchorPane();
+	private static File oldServerJar = null;
+	private static File newServerJar = null;
 	private ToolBar toolBar;
 	private Button closeButton;
 	private Pane createServerPane;
@@ -161,12 +165,17 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 					ServerCreator.createServerDirectory(
 							Path.SERVER_DIRECTORY + serverNameTextField.getText()
 					);
+					oldServerJar = new File(serverVersionChoiceBox.getSelectionModel().getSelectedItem().getPath());
+					newServerJar = new File(Path.SERVER_DIRECTORY + serverNameTextField.getText() + "/" + oldServerJar.getName());
 					ServerCreator.copyServerJar(
-						serverVersionChoiceBox.getSelectionModel().getSelectedItem().getPath(), 
-						Path.SERVER_DIRECTORY + serverNameTextField.getText() + "/" + 
-						new File(serverVersionChoiceBox.getSelectionModel().getSelectedItem().getPath()).getName()
+						oldServerJar.getAbsolutePath(),
+						newServerJar.getAbsolutePath()
 					);
-					ServerCreator.runServerJar();
+					ServerCreator.runServerJar(newServerJar.getAbsolutePath(), newServerJar.getParentFile().getPath(), true);
+					Alert alert = new Alert(AlertType.ERROR);
+					alert.show();
+					ServerCreator.editEula(Path.SERVER_DIRECTORY + serverNameTextField.getText() + "/eula.txt");
+					ServerCreator.runServerJar(newServerJar.getAbsolutePath(), newServerJar.getParentFile().getPath(), false);
 				}
 			}
 		});
