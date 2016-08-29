@@ -1,16 +1,15 @@
 package com.lte.mcsm.model;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static com.lte.mcsm.config.AppConfig.dateFormat;
 import com.lte.mcsm.model.enums.ServerState;
+import com.lte.mcsm.model.interfaces.IServerController;
 
 import javafx.scene.image.Image;
 
-public class Server {
+public class Server implements IServerController {
 	
-	private static DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy - HH:mm:ss");
 	private int id;
 	private String name;
 	private String description;
@@ -55,6 +54,16 @@ public class Server {
 		this.serverBannedIps = new ServerBannedIps();
 		this.serverBannedPlayers = new ServerBannedPlayers();
 		this.serverImage = null;
+	}
+	
+	@Override
+	public void start() {
+		
+	}
+	
+	@Override
+	public void stop() {
+		
 	}
 
 	public int getId() {

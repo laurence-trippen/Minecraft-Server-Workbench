@@ -69,7 +69,7 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		this.progressLabel = new Label("JAR Datei wird überprüft ...");
+		this.progressLabel = new Label("Wird vorbereitet ...");
 		this.progressLabel.setFont(Font.font("System", FontWeight.BOLD, 14));
 		this.progressLabel.setLayoutX(400);
 		this.progressLabel.setLayoutY(40);
