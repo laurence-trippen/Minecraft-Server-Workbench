@@ -7,9 +7,9 @@ import java.nio.file.Paths;
 
 public class ServerVersionTester {
 
-	private final static File versionLogsDir = new File(Path.SERVER_CHECK + "logs");
-	private final static File versionLogOldFile = new File(Path.SERVER_CHECK + "server.log");
-	private final static File versionEulaFile = new File(Path.SERVER_CHECK + "eula.txt");
+	private final static File versionLogsDir 		= new File(Path.SERVER_CHECK + "logs");
+	private final static File versionLogOldFile 	= new File(Path.SERVER_CHECK + "server.log");
+	private final static File versionEulaFile 		= new File(Path.SERVER_CHECK + "eula.txt");
 	private final static File versionPropertiesFile = new File(Path.SERVER_CHECK + "server.properties");
 	private File versionTestFile;
 

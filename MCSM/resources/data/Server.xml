@@ -47,7 +47,7 @@
       <name>1.10.2</name>
       <path>working/serverversions/minecraft_server.1.10.2.jar</path>
     </ServerVersion>
-    <ServerVersion id="2">
+    <ServerVersion id="3">
       <name>1.9.4</name>
       <path>working/serverversions/minecraft_server.1.9.4.jar</path>
     </ServerVersion>

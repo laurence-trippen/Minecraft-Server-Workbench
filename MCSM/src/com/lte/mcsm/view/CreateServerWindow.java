@@ -41,25 +41,25 @@ import javafx.scene.text.FontWeight;
 
 public class CreateServerWindow extends Scene implements IRefreshable {
 	
-	private static AnchorPane mainPane = new AnchorPane();
-	private static File oldServerJar = null;
-	private static File newServerJar = null;
-	private ToolBar toolBar;
-	private Button closeButton;
-	private Pane createServerPane;
-	private Button createServerButton;
-	private Label createServerLabel;
-	private Label serverNameLabel;
-	private Label serverVersionLabel;
-	private Label serverEulaLabel;
-	private ImageView createServerImageView;
-	private TextField serverNameTextField;
-	private ChoiceBox<ServerVersion> serverVersionChoiceBox;
-	private CheckBox serverEulaCheckBox;
-	private Hyperlink serverEulaHyperlink;
-	private Pane installationPane;
-	private ProgressBar progressBar;
-	private Label progressLabel;
+	private static AnchorPane 			mainPane = new AnchorPane();
+	private static File 				oldServerJar = null;
+	private static File 				newServerJar = null;
+	private ToolBar 					toolBar;
+	private Button 						closeButton;
+	private Pane 						createServerPane;
+	private Button 						createServerButton;
+	private Label 						createServerLabel;
+	private Label 						serverNameLabel;
+	private Label 						serverVersionLabel;
+	private Label 						serverEulaLabel;
+	private ImageView 					createServerImageView;
+	private TextField 					serverNameTextField;
+	private ChoiceBox<ServerVersion> 	serverVersionChoiceBox;
+	private CheckBox 					serverEulaCheckBox;
+	private Hyperlink 					serverEulaHyperlink;
+	private Pane 						installationPane;
+	private ProgressBar 				progressBar;
+	private Label 						progressLabel;
 	
 	public CreateServerWindow() {
 		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
@@ -181,18 +181,23 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 					serverNameTextField.setDisable(true);
 					serverVersionChoiceBox.setDisable(true);
 					serverEulaCheckBox.setDisable(true);
-					ServerCreator.createServerDirectory(
-							Path.SERVER_DIRECTORY + serverNameTextField.getText()
-					);
-					oldServerJar = new File(serverVersionChoiceBox.getSelectionModel().getSelectedItem().getPath());
-					newServerJar = new File(Path.SERVER_DIRECTORY + serverNameTextField.getText() + "/" + oldServerJar.getName());
-					ServerCreator.copyServerJar(
-						oldServerJar.getAbsolutePath(),
-						newServerJar.getAbsolutePath()
-					);
-					ServerCreator.runServerJar(newServerJar.getAbsolutePath(), newServerJar.getParentFile().getPath(), true);
-					ServerCreator.editEula(Path.SERVER_DIRECTORY + serverNameTextField.getText() + "/eula.txt");
-					ServerCreator.runServerJar(newServerJar.getAbsolutePath(), newServerJar.getParentFile().getPath(), false);
+					if (ServerCreator.createServerDirectory(Path.SERVER_DIRECTORY + serverNameTextField.getText())) {
+						oldServerJar = new File(serverVersionChoiceBox.getSelectionModel().getSelectedItem().getPath());
+						newServerJar = new File(Path.SERVER_DIRECTORY + serverNameTextField.getText() + "/" + oldServerJar.getName());
+						if (ServerCreator.copyServerJar(oldServerJar.getAbsolutePath(), newServerJar.getAbsolutePath())) {
+							if (ServerCreator.runServerJar(newServerJar.getAbsolutePath(), newServerJar.getParentFile().getPath(), true)) {
+								if (ServerCreator.editEula(Path.SERVER_DIRECTORY + serverNameTextField.getText() + "/eula.txt")) {
+									if (ServerCreator.runServerJar(newServerJar.getAbsolutePath(), newServerJar.getParentFile().getPath(), false)) {
+										if (ServerCreator.checkServer()) {
+											System.out.println("true");
+										} else {
+											System.out.println("false");
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 		});

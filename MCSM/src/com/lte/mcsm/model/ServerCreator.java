@@ -11,6 +11,17 @@ import java.nio.file.Paths;
 
 public class ServerCreator {
 	
+	private static String newServerDirectory;
+	private final static File logsDir 			= new File(newServerDirectory + "/logs");
+	private final static File worldDir 			= new File(newServerDirectory + "/world");
+	private final static File bannedIpFile 		= new File(newServerDirectory + "/banned-ips.json");
+	private final static File bannedPlayersFile = new File(newServerDirectory + "/banned-players.json");
+	private final static File eulaFile 			= new File(newServerDirectory + "/eula.txt");
+	private final static File opsFile 			= new File(newServerDirectory + "/ops.json");
+	private final static File propertiesFile 	= new File(newServerDirectory + "/server.properties");
+	private final static File usercacheFile 	= new File(newServerDirectory + "/usercache.json");
+	private final static File whitelistFile 	= new File(newServerDirectory + "/whitelist.json");
+	
 	public static boolean createServerDirectory(String newServerDir) {
 		File serverDirectory = new File(newServerDir);
 		if (!serverDirectory.exists()) {
@@ -87,6 +98,24 @@ public class ServerCreator {
 			return true;
 		} catch (IOException e) {
 			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public static boolean checkServer() {
+		if (
+				logsDir.exists() && 
+				worldDir.exists() && 
+				bannedIpFile.exists() && 
+				bannedPlayersFile.exists() && 
+				eulaFile.exists() && 
+				opsFile.exists() &&
+				propertiesFile.exists() &&
+				usercacheFile.exists() &&
+				whitelistFile.exists()
+		) {
+			return true;
+		} else {
 			return false;
 		}
 	}
