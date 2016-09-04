@@ -11,17 +11,6 @@ import java.nio.file.Paths;
 
 public class ServerCreator {
 	
-	private static String newServerDirectory;
-	private final static File logsDir 			= new File(newServerDirectory + "/logs");
-	private final static File worldDir 			= new File(newServerDirectory + "/world");
-	private final static File bannedIpFile 		= new File(newServerDirectory + "/banned-ips.json");
-	private final static File bannedPlayersFile = new File(newServerDirectory + "/banned-players.json");
-	private final static File eulaFile 			= new File(newServerDirectory + "/eula.txt");
-	private final static File opsFile 			= new File(newServerDirectory + "/ops.json");
-	private final static File propertiesFile 	= new File(newServerDirectory + "/server.properties");
-	private final static File usercacheFile 	= new File(newServerDirectory + "/usercache.json");
-	private final static File whitelistFile 	= new File(newServerDirectory + "/whitelist.json");
-	
 	public static boolean createServerDirectory(String newServerDir) {
 		File serverDirectory = new File(newServerDir);
 		if (!serverDirectory.exists()) {
@@ -102,17 +91,17 @@ public class ServerCreator {
 		}
 	}
 	
-	public static boolean checkServer() {
+	public static boolean checkServer(String newServerName) {
 		if (
-				logsDir.exists() && 
-				worldDir.exists() && 
-				bannedIpFile.exists() && 
-				bannedPlayersFile.exists() && 
-				eulaFile.exists() && 
-				opsFile.exists() &&
-				propertiesFile.exists() &&
-				usercacheFile.exists() &&
-				whitelistFile.exists()
+		new File(Path.SERVER_DIRECTORY + newServerName + "/logs").exists() &&
+		new File(Path.SERVER_DIRECTORY + newServerName + "/world").exists() &&
+		new File(Path.SERVER_DIRECTORY + newServerName + "/banned-ips.json").exists() &&
+		new File(Path.SERVER_DIRECTORY + newServerName + "/banned-players.json").exists() &&
+		new File(Path.SERVER_DIRECTORY + newServerName + "/eula.txt").exists() &&
+		new File(Path.SERVER_DIRECTORY + newServerName + "/ops.json").exists() &&
+		new File(Path.SERVER_DIRECTORY + newServerName + "/server.properties").exists() &&
+		new File(Path.SERVER_DIRECTORY + newServerName + "/usercache.json").exists() &&
+		new File(Path.SERVER_DIRECTORY + newServerName + "/whitelist.json").exists()
 		) {
 			return true;
 		} else {

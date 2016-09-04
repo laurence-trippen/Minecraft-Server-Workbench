@@ -188,7 +188,7 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 							if (ServerCreator.runServerJar(newServerJar.getAbsolutePath(), newServerJar.getParentFile().getPath(), true)) {
 								if (ServerCreator.editEula(Path.SERVER_DIRECTORY + serverNameTextField.getText() + "/eula.txt")) {
 									if (ServerCreator.runServerJar(newServerJar.getAbsolutePath(), newServerJar.getParentFile().getPath(), false)) {
-										if (ServerCreator.checkServer()) {
+										if (ServerCreator.checkServer(serverNameTextField.getText())) {
 											System.out.println("true");
 										} else {
 											System.out.println("false");

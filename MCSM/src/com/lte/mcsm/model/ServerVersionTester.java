@@ -37,12 +37,19 @@ public class ServerVersionTester {
 
 	private boolean runVersion() {
 		Process process = null;
-		ProcessBuilder processBuilder = new ProcessBuilder("java", "-Xmx1024M", "-Xms1024M", "-jar",
-				new File(Path.SERVER_CHECK).getAbsolutePath() + "/" + versionTestFile.getName());
+		ProcessBuilder processBuilder = new ProcessBuilder(
+				"java", 
+				"-Xmx1024M", 
+				"-Xms1024M", 
+				"-jar",
+				new File(Path.SERVER_CHECK).getAbsolutePath() + "/" + versionTestFile.getName(),
+				"nogui"
+				);
 		processBuilder.directory(new File(Path.SERVER_CHECK));
 		try {
 			process = processBuilder.start();
-			process.waitFor();
+			Thread.sleep(20000);
+			process.destroy();
 			return true;
 		} catch (IOException e) {
 			e.printStackTrace();
