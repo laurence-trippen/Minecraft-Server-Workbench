@@ -1,6 +1,6 @@
 package com.lte.mcsm.main;
 
-import com.lte.mcsm.controller.WindowManager;
+import com.lte.mcsm.manager.WindowManager;
 
 import javafx.application.Application;
 import javafx.stage.Stage;

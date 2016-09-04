@@ -1,4 +1,4 @@
-package com.lte.mcsm.controller;
+package com.lte.mcsm.manager;
 
 public class GridManager {
 	

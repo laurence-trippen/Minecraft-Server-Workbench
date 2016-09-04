@@ -1,4 +1,4 @@
-package com.lte.mcsm.controller;
+package com.lte.mcsm.manager;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;

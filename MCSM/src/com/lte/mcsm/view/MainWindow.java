@@ -4,10 +4,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-import com.lte.mcsm.controller.DesktopManager;
-import com.lte.mcsm.controller.GridManager;
-import com.lte.mcsm.controller.WindowManager;
 import com.lte.mcsm.main.Program;
+import com.lte.mcsm.manager.DesktopManager;
+import com.lte.mcsm.manager.GridManager;
+import com.lte.mcsm.manager.WindowManager;
 import com.lte.mcsm.model.Path;
 import com.lte.mcsm.model.Server;
 import com.lte.mcsm.model.ServerList;
