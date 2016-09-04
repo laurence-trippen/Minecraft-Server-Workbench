@@ -5,10 +5,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import com.lte.mcsm.controller.MainWindowController;
-import com.lte.mcsm.main.Program;
 import com.lte.mcsm.manager.DesktopManager;
 import com.lte.mcsm.manager.GridManager;
-import com.lte.mcsm.manager.WindowManager;
 import com.lte.mcsm.model.Path;
 import com.lte.mcsm.model.Server;
 import com.lte.mcsm.model.ServerList;
@@ -16,8 +14,6 @@ import com.lte.mcsm.model.interfaces.IFetchable;
 import com.lte.mcsm.model.interfaces.IRefreshable;
 import com.lte.mcsm.view.components.ServerItem;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -86,7 +82,7 @@ public class MainWindow extends Scene implements IRefreshable, IFetchable {
 		this.toolBar = new ToolBar();
 		this.toolBar.setLayoutX(0.00);
 		this.toolBar.setLayoutY(0.00);
-		this.addServerButton.setOnAction(mController::addServerButtonHandler);
+		this.addServerButton.setOnAction(mController::addServerHandler);
 		this.showServerVersions.setOnAction(mController::showVersionsHandler);
 		this.toolBar.getItems().addAll(addServerButton, showServerVersions);
 		mainPane.getChildren().addAll(toolBar, scrollPane);

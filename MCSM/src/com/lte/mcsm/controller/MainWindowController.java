@@ -14,7 +14,7 @@ public class MainWindowController {
 		this.mainWindow = mainWindow;
 	}
 	
-	public void addServerButtonHandler(ActionEvent event) {
+	public void addServerHandler(ActionEvent event) {
 		mainWindow.refresh();
 		Program.getMainStage().setScene(WindowManager.getWindowManager().getCreateServerWindow());
 	}
