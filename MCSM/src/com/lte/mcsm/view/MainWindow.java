@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
+import com.lte.mcsm.controller.MainWindowController;
 import com.lte.mcsm.main.Program;
 import com.lte.mcsm.manager.DesktopManager;
 import com.lte.mcsm.manager.GridManager;
@@ -35,6 +36,7 @@ public class MainWindow extends Scene implements IRefreshable, IFetchable {
 	private static int x = 0;
 	private static int y = 0;
 	private static AnchorPane mainPane = new AnchorPane();
+	private MainWindowController mController;
 	private ToolBar toolBar;
 	private Button addServerButton;
 	private Button showServerVersions;
@@ -47,6 +49,7 @@ public class MainWindow extends Scene implements IRefreshable, IFetchable {
 
 	public MainWindow() {
 		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
+		this.mController = new MainWindowController(this);
 		this.serverItems = new ArrayList<ServerItem>();
 		this.anchorPane = new AnchorPane();
 		this.anchorPane.setPrefWidth(1905);
@@ -83,20 +86,8 @@ public class MainWindow extends Scene implements IRefreshable, IFetchable {
 		this.toolBar = new ToolBar();
 		this.toolBar.setLayoutX(0.00);
 		this.toolBar.setLayoutY(0.00);
-		this.addServerButton.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				refresh();
-				Program.getMainStage().setScene(WindowManager.getWindowManager().getCreateServerWindow());
-			}
-		});
-		this.showServerVersions.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				refresh();
-				Program.getMainStage().setScene(WindowManager.getWindowManager().getServerVersionsWindow());
-			}
-		});
+		this.addServerButton.setOnAction(mController::addServerButtonHandler);
+		this.showServerVersions.setOnAction(mController::showVersionsHandler);
 		this.toolBar.getItems().addAll(addServerButton, showServerVersions);
 		mainPane.getChildren().addAll(toolBar, scrollPane);
 		AnchorPane.setLeftAnchor(toolBar, 0.00);
@@ -121,7 +112,6 @@ public class MainWindow extends Scene implements IRefreshable, IFetchable {
 	
 	@Override
 	public void fetch() {
-		System.out.println("fetch");
 		int counter = 3;
 		ServerList serverList = ServerList.getServerList();
 		if (serverList.getServerCount() != 0) {	
