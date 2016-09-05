@@ -61,7 +61,7 @@ public class ServerVersionsWindow extends Scene implements IFetchable {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		this.anchorPane.setPrefWidth(1905);
+		this.anchorPane.setPrefWidth(DesktopManager.getScreenSize().getWidth());
 		this.anchorPane.setPrefHeight(2000);
 		this.anchorPane.getChildren().add(gridPane);
 		this.scrollPane = new ScrollPane();
