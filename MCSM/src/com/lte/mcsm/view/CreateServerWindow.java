@@ -221,7 +221,13 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 												refresh();
 												Program.getMainStage().setScene(WindowManager.getWindowManager().getMainWindow());
 											} else {
-												System.out.println("false");
+												Alert errorAlert = new Alert(AlertType.ERROR);
+												errorAlert.setTitle("Installation fehlgeschlagen!");
+												errorAlert.setHeaderText(serverNameTextField.getText());
+												errorAlert.setContentText("Fehler beim erstellen von " + serverNameTextField.getText() + " !");
+												errorAlert.showAndWait();
+												refresh();
+												Program.getMainStage().setScene(WindowManager.getWindowManager().getMainWindow());
 											}
 										}
 									}
