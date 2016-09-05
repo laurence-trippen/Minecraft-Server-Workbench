@@ -169,11 +169,15 @@ public class ServerList {
 			properties.addContent(new Element("generateStructs").setText(saveServer.getServerProperties().isGenerateStructs() == true ? "true" : "false"));
 			properties.addContent(new Element("viewDistance").setText(Integer.toString(saveServer.getServerProperties().getViewDistance())));
 			properties.addContent(new Element("motd").setText(saveServer.getServerProperties().getMotd()));
+			Element versionElement = new Element("version");
+			versionElement.addContent(new Element("name").setText(saveServer.getServerVersion().getName()));
+			versionElement.addContent(new Element("path").setText(saveServer.getServerVersion().getPath()));
 			Element server = new Element("Server");
 			server.setAttribute("id", ""+saveServer.getId());
 			server.addContent(new Element("name").setText(saveServer.getName()));
 			server.addContent(new Element("description").setText(saveServer.getDescription()));
 			server.addContent(new Element("creationDate").setText(saveServer.getCreationDate()));
+			server.addContent(versionElement);
 			server.addContent(properties);
 			xml.getRootElement().getChild("MCServer").addContent(server);
 		}
@@ -201,10 +205,14 @@ public class ServerList {
 				List<Element> xmlVersions = root.getChild("MCVersions").getChildren();
 				for (Element xmlServer : xmlServers) {
 					serverCounter++;
+					Element version = xmlServer.getChild("version");
 					Element properties = xmlServer.getChild("properties");
 					Server loadServer = new Server(xmlServer.getChildText("name"), serverCounter);
 					loadServer.setDescription(xmlServer.getChildText("description"));
 					loadServer.setCreationDate(xmlServer.getAttributeValue("creationDate"));
+					ServerVersion serverVersion = loadServer.getServerVersion();
+					serverVersion.setName(version.getChildText("name"));
+					serverVersion.setPath(version.getChildText("path"));
 					ServerProperties serverProperties = loadServer.getServerProperties();
 					serverProperties.setGenerator(properties.getChildText("generator"));
 					serverProperties.setOpLevel(OpLevel.valueOf(properties.getChildText("opLevel")));

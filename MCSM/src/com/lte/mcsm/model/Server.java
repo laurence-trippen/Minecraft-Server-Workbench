@@ -27,6 +27,7 @@ public class Server implements IServerController {
 		this.id = 0;
 		this.name = name;
 		this.description = "leer";
+		this.serverVersion = serverVersion;
 		this.serverState = ServerState.Stopped;
 		this.serverProperties = new ServerProperties();
 		this.serverOPS = new ServerOPS();

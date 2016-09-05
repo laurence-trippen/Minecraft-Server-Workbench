@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MCSM>
   <MCServer>
-    <Server id="2">
-      <name>Hallo-Server</name>
+    <Server id="1">
+      <name>Laurence-Server-01</name>
       <description>leer</description>
       <creationDate />
+      <version>
+        <name>1.10.2</name>
+        <path>working\serverpool\Laurence-Server-01\minecraft_server.1.10.2.jar</path>
+      </version>
       <properties>
         <generator />
-        <opLevel>Four</opLevel>
+        <opLevel>FOUR</opLevel>
         <allowNether>true</allowNether>
         <rpHash />
         <levelName>world</levelName>

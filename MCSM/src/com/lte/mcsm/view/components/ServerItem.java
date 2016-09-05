@@ -94,7 +94,7 @@ public class ServerItem extends AnchorPane implements IRefreshable {
 		this.lbServerName.setLayoutX(106);
 		this.lbServerName.setLayoutY(41);
 		this.lbServerName.setText(server.getName());
-		this.lbServerVersion = new Label("1.9.4");
+		this.lbServerVersion = new Label(server.getServerVersion().getName());
 		this.lbServerVersion.setFont(Font.font("System", FontWeight.BOLD, 14));
 		this.lbServerVersion.setLayoutX(234);
 		this.lbServerVersion.setLayoutY(41);
