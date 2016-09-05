@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MCSM>
   <MCServer>
-    <Server id="1">
-      <name>Laurence Server</name>
+    <Server id="2">
+      <name>Hallo-Server</name>
       <description>leer</description>
       <creationDate />
       <properties>
@@ -47,7 +47,7 @@
       <name>1.10.2</name>
       <path>working/serverversions/minecraft_server.1.10.2.jar</path>
     </ServerVersion>
-    <ServerVersion id="4">
+    <ServerVersion id="2">
       <name>1.9.4</name>
       <path>working/serverversions/minecraft_server.1.9.4.jar</path>
     </ServerVersion>

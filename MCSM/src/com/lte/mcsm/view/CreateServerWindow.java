@@ -12,15 +12,19 @@ import com.lte.mcsm.main.Program;
 import com.lte.mcsm.manager.DesktopManager;
 import com.lte.mcsm.manager.WindowManager;
 import com.lte.mcsm.model.Path;
+import com.lte.mcsm.model.Server;
 import com.lte.mcsm.model.ServerCreator;
 import com.lte.mcsm.model.ServerList;
 import com.lte.mcsm.model.ServerVersion;
+import com.lte.mcsm.model.enums.DataStatus;
 import com.lte.mcsm.model.interfaces.IRefreshable;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.NodeOrientation;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
@@ -176,27 +180,59 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 					serverEulaCheckBox.setStyle("");
 				}
 				if ((!serverNameTextField.getText().equals("")) && serverEulaCheckBox.isSelected()) {
-					closeButton.setDisable(true);
-					createServerButton.setDisable(true);
-					serverNameTextField.setDisable(true);
-					serverVersionChoiceBox.setDisable(true);
-					serverEulaCheckBox.setDisable(true);
-					if (ServerCreator.createServerDirectory(Path.SERVER_DIRECTORY + serverNameTextField.getText())) {
-						oldServerJar = new File(serverVersionChoiceBox.getSelectionModel().getSelectedItem().getPath());
-						newServerJar = new File(Path.SERVER_DIRECTORY + serverNameTextField.getText() + "/" + oldServerJar.getName());
-						if (ServerCreator.copyServerJar(oldServerJar.getAbsolutePath(), newServerJar.getAbsolutePath())) {
-							if (ServerCreator.runServerJar(newServerJar.getAbsolutePath(), newServerJar.getParentFile().getPath(), true)) {
-								if (ServerCreator.editEula(Path.SERVER_DIRECTORY + serverNameTextField.getText() + "/eula.txt")) {
-									if (ServerCreator.runServerJar(newServerJar.getAbsolutePath(), newServerJar.getParentFile().getPath(), false)) {
-										if (ServerCreator.checkServer(serverNameTextField.getText())) {
-											System.out.println("true");
-										} else {
-											System.out.println("false");
+					if (ServerList.getServerList().existServer(serverNameTextField.getText())) {
+						closeButton.setDisable(true);
+						createServerButton.setDisable(true);
+						serverNameTextField.setDisable(true);
+						serverVersionChoiceBox.setDisable(true);
+						serverEulaCheckBox.setDisable(true);
+						if (ServerCreator.createServerDirectory(Path.SERVER_DIRECTORY + serverNameTextField.getText())) {
+							oldServerJar = new File(serverVersionChoiceBox.getSelectionModel().getSelectedItem().getPath());
+							newServerJar = new File(Path.SERVER_DIRECTORY + serverNameTextField.getText() + "/" + oldServerJar.getName());
+							if (ServerCreator.copyServerJar(oldServerJar.getAbsolutePath(), newServerJar.getAbsolutePath())) {
+								if (ServerCreator.runServerJar(newServerJar.getAbsolutePath(), newServerJar.getParentFile().getPath(), true)) {
+									if (ServerCreator.editEula(Path.SERVER_DIRECTORY + serverNameTextField.getText() + "/eula.txt")) {
+										if (ServerCreator.runServerJar(newServerJar.getAbsolutePath(), newServerJar.getParentFile().getPath(), false)) {
+											if (ServerCreator.checkServer(serverNameTextField.getText())) {
+												DataStatus status = ServerList.getServerList().addServer(new Server(
+														serverNameTextField.getText(),
+														new ServerVersion(
+																serverVersionChoiceBox.getSelectionModel().getSelectedItem().getName(),
+																newServerJar.getPath()
+												)));
+												switch (status) {
+												case Succcess:
+													Alert successAlert = new Alert(AlertType.INFORMATION);
+													successAlert.setTitle("Server erstellen erfolgreich!");
+													successAlert.setHeaderText(serverNameTextField.getText());
+													successAlert.setContentText("Minecraft Server " + serverNameTextField.getText() + " wurde erfolgreich erstellt!");
+													successAlert.showAndWait();
+													break;
+												case Error:
+													Alert errorAlert = new Alert(AlertType.ERROR);
+													errorAlert.setTitle("Installation fehlgeschlagen!");
+													errorAlert.setHeaderText(serverNameTextField.getText());
+													errorAlert.setContentText("Fehler beim erstellen von " + serverNameTextField.getText() + " !");
+													errorAlert.showAndWait();
+													break;
+												default:
+													break;
+												}
+												refresh();
+												Program.getMainStage().setScene(WindowManager.getWindowManager().getMainWindow());
+											} else {
+												System.out.println("false");
+											}
 										}
 									}
 								}
 							}
 						}
+					} else {
+						Alert alert = new Alert(AlertType.ERROR);
+						alert.setTitle("Fehler!");
+						alert.setContentText("Servername \"" + serverNameTextField.getText() + " \" existiert schon!");
+						alert.showAndWait();
 					}
 				}
 			}
@@ -234,7 +270,7 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 		this.serverEulaCheckBox.setStyle("");
 		this.serverVersionChoiceBox.getSelectionModel().selectFirst();
 		this.createServerButton.setDisable(false);
-		this.installationPane.setDisable(true);
+		this.installationPane.setDisable(false);
 		this.progressBar.setProgress(0.00);
 		this.progressLabel.setText("");
 	}

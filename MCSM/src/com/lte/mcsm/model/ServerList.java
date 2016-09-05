@@ -48,13 +48,7 @@ public class ServerList {
 	}
 	
 	public DataStatus addServer(Server newServer) {
-		if (newServer != null && serverList != null) {
-			for (Server server : serverList) {
-				if (newServer.getName().equals(server.getName())) {
-					System.out.println("Server existiert schon!");
-					return DataStatus.Exists;
-				}
-			}	
+		if (newServer != null) {	
 			serverCounter++;
 			newServer.setId(serverCounter);
 			serverList.add(newServer);
@@ -62,11 +56,11 @@ public class ServerList {
 			WindowManager.getWindowManager().getMainWindow().fetch();
 			return DataStatus.Succcess;
 		}
-		return DataStatus.Exists;
+		return DataStatus.Error;
 	}
 	
 	public DataStatus deleteServer(Server deleteServer) {
-		if (deleteServer != null && serverList != null) {
+		if (deleteServer != null) {
 			int counter = 0;
 			if (serverList.remove(deleteServer)) {
 				for (Server server : serverList) {
@@ -83,8 +77,17 @@ public class ServerList {
 		return DataStatus.Error;
 	}
 	
+	public boolean existServer(String newServerName) {
+		for (Server server : serverList) {
+			if (newServerName.equals(server.getName())) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	public DataStatus addServerVersion(ServerVersion serverVersion) {
-		if (serverVersion != null && serverVersions != null) {
+		if (serverVersion != null) {
 			for (ServerVersion existingVersion : serverVersions) {
 				if (
 						serverVersion.getName().equals(existingVersion.getName()) || 
@@ -105,7 +108,7 @@ public class ServerList {
 	}
 	
 	public DataStatus deleteServerVersion(ServerVersion serverVersion) {
-		if (serverVersion != null && serverVersions != null) {
+		if (serverVersion != null) {
 			int counter = 0;
 			File versionFile = new File(serverVersion.getPath());
 			if (serverVersions.remove(serverVersion)) {

@@ -6,8 +6,6 @@ import static com.lte.mcsm.config.AppConfig.dateFormat;
 import com.lte.mcsm.model.enums.ServerState;
 import com.lte.mcsm.model.interfaces.IServerController;
 
-import javafx.scene.image.Image;
-
 public class Server implements IServerController {
 	
 	private int id;
@@ -24,21 +22,18 @@ public class Server implements IServerController {
 	private ServerWhitelist serverWhitelist;
 	private ServerBannedIps serverBannedIps;
 	private ServerBannedPlayers serverBannedPlayers;
-	private Image serverImage;
-
-	public Server(String name) {
+	
+	public Server(String name, ServerVersion serverVersion) {
 		this.id = 0;
 		this.name = name;
 		this.description = "leer";
-		this.creationDate = dateFormat.format(new Date());
-		this.serverVersion = null;
 		this.serverState = ServerState.Stopped;
 		this.serverProperties = new ServerProperties();
+		this.serverOPS = new ServerOPS();
 		this.serverOPS = new ServerOPS();
 		this.serverWhitelist = new ServerWhitelist();
 		this.serverBannedIps = new ServerBannedIps();
 		this.serverBannedPlayers = new ServerBannedPlayers();
-		this.serverImage = null;
 	}
 	
 	public Server(String name, int id) {
@@ -46,14 +41,12 @@ public class Server implements IServerController {
 		this.name = name;
 		this.description = "leer";
 		this.creationDate = dateFormat.format(new Date());
-		this.serverVersion = null;
 		this.serverState = ServerState.Stopped;
 		this.serverProperties = new ServerProperties();
 		this.serverOPS = new ServerOPS();
 		this.serverWhitelist = new ServerWhitelist();
 		this.serverBannedIps = new ServerBannedIps();
 		this.serverBannedPlayers = new ServerBannedPlayers();
-		this.serverImage = null;
 	}
 	
 	@Override
@@ -176,14 +169,6 @@ public class Server implements IServerController {
 
 	public void setServerBannedPlayers(ServerBannedPlayers serverBannedPlayers) {
 		this.serverBannedPlayers = serverBannedPlayers;
-	}
-
-	public Image getServerImage() {
-		return serverImage;
-	}
-
-	public void setServerImage(Image serverImage) {
-		this.serverImage = serverImage;
 	}
 
 }
