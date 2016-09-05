@@ -44,7 +44,7 @@ public class ServerProperties {
 	
 	public ServerProperties() {
 		this.generator = "";
-		this.opLevel = OpLevel.Four;
+		this.opLevel = OpLevel.FOUR;
 		this.allowNether = true;
 		this.rpHash = "";
 		this.levelName = "world";
