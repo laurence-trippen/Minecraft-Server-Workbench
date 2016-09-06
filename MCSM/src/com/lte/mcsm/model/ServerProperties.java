@@ -1,5 +1,7 @@
 package com.lte.mcsm.model;
 
+import java.util.Properties;
+
 import com.lte.mcsm.model.enums.Difficulty;
 import com.lte.mcsm.model.enums.GameMode;
 import com.lte.mcsm.model.enums.OpLevel;
@@ -8,6 +10,7 @@ import com.lte.mcsm.model.interfaces.IPropertiesController;
 
 public class ServerProperties implements IPropertiesController {
 	
+	private Properties serverProperties;
 	private String propertiesPath;
 	private String generator;
 	private OpLevel opLevel;
@@ -45,6 +48,7 @@ public class ServerProperties implements IPropertiesController {
 	private String motd;
 	
 	public ServerProperties(String propertiesPath) {
+		this.serverProperties = new Properties();
 		this.propertiesPath = propertiesPath;
 		this.generator = "";
 		this.opLevel = OpLevel.FOUR;
@@ -92,6 +96,14 @@ public class ServerProperties implements IPropertiesController {
 			
 	}
 	
+	public Properties getServerProperties() {
+		return serverProperties;
+	}
+
+	public void setServerProperties(Properties serverProperties) {
+		this.serverProperties = serverProperties;
+	}
+
 	public String getPropertiesPath() {
 		return propertiesPath;
 	}
