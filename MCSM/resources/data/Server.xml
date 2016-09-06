@@ -45,6 +45,50 @@
         <motd>A Minecraft Server</motd>
       </properties>
     </Server>
+    <Server id="2">
+      <name>Test-Server</name>
+      <description>leer</description>
+      <creationDate />
+      <version>
+        <name>1.9.4</name>
+        <path>working\serverpool\Test-Server\minecraft_server.1.9.4.jar</path>
+      </version>
+      <properties>
+        <generator />
+        <opLevel>FOUR</opLevel>
+        <allowNether>true</allowNether>
+        <rpHash />
+        <levelName>world</levelName>
+        <enableQuery>false</enableQuery>
+        <allowFlight>true</allowFlight>
+        <showAchievements>true</showAchievements>
+        <serverPort>25565</serverPort>
+        <maxWorldSize>29999984</maxWorldSize>
+        <worldType>Default</worldType>
+        <enableRcon>false</enableRcon>
+        <levelSeed />
+        <forceGameMode>false</forceGameMode>
+        <serverIp />
+        <networkCompression>256</networkCompression>
+        <maxBuildHeight>256</maxBuildHeight>
+        <spawnNPCs>true</spawnNPCs>
+        <whitelist>false</whitelist>
+        <enabledSnooper>true</enabledSnooper>
+        <onlineMode>true</onlineMode>
+        <resourcePack />
+        <enabledPVP>true</enabledPVP>
+        <difficulty>Easy</difficulty>
+        <enabledCommandBlock>false</enabledCommandBlock>
+        <gameMode>Survival</gameMode>
+        <playerIdleTime>0</playerIdleTime>
+        <maxPlayers>20</maxPlayers>
+        <maxTickTime>60000</maxTickTime>
+        <spawnMonsters>true</spawnMonsters>
+        <generateStructs>true</generateStructs>
+        <viewDistance>10</viewDistance>
+        <motd>A Minecraft Server</motd>
+      </properties>
+    </Server>
   </MCServer>
   <MCVersions>
     <ServerVersion id="1">

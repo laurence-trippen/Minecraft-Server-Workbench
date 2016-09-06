@@ -1,5 +1,9 @@
 package com.lte.mcsm.model;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 import com.lte.mcsm.model.enums.Difficulty;
@@ -88,12 +92,44 @@ public class ServerProperties implements IPropertiesController {
 	
 	@Override
 	public void saveProperties() {
-			
+
 	}
 	
 	@Override
 	public void loadProperties() {
-			
+		try {
+			InputStream input = new FileInputStream(propertiesPath);
+			serverProperties.load(input);
+			this.setGenerator(serverProperties.getProperty("generator-settings"));
+			switch (serverProperties.getProperty("op-permission-level")) {
+			case "1":
+				this.setOpLevel(OpLevel.ONE);
+				break;
+			case "2":
+				this.setOpLevel(OpLevel.TWO);
+				break;
+			case "3":
+				this.setOpLevel(OpLevel.THREE);
+				break;
+			case "4":
+				this.setOpLevel(OpLevel.FOUR);
+				break;
+			}
+			this.setAllowNether(serverProperties.getProperty("allow-nether") == "true" ? true : false);
+			this.setLevelName(serverProperties.getProperty("level-name"));
+			this.setEnableQuery(serverProperties.getProperty("enable-query") == "true" ? true : false);
+			this.setAllowFlight(serverProperties.getProperty("allow-flight") == "true" ? true : false);
+			this.setShowAchievements(serverProperties.getProperty("announce-player-achievements") == "true" ? true : false);
+			this.setServerPort(Integer.valueOf(serverProperties.getProperty("server-port")));
+			this.setMaxWorldSize(Integer.valueOf(serverProperties.getProperty("max-world-size")));
+			switch (serverProperties.getProperty("level-type")) {
+				
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public Properties getServerProperties() {
