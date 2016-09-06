@@ -15,6 +15,7 @@ public class Server implements IServerController {
 //	private Date lastRunDate;
 //	private Date startDate;
 //	private Date runtime;
+	private ServerPath serverPath;
 	private ServerVersion serverVersion;
 	private ServerState serverState;
 	private ServerProperties serverProperties;
@@ -27,27 +28,29 @@ public class Server implements IServerController {
 		this.id = 0;
 		this.name = name;
 		this.description = "leer";
+		this.serverPath = new ServerPath(this.getName());
 		this.serverVersion = serverVersion;
 		this.serverState = ServerState.Stopped;
-		this.serverProperties = new ServerProperties();
-		this.serverOPS = new ServerOPS();
-		this.serverOPS = new ServerOPS();
-		this.serverWhitelist = new ServerWhitelist();
-		this.serverBannedIps = new ServerBannedIps();
-		this.serverBannedPlayers = new ServerBannedPlayers();
+		this.serverProperties = new ServerProperties(this.getServerPath().getProperties());
+		this.serverOPS = new ServerOPS(this.getServerPath().getOps());
+		this.serverWhitelist = new ServerWhitelist(this.getServerPath().getWhitlelist());
+		this.serverBannedIps = new ServerBannedIps(this.getServerPath().getBannedIps());
+		this.serverBannedPlayers = new ServerBannedPlayers(this.getServerPath().getBannedPlayers());
 	}
 	
-	public Server(String name, int id) {
+	public Server(String name, ServerVersion serverVersion, int id) {
 		this.id = id;
 		this.name = name;
 		this.description = "leer";
 		this.creationDate = dateFormat.format(new Date());
+		this.serverPath = new ServerPath(this.getName());
+		this.serverVersion = serverVersion;
 		this.serverState = ServerState.Stopped;
-		this.serverProperties = new ServerProperties();
-		this.serverOPS = new ServerOPS();
-		this.serverWhitelist = new ServerWhitelist();
-		this.serverBannedIps = new ServerBannedIps();
-		this.serverBannedPlayers = new ServerBannedPlayers();
+		this.serverProperties = new ServerProperties(this.getServerPath().getProperties());
+		this.serverOPS = new ServerOPS(this.getServerPath().getOps());
+		this.serverWhitelist = new ServerWhitelist(this.getServerPath().getWhitlelist());
+		this.serverBannedIps = new ServerBannedIps(this.getServerPath().getBannedIps());
+		this.serverBannedPlayers = new ServerBannedPlayers(this.getServerPath().getBannedPlayers());
 	}
 	
 	@Override
@@ -118,6 +121,14 @@ public class Server implements IServerController {
 
 	public ServerState getServerState() {
 		return serverState;
+	}
+
+	public ServerPath getServerPath() {
+		return serverPath;
+	}
+
+	public void setServerPath(ServerPath serverPath) {
+		this.serverPath = serverPath;
 	}
 
 	public ServerVersion getServerVersion() {

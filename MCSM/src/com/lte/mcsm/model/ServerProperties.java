@@ -4,9 +4,11 @@ import com.lte.mcsm.model.enums.Difficulty;
 import com.lte.mcsm.model.enums.GameMode;
 import com.lte.mcsm.model.enums.OpLevel;
 import com.lte.mcsm.model.enums.WorldType;
+import com.lte.mcsm.model.interfaces.IPropertiesController;
 
-public class ServerProperties {
+public class ServerProperties implements IPropertiesController {
 	
+	private String propertiesPath;
 	private String generator;
 	private OpLevel opLevel;
 	private boolean allowNether;
@@ -42,7 +44,8 @@ public class ServerProperties {
 	private int viewDistance;
 	private String motd;
 	
-	public ServerProperties() {
+	public ServerProperties(String propertiesPath) {
+		this.propertiesPath = propertiesPath;
 		this.generator = "";
 		this.opLevel = OpLevel.FOUR;
 		this.allowNether = true;
@@ -77,6 +80,24 @@ public class ServerProperties {
 		this.generateStructs = true;
 		this.viewDistance = 10;
 		this.motd = "A Minecraft Server";
+	}
+	
+	@Override
+	public void saveProperties() {
+			
+	}
+	
+	@Override
+	public void loadProperties() {
+			
+	}
+	
+	public String getPropertiesPath() {
+		return propertiesPath;
+	}
+
+	public void setPropertiesPath(String propertiesPath) {
+		this.propertiesPath = propertiesPath;
 	}
 
 	public String getGenerator() {

@@ -15,9 +15,11 @@ import com.lte.mcsm.model.abstracts.JsonIO;
 
 public class ServerBannedPlayers extends JsonIO {
 	
+	private String bannedPlayersPath;
 	private List<ServerBannedPlayerEntry> serverBannedPlayerEntries;
 	
-	public ServerBannedPlayers() {
+	public ServerBannedPlayers(String bannedPlayersPath) {
+		this.bannedPlayersPath = bannedPlayersPath;
 		this.serverBannedPlayerEntries = new ArrayList<ServerBannedPlayerEntry>();
 	}
 	
@@ -25,7 +27,7 @@ public class ServerBannedPlayers extends JsonIO {
 	public void readEntries() {
 		JSONParser parser = new JSONParser();
 		try {
-			Object obj = parser.parse(new FileReader(Path.BANNED_PLAYERS));
+			Object obj = parser.parse(new FileReader(bannedPlayersPath));
 			JSONArray array = (JSONArray)obj;
 			for (int i = 0; i < array.size(); i++) {
 				JSONObject jsonEntry = (JSONObject)array.get(i);
@@ -75,6 +77,14 @@ public class ServerBannedPlayers extends JsonIO {
 				);
 			}
 		}
+	}
+
+	public String getBannedPlayersPath() {
+		return bannedPlayersPath;
+	}
+
+	public void setBannedPlayersPath(String bannedPlayersPath) {
+		this.bannedPlayersPath = bannedPlayersPath;
 	}
 
 	public List<ServerBannedPlayerEntry> getServerBannedPlayerEntries() {

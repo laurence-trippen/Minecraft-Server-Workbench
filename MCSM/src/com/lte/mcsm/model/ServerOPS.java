@@ -15,9 +15,11 @@ import com.lte.mcsm.model.abstracts.JsonIO;
 
 public class ServerOPS extends JsonIO {
 	
+	private String opsPath;
 	private List<ServerOPEntry> serverOPEntries;
 	
-	public ServerOPS() {
+	public ServerOPS(String opsPath) {
+		this.opsPath = opsPath;
 		this.serverOPEntries = new ArrayList<ServerOPEntry>();
 	}
 	
@@ -25,7 +27,7 @@ public class ServerOPS extends JsonIO {
 	public void readEntries() {
 		JSONParser parser = new JSONParser();
 		try {
-			Object obj = parser.parse(new FileReader(Path.OPS));
+			Object obj = parser.parse(new FileReader(opsPath));
 			JSONArray array = (JSONArray)obj;
 			for (int i = 0; i < array.size(); i++) {
 				JSONObject jsonEntry = (JSONObject)array.get(i);
@@ -71,6 +73,14 @@ public class ServerOPS extends JsonIO {
 		}
 	}
 	
+	public String getOpsPath() {
+		return opsPath;
+	}
+
+	public void setOpsPath(String opsPath) {
+		this.opsPath = opsPath;
+	}
+
 	public List<ServerOPEntry> getServerOPEntries() {
 		return serverOPEntries;
 	}

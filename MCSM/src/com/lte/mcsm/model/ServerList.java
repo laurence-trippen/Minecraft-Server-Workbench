@@ -207,12 +207,10 @@ public class ServerList {
 					serverCounter++;
 					Element version = xmlServer.getChild("version");
 					Element properties = xmlServer.getChild("properties");
-					Server loadServer = new Server(xmlServer.getChildText("name"), serverCounter);
+					ServerVersion serverVersion = new ServerVersion(version.getChildText("name"), version.getChildText("path"));
+					Server loadServer = new Server(xmlServer.getChildText("name"), serverVersion, serverCounter);
 					loadServer.setDescription(xmlServer.getChildText("description"));
 					loadServer.setCreationDate(xmlServer.getAttributeValue("creationDate"));
-					ServerVersion serverVersion = loadServer.getServerVersion();
-					serverVersion.setName(version.getChildText("name"));
-					serverVersion.setPath(version.getChildText("path"));
 					ServerProperties serverProperties = loadServer.getServerProperties();
 					serverProperties.setGenerator(properties.getChildText("generator"));
 					serverProperties.setOpLevel(OpLevel.valueOf(properties.getChildText("opLevel")));

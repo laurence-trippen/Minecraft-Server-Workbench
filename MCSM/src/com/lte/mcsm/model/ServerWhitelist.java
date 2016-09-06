@@ -15,9 +15,11 @@ import com.lte.mcsm.model.abstracts.JsonIO;
 
 public class ServerWhitelist extends JsonIO {
 	
+	private String whitelistPath;
 	private List<ServerWhitelistEntry> serverWhitelistEntries;
 	
-	public ServerWhitelist() {
+	public ServerWhitelist(String whitelistPath) {
+		this.whitelistPath = whitelistPath;
 		this.serverWhitelistEntries = new ArrayList<ServerWhitelistEntry>();
 	}
 	
@@ -25,7 +27,7 @@ public class ServerWhitelist extends JsonIO {
 	public void readEntries() {
 		JSONParser parser = new JSONParser();
 		try {
-			Object obj = parser.parse(new FileReader(Path.WHITELIST));
+			Object obj = parser.parse(new FileReader(whitelistPath));
 			JSONArray array = (JSONArray)obj;
 			for (int i = 0; i < array.size(); i++) {
 				JSONObject jsonEntry = (JSONObject)array.get(i);
@@ -67,6 +69,14 @@ public class ServerWhitelist extends JsonIO {
 				);
 			}
 		}
+	}
+
+	public String getWhitelistPath() {
+		return whitelistPath;
+	}
+
+	public void setWhitelistPath(String whitelistPath) {
+		this.whitelistPath = whitelistPath;
 	}
 
 	public List<ServerWhitelistEntry> getServerWhitelistEntries() {

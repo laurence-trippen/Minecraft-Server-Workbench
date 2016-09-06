@@ -16,9 +16,20 @@ public class Path {
 	public static final String BACKGROUND 			= "resources/images/Background.png";
 	public static final String JAR_PNG 				= "resources/images/jar.png";
 	
-	public static final String OPS 					= "test-files/ops.json";
-	public static final String WHITELIST 			= "test-files/whitelist.json";
-	public static final String BANNED_IPS 			= "test-files/banned-ips.json";
-	public static final String BANNED_PLAYERS 		= "test-files/banned-players.json";
+	public static final String EULA					= "/eula.txt";
+	public static final String OPS 					= "/ops.json";
+	public static final String WHITELIST 			= "/whitelist.json";
+	public static final String BANNED_IPS 			= "/banned-ips.json";
+	public static final String BANNED_PLAYERS 		= "/banned-players.json";
+	public static final String USERCACHE			= "/usercache.json";
+	public static final String PROPERTIES			= "/server.properties";
+	public static final String WORLD				= "/world";
+	public static final String LOGS					= "/logs";
+	public static final String LATEST_LOG			= "/logs/latest.log";
+	
+	public static final String OPS_TEST 			= "test-files/ops.json";
+	public static final String WHITELIST_TEST 		= "test-files/whitelist.json";
+	public static final String BANNED_IPS_TEST 		= "test-files/banned-ips.json";
+	public static final String BANNED_PLAYERS_TEST 	= "test-files/banned-players.json";
 
 }
