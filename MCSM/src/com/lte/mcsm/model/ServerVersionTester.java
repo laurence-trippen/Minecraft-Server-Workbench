@@ -68,7 +68,7 @@ public class ServerVersionTester {
 			versionTestFile = new File(Path.SERVER_CHECK + selectedVersionJar.getName());
 			try {
 				Files.copy(Paths.get(selectedVersionJar.getAbsolutePath()),
-						Paths.get(Path.SERVER_CHECK + selectedVersionJar.getName()));
+						Paths.get(new File(Path.SERVER_CHECK + selectedVersionJar.getName()).getAbsolutePath()));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

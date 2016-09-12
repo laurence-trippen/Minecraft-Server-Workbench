@@ -64,7 +64,7 @@ public class ServerProperties implements IPropertiesController {
 		this.showAchievements = true;
 		this.serverPort = 25565;
 		this.maxWorldSize = 29999984;
-		this.worldType = WorldType.Default;
+		this.worldType = WorldType.DEFAULT;
 		this.enableRcon = false;
 		this.levelSeed = "";
 		this.forceGameMode = false;
@@ -123,7 +123,21 @@ public class ServerProperties implements IPropertiesController {
 			this.setServerPort(Integer.valueOf(serverProperties.getProperty("server-port")));
 			this.setMaxWorldSize(Integer.valueOf(serverProperties.getProperty("max-world-size")));
 			switch (serverProperties.getProperty("level-type")) {
-				
+			case "DEFAULT":
+				this.setWorldType(WorldType.DEFAULT);
+				break;
+			case "FLAT":
+				this.setWorldType(WorldType.SUPERFLAT);
+				break;
+			case "LARGEBIOMES":
+				this.setWorldType(WorldType.LARGEBIOMES);
+				break;
+			case "AMPLIFIED":
+				this.setWorldType(WorldType.AMPLIFIED);
+				break;
+			case "CUSTOMIZED":
+				this.setWorldType(WorldType.CUSTOMIZED);
+				break;
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

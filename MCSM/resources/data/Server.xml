@@ -20,7 +20,7 @@
         <showAchievements>true</showAchievements>
         <serverPort>25565</serverPort>
         <maxWorldSize>29999984</maxWorldSize>
-        <worldType>Default</worldType>
+        <worldType>DEFAULT</worldType>
         <enableRcon>false</enableRcon>
         <levelSeed />
         <forceGameMode>false</forceGameMode>
@@ -64,7 +64,7 @@
         <showAchievements>true</showAchievements>
         <serverPort>25565</serverPort>
         <maxWorldSize>29999984</maxWorldSize>
-        <worldType>Default</worldType>
+        <worldType>DEFAULT</worldType>
         <enableRcon>false</enableRcon>
         <levelSeed />
         <forceGameMode>false</forceGameMode>
