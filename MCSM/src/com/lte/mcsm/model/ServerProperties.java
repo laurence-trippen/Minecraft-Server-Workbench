@@ -2,8 +2,10 @@ package com.lte.mcsm.model;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Properties;
 
 import com.lte.mcsm.model.enums.Difficulty;
@@ -92,13 +94,42 @@ public class ServerProperties implements IPropertiesController {
 	
 	@Override
 	public void saveProperties() {
-
+		OutputStream output = null;
+		try {
+			output = new FileOutputStream(propertiesPath);
+			this.serverProperties.setProperty("generator-settings", this.getGenerator());
+			switch (this.getOpLevel()) {
+			case ONE:
+				this.serverProperties.setProperty("op-permission-level", "1");
+				break;
+			case TWO:
+				this.serverProperties.setProperty("op-permission-level", "2");
+				break;	
+			case THREE:
+				this.serverProperties.setProperty("op-permission-level", "3");
+				break;
+			case FOUR:
+				this.serverProperties.setProperty("op-permission-level", "4");
+				break;
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			if (output != null) {
+				try {
+					output.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 	
 	@Override
 	public void loadProperties() {
+		InputStream input = null;
 		try {
-			InputStream input = new FileInputStream(propertiesPath);
+			input = new FileInputStream(propertiesPath);
 			serverProperties.load(input);
 			this.setGenerator(serverProperties.getProperty("generator-settings"));
 			switch (serverProperties.getProperty("op-permission-level")) {
@@ -192,6 +223,14 @@ public class ServerProperties implements IPropertiesController {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			if (input != null) {
+				try {
+					input.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 	
