@@ -54,6 +54,11 @@ public class Server implements IServerController {
 	}
 	
 	@Override
+	public void init() {
+			
+	}
+	
+	@Override
 	public void start() {
 		
 	}
