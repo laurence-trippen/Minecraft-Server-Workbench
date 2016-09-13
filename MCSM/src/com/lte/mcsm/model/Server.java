@@ -52,7 +52,7 @@ public class Server implements IServerController {
 	
 	@Override
 	public void init() {
-			
+		
 	}
 	
 	@Override
