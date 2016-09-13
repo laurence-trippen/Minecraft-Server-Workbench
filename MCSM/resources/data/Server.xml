@@ -35,7 +35,7 @@
         <enabledPVP>true</enabledPVP>
         <difficulty>EASY</difficulty>
         <enabledCommandBlock>false</enabledCommandBlock>
-        <gameMode>Survival</gameMode>
+        <gameMode>SURVIVAL</gameMode>
         <playerIdleTime>0</playerIdleTime>
         <maxPlayers>20</maxPlayers>
         <maxTickTime>60000</maxTickTime>
@@ -79,7 +79,7 @@
         <enabledPVP>true</enabledPVP>
         <difficulty>EASY</difficulty>
         <enabledCommandBlock>false</enabledCommandBlock>
-        <gameMode>Survival</gameMode>
+        <gameMode>SURVIVAL</gameMode>
         <playerIdleTime>0</playerIdleTime>
         <maxPlayers>20</maxPlayers>
         <maxTickTime>60000</maxTickTime>

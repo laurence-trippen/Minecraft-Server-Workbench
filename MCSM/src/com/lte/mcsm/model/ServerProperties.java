@@ -112,7 +112,67 @@ public class ServerProperties implements IPropertiesController {
 				this.serverProperties.setProperty("op-permission-level", "4");
 				break;
 			}
+			this.serverProperties.setProperty("allow-nether", this.isAllowNether() ? "true" : "false");
+			this.serverProperties.setProperty("level-name", this.getLevelName());
+			this.serverProperties.setProperty("enable-query", this.isEnableQuery() ? "true" : "false");
+			this.serverProperties.setProperty("allow-flight", this.isAllowFlight() ? "true" : "false");
+			this.serverProperties.setProperty("announce-player-achievements", this.isShowAchievements() ? "true" : "false");
+			this.serverProperties.setProperty("server-port", String.valueOf(this.getServerPort()));
+			this.serverProperties.setProperty("max-world-size", String.valueOf(this.getMaxWorldSize()));
+			this.serverProperties.setProperty("level-type", this.getWorldType().toString());
+			this.serverProperties.setProperty("enable-rcon", this.isEnableRcon() ? "true" : "false");
+			this.serverProperties.setProperty("level-seed", this.getLevelSeed());
+			this.serverProperties.setProperty("force-gamemode", this.isForceGameMode() ? "true" : "false");
+			this.serverProperties.setProperty("server-ip", this.getServerIp());
+			this.serverProperties.setProperty("network-compression-threshold", String.valueOf(this.getNetworkCompression()));
+			this.serverProperties.setProperty("max-build-height", String.valueOf(this.getMaxBuildHeight()));
+			this.serverProperties.setProperty("spawn-npcs", this.isSpawnNPCs() ? "true" : "false");
+			this.serverProperties.setProperty("white-list", this.isWhitelist() ? "true" : "false");
+			this.serverProperties.setProperty("spawn-animals", this.isSpawnAnimals() ? "true" : "false");
+			this.serverProperties.setProperty("snooper-enabled", this.isEnabledSnooper() ? "true" : "false");
+			this.serverProperties.setProperty("online-mode", this.isOnlineMode() ? "true" : "false");
+			this.serverProperties.setProperty("resource-pack", this.getResourcePack());
+			this.serverProperties.setProperty("pvp", this.isEnabledPVP() ? "true" : "false");
+			switch (this.getDifficulty()) {
+			case PEACEFUL:
+				this.serverProperties.setProperty("difficulty", "0");
+				break;
+			case EASY:
+				this.serverProperties.setProperty("difficulty", "1");
+				break;
+			case NORMAL:
+				this.serverProperties.setProperty("difficulty", "2");
+				break;
+			case HARD:
+				this.serverProperties.setProperty("difficulty", "3");
+				break;
+			}
+			this.serverProperties.setProperty("enable-command-block", this.isEnabledCommandBlock() ? "true" : "false");
+			switch (this.getGameMode()) {
+			case SURVIVAL:
+				this.serverProperties.setProperty("gamemode", "0");
+				break;
+			case CREATIVE:
+				this.serverProperties.setProperty("gamemode", "1");
+				break;
+			case HARDCORE:
+				this.serverProperties.setProperty("gamemode", "2");
+				break;
+			case VISITOR:
+				this.serverProperties.setProperty("gamemode", "3");
+				break;
+			}
+			this.serverProperties.setProperty("player-idle-timeout", String.valueOf(this.getPlayerIdleTime()));
+			this.serverProperties.setProperty("max-players", String.valueOf(this.getMaxPlayers()));
+			this.serverProperties.setProperty("max-tick-time", String.valueOf(this.getMaxTickTime()));
+			this.serverProperties.setProperty("spawn-monsters", this.isSpawnMonsters() ? "true" : "false");
+			this.serverProperties.setProperty("generate-structures", this.isGenerateStructs() ? "true" : "false");
+			this.serverProperties.setProperty("view-distance", String.valueOf(this.getViewDistance()));
+			this.serverProperties.setProperty("motd", this.getMotd());
+			this.serverProperties.store(output, null);
 		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
 			if (output != null) {
@@ -151,8 +211,8 @@ public class ServerProperties implements IPropertiesController {
 			this.setEnableQuery(serverProperties.getProperty("enable-query") == "true" ? true : false);
 			this.setAllowFlight(serverProperties.getProperty("allow-flight") == "true" ? true : false);
 			this.setShowAchievements(serverProperties.getProperty("announce-player-achievements") == "true" ? true : false);
-			this.setServerPort(Integer.valueOf(serverProperties.getProperty("server-port")));
-			this.setMaxWorldSize(Integer.valueOf(serverProperties.getProperty("max-world-size")));
+			this.setServerPort(Integer.parseInt(serverProperties.getProperty("server-port")));
+			this.setMaxWorldSize(Integer.parseInt(serverProperties.getProperty("max-world-size")));
 			switch (serverProperties.getProperty("level-type")) {
 			case "DEFAULT":
 				this.setWorldType(WorldType.DEFAULT);
@@ -174,8 +234,8 @@ public class ServerProperties implements IPropertiesController {
 			this.setLevelSeed(serverProperties.getProperty("level-seed"));
 			this.setForceGameMode(serverProperties.getProperty("force-gamemode") == "true" ? true : false);
 			this.setServerIp(serverProperties.getProperty("server-ip"));
-			this.setNetworkCompression(Integer.valueOf(serverProperties.getProperty("network-compression-treshold")));
-			this.setMaxBuildHeight(Integer.valueOf(serverProperties.getProperty("max-build-height")));
+			this.setNetworkCompression(Integer.parseInt(serverProperties.getProperty("network-compression-threshold")));
+			this.setMaxBuildHeight(Integer.parseInt(serverProperties.getProperty("max-build-height")));
 			this.setSpawnNPCs(serverProperties.getProperty("spawn-npcs") == "true" ? true : false);
 			this.setWhitelist(serverProperties.getProperty("white-list") == "true" ? true : false);
 			this.setSpawnAnimals(serverProperties.getProperty("spawn-animals") == "true" ? true : false);
@@ -212,12 +272,12 @@ public class ServerProperties implements IPropertiesController {
 				this.setGameMode(GameMode.VISITOR);
 				break;
 			}
-			this.setPlayerIdleTime(Integer.valueOf(serverProperties.getProperty("player-idle-timeout")));
-			this.setMaxPlayers(Integer.valueOf(serverProperties.getProperty("max-players")));
-			this.setMaxTickTime(Integer.valueOf(serverProperties.getProperty("max-tick-time")));
+			this.setPlayerIdleTime(Integer.parseInt(serverProperties.getProperty("player-idle-timeout")));
+			this.setMaxPlayers(Integer.parseInt(serverProperties.getProperty("max-players")));
+			this.setMaxTickTime(Integer.parseInt(serverProperties.getProperty("max-tick-time")));
 			this.setSpawnMonsters(serverProperties.getProperty("spawn-monsters") == "true" ? true : false);
 			this.setGenerateStructs(serverProperties.getProperty("generate-structures") == "true" ? true : false);
-			this.setViewDistance(Integer.valueOf(serverProperties.getProperty("view-distance")));
+			this.setViewDistance(Integer.parseInt(serverProperties.getProperty("view-distance")));
 			this.setMotd(serverProperties.getProperty("motd"));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
