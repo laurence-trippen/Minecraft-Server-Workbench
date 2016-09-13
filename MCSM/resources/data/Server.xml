@@ -33,7 +33,7 @@
         <onlineMode>true</onlineMode>
         <resourcePack />
         <enabledPVP>true</enabledPVP>
-        <difficulty>Easy</difficulty>
+        <difficulty>EASY</difficulty>
         <enabledCommandBlock>false</enabledCommandBlock>
         <gameMode>Survival</gameMode>
         <playerIdleTime>0</playerIdleTime>
@@ -77,7 +77,7 @@
         <onlineMode>true</onlineMode>
         <resourcePack />
         <enabledPVP>true</enabledPVP>
-        <difficulty>Easy</difficulty>
+        <difficulty>EASY</difficulty>
         <enabledCommandBlock>false</enabledCommandBlock>
         <gameMode>Survival</gameMode>
         <playerIdleTime>0</playerIdleTime>

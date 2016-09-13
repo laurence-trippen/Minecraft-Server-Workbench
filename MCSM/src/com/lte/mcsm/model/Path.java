@@ -26,10 +26,5 @@ public class Path {
 	public static final String WORLD				= "/world";
 	public static final String LOGS					= "/logs";
 	public static final String LATEST_LOG			= "/logs/latest.log";
-	
-	public static final String OPS_TEST 			= "test-files/ops.json";
-	public static final String WHITELIST_TEST 		= "test-files/whitelist.json";
-	public static final String BANNED_IPS_TEST 		= "test-files/banned-ips.json";
-	public static final String BANNED_PLAYERS_TEST 	= "test-files/banned-players.json";
 
 }

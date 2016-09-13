@@ -78,9 +78,9 @@ public class ServerProperties implements IPropertiesController {
 		this.onlineMode = true;
 		this.resourcePack = "";
 		this.enabledPVP = true;
-		this.difficulty = Difficulty.Easy;
+		this.difficulty = Difficulty.EASY;
 		this.enabledCommandBlock = false;
-		this.gameMode = GameMode.Survival;
+		this.gameMode = GameMode.SURVIVAL;
 		this.playerIdleTime = 0;
 		this.maxPlayers = 20;
 		this.maxTickTime = 60000;
@@ -139,6 +139,55 @@ public class ServerProperties implements IPropertiesController {
 				this.setWorldType(WorldType.CUSTOMIZED);
 				break;
 			}
+			this.setEnableRcon(serverProperties.getProperty("enable-rcon") == "true" ? true : false);
+			this.setLevelSeed(serverProperties.getProperty("level-seed"));
+			this.setForceGameMode(serverProperties.getProperty("force-gamemode") == "true" ? true : false);
+			this.setServerIp(serverProperties.getProperty("server-ip"));
+			this.setNetworkCompression(Integer.valueOf(serverProperties.getProperty("network-compression-treshold")));
+			this.setMaxBuildHeight(Integer.valueOf(serverProperties.getProperty("max-build-height")));
+			this.setSpawnNPCs(serverProperties.getProperty("spawn-npcs") == "true" ? true : false);
+			this.setWhitelist(serverProperties.getProperty("white-list") == "true" ? true : false);
+			this.setSpawnAnimals(serverProperties.getProperty("spawn-animals") == "true" ? true : false);
+			this.setEnabledSnooper(serverProperties.getProperty("snooper-enabled") == "true" ? true : false);
+			this.setOnlineMode(serverProperties.getProperty("online-mode") == "true" ? true : false);
+			this.setResourcePack(serverProperties.getProperty("resource-pack"));
+			this.setEnabledPVP(serverProperties.getProperty("pvp") == "true" ? true : false);
+			switch (serverProperties.getProperty("difficulty")) {
+			case "0":
+				this.setDifficulty(Difficulty.PEACEFUL);
+				break;
+			case "1":
+				this.setDifficulty(Difficulty.EASY);
+				break;
+			case "2":
+				this.setDifficulty(Difficulty.NORMAL);
+				break;
+			case "3":
+				this.setDifficulty(Difficulty.HARD);
+				break;
+			}
+			this.setEnabledCommandBlock(serverProperties.getProperty("enable-command-block") == "true" ? true : false);
+			switch (serverProperties.getProperty("gamemode")) {
+			case "0":
+				this.setGameMode(GameMode.SURVIVAL);
+				break;
+			case "1":
+				this.setGameMode(GameMode.CREATIVE);
+				break;
+			case "2":
+				this.setGameMode(GameMode.HARDCORE);
+				break;
+			case "3":
+				this.setGameMode(GameMode.VISITOR);
+				break;
+			}
+			this.setPlayerIdleTime(Integer.valueOf(serverProperties.getProperty("player-idle-timeout")));
+			this.setMaxPlayers(Integer.valueOf(serverProperties.getProperty("max-players")));
+			this.setMaxTickTime(Integer.valueOf(serverProperties.getProperty("max-tick-time")));
+			this.setSpawnMonsters(serverProperties.getProperty("spawn-monsters") == "true" ? true : false);
+			this.setGenerateStructs(serverProperties.getProperty("generate-structures") == "true" ? true : false);
+			this.setViewDistance(Integer.valueOf(serverProperties.getProperty("view-distance")));
+			this.setMotd(serverProperties.getProperty("motd"));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
