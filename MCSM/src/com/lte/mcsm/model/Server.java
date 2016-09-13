@@ -12,9 +12,6 @@ public class Server implements IServerController {
 	private String name;
 	private String description;
 	private String creationDate;
-//	private Date lastRunDate;
-//	private Date startDate;
-//	private Date runtime;
 	private ServerPath serverPath;
 	private ServerVersion serverVersion;
 	private ServerState serverState;
@@ -99,30 +96,6 @@ public class Server implements IServerController {
 	public void setCreationDate(String creationDate) {
 		this.creationDate = creationDate;
 	}
-
-//	public Date getLastRunDate() {
-//		return lastRunDate;
-//	}
-//
-//	public void setLastRunDate(Date lastRunDate) {
-//		this.lastRunDate = lastRunDate;
-//	}
-//
-//	public Date getStartDate() {
-//		return startDate;
-//	}
-//
-//	public void setStartDate(Date startDate) {
-//		this.startDate = startDate;
-//	}
-//
-//	public Date getRuntime() {
-//		return runtime;
-//	}
-//
-//	public void setRuntime(Date runtime) {
-//		this.runtime = runtime;
-//	}
 
 	public ServerState getServerState() {
 		return serverState;
