@@ -3,9 +3,12 @@ package com.lte.mcsm.view.components;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import com.lte.mcsm.main.Program;
+import com.lte.mcsm.manager.WindowManager;
 import com.lte.mcsm.model.Path;
 import com.lte.mcsm.model.Server;
 import com.lte.mcsm.model.interfaces.IRefreshable;
+import com.lte.mcsm.view.ServerWindow;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -60,10 +63,14 @@ public class ServerItem extends AnchorPane implements IRefreshable {
 					System.out.println("[" + server.getName() + "] Stoppen");
 					break;
 				case ServerMenu.SHOW:
+					ServerWindow serverWindow = WindowManager.getWindowManager().getServerWindow();
+					serverWindow.setServer(server);
+					Program.getMainStage().setScene(serverWindow);
 					System.out.println("[" + server.getName() + "] Anzeigen");
 					break;
 				default:
 					System.out.println("[" + server.getName() + "] Default");
+					break;
 				}
 			}
 		});

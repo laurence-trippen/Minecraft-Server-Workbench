@@ -3,6 +3,7 @@ package com.lte.mcsm.manager;
 import com.lte.mcsm.view.CreateServerWindow;
 import com.lte.mcsm.view.MainWindow;
 import com.lte.mcsm.view.ServerVersionsWindow;
+import com.lte.mcsm.view.ServerWindow;
 import com.lte.mcsm.view.VersionInstallWindow;
 
 public class WindowManager {
@@ -12,6 +13,7 @@ public class WindowManager {
 	private CreateServerWindow createServerWindow;
 	private ServerVersionsWindow serverVersionsWindow;
 	private VersionInstallWindow versionInstallWindow;
+	private ServerWindow serverWindow;
 	
 	public static WindowManager getWindowManager() {
 		if (instance == null) {
@@ -25,6 +27,7 @@ public class WindowManager {
 		this.createServerWindow = new CreateServerWindow();
 		this.serverVersionsWindow = new ServerVersionsWindow();
 		this.versionInstallWindow = new VersionInstallWindow();
+		this.serverWindow = new ServerWindow();
 	}
 
 	public MainWindow getMainWindow() {
@@ -41,6 +44,10 @@ public class WindowManager {
 
 	public VersionInstallWindow getVersionInstallWindow() {
 		return versionInstallWindow;
+	}
+
+	public ServerWindow getServerWindow() {
+		return serverWindow;
 	}
 
 }
