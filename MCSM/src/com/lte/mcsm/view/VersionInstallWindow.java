@@ -16,6 +16,7 @@ import com.lte.mcsm.model.ServerVersion;
 import com.lte.mcsm.model.ServerVersionTester;
 import com.lte.mcsm.model.enums.DataStatus;
 import com.lte.mcsm.model.interfaces.IRefreshable;
+import com.lte.mcsm.view.style.Style;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -42,23 +43,23 @@ import javafx.stage.Stage;
 
 public class VersionInstallWindow extends Scene implements IRefreshable {
 	
-	private static AnchorPane mainPane = new AnchorPane();
-	private File selectedJarFile;
-	private Pane installSetupPane;
-	private Pane installationPane;
-	private ToolBar toolBar;
-	private Button closeButton;
-	private Label versionNameLabel;
-	private Label versionJarLabel;
-	private Label installVersionLabel;
-	private Label jarNameLabel;
-	private Label progressLabel;
-	private TextField versionNameTextField;
-	private Button versionJarButton;
-	private Button installVersionButton;
-	private ImageView installVersionImageView;
-	private ImageView jarVersionImageView;
-	private ProgressBar progressBar;
+	private static AnchorPane 		mainPane = new AnchorPane();
+	private File 					selectedJarFile;
+	private Pane 					installSetupPane;
+	private Pane 					installationPane;
+	private ToolBar 				toolBar;
+	private Button 					closeButton;
+	private Label 					versionNameLabel;
+	private Label 					versionJarLabel;
+	private Label 					installVersionLabel;
+	private Label 					jarNameLabel;
+	private Label 					progressLabel;
+	private TextField 				versionNameTextField;
+	private Button 					versionJarButton;
+	private Button 					installVersionButton;
+	private ImageView 				installVersionImageView;
+	private ImageView 				jarVersionImageView;
+	private ProgressBar 			progressBar;
 	
 	public VersionInstallWindow() {
 		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
@@ -207,7 +208,7 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 			}
 		});
 		this.installSetupPane = new Pane();
-		this.installSetupPane.setStyle("-fx-background-color: white; -fx-background-radius: 5");
+		this.installSetupPane.setStyle(Style.WHITE_PANE);
 		this.installSetupPane.setPrefWidth(600);
 		this.installSetupPane.setPrefHeight(410);
 		this.installSetupPane.setLayoutX(660);

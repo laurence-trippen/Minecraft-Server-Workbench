@@ -9,6 +9,7 @@ import com.lte.mcsm.manager.WindowManager;
 import com.lte.mcsm.model.Path;
 import com.lte.mcsm.model.Server;
 import com.lte.mcsm.model.interfaces.IRefreshable;
+import com.lte.mcsm.view.style.Style;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -20,13 +21,15 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.Pane;
 
 public class ServerWindow extends Scene implements IRefreshable {
 
-	private static AnchorPane mainPane = new AnchorPane();
-	private Server server;
-	private ToolBar toolBar;
-	private Button closeButton;
+	private static AnchorPane 			mainPane = new AnchorPane();
+	private Server 						server;
+	private ToolBar 					toolBar;
+	private Button 						closeButton;
+	private Pane 						serverPane;
 
 	public ServerWindow() {
 		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
@@ -45,12 +48,18 @@ public class ServerWindow extends Scene implements IRefreshable {
 				refresh();
 			}
 		});
+		this.serverPane = new Pane();
+		this.serverPane.setStyle(Style.WHITE_PANE);
+		this.serverPane.setLayoutX(450);
+		this.serverPane.setLayoutY(200);
+		this.serverPane.setPrefWidth(1000);
+		this.serverPane.setPrefHeight(600);
 		this.toolBar = new ToolBar();
 		this.toolBar.setLayoutX(0.00);
 		this.toolBar.setLayoutY(0.00);
 		this.toolBar.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
 		this.toolBar.getItems().add(closeButton);
-		mainPane.getChildren().addAll(toolBar);
+		mainPane.getChildren().addAll(toolBar, serverPane);
 		AnchorPane.setLeftAnchor(toolBar, 0.00);
 		AnchorPane.setTopAnchor(toolBar, 0.00);
 		AnchorPane.setRightAnchor(toolBar, 0.00);

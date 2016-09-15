@@ -18,6 +18,7 @@ import com.lte.mcsm.model.ServerList;
 import com.lte.mcsm.model.ServerVersion;
 import com.lte.mcsm.model.enums.DataStatus;
 import com.lte.mcsm.model.interfaces.IRefreshable;
+import com.lte.mcsm.view.style.Style;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -139,7 +140,7 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 		this.createServerLabel.setLayoutX(185);
 		this.createServerLabel.setLayoutY(62);
 		this.createServerPane = new Pane();
-		this.createServerPane.setStyle("-fx-background-color: white; -fx-background-radius: 5");
+		this.createServerPane.setStyle(Style.WHITE_PANE);
 		this.createServerPane.setPrefWidth(600);
 		this.createServerPane.setPrefHeight(450);
 		this.createServerPane.setLayoutX(660);
