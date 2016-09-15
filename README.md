@@ -1,29 +1,19 @@
 # Minecraft Server Workbench #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+The MSW is a minecraft server management tool written in Java 8 SE.
 
-### What is this repository for? ###
+### Used libraries ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+* JDOM
+* JSON-simple-api
 
 ### How do I get set up? ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+> Windows <
+1. Download the msw-standalone.exe
 
-### Contribution guidelines ###
+> Linux <
+1. sudo apt-get install msw-standalone
 
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+> Mac <
+1. Download the msw-standalone.dmg file.
