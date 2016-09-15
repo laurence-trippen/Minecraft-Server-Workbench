@@ -114,6 +114,7 @@ public class MainWindow extends Scene implements IRefreshable, IFetchable {
 			gridPane.getChildren().clear();
 			serverItems.clear();
 			for (Server server : serverList.getServer()) {
+				server.init();
 				if (serverList.getServerCount() > counter) {
 					counter += 3;
 					this.gridPane.getRowConstraints().add(new RowConstraints(312));
