@@ -12,13 +12,13 @@
       <properties>
         <generator />
         <opLevel>FOUR</opLevel>
-        <allowNether>true</allowNether>
+        <allowNether>false</allowNether>
         <rpHash />
         <levelName>world</levelName>
         <enableQuery>false</enableQuery>
-        <allowFlight>true</allowFlight>
-        <showAchievements>true</showAchievements>
-        <serverPort>25565</serverPort>
+        <allowFlight>false</allowFlight>
+        <showAchievements>false</showAchievements>
+        <serverPort>99999</serverPort>
         <maxWorldSize>29999984</maxWorldSize>
         <worldType>DEFAULT</worldType>
         <enableRcon>false</enableRcon>
@@ -27,20 +27,20 @@
         <serverIp />
         <networkCompression>256</networkCompression>
         <maxBuildHeight>256</maxBuildHeight>
-        <spawnNPCs>true</spawnNPCs>
+        <spawnNPCs>false</spawnNPCs>
         <whitelist>false</whitelist>
-        <enabledSnooper>true</enabledSnooper>
-        <onlineMode>true</onlineMode>
+        <enabledSnooper>false</enabledSnooper>
+        <onlineMode>false</onlineMode>
         <resourcePack />
-        <enabledPVP>true</enabledPVP>
+        <enabledPVP>false</enabledPVP>
         <difficulty>EASY</difficulty>
         <enabledCommandBlock>false</enabledCommandBlock>
         <gameMode>SURVIVAL</gameMode>
         <playerIdleTime>0</playerIdleTime>
-        <maxPlayers>20</maxPlayers>
+        <maxPlayers>10</maxPlayers>
         <maxTickTime>60000</maxTickTime>
-        <spawnMonsters>true</spawnMonsters>
-        <generateStructs>true</generateStructs>
+        <spawnMonsters>false</spawnMonsters>
+        <generateStructs>false</generateStructs>
         <viewDistance>10</viewDistance>
         <motd>A Minecraft Server</motd>
       </properties>
@@ -52,6 +52,50 @@
       <version>
         <name>1.9.4</name>
         <path>working\serverpool\Test-Server\minecraft_server.1.9.4.jar</path>
+      </version>
+      <properties>
+        <generator />
+        <opLevel>FOUR</opLevel>
+        <allowNether>false</allowNether>
+        <rpHash />
+        <levelName>world</levelName>
+        <enableQuery>false</enableQuery>
+        <allowFlight>false</allowFlight>
+        <showAchievements>false</showAchievements>
+        <serverPort>25565</serverPort>
+        <maxWorldSize>29999984</maxWorldSize>
+        <worldType>DEFAULT</worldType>
+        <enableRcon>false</enableRcon>
+        <levelSeed />
+        <forceGameMode>false</forceGameMode>
+        <serverIp />
+        <networkCompression>256</networkCompression>
+        <maxBuildHeight>256</maxBuildHeight>
+        <spawnNPCs>false</spawnNPCs>
+        <whitelist>false</whitelist>
+        <enabledSnooper>false</enabledSnooper>
+        <onlineMode>false</onlineMode>
+        <resourcePack />
+        <enabledPVP>false</enabledPVP>
+        <difficulty>EASY</difficulty>
+        <enabledCommandBlock>false</enabledCommandBlock>
+        <gameMode>SURVIVAL</gameMode>
+        <playerIdleTime>0</playerIdleTime>
+        <maxPlayers>5</maxPlayers>
+        <maxTickTime>60000</maxTickTime>
+        <spawnMonsters>false</spawnMonsters>
+        <generateStructs>false</generateStructs>
+        <viewDistance>10</viewDistance>
+        <motd>A Minecraft Server</motd>
+      </properties>
+    </Server>
+    <Server id="3">
+      <name>Lars-Server-01</name>
+      <description>leer</description>
+      <creationDate />
+      <version>
+        <name>1.10.2</name>
+        <path>working\serverpool\Lars-Server-01\minecraft_server.1.10.2.jar</path>
       </version>
       <properties>
         <generator />

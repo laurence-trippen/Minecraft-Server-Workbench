@@ -13,7 +13,7 @@ public class Program extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		mainStage = primaryStage;
 		primaryStage.setScene(WindowManager.getWindowManager().getMainWindow());
-		primaryStage.setMaximized(false);
+		primaryStage.setMaximized(true);
 		primaryStage.setWidth(1920);
 		primaryStage.setHeight(1200);
 		primaryStage.setTitle("LTE: MCSM");
