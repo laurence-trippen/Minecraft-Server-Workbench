@@ -16,7 +16,7 @@ public class Program extends Application {
 		primaryStage.setMaximized(true);
 		primaryStage.setWidth(1920);
 		primaryStage.setHeight(1200);
-		primaryStage.setTitle("LTE: MCSM");
+		primaryStage.setTitle("Minecraft Server Workbench");
 		primaryStage.show();
 	}
 
