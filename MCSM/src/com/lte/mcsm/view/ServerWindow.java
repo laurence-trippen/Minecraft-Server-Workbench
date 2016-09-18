@@ -48,8 +48,10 @@ public class ServerWindow extends Scene implements IRefreshable {
 	private Label						serverDifficultyValue;
 	private Label 						serverPvpValue;
 	private Label 						serverAdressLabel;
-	private Button						serverStartButton;
-	private Button						serverStopButton;
+	private Button						serverControlButton;
+	private Button						serverConfigureButton;
+	private Button						serverBackupButton;
+	private Button						serverLogButton;
 
 	public ServerWindow() {
 		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
@@ -121,26 +123,31 @@ public class ServerWindow extends Scene implements IRefreshable {
 		this.serverPane.setLayoutX(560);
 		this.serverPane.setLayoutY(220);
 		this.serverPane.setPrefWidth(800);
-		this.serverPane.setPrefHeight(600);
-		this.serverStartButton = new Button("Starten");
-		this.serverStartButton.setPrefWidth(100);
-		this.serverStartButton.setPrefHeight(25);
-		this.serverStartButton.setLayoutX(60);
-		this.serverStartButton.setLayoutY(370);
-		this.serverStartButton.setStyle(Style.BUTTON_LEFT_RADIUS);
-		this.serverStartButton.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				
-			}
-		});
-		this.serverStopButton = new Button("Stoppen");
-		this.serverStopButton.setPrefWidth(100);
-		this.serverStopButton.setPrefHeight(25);
-		this.serverStopButton.setLayoutX(160);
-		this.serverStopButton.setLayoutY(370);
-		this.serverStopButton.setStyle(Style.BUTTON_RIGHT_RADIUS);
-		this.serverStopButton.setOnAction(new EventHandler<ActionEvent>() {
+		this.serverPane.setPrefHeight(460);
+		this.serverLogButton = new Button("Server Log");
+		this.serverLogButton.setStyle(Style.BUTTON_RIGHT_RADIUS);
+		this.serverLogButton.setPrefWidth(150);
+		this.serverLogButton.setPrefHeight(25);
+		this.serverLogButton.setLayoutX(500);
+		this.serverLogButton.setLayoutY(370);
+		this.serverBackupButton = new Button("Server Backup");
+		this.serverBackupButton.setStyle(Style.BUTTON_NON_RADIUS);
+		this.serverBackupButton.setPrefWidth(150);
+		this.serverBackupButton.setPrefHeight(25);
+		this.serverBackupButton.setLayoutX(350);
+		this.serverBackupButton.setLayoutY(370);
+		this.serverConfigureButton = new Button("Server Konfigurieren");
+		this.serverConfigureButton.setStyle(Style.BUTTON_LEFT_RADIUS);
+		this.serverConfigureButton.setPrefWidth(150);
+		this.serverConfigureButton.setPrefHeight(25);
+		this.serverConfigureButton.setLayoutX(200);
+		this.serverConfigureButton.setLayoutY(370);
+		this.serverControlButton = new Button("Starten");
+		this.serverControlButton.setPrefWidth(100);
+		this.serverControlButton.setPrefHeight(25);
+		this.serverControlButton.setLayoutX(60);
+		this.serverControlButton.setLayoutY(370);
+		this.serverControlButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
 				
@@ -160,8 +167,10 @@ public class ServerWindow extends Scene implements IRefreshable {
 				serverDifficultyValue,
 				serverPvpValue,
 				serverAdressLabel,
-				serverStartButton,
-				serverStopButton
+				serverControlButton,
+				serverConfigureButton,
+				serverBackupButton,
+				serverLogButton
 		);
 		this.toolBar = new ToolBar();
 		this.toolBar.setLayoutX(0.00);
