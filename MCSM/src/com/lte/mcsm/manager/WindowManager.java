@@ -1,10 +1,10 @@
-package com.lte.mcsm.manager;
+package com.lte.msw.manager;
 
-import com.lte.mcsm.view.CreateServerWindow;
-import com.lte.mcsm.view.MainWindow;
-import com.lte.mcsm.view.ServerVersionsWindow;
-import com.lte.mcsm.view.ServerWindow;
-import com.lte.mcsm.view.VersionInstallWindow;
+import com.lte.msw.view.CreateServerWindow;
+import com.lte.msw.view.MainWindow;
+import com.lte.msw.view.ServerVersionsWindow;
+import com.lte.msw.view.ServerWindow;
+import com.lte.msw.view.VersionInstallWindow;
 
 public class WindowManager {
 	

@@ -1,4 +1,4 @@
-package com.lte.mcsm.manager;
+package com.lte.msw.manager;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
