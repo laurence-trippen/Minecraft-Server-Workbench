@@ -3,10 +3,10 @@ package com.lte.msw.view;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import com.lte.mcsm.manager.DesktopManager;
+import com.lte.mcsm.manager.NetworkManager;
+import com.lte.mcsm.manager.WindowManager;
 import com.lte.msw.main.Program;
-import com.lte.msw.manager.DesktopManager;
-import com.lte.msw.manager.NetworkManager;
-import com.lte.msw.manager.WindowManager;
 import com.lte.msw.model.Path;
 import com.lte.msw.model.Server;
 import com.lte.msw.model.interfaces.IRefreshable;

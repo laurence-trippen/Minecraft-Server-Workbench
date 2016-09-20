@@ -8,9 +8,9 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import com.lte.mcsm.manager.DesktopManager;
+import com.lte.mcsm.manager.WindowManager;
 import com.lte.msw.main.Program;
-import com.lte.msw.manager.DesktopManager;
-import com.lte.msw.manager.WindowManager;
 import com.lte.msw.model.Path;
 import com.lte.msw.model.Server;
 import com.lte.msw.model.ServerCreator;

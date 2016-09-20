@@ -1,4 +1,4 @@
-package com.lte.msw.manager;
+package com.lte.mcsm.manager;
 
 public class GridManager {
 	

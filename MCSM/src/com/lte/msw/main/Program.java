@@ -1,6 +1,6 @@
 package com.lte.msw.main;
 
-import com.lte.msw.manager.WindowManager;
+import com.lte.mcsm.manager.WindowManager;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
