@@ -1,4 +1,4 @@
-package com.lte.mcsm.manager;
+package com.lte.msw.manager;
 
 import com.lte.msw.view.CreateServerWindow;
 import com.lte.msw.view.MainWindow;

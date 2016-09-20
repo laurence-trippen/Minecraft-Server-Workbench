@@ -14,7 +14,7 @@ import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
-import com.lte.mcsm.manager.WindowManager;
+import com.lte.msw.manager.WindowManager;
 import com.lte.msw.model.enums.DataStatus;
 import com.lte.msw.model.enums.Difficulty;
 import com.lte.msw.model.enums.GameMode;

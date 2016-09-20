@@ -4,8 +4,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-import com.lte.mcsm.manager.DesktopManager;
 import com.lte.msw.controller.VersionsWindowController;
+import com.lte.msw.manager.DesktopManager;
 import com.lte.msw.model.Path;
 import com.lte.msw.model.ServerList;
 import com.lte.msw.model.ServerVersion;
