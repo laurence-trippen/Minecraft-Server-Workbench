@@ -60,8 +60,13 @@ public class Server implements IServerController {
 	
 	@Override
 	public void start() {
-		this.serverThread = new Thread(new ServerProcessor(new File(serverVersion.getPath())));
-		this.serverThread.start();
+		if (serverState == ServerState.Stopped) {			
+			this.serverThread = new Thread(new ServerProcessor(new File(serverVersion.getPath())));
+			this.serverThread.start();
+			this.setServerState(ServerState.Started);
+		} else {
+			System.out.println("Server " + this.getName() + "ist bereits gestartet!");
+		}
 	}
 	
 	@Override
