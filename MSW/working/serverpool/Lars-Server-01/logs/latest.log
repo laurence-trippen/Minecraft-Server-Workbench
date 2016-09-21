@@ -1,71 +1,38 @@
-[11:17:46] [Server thread/INFO]: Starting minecraft server version 1.10.2
-[11:17:46] [Server thread/INFO]: Loading properties
-[11:17:46] [Server thread/INFO]: Default game type: SURVIVAL
-[11:17:46] [Server thread/INFO]: Generating keypair
-[11:17:46] [Server thread/INFO]: Starting Minecraft server on *:25565
-[11:17:46] [Server thread/INFO]: Using default channel type
-[11:17:47] [Server thread/WARN]: Failed to load user banlist: 
-java.io.FileNotFoundException: banned-players.json (Das System kann die angegebene Datei nicht finden)
-	at java.io.FileInputStream.open0(Native Method) ~[?:1.8.0_101]
-	at java.io.FileInputStream.open(Unknown Source) ~[?:1.8.0_101]
-	at java.io.FileInputStream.<init>(Unknown Source) ~[?:1.8.0_101]
-	at com.google.common.io.Files.newReader(Files.java:86) ~[minecraft_server.1.10.2.jar:?]
-	at mt.g(SourceFile:136) ~[minecraft_server.1.10.2.jar:?]
-	at lc.z(SourceFile:99) [minecraft_server.1.10.2.jar:?]
-	at lc.<init>(SourceFile:25) [minecraft_server.1.10.2.jar:?]
-	at ld.j(SourceFile:185) [minecraft_server.1.10.2.jar:?]
-	at net.minecraft.server.MinecraftServer.run(SourceFile:428) [minecraft_server.1.10.2.jar:?]
-	at java.lang.Thread.run(Unknown Source) [?:1.8.0_101]
-[11:17:47] [Server thread/WARN]: Failed to load ip banlist: 
-java.io.FileNotFoundException: banned-ips.json (Das System kann die angegebene Datei nicht finden)
-	at java.io.FileInputStream.open0(Native Method) ~[?:1.8.0_101]
-	at java.io.FileInputStream.open(Unknown Source) ~[?:1.8.0_101]
-	at java.io.FileInputStream.<init>(Unknown Source) ~[?:1.8.0_101]
-	at com.google.common.io.Files.newReader(Files.java:86) ~[minecraft_server.1.10.2.jar:?]
-	at mt.g(SourceFile:136) ~[minecraft_server.1.10.2.jar:?]
-	at lc.y(SourceFile:91) [minecraft_server.1.10.2.jar:?]
-	at lc.<init>(SourceFile:27) [minecraft_server.1.10.2.jar:?]
-	at ld.j(SourceFile:185) [minecraft_server.1.10.2.jar:?]
-	at net.minecraft.server.MinecraftServer.run(SourceFile:428) [minecraft_server.1.10.2.jar:?]
-	at java.lang.Thread.run(Unknown Source) [?:1.8.0_101]
-[11:17:47] [Server thread/WARN]: Failed to load operators list: 
-java.io.FileNotFoundException: ops.json (Das System kann die angegebene Datei nicht finden)
-	at java.io.FileInputStream.open0(Native Method) ~[?:1.8.0_101]
-	at java.io.FileInputStream.open(Unknown Source) ~[?:1.8.0_101]
-	at java.io.FileInputStream.<init>(Unknown Source) ~[?:1.8.0_101]
-	at com.google.common.io.Files.newReader(Files.java:86) ~[minecraft_server.1.10.2.jar:?]
-	at mt.g(SourceFile:136) ~[minecraft_server.1.10.2.jar:?]
-	at lc.A(SourceFile:107) [minecraft_server.1.10.2.jar:?]
-	at lc.<init>(SourceFile:29) [minecraft_server.1.10.2.jar:?]
-	at ld.j(SourceFile:185) [minecraft_server.1.10.2.jar:?]
-	at net.minecraft.server.MinecraftServer.run(SourceFile:428) [minecraft_server.1.10.2.jar:?]
-	at java.lang.Thread.run(Unknown Source) [?:1.8.0_101]
-[11:17:47] [Server thread/WARN]: Failed to load white-list: 
-java.io.FileNotFoundException: whitelist.json (Das System kann die angegebene Datei nicht finden)
-	at java.io.FileInputStream.open0(Native Method) ~[?:1.8.0_101]
-	at java.io.FileInputStream.open(Unknown Source) ~[?:1.8.0_101]
-	at java.io.FileInputStream.<init>(Unknown Source) ~[?:1.8.0_101]
-	at com.google.common.io.Files.newReader(Files.java:86) ~[minecraft_server.1.10.2.jar:?]
-	at mt.g(SourceFile:136) ~[minecraft_server.1.10.2.jar:?]
-	at lc.C(SourceFile:123) [minecraft_server.1.10.2.jar:?]
-	at lc.<init>(SourceFile:30) [minecraft_server.1.10.2.jar:?]
-	at ld.j(SourceFile:185) [minecraft_server.1.10.2.jar:?]
-	at net.minecraft.server.MinecraftServer.run(SourceFile:428) [minecraft_server.1.10.2.jar:?]
-	at java.lang.Thread.run(Unknown Source) [?:1.8.0_101]
-[11:17:47] [Server thread/INFO]: Preparing level "world"
-[11:17:48] [Server thread/INFO]: Preparing start region for level 0
-[11:17:49] [Server thread/INFO]: Preparing spawn area: 7%
-[11:17:50] [Server thread/INFO]: Preparing spawn area: 13%
-[11:17:51] [Server thread/INFO]: Preparing spawn area: 20%
-[11:17:52] [Server thread/INFO]: Preparing spawn area: 27%
-[11:17:53] [Server thread/INFO]: Preparing spawn area: 35%
-[11:17:54] [Server thread/INFO]: Preparing spawn area: 43%
-[11:17:55] [Server thread/INFO]: Preparing spawn area: 50%
-[11:17:56] [Server thread/INFO]: Preparing spawn area: 58%
-[11:17:57] [Server thread/INFO]: Preparing spawn area: 66%
-[11:17:58] [Server thread/INFO]: Preparing spawn area: 75%
-[11:17:59] [Server thread/INFO]: Preparing spawn area: 82%
-[11:18:00] [Server thread/INFO]: Preparing spawn area: 90%
-[11:18:01] [Server thread/INFO]: Preparing spawn area: 98%
-[11:18:02] [Server thread/INFO]: Done (14,833s)! For help, type "help" or "?"
-[11:18:05] [Server thread/WARN]: Can't keep up! Did the system time change, or is the server overloaded? Running 3582ms behind, skipping 71 tick(s)
+[23:40:02] [Server thread/INFO]: Starting minecraft server version 1.10.2
+[23:40:02] [Server thread/INFO]: Loading properties
+[23:40:02] [Server thread/INFO]: Default game type: SURVIVAL
+[23:40:02] [Server thread/INFO]: Generating keypair
+[23:40:03] [Server thread/INFO]: Starting Minecraft server on *:25565
+[23:40:03] [Server thread/INFO]: Using default channel type
+[23:40:03] [Server thread/INFO]: Preparing level "world"
+[23:40:04] [Server thread/INFO]: Preparing start region for level 0
+[23:40:05] [Server thread/INFO]: Preparing spawn area: 5%
+[23:40:06] [Server thread/INFO]: Preparing spawn area: 10%
+[23:40:08] [Server thread/INFO]: Preparing spawn area: 17%
+[23:40:09] [Server thread/INFO]: Preparing spawn area: 23%
+[23:40:10] [Server thread/INFO]: Preparing spawn area: 30%
+[23:40:11] [Server thread/INFO]: Preparing spawn area: 37%
+[23:40:12] [Server thread/INFO]: Preparing spawn area: 44%
+[23:40:13] [Server thread/INFO]: Preparing spawn area: 51%
+[23:40:14] [Server thread/INFO]: Preparing spawn area: 58%
+[23:40:15] [Server thread/INFO]: Preparing spawn area: 65%
+[23:40:16] [Server thread/INFO]: Preparing spawn area: 73%
+[23:40:17] [Server thread/INFO]: Preparing spawn area: 79%
+[23:40:18] [Server thread/INFO]: Preparing spawn area: 86%
+[23:40:19] [Server thread/INFO]: Preparing spawn area: 95%
+[23:40:19] [Server thread/INFO]: Done (16,075s)! For help, type "help" or "?"
+[23:40:24] [Server thread/WARN]: Can't keep up! Did the system time change, or is the server overloaded? Running 4119ms behind, skipping 82 tick(s)
+[23:42:09] [User Authenticator #1/INFO]: UUID of player Seriouslaw is fc275361-fb54-42bf-9b01-df5dbb529691
+[23:42:09] [Server thread/INFO]: Seriouslaw[/127.0.0.1:49807] logged in with entity id 2409 at (236.5, 72.0, 190.5)
+[23:42:09] [Server thread/INFO]: Seriouslaw joined the game
+[23:42:16] [Server thread/WARN]: Can't keep up! Did the system time change, or is the server overloaded? Running 5931ms behind, skipping 118 tick(s)
+[23:42:48] [Server thread/WARN]: Can't keep up! Did the system time change, or is the server overloaded? Running 16154ms behind, skipping 323 tick(s)
+[23:42:53] [Server thread/WARN]: Can't keep up! Did the system time change, or is the server overloaded? Running 5036ms behind, skipping 100 tick(s)
+[23:43:05] [Server thread/WARN]: Can't keep up! Did the system time change, or is the server overloaded? Running 2013ms behind, skipping 40 tick(s)
+[23:43:40] [Server thread/INFO]: Seriouslaw lost connection: TextComponent{text='Disconnected', siblings=[], style=Style{hasParent=false, color=null, bold=null, italic=null, underlined=null, obfuscated=null, clickEvent=null, hoverEvent=null, insertion=null}}
+[23:43:40] [Server thread/INFO]: Seriouslaw left the game
+[23:44:24] [User Authenticator #2/INFO]: UUID of player Seriouslaw is fc275361-fb54-42bf-9b01-df5dbb529691
+[23:44:24] [Server thread/INFO]: Seriouslaw[/127.0.0.1:49814] logged in with entity id 5254 at (174.30000001192093, 85.0, 180.3054965690812)
+[23:44:24] [Server thread/INFO]: Seriouslaw joined the game
+[23:44:51] [Server thread/INFO]: Seriouslaw lost connection: TextComponent{text='Disconnected', siblings=[], style=Style{hasParent=false, color=null, bold=null, italic=null, underlined=null, obfuscated=null, clickEvent=null, hoverEvent=null, insertion=null}}
+[23:44:51] [Server thread/INFO]: Seriouslaw left the game

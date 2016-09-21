@@ -2,6 +2,7 @@ package com.lte.msw.model;
 
 import static com.lte.msw.config.AppConfig.dateFormat;
 
+import java.io.File;
 import java.util.Date;
 
 import com.lte.msw.model.enums.ServerState;
@@ -13,6 +14,7 @@ public class Server implements IServerController {
 	private String name;
 	private String description;
 	private String creationDate;
+	private Thread serverThread;
 	private ServerPath serverPath;
 	private ServerVersion serverVersion;
 	private ServerState serverState;
@@ -58,7 +60,8 @@ public class Server implements IServerController {
 	
 	@Override
 	public void start() {
-		
+		this.serverThread = new Thread(new ServerProcessor(new File(serverVersion.getPath())));
+		this.serverThread.start();
 	}
 	
 	@Override

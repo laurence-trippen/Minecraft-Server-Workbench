@@ -150,7 +150,7 @@ public class ServerWindow extends Scene implements IRefreshable {
 		this.serverControlButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				
+				server.start();
 			}
 		});
 		this.serverPane.getChildren().addAll(
