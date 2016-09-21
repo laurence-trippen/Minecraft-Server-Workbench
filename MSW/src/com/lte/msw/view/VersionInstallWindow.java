@@ -170,7 +170,7 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 								Path.SERVER_VERSIONS + selectedJarFile.getName()
 						));
 						switch (status) {
-						case Succcess:
+						case SUCCESS:
 							try {
 								Files.copy(
 									Paths.get(selectedJarFile.getAbsolutePath()),
@@ -185,7 +185,7 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 							alert.setContentText("Minecraft Version " + versionNameTextField.getText() + " wurde erfolgreich installiert!\n");
 							alert.showAndWait();
 							break;
-						case Exists:
+						case EXISTS:
 							progressLabel.setText("Installation fehlgeschlagen!");
 							alert.setAlertType(AlertType.ERROR);
 							alert.setTitle("Installation fehlgeschlagen!");

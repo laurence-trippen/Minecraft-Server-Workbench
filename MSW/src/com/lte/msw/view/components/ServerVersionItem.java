@@ -51,13 +51,13 @@ public class ServerVersionItem extends AnchorPane {
 				if (result.get() == buttonTypeYes) {
 					DataStatus status = ServerList.getServerList().deleteServerVersion(serverVersion);
 					switch (status) {
-					case Succcess:
+					case SUCCESS:
 						Alert successAlert = new Alert(AlertType.INFORMATION);
 						successAlert.setTitle("Deinstallation erfolgreich!");
 						successAlert.setHeaderText("Minecraft Server Version " + serverVersion.getName() + " wurde erfolgreich deinstalliert!");
 						successAlert.showAndWait();
 						break;
-					case Error:
+					case ERROR:
 						Alert errorAlert = new Alert(AlertType.ERROR);
 						errorAlert.setTitle("Deinstallation fehgeschlagen!");
 						errorAlert.setHeaderText("Minecraft Server Version " + serverVersion.getName() + " konnte nicht deinstalliert werden!");

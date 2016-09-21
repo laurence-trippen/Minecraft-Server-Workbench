@@ -30,7 +30,7 @@ public class Server implements IServerController {
 		this.description = "leer";
 		this.serverPath = new ServerPath(this.getName());
 		this.serverVersion = serverVersion;
-		this.serverState = ServerState.Stopped;
+		this.serverState = ServerState.STOPPED;
 		this.serverProperties = new ServerProperties(this.getServerPath().getProperties());
 		this.serverOPS = new ServerOPS(this.getServerPath().getOps());
 		this.serverWhitelist = new ServerWhitelist(this.getServerPath().getWhitlelist());
@@ -45,7 +45,7 @@ public class Server implements IServerController {
 		this.creationDate = dateFormat.format(new Date());
 		this.serverPath = new ServerPath(this.getName());
 		this.serverVersion = serverVersion;
-		this.serverState = ServerState.Stopped;
+		this.serverState = ServerState.STOPPED;
 		this.serverProperties = new ServerProperties(this.getServerPath().getProperties());
 		this.serverOPS = new ServerOPS(this.getServerPath().getOps());
 		this.serverWhitelist = new ServerWhitelist(this.getServerPath().getWhitlelist());
@@ -60,10 +60,10 @@ public class Server implements IServerController {
 	
 	@Override
 	public void start() {
-		if (serverState == ServerState.Stopped) {			
+		if (serverState == ServerState.STOPPED) {			
 			this.serverThread = new Thread(new ServerProcessor(new File(serverVersion.getPath())));
 			this.serverThread.start();
-			this.setServerState(ServerState.Started);
+			this.setServerState(ServerState.STARTED);
 		} else {
 			System.out.println("Server " + this.getName() + "ist bereits gestartet!");
 		}

@@ -202,14 +202,14 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 																newServerJar.getPath()
 												)));
 												switch (status) {
-												case Succcess:
+												case SUCCESS:
 													Alert successAlert = new Alert(AlertType.INFORMATION);
 													successAlert.setTitle("Server erstellen erfolgreich!");
 													successAlert.setHeaderText(serverNameTextField.getText());
 													successAlert.setContentText("Minecraft Server " + serverNameTextField.getText() + " wurde erfolgreich erstellt!");
 													successAlert.showAndWait();
 													break;
-												case Error:
+												case ERROR:
 													Alert errorAlert = new Alert(AlertType.ERROR);
 													errorAlert.setTitle("Installation fehlgeschlagen!");
 													errorAlert.setHeaderText(serverNameTextField.getText());
