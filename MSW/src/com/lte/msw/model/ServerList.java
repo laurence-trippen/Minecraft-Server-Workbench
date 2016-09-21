@@ -54,9 +54,9 @@ public class ServerList {
 			serverList.add(newServer);
 			saveXML();
 			WindowManager.getWindowManager().getMainWindow().fetch();
-			return DataStatus.Succcess;
+			return DataStatus.SUCCESS;
 		}
-		return DataStatus.Error;
+		return DataStatus.ERROR;
 	}
 	
 	public DataStatus deleteServer(Server deleteServer) {
@@ -69,12 +69,12 @@ public class ServerList {
 				}
 				saveXML();
 				WindowManager.getWindowManager().getMainWindow().fetch();
-				return DataStatus.Succcess;
+				return DataStatus.SUCCESS;
 			} else {
-				return DataStatus.Error;
+				return DataStatus.ERROR;
 			}
 		}
-		return DataStatus.Error;
+		return DataStatus.ERROR;
 	}
 	
 	public boolean existServer(String newServerName) {
@@ -94,7 +94,7 @@ public class ServerList {
 						serverVersion.getPath().equals(existingVersion.getPath())
 				) {
 					System.out.println("Serverversion existiert schon!");
-					return DataStatus.Exists;
+					return DataStatus.EXISTS;
 				}
 			}
 			serverVersionCounter++;
@@ -102,9 +102,9 @@ public class ServerList {
 			serverVersions.add(serverVersion);
 			saveXML();
 			WindowManager.getWindowManager().getServerVersionsWindow().fetch();
-			return DataStatus.Succcess;
+			return DataStatus.SUCCESS;
 		}
-		return DataStatus.Exists;
+		return DataStatus.EXISTS;
 	}
 	
 	public DataStatus deleteServerVersion(ServerVersion serverVersion) {
@@ -121,12 +121,12 @@ public class ServerList {
 				}
 				saveXML();
 				WindowManager.getWindowManager().getServerVersionsWindow().fetch();
-				return DataStatus.Succcess;
+				return DataStatus.SUCCESS;
 			} else {
-				return DataStatus.Error;
+				return DataStatus.ERROR;
 			}
 		}
-		return DataStatus.Error;
+		return DataStatus.ERROR;
 	}
 	
 	private void saveXML() {
