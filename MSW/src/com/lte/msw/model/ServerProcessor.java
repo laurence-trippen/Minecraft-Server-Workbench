@@ -20,8 +20,8 @@ public class ServerProcessor implements Runnable {
 		Process process = null;
 		ProcessBuilder processBuilder = new ProcessBuilder(
 				"java", 
-				"-Xmx1024M", 
-				"-Xms1024M", 
+				"-Xmx1024M",
+				"-Xms1024M",
 				"-jar",
 				executablePath.getAbsolutePath(), 
 				"nogui"
