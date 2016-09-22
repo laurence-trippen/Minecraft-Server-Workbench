@@ -48,7 +48,7 @@ public class ServerCreator {
 		processBuilder.directory(new File(dir));
 		try {
 			process = processBuilder.start();
-			ServerLogger logger = new ServerLogger(process.getInputStream());
+			ServerLogger logger = new ServerLogger(process.getInputStream(), null);
 			Thread thread = new Thread(logger, "ServerLogger");
 			thread.start();
 			if (initMode) {

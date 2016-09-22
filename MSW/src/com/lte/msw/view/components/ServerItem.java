@@ -58,7 +58,6 @@ public class ServerItem extends AnchorPane implements IRefreshable {
 				switch (splitMenuButton.getText()) {
 				case ServerMenu.START:
 					System.out.println("[" + server.getName() + "] Starten");
-					server.start();
 					break;
 				case ServerMenu.STOP:
 					System.out.println("[" + server.getName() + "] Stoppen");

@@ -1,38 +1,11 @@
-[23:40:02] [Server thread/INFO]: Starting minecraft server version 1.10.2
-[23:40:02] [Server thread/INFO]: Loading properties
-[23:40:02] [Server thread/INFO]: Default game type: SURVIVAL
-[23:40:02] [Server thread/INFO]: Generating keypair
-[23:40:03] [Server thread/INFO]: Starting Minecraft server on *:25565
-[23:40:03] [Server thread/INFO]: Using default channel type
-[23:40:03] [Server thread/INFO]: Preparing level "world"
-[23:40:04] [Server thread/INFO]: Preparing start region for level 0
-[23:40:05] [Server thread/INFO]: Preparing spawn area: 5%
-[23:40:06] [Server thread/INFO]: Preparing spawn area: 10%
-[23:40:08] [Server thread/INFO]: Preparing spawn area: 17%
-[23:40:09] [Server thread/INFO]: Preparing spawn area: 23%
-[23:40:10] [Server thread/INFO]: Preparing spawn area: 30%
-[23:40:11] [Server thread/INFO]: Preparing spawn area: 37%
-[23:40:12] [Server thread/INFO]: Preparing spawn area: 44%
-[23:40:13] [Server thread/INFO]: Preparing spawn area: 51%
-[23:40:14] [Server thread/INFO]: Preparing spawn area: 58%
-[23:40:15] [Server thread/INFO]: Preparing spawn area: 65%
-[23:40:16] [Server thread/INFO]: Preparing spawn area: 73%
-[23:40:17] [Server thread/INFO]: Preparing spawn area: 79%
-[23:40:18] [Server thread/INFO]: Preparing spawn area: 86%
-[23:40:19] [Server thread/INFO]: Preparing spawn area: 95%
-[23:40:19] [Server thread/INFO]: Done (16,075s)! For help, type "help" or "?"
-[23:40:24] [Server thread/WARN]: Can't keep up! Did the system time change, or is the server overloaded? Running 4119ms behind, skipping 82 tick(s)
-[23:42:09] [User Authenticator #1/INFO]: UUID of player Seriouslaw is fc275361-fb54-42bf-9b01-df5dbb529691
-[23:42:09] [Server thread/INFO]: Seriouslaw[/127.0.0.1:49807] logged in with entity id 2409 at (236.5, 72.0, 190.5)
-[23:42:09] [Server thread/INFO]: Seriouslaw joined the game
-[23:42:16] [Server thread/WARN]: Can't keep up! Did the system time change, or is the server overloaded? Running 5931ms behind, skipping 118 tick(s)
-[23:42:48] [Server thread/WARN]: Can't keep up! Did the system time change, or is the server overloaded? Running 16154ms behind, skipping 323 tick(s)
-[23:42:53] [Server thread/WARN]: Can't keep up! Did the system time change, or is the server overloaded? Running 5036ms behind, skipping 100 tick(s)
-[23:43:05] [Server thread/WARN]: Can't keep up! Did the system time change, or is the server overloaded? Running 2013ms behind, skipping 40 tick(s)
-[23:43:40] [Server thread/INFO]: Seriouslaw lost connection: TextComponent{text='Disconnected', siblings=[], style=Style{hasParent=false, color=null, bold=null, italic=null, underlined=null, obfuscated=null, clickEvent=null, hoverEvent=null, insertion=null}}
-[23:43:40] [Server thread/INFO]: Seriouslaw left the game
-[23:44:24] [User Authenticator #2/INFO]: UUID of player Seriouslaw is fc275361-fb54-42bf-9b01-df5dbb529691
-[23:44:24] [Server thread/INFO]: Seriouslaw[/127.0.0.1:49814] logged in with entity id 5254 at (174.30000001192093, 85.0, 180.3054965690812)
-[23:44:24] [Server thread/INFO]: Seriouslaw joined the game
-[23:44:51] [Server thread/INFO]: Seriouslaw lost connection: TextComponent{text='Disconnected', siblings=[], style=Style{hasParent=false, color=null, bold=null, italic=null, underlined=null, obfuscated=null, clickEvent=null, hoverEvent=null, insertion=null}}
-[23:44:51] [Server thread/INFO]: Seriouslaw left the game
+[21:41:17] [Server thread/INFO]: Starting minecraft server version 1.10.2
+[21:41:17] [Server thread/INFO]: Loading properties
+[21:41:17] [Server thread/INFO]: Default game type: SURVIVAL
+[21:41:17] [Server thread/INFO]: Generating keypair
+[21:41:17] [Server thread/INFO]: Starting Minecraft server on *:25565
+[21:41:17] [Server thread/INFO]: Using default channel type
+[21:41:17] [Server thread/INFO]: Preparing level "world"
+[21:41:18] [Server thread/INFO]: Preparing start region for level 0
+[21:41:19] [Server thread/INFO]: Preparing spawn area: 0%
+[21:41:20] [Server thread/INFO]: Preparing spawn area: 32%
+[21:41:21] [Server thread/INFO]: Done (3,280s)! For help, type "help" or "?"

@@ -8,6 +8,8 @@ import java.util.Date;
 import com.lte.msw.model.enums.ServerState;
 import com.lte.msw.model.interfaces.IServerController;
 
+import javafx.scene.control.TextArea;
+
 public class Server implements IServerController {
 	
 	private int id;
@@ -59,9 +61,10 @@ public class Server implements IServerController {
 	}
 	
 	@Override
-	public void start() {
+	public void start(TextArea console) {
 		if (serverState == ServerState.STOPPED) {			
-			this.serverThread = new Thread(new ServerProcessor(new File(serverVersion.getPath())));
+			this.serverThread = new Thread(new ServerProcessor(new File(serverVersion.getPath()), console));
+			this.serverThread.setDaemon(true);
 			this.serverThread.start();
 			this.setServerState(ServerState.STARTED);
 		} else {
