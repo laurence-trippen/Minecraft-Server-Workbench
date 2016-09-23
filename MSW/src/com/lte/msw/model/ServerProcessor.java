@@ -29,7 +29,8 @@ public class ServerProcessor implements Runnable {
 		processBuilder.directory(executablePath.getParentFile());
 		try {
 			process = processBuilder.start();
-			new Thread(new ServerLogger(process.getInputStream(), console)).start();
+			Thread loggerThread = new Thread(new ServerLogger(process.getInputStream(), console));
+			loggerThread.start();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
