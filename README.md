@@ -4,7 +4,7 @@ The MSW is a minecraft server management tool written in Java 8 SE.
 
 ### Used Technologies ###
 
-* Java SE 8
+* JavaSE 8
 * JavaFX 8
 
 ### Used libraries ###
@@ -21,3 +21,9 @@ The MSW is a minecraft server management tool written in Java 8 SE.
 3. Copy the resources folder from the Project int the Minecraft Server Workbench folder
 4. Create a Folder in the Minecraft Server Workbench folder with the name working
 5. In the folder working create a 'serverpool', 'servercheck' and 'server versions' folder
+
+### Mac OS X ###
+* in production
+
+### Linux ###
+* in production
