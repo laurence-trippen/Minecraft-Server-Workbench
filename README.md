@@ -1,4 +1,4 @@
-# Minecraft Server Workbench #
+# Minecraft Server Workbench - Overview #
 
 The MSW is a minecraft server management tool written in Java 8 SE.
 
@@ -12,7 +12,9 @@ The MSW is a minecraft server management tool written in Java 8 SE.
 * JDOM 2.0.6
 * JSON Simple 1.1
 
-### How to build MSW on Windows ? ###
+# Minecraft Server Workbench - Building #
+
+### Windows ###
 
 1. Export the Java Project to an runnable Jar
 2. Create Folder with the name Minecraft Server Workbench
