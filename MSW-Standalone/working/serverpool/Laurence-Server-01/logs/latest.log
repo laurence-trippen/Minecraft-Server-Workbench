@@ -1,0 +1,17 @@
+[21:40:23] [Server thread/INFO]: Starting minecraft server version 1.10.2
+[21:40:23] [Server thread/INFO]: Loading properties
+[21:40:23] [Server thread/INFO]: Default game type: SURVIVAL
+[21:40:23] [Server thread/INFO]: Generating keypair
+[21:40:24] [Server thread/INFO]: Starting Minecraft server on *:99999
+[21:40:24] [Server thread/INFO]: Using default channel type
+[21:40:24] [Server thread/ERROR]: Encountered an unexpected exception
+java.lang.IllegalArgumentException: port out of range:99999
+	at java.net.InetSocketAddress.checkPort(Unknown Source) ~[?:1.8.0_101]
+	at java.net.InetSocketAddress.<init>(Unknown Source) ~[?:1.8.0_101]
+	at io.netty.bootstrap.AbstractBootstrap.localAddress(AbstractBootstrap.java:149) ~[minecraft_server.1.10.2.jar:?]
+	at md.a(SourceFile:101) ~[minecraft_server.1.10.2.jar:?]
+	at ld.j(SourceFile:163) ~[minecraft_server.1.10.2.jar:?]
+	at net.minecraft.server.MinecraftServer.run(SourceFile:428) [minecraft_server.1.10.2.jar:?]
+	at java.lang.Thread.run(Unknown Source) [?:1.8.0_101]
+[21:40:24] [Server thread/ERROR]: This crash report has been saved to: C:\Users\LTE-02\git\mcapps\MSW\working\serverpool\Laurence-Server-01\.\crash-reports\crash-2016-09-22_21.40.24-server.txt
+[21:40:24] [Server thread/INFO]: Stopping server

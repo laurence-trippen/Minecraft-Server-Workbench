@@ -1,7 +1,7 @@
 ---- Minecraft Crash Report ----
-// I'm sorry, Dave.
+// This doesn't make any sense!
 
-Time: 22.09.16 21:40
+Time: 21.09.16 23:39
 Description: Exception in server tick loop
 
 java.lang.IllegalArgumentException: port out of range:99999
@@ -23,7 +23,7 @@ Details:
 	Operating System: Windows 7 (amd64) version 6.1
 	Java Version: 1.8.0_101, Oracle Corporation
 	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
-	Memory: 787580392 bytes (751 MB) / 1029177344 bytes (981 MB) up to 1029177344 bytes (981 MB)
+	Memory: 787580352 bytes (751 MB) / 1029177344 bytes (981 MB) up to 1029177344 bytes (981 MB)
 	JVM Flags: 2 total; -Xmx1024M -Xms1024M
 	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
 	Profiler Position: N/A (disabled)
