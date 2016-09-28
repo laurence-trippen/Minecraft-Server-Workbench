@@ -25,6 +25,8 @@ public class Path {
 	public static final String DIFFICULTY_32_PNG	= "resources/images/difficulty32.png";
 	public static final String PVP_32_PNG			= "resources/images/pvp32.png";
 	
+	public static final String WORKING_DIRECTORY	= "working";
+	
 	public static final String EULA					= "/eula.txt";
 	public static final String OPS 					= "/ops.json";
 	public static final String WHITELIST 			= "/whitelist.json";
