@@ -1,6 +1,6 @@
 package com.lte.msw.serverapi.main;
 
-import com.lte.msw.serverapi.model.MinecraftServer;
+import com.lte.msw.serverapi.model.server.MinecraftServer;
 
 public class ServerAPI {
 	

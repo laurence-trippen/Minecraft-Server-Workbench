@@ -1,6 +1,8 @@
-package com.lte.msw.serverapi.model;
+package com.lte.msw.serverapi.model.server;
 
+import com.lte.msw.serverapi.model.PlayerList;
 import com.lte.msw.serverapi.model.interfaces.IServerController;
+import com.lte.msw.serverapi.model.server.console.ConsoleInterpreter;
 
 public class MinecraftServer implements IServerController {
 	
