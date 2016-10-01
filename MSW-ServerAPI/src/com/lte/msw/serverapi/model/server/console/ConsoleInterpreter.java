@@ -1,7 +1,7 @@
 package com.lte.msw.serverapi.model.server.console;
 
-import com.lte.msw.serverapi.model.Player;
 import com.lte.msw.serverapi.model.server.MinecraftServer;
+import com.lte.msw.serverapi.model.server.Player;
 
 public class ConsoleInterpreter {
 	

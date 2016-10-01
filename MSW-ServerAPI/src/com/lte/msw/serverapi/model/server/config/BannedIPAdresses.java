@@ -1,5 +1,5 @@
 package com.lte.msw.serverapi.model.server.config;
 
-public class BannedIPs {
+public class BannedIPAdresses {
 
 }

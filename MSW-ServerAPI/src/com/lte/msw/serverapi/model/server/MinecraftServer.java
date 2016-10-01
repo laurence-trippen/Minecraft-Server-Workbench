@@ -1,24 +1,21 @@
 package com.lte.msw.serverapi.model.server;
 
-import com.lte.msw.serverapi.model.PlayerList;
 import com.lte.msw.serverapi.model.interfaces.IServerController;
-import com.lte.msw.serverapi.model.server.console.ConsoleInterpreter;
 
 public class MinecraftServer implements IServerController {
 	
 	private String serverName;
+	private MinecraftVersion minecraftVersion;
 	private PlayerList playerList;
-	private ConsoleInterpreter consoleInterpreter;
 	
-	public MinecraftServer() {
-		this.playerList = new PlayerList();
-		this.consoleInterpreter = new ConsoleInterpreter(this);
+	public MinecraftServer(String serverName, MinecraftVersion minecraftVersion) {
+		this.serverName = serverName;
+		this.minecraftVersion = minecraftVersion;
 	}
 	
 	@Override
 	public void start() {
-		consoleInterpreter.checkMessage("SeriousLaw joined the game.");
-		consoleInterpreter.checkMessage("TheDust98 joined the game.");
+		
 	}
 	
 	@Override
@@ -34,20 +31,20 @@ public class MinecraftServer implements IServerController {
 		this.serverName = serverName;
 	}
 
+	public MinecraftVersion getMinecraftVersion() {
+		return minecraftVersion;
+	}
+
+	public void setMinecraftVersion(MinecraftVersion minecraftVersion) {
+		this.minecraftVersion = minecraftVersion;
+	}
+
 	public PlayerList getPlayerList() {
 		return playerList;
 	}
 
 	public void setPlayerList(PlayerList playerList) {
 		this.playerList = playerList;
-	}
-
-	public ConsoleInterpreter getConsoleInterpreter() {
-		return consoleInterpreter;
-	}
-
-	public void setConsoleInterpreter(ConsoleInterpreter consoleInterpreter) {
-		this.consoleInterpreter = consoleInterpreter;
 	}
 
 }

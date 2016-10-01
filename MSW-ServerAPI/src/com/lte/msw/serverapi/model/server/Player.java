@@ -1,4 +1,4 @@
-package com.lte.msw.serverapi.model;
+package com.lte.msw.serverapi.model.server;
 
 public class Player {
 	
