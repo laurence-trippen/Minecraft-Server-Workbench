@@ -13,9 +13,9 @@ import com.lte.msw.manager.WindowManager;
 import com.lte.msw.model.Path;
 import com.lte.msw.model.ServerList;
 import com.lte.msw.model.ServerVersion;
-import com.lte.msw.model.ServerVersionTester;
 import com.lte.msw.model.enums.DataStatus;
 import com.lte.msw.model.interfaces.IRefreshable;
+import com.lte.msw.model.threads.ServerVersionTester;
 import com.lte.msw.view.style.Style;
 
 import javafx.event.ActionEvent;

@@ -8,10 +8,8 @@ import javafx.event.ActionEvent;
 
 public class VersionsWindowController {
 	
-	private ServerVersionsWindow versionsWindow;
-	
 	public VersionsWindowController(ServerVersionsWindow versionsWindow) {
-		this.versionsWindow = versionsWindow;
+
 	}
 	
 	public void installVersionHandler(ActionEvent event) {

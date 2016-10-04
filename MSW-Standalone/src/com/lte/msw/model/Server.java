@@ -7,6 +7,7 @@ import java.util.Date;
 
 import com.lte.msw.model.enums.ServerState;
 import com.lte.msw.model.interfaces.IServerController;
+import com.lte.msw.model.threads.ServerProcessor;
 
 import javafx.scene.control.TextArea;
 

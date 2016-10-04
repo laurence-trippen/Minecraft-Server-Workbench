@@ -1,9 +1,11 @@
-package com.lte.msw.model;
+package com.lte.msw.model.threads;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+
+import com.lte.msw.model.Path;
 
 public class ServerVersionTester {
 

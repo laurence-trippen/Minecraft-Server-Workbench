@@ -1,4 +1,4 @@
-package com.lte.msw.model;
+package com.lte.msw.model.threads;
 
 import java.io.BufferedReader;
 import java.io.IOException;
