@@ -161,7 +161,7 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 			@Override
 			public void handle(ActionEvent event) {
 				try {
-					Desktop.getDesktop().browse(new URI("https://account.mojang.com/documents/minecraft_eula"));
+					Desktop.getDesktop().browse(new URI(Path.MOJANG_EULA));
 				} catch (IOException | URISyntaxException e) {
 					e.printStackTrace();
 				}
@@ -171,12 +171,12 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 			@Override
 			public void handle(ActionEvent event) {
 				if (serverNameTextField.getText().equals("")) {
-					serverNameTextField.setStyle("-fx-border-color: red; -fx-border-radius: 3");
+					serverNameTextField.setStyle(Style.ERROR_BORDER);
 				} else {
 					serverNameTextField.setStyle("");
 				}
 				if (!serverEulaCheckBox.isSelected()) {
-					serverEulaCheckBox.setStyle("-fx-border-color: red; -fx-border-radius: 3");
+					serverEulaCheckBox.setStyle(Style.ERROR_BORDER);
 				} else {
 					serverEulaCheckBox.setStyle("");
 				}

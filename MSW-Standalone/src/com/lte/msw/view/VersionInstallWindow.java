@@ -18,7 +18,6 @@ import com.lte.msw.model.enums.DataStatus;
 import com.lte.msw.model.interfaces.IRefreshable;
 import com.lte.msw.view.style.Style;
 
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.NodeOrientation;
@@ -206,6 +205,13 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 							refresh();
 							Program.getMainStage().setScene(WindowManager.getWindowManager().getServerVersionsWindow());
 						}
+					} else {
+						alert.setAlertType(AlertType.ERROR);
+						alert.setTitle("Fehler!");
+						alert.setContentText("Servername \"" + testVersion.getName() + " \" existiert schon!");
+						alert.showAndWait();
+						refresh();
+						Program.getMainStage().setScene(WindowManager.getWindowManager().getServerVersionsWindow());
 					}
 				}
 			}

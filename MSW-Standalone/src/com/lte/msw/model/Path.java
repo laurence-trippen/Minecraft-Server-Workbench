@@ -2,6 +2,8 @@ package com.lte.msw.model;
 
 public class Path {
 	
+	public static final String MOJANG_EULA			= "https://account.mojang.com/documents/minecraft_eula";
+	
 	public static final String SERVER_CHECK 		= "working/servercheck/";
 	public static final String SERVER_VERSIONS 		= "working/serverversions/";
 	public static final String SERVER_DIRECTORY 	= "working/serverpool/";
