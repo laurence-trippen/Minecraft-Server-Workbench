@@ -43,29 +43,30 @@ import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 
 public class VersionInstallWindow extends Scene implements IRefreshable {
-	
-	private static AnchorPane 		mainPane = new AnchorPane();
-	private File 					selectedJarFile;
-	private Pane 					installSetupPane;
-	private Pane 					installationPane;
-	private ToolBar 				toolBar;
-	private Button 					closeButton;
-	private Label 					versionNameLabel;
-	private Label 					versionJarLabel;
-	private Label 					installVersionLabel;
-	private Label 					jarNameLabel;
-	private Label 					progressLabel;
-	private TextField 				versionNameTextField;
-	private Button 					versionJarButton;
-	private Button 					installVersionButton;
-	private ImageView 				installVersionImageView;
-	private ImageView 				jarVersionImageView;
-	private ProgressBar 			progressBar;
-	
+
+	private static AnchorPane mainPane = new AnchorPane();
+	private File selectedJarFile;
+	private Pane installSetupPane;
+	private Pane installationPane;
+	private ToolBar toolBar;
+	private Button closeButton;
+	private Label versionNameLabel;
+	private Label versionJarLabel;
+	private Label installVersionLabel;
+	private Label jarNameLabel;
+	private Label progressLabel;
+	private TextField versionNameTextField;
+	private Button versionJarButton;
+	private Button installVersionButton;
+	private ImageView installVersionImageView;
+	private ImageView jarVersionImageView;
+	private ProgressBar progressBar;
+
 	public VersionInstallWindow() {
 		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
 		try {
-			mainPane.setBackground(new Background(new BackgroundImage(new Image(new FileInputStream(Path.BACKGROUND)), null, null, null, null)));
+			mainPane.setBackground(new Background(
+					new BackgroundImage(new Image(new FileInputStream(Path.BACKGROUND)), null, null, null, null)));
 			this.installVersionImageView = new ImageView(new Image(new FileInputStream(Path.INSTALL_VERSION_PNG)));
 			this.jarVersionImageView = new ImageView(new Image(new FileInputStream(Path.JAR_PNG)));
 		} catch (FileNotFoundException e) {
@@ -119,9 +120,7 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 				fileChooserStage.centerOnScreen();
 				FileChooser fileChooser = new FileChooser();
 				fileChooser.setTitle("Minecraft Server JAR auswählen");
-				fileChooser.getExtensionFilters().addAll(
-				         new ExtensionFilter("Minecraft Server JAR", "*.jar")
-				);
+				fileChooser.getExtensionFilters().addAll(new ExtensionFilter("Minecraft Server JAR", "*.jar"));
 				selectedJarFile = fileChooser.showOpenDialog(fileChooserStage);
 				if (selectedJarFile != null) {
 					jarVersionImageView.setVisible(true);
@@ -145,66 +144,68 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 			@Override
 			public void handle(ActionEvent event) {
 				if (versionNameTextField.getText().equals("")) {
-					versionNameTextField.setStyle("-fx-border-color: red; -fx-border-radius: 3");
+					versionNameTextField.setStyle(Style.ERROR_BORDER);
 				} else {
 					versionNameTextField.setStyle("");
 				}
 				if (selectedJarFile == null) {
-					versionJarButton.setStyle("-fx-border-color: red; -fx-border-radius: 3");
+					versionJarButton.setStyle(Style.ERROR_BORDER);
 				} else {
 					versionJarButton.setStyle("");
 				}
-				if ((!versionNameTextField.getText().equals("")) && selectedJarFile != null) {		
+				if ((!versionNameTextField.getText().equals("")) && selectedJarFile != null) {
 					Alert alert = new Alert(AlertType.INFORMATION);
-					installationPane.setVisible(true);	
+					installationPane.setVisible(true);
 					progressBar.setProgress(0.2);
 					closeButton.setDisable(true);
 					versionNameTextField.setDisable(true);
 					versionJarButton.setDisable(true);
-					installVersionButton.setDisable(true);	
-
-					if (new ServerVersionTester().testVersion(selectedJarFile)) {
-						progressBar.setProgress(1.0);
-						DataStatus status = ServerList.getServerList().addServerVersion(new ServerVersion(
-								versionNameTextField.getText(), 
-								Path.SERVER_VERSIONS + selectedJarFile.getName()
-						));
-						switch (status) {
-						case SUCCESS:
-							try {
-								Files.copy(
-									Paths.get(selectedJarFile.getAbsolutePath()),
-									Paths.get(Path.SERVER_VERSIONS + selectedJarFile.getName())
-								);
-							} catch (IOException e) {
-								e.printStackTrace();
+					installVersionButton.setDisable(true);
+					ServerVersion testVersion = new ServerVersion(
+							versionNameTextField.getText(),
+							Path.SERVER_VERSIONS + selectedJarFile.getName()
+					);
+					if (!ServerList.getServerList().existServerVersion(testVersion)) {
+						if (new ServerVersionTester().testVersion(selectedJarFile)) {
+							DataStatus status = ServerList.getServerList().addServerVersion(testVersion);
+							switch (status) {
+							case SUCCESS:
+								try {
+									Files.copy(Paths.get(selectedJarFile.getAbsolutePath()),
+											Paths.get(Path.SERVER_VERSIONS + selectedJarFile.getName()));
+								} catch (IOException e) {
+									e.printStackTrace();
+								}
+								progressLabel.setText("Installation erfolgreich!");
+								alert.setTitle("Installation Erfolgreich!");
+								alert.setHeaderText(versionNameTextField.getText());
+								alert.setContentText("Minecraft Version " + versionNameTextField.getText()
+										+ " wurde erfolgreich installiert!\n");
+								alert.showAndWait();
+								break;
+							case EXISTS:
+								progressLabel.setText("Installation fehlgeschlagen!");
+								alert.setAlertType(AlertType.ERROR);
+								alert.setTitle("Installation fehlgeschlagen!");
+								alert.setHeaderText(versionNameTextField.getText());
+								alert.setContentText(
+										"Minecraft Version " + versionNameTextField.getText() + " existiert schon!\n");
+								alert.showAndWait();
+							default:
+								break;
 							}
-							progressLabel.setText("Installation erfolgreich!");
-							alert.setTitle("Installation Erfolgreich!");
-							alert.setHeaderText(versionNameTextField.getText());
-							alert.setContentText("Minecraft Version " + versionNameTextField.getText() + " wurde erfolgreich installiert!\n");
-							alert.showAndWait();
-							break;
-						case EXISTS:
-							progressLabel.setText("Installation fehlgeschlagen!");
+							refresh();
+							Program.getMainStage().setScene(WindowManager.getWindowManager().getServerVersionsWindow());
+
+						} else {
 							alert.setAlertType(AlertType.ERROR);
-							alert.setTitle("Installation fehlgeschlagen!");
-							alert.setHeaderText(versionNameTextField.getText());
-							alert.setContentText("Minecraft Version " + versionNameTextField.getText() + " existiert schon!\n");
+							alert.setTitle("Falsches JAR Archive");
+							alert.setHeaderText("Keine Minecraft Server JAR");
+							alert.setContentText(selectedJarFile.getName() + " ist keine Minecraft Server JAR!");
 							alert.showAndWait();
-						default:
-							break;
+							refresh();
+							Program.getMainStage().setScene(WindowManager.getWindowManager().getServerVersionsWindow());
 						}
-						refresh();
-						Program.getMainStage().setScene(WindowManager.getWindowManager().getServerVersionsWindow());
-					} else {
-						alert.setAlertType(AlertType.ERROR);
-						alert.setTitle("Falsches JAR Archive");
-						alert.setHeaderText("Keine Minecraft Server JAR");
-						alert.setContentText(selectedJarFile.getName() + " ist keine Minecraft Server JAR!");
-						alert.showAndWait();
-						refresh();
-						Program.getMainStage().setScene(WindowManager.getWindowManager().getServerVersionsWindow());
 					}
 				}
 			}
@@ -215,17 +216,9 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 		this.installSetupPane.setPrefHeight(410);
 		this.installSetupPane.setLayoutX(660);
 		this.installSetupPane.setLayoutY(300);
-		this.installSetupPane.getChildren().addAll(
-				versionNameLabel, 
-				versionNameTextField, 
-				versionJarLabel,
-				versionJarButton,
-				installVersionButton,
-				installVersionImageView,
-				installVersionLabel,
-				jarNameLabel,
-				jarVersionImageView
-		);
+		this.installSetupPane.getChildren().addAll(versionNameLabel, versionNameTextField, versionJarLabel,
+				versionJarButton, installVersionButton, installVersionImageView, installVersionLabel, jarNameLabel,
+				jarVersionImageView);
 		this.closeButton = new Button("Abbrechen");
 		this.closeButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -244,7 +237,7 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 		AnchorPane.setTopAnchor(toolBar, 0.00);
 		AnchorPane.setRightAnchor(toolBar, 0.00);
 	}
-	
+
 	@Override
 	public void refresh() {
 		closeButton.setDisable(false);
@@ -260,5 +253,5 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 		versionNameTextField.setStyle("");
 		versionJarButton.setStyle("");
 	}
-	
+
 }

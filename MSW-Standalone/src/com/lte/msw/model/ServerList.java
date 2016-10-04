@@ -80,23 +80,14 @@ public class ServerList {
 	public boolean existServer(String newServerName) {
 		for (Server server : serverList) {
 			if (newServerName.equals(server.getName())) {
-				return false;
+				return true;
 			}
 		}
-		return true;
+		return false;
 	}
 	
 	public DataStatus addServerVersion(ServerVersion serverVersion) {
 		if (serverVersion != null) {
-			for (ServerVersion existingVersion : serverVersions) {
-				if (
-						serverVersion.getName().equals(existingVersion.getName()) || 
-						serverVersion.getPath().equals(existingVersion.getPath())
-				) {
-					System.out.println("Serverversion existiert schon!");
-					return DataStatus.EXISTS;
-				}
-			}
 			serverVersionCounter++;
 			serverVersion.setId(serverVersionCounter);
 			serverVersions.add(serverVersion);
@@ -127,6 +118,18 @@ public class ServerList {
 			}
 		}
 		return DataStatus.ERROR;
+	}
+	
+	public boolean existServerVersion(ServerVersion serverVersion) {
+		for (ServerVersion existingVersion : serverVersions) {
+			if (
+					serverVersion.getName().equals(existingVersion.getName()) || 
+					serverVersion.getPath().equals(existingVersion.getPath())
+			) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	private void saveXML() {

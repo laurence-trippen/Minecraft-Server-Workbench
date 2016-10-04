@@ -181,7 +181,7 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 					serverEulaCheckBox.setStyle("");
 				}
 				if ((!serverNameTextField.getText().equals("")) && serverEulaCheckBox.isSelected()) {
-					if (ServerList.getServerList().existServer(serverNameTextField.getText())) {
+					if (!ServerList.getServerList().existServer(serverNameTextField.getText())) {
 						closeButton.setDisable(true);
 						createServerButton.setDisable(true);
 						serverNameTextField.setDisable(true);
