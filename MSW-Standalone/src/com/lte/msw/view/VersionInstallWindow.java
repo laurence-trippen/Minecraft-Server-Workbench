@@ -165,13 +165,22 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 							Path.SERVER_VERSIONS + selectedJarFile.getName()
 					);
 					if (!ServerList.getServerList().existServerVersion(testVersion)) {
-						if (new ServerVersionTester().testVersion(selectedJarFile)) {
+						ServerVersionTester tester = new ServerVersionTester(selectedJarFile);
+						Thread versionTestThread = new Thread(tester, "Tester Thread");
+						try {
+							versionTestThread.join();
+						} catch (InterruptedException e1) {
+							e1.printStackTrace();
+						}
+						if (tester.isSuccessful()) {		
 							DataStatus status = ServerList.getServerList().addServerVersion(testVersion);
 							switch (status) {
 							case SUCCESS:
 								try {
-									Files.copy(Paths.get(selectedJarFile.getAbsolutePath()),
-											Paths.get(Path.SERVER_VERSIONS + selectedJarFile.getName()));
+									Files.copy(
+											Paths.get(selectedJarFile.getAbsolutePath()),
+											Paths.get(Path.SERVER_VERSIONS + selectedJarFile.getName())
+											);
 								} catch (IOException e) {
 									e.printStackTrace();
 								}
@@ -179,7 +188,7 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 								alert.setTitle("Installation Erfolgreich!");
 								alert.setHeaderText(versionNameTextField.getText());
 								alert.setContentText("Minecraft Version " + versionNameTextField.getText()
-										+ " wurde erfolgreich installiert!\n");
+								+ " wurde erfolgreich installiert!\n");
 								alert.showAndWait();
 								break;
 							case EXISTS:
@@ -195,15 +204,8 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 							}
 							refresh();
 							Program.getMainStage().setScene(WindowManager.getWindowManager().getServerVersionsWindow());
-
 						} else {
-							alert.setAlertType(AlertType.ERROR);
-							alert.setTitle("Falsches JAR Archive");
-							alert.setHeaderText("Keine Minecraft Server JAR");
-							alert.setContentText(selectedJarFile.getName() + " ist keine Minecraft Server JAR!");
-							alert.showAndWait();
-							refresh();
-							Program.getMainStage().setScene(WindowManager.getWindowManager().getServerVersionsWindow());
+							System.out.println("Installation ERROR");
 						}
 					} else {
 						alert.setAlertType(AlertType.ERROR);

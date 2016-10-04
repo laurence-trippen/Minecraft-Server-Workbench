@@ -178,10 +178,5 @@
       </properties>
     </Server>
   </MCServer>
-  <MCVersions>
-    <ServerVersion id="1">
-      <name>1.10.2</name>
-      <path>working/serverversions/minecraft_server.1.10.2.jar</path>
-    </ServerVersion>
-  </MCVersions>
+  <MCVersions />
 </MCSM>

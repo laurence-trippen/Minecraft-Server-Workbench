@@ -7,15 +7,18 @@ import java.nio.file.Paths;
 
 import com.lte.msw.model.Path;
 
-public class ServerVersionTester {
+public class ServerVersionTester implements Runnable {
 
 	private final static File versionLogsDir 		= new File(Path.SERVER_CHECK + "logs");
 	private final static File versionLogOldFile 	= new File(Path.SERVER_CHECK + "server.log");
 	private final static File versionEulaFile 		= new File(Path.SERVER_CHECK + "eula.txt");
 	private final static File versionPropertiesFile = new File(Path.SERVER_CHECK + "server.properties");
+	private volatile boolean successful = false;
+	private File sourceFile;
 	private File versionTestFile;
 
-	public ServerVersionTester() {
+	public ServerVersionTester(File sourceFile) {
+		this.sourceFile = sourceFile;
 		this.versionTestFile = null;
 	}
 
@@ -64,13 +67,16 @@ public class ServerVersionTester {
 			return false;
 		}
 	}
-
-	public boolean testVersion(File selectedVersionJar) {
-		if (selectedVersionJar != null) {
-			versionTestFile = new File(Path.SERVER_CHECK + selectedVersionJar.getName());
+	
+	@Override
+	public void run() {
+		if (sourceFile != null) {
+			versionTestFile = new File(Path.SERVER_CHECK + sourceFile.getName());
 			try {
-				Files.copy(Paths.get(selectedVersionJar.getAbsolutePath()),
-						Paths.get(new File(Path.SERVER_CHECK + selectedVersionJar.getName()).getAbsolutePath()));
+				Files.copy(
+						Paths.get(sourceFile.getAbsolutePath()),
+						Paths.get(versionTestFile.getAbsolutePath())
+				);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -78,13 +84,16 @@ public class ServerVersionTester {
 				if (runVersion()) {
 					if (checkVersion()) {
 						cleanTestArea(new File(Path.SERVER_CHECK));
-						return true;
+						successful = true;
 					}
 				}
 			}
 		}
 		cleanTestArea(new File(Path.SERVER_CHECK));
-		return false;
+	}
+
+	public boolean isSuccessful() {
+		return successful;
 	}
 
 }
