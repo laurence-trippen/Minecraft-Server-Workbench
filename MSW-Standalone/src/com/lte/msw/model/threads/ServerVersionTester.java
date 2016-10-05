@@ -7,6 +7,9 @@ import java.nio.file.Paths;
 
 import com.lte.msw.model.Path;
 
+import javafx.application.Platform;
+import javafx.scene.control.ProgressBar;
+
 public class ServerVersionTester implements Runnable {
 
 	private final static File versionLogsDir 		= new File(Path.SERVER_CHECK + "logs");
@@ -16,9 +19,11 @@ public class ServerVersionTester implements Runnable {
 	private volatile boolean successful = false;
 	private File sourceFile;
 	private File versionTestFile;
+	private ProgressBar progressBar;
 
-	public ServerVersionTester(File sourceFile) {
+	public ServerVersionTester(File sourceFile, ProgressBar progressBar) {
 		this.sourceFile = sourceFile;
+		this.progressBar = progressBar;
 		this.versionTestFile = null;
 	}
 
@@ -81,6 +86,12 @@ public class ServerVersionTester implements Runnable {
 				e.printStackTrace();
 			}
 			if (versionTestFile.exists()) {
+				Platform.runLater(new Runnable() {
+					@Override
+					public void run() {
+						progressBar.setProgress(0.5);
+					}
+				});
 				if (runVersion()) {
 					if (checkVersion()) {
 						cleanTestArea(new File(Path.SERVER_CHECK));

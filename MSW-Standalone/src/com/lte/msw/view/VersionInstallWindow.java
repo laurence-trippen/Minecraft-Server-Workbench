@@ -165,8 +165,9 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 							Path.SERVER_VERSIONS + selectedJarFile.getName()
 					);
 					if (!ServerList.getServerList().existServerVersion(testVersion)) {
-						ServerVersionTester tester = new ServerVersionTester(selectedJarFile);
+						ServerVersionTester tester = new ServerVersionTester(selectedJarFile, progressBar);
 						Thread versionTestThread = new Thread(tester, "Tester Thread");
+						versionTestThread.start();
 						try {
 							versionTestThread.join();
 						} catch (InterruptedException e1) {
@@ -176,11 +177,12 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 							DataStatus status = ServerList.getServerList().addServerVersion(testVersion);
 							switch (status) {
 							case SUCCESS:
+								progressBar.setProgress(1.0);
 								try {
 									Files.copy(
 											Paths.get(selectedJarFile.getAbsolutePath()),
 											Paths.get(Path.SERVER_VERSIONS + selectedJarFile.getName())
-											);
+									);
 								} catch (IOException e) {
 									e.printStackTrace();
 								}
