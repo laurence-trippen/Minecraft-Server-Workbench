@@ -16,9 +16,6 @@ public class ConsoleInterpreter {
 			String[] a = s.split(" ");
 			server.getPlayerList().addPlayer(new Player(a[0], null));
 		}
-		if (s.contains(ServerMessage.LEFT)) {
-			String[] a = s.split(" ");
-		}
 	}
 
 }
