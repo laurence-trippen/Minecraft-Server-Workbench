@@ -3,7 +3,7 @@ package com.lte.msw.view;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-import com.lte.msw.main.Program;
+import com.lte.msw.main.MSWStandalone;
 import com.lte.msw.manager.DesktopManager;
 import com.lte.msw.manager.NetworkManager;
 import com.lte.msw.manager.WindowManager;
@@ -183,7 +183,7 @@ public class ServerWindow extends Scene implements IRefreshable {
 		this.closeButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				Program.getMainStage().setScene(WindowManager.getWindowManager().getMainWindow());
+				MSWStandalone.getMainStage().setScene(WindowManager.getWindowManager().getMainWindow());
 				refresh();
 			}
 		});

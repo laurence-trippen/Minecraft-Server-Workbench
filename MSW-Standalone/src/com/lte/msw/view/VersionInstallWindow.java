@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import com.lte.msw.main.Program;
+import com.lte.msw.main.MSWStandalone;
 import com.lte.msw.manager.DesktopManager;
 import com.lte.msw.manager.WindowManager;
 import com.lte.msw.model.Path;
@@ -205,7 +205,7 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 								break;
 							}
 							refresh();
-							Program.getMainStage().setScene(WindowManager.getWindowManager().getServerVersionsWindow());
+							MSWStandalone.getMainStage().setScene(WindowManager.getWindowManager().getServerVersionsWindow());
 						} else {
 							System.out.println("Installation ERROR");
 						}
@@ -215,7 +215,7 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 						alert.setContentText("Servername \"" + testVersion.getName() + " \" existiert schon!");
 						alert.showAndWait();
 						refresh();
-						Program.getMainStage().setScene(WindowManager.getWindowManager().getServerVersionsWindow());
+						MSWStandalone.getMainStage().setScene(WindowManager.getWindowManager().getServerVersionsWindow());
 					}
 				}
 			}
@@ -234,7 +234,7 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 			@Override
 			public void handle(ActionEvent event) {
 				refresh();
-				Program.getMainStage().setScene(WindowManager.getWindowManager().getServerVersionsWindow());
+				MSWStandalone.getMainStage().setScene(WindowManager.getWindowManager().getServerVersionsWindow());
 			}
 		});
 		this.toolBar = new ToolBar();

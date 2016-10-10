@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import com.lte.msw.main.Program;
+import com.lte.msw.main.MSWStandalone;
 import com.lte.msw.manager.DesktopManager;
 import com.lte.msw.manager.WindowManager;
 import com.lte.msw.model.Path;
@@ -154,7 +154,7 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 			@Override
 			public void handle(ActionEvent event) {
 				refresh();
-				Program.getMainStage().setScene(WindowManager.getWindowManager().getMainWindow());
+				MSWStandalone.getMainStage().setScene(WindowManager.getWindowManager().getMainWindow());
 			}
 		});
 		this.serverEulaHyperlink.setOnAction(new EventHandler<ActionEvent>() {
@@ -220,7 +220,7 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 													break;
 												}
 												refresh();
-												Program.getMainStage().setScene(WindowManager.getWindowManager().getMainWindow());
+												MSWStandalone.getMainStage().setScene(WindowManager.getWindowManager().getMainWindow());
 											} else {
 												Alert errorAlert = new Alert(AlertType.ERROR);
 												errorAlert.setTitle("Installation fehlgeschlagen!");
@@ -228,7 +228,7 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 												errorAlert.setContentText("Fehler beim erstellen von " + serverNameTextField.getText() + " !");
 												errorAlert.showAndWait();
 												refresh();
-												Program.getMainStage().setScene(WindowManager.getWindowManager().getMainWindow());
+												MSWStandalone.getMainStage().setScene(WindowManager.getWindowManager().getMainWindow());
 											}
 										}
 									}
@@ -248,7 +248,7 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 			@Override
 			public void handle(ActionEvent event) {
 				refresh();
-				Program.getMainStage().setScene(WindowManager.getWindowManager().getMainWindow());
+				MSWStandalone.getMainStage().setScene(WindowManager.getWindowManager().getMainWindow());
 			}
 		});
 		this.createServerPane.getChildren().addAll(

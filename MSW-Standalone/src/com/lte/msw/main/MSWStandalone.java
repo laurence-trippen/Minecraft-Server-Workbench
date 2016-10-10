@@ -5,7 +5,7 @@ import com.lte.msw.manager.WindowManager;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-public class Program extends Application {
+public class MSWStandalone extends Application {
 	
 	private static Stage mainStage = null;
 	

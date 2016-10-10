@@ -1,6 +1,6 @@
 package com.lte.msw.controller;
 
-import com.lte.msw.main.Program;
+import com.lte.msw.main.MSWStandalone;
 import com.lte.msw.manager.WindowManager;
 import com.lte.msw.view.ServerVersionsWindow;
 
@@ -13,11 +13,11 @@ public class VersionsWindowController {
 	}
 	
 	public void installVersionHandler(ActionEvent event) {
-		Program.getMainStage().setScene(WindowManager.getWindowManager().getVersionInstallWindow());
+		MSWStandalone.getMainStage().setScene(WindowManager.getWindowManager().getVersionInstallWindow());
 	}
 	
 	public void closeHandler(ActionEvent event) {
-		Program.getMainStage().setScene(WindowManager.getWindowManager().getMainWindow());
+		MSWStandalone.getMainStage().setScene(WindowManager.getWindowManager().getMainWindow());
 	}
 
 }
