@@ -1,13 +1,13 @@
-package com.lte.msw.view.components;
+package com.lte.msw.standalone.view.components;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Optional;
 
-import com.lte.msw.model.Path;
-import com.lte.msw.model.ServerList;
-import com.lte.msw.model.ServerVersion;
-import com.lte.msw.model.enums.DataStatus;
+import com.lte.msw.standalone.model.Path;
+import com.lte.msw.standalone.model.ServerList;
+import com.lte.msw.standalone.model.ServerVersion;
+import com.lte.msw.standalone.model.enums.DataStatus;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

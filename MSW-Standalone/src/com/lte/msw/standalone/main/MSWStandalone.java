@@ -1,6 +1,6 @@
-package com.lte.msw.main;
+package com.lte.msw.standalone.main;
 
-import com.lte.msw.manager.WindowManager;
+import com.lte.msw.standalone.manager.WindowManager;
 
 import javafx.application.Application;
 import javafx.stage.Stage;

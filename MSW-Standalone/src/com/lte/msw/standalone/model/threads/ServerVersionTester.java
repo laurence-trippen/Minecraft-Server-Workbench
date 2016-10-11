@@ -1,11 +1,11 @@
-package com.lte.msw.model.threads;
+package com.lte.msw.standalone.model.threads;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import com.lte.msw.model.Path;
+import com.lte.msw.standalone.model.Path;
 
 import javafx.application.Platform;
 import javafx.scene.control.ProgressBar;

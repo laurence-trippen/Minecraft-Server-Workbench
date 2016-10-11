@@ -1,13 +1,13 @@
-package com.lte.msw.model;
+package com.lte.msw.standalone.model;
 
-import static com.lte.msw.config.AppConfig.dateFormat;
+import static com.lte.msw.standalone.config.AppConfig.dateFormat;
 
 import java.io.File;
 import java.util.Date;
 
-import com.lte.msw.model.enums.ServerState;
-import com.lte.msw.model.interfaces.IServerController;
-import com.lte.msw.model.threads.ServerProcessor;
+import com.lte.msw.standalone.model.enums.ServerState;
+import com.lte.msw.standalone.model.interfaces.IServerController;
+import com.lte.msw.standalone.model.threads.ServerProcessor;
 
 import javafx.scene.control.TextArea;
 

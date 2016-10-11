@@ -1,4 +1,4 @@
-package com.lte.msw.model;
+package com.lte.msw.standalone.model;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -14,12 +14,12 @@ import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
-import com.lte.msw.manager.WindowManager;
-import com.lte.msw.model.enums.DataStatus;
-import com.lte.msw.model.enums.Difficulty;
-import com.lte.msw.model.enums.GameMode;
-import com.lte.msw.model.enums.OpLevel;
-import com.lte.msw.model.enums.WorldType;
+import com.lte.msw.standalone.manager.WindowManager;
+import com.lte.msw.standalone.model.enums.DataStatus;
+import com.lte.msw.standalone.model.enums.Difficulty;
+import com.lte.msw.standalone.model.enums.GameMode;
+import com.lte.msw.standalone.model.enums.OpLevel;
+import com.lte.msw.standalone.model.enums.WorldType;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

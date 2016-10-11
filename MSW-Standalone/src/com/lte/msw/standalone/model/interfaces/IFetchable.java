@@ -1,4 +1,4 @@
-package com.lte.msw.model.interfaces;
+package com.lte.msw.standalone.model.interfaces;
 
 public interface IFetchable {
 	

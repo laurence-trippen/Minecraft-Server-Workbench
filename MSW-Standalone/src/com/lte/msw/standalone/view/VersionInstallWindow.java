@@ -1,4 +1,4 @@
-package com.lte.msw.view;
+package com.lte.msw.standalone.view;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -7,16 +7,16 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import com.lte.msw.main.MSWStandalone;
-import com.lte.msw.manager.DesktopManager;
-import com.lte.msw.manager.WindowManager;
-import com.lte.msw.model.Path;
-import com.lte.msw.model.ServerList;
-import com.lte.msw.model.ServerVersion;
-import com.lte.msw.model.enums.DataStatus;
-import com.lte.msw.model.interfaces.IRefreshable;
-import com.lte.msw.model.threads.ServerVersionTester;
-import com.lte.msw.view.style.Style;
+import com.lte.msw.standalone.main.MSWStandalone;
+import com.lte.msw.standalone.manager.DesktopManager;
+import com.lte.msw.standalone.manager.WindowManager;
+import com.lte.msw.standalone.model.Path;
+import com.lte.msw.standalone.model.ServerList;
+import com.lte.msw.standalone.model.ServerVersion;
+import com.lte.msw.standalone.model.enums.DataStatus;
+import com.lte.msw.standalone.model.interfaces.IRefreshable;
+import com.lte.msw.standalone.model.threads.ServerVersionTester;
+import com.lte.msw.standalone.view.style.Style;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

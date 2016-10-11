@@ -1,4 +1,4 @@
-package com.lte.msw.model;
+package com.lte.msw.standalone.model;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -8,11 +8,11 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Properties;
 
-import com.lte.msw.model.enums.Difficulty;
-import com.lte.msw.model.enums.GameMode;
-import com.lte.msw.model.enums.OpLevel;
-import com.lte.msw.model.enums.WorldType;
-import com.lte.msw.model.interfaces.IPropertiesController;
+import com.lte.msw.standalone.model.enums.Difficulty;
+import com.lte.msw.standalone.model.enums.GameMode;
+import com.lte.msw.standalone.model.enums.OpLevel;
+import com.lte.msw.standalone.model.enums.WorldType;
+import com.lte.msw.standalone.model.interfaces.IPropertiesController;
 
 public class ServerProperties implements IPropertiesController {
 	

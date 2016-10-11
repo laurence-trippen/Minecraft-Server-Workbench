@@ -1,4 +1,4 @@
-package com.lte.msw.config;
+package com.lte.msw.standalone.config;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

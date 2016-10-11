@@ -1,4 +1,4 @@
-package com.lte.msw.model;
+package com.lte.msw.standalone.model;
 
 public class Path {
 	

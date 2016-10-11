@@ -1,8 +1,8 @@
-package com.lte.msw.main;
+package com.lte.msw.standalone.main;
 
 import java.io.File;
 
-import com.lte.msw.model.Path;
+import com.lte.msw.standalone.model.Path;
 
 public class ProgramDirectory {
 	

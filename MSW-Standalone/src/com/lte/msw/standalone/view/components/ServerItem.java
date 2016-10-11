@@ -1,14 +1,14 @@
-package com.lte.msw.view.components;
+package com.lte.msw.standalone.view.components;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-import com.lte.msw.main.MSWStandalone;
-import com.lte.msw.manager.WindowManager;
-import com.lte.msw.model.Path;
-import com.lte.msw.model.Server;
-import com.lte.msw.model.interfaces.IRefreshable;
-import com.lte.msw.view.ServerWindow;
+import com.lte.msw.standalone.main.MSWStandalone;
+import com.lte.msw.standalone.manager.WindowManager;
+import com.lte.msw.standalone.model.Path;
+import com.lte.msw.standalone.model.Server;
+import com.lte.msw.standalone.model.interfaces.IRefreshable;
+import com.lte.msw.standalone.view.ServerWindow;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

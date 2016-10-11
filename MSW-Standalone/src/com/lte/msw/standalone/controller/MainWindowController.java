@@ -1,8 +1,8 @@
-package com.lte.msw.controller;
+package com.lte.msw.standalone.controller;
 
-import com.lte.msw.main.MSWStandalone;
-import com.lte.msw.manager.WindowManager;
-import com.lte.msw.view.MainWindow;
+import com.lte.msw.standalone.main.MSWStandalone;
+import com.lte.msw.standalone.manager.WindowManager;
+import com.lte.msw.standalone.view.MainWindow;
 
 import javafx.event.ActionEvent;
 

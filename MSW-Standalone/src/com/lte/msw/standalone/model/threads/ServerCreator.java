@@ -1,4 +1,4 @@
-package com.lte.msw.model.threads;
+package com.lte.msw.standalone.model.threads;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import com.lte.msw.model.Path;
+import com.lte.msw.standalone.model.Path;
 
 public class ServerCreator {
 	

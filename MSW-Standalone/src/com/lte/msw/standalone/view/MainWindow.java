@@ -1,18 +1,18 @@
-package com.lte.msw.view;
+package com.lte.msw.standalone.view;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-import com.lte.msw.controller.MainWindowController;
-import com.lte.msw.manager.DesktopManager;
-import com.lte.msw.manager.GridManager;
-import com.lte.msw.model.Path;
-import com.lte.msw.model.Server;
-import com.lte.msw.model.ServerList;
-import com.lte.msw.model.interfaces.IFetchable;
-import com.lte.msw.model.interfaces.IRefreshable;
-import com.lte.msw.view.components.ServerItem;
+import com.lte.msw.standalone.controller.MainWindowController;
+import com.lte.msw.standalone.manager.DesktopManager;
+import com.lte.msw.standalone.manager.GridManager;
+import com.lte.msw.standalone.model.Path;
+import com.lte.msw.standalone.model.Server;
+import com.lte.msw.standalone.model.ServerList;
+import com.lte.msw.standalone.model.interfaces.IFetchable;
+import com.lte.msw.standalone.model.interfaces.IRefreshable;
+import com.lte.msw.standalone.view.components.ServerItem;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;

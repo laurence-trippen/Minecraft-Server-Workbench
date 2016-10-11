@@ -1,4 +1,4 @@
-package com.lte.msw.model.abstracts;
+package com.lte.msw.standalone.model.abstracts;
 
 public abstract class JsonIO {
 	
