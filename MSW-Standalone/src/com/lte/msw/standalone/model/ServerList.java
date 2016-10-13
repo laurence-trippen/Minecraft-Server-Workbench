@@ -95,7 +95,7 @@ public class ServerList {
 			WindowManager.getWindowManager().getServerVersionsWindow().fetch();
 			return DataStatus.SUCCESS;
 		}
-		return DataStatus.EXISTS;
+		return DataStatus.ERROR;
 	}
 	
 	public DataStatus deleteServerVersion(ServerVersion serverVersion) {

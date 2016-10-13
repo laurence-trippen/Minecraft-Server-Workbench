@@ -18,6 +18,7 @@ import com.lte.msw.standalone.model.interfaces.IRefreshable;
 import com.lte.msw.standalone.model.threads.VersionInstallService;
 import com.lte.msw.standalone.view.style.Style;
 
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.NodeOrientation;
@@ -160,43 +161,57 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 					versionNameTextField.setDisable(true);
 					versionJarButton.setDisable(true);
 					installVersionButton.setDisable(true);
-					ServerVersion testVersion = new ServerVersion(versionNameTextField.getText(),
-							Path.SERVER_VERSIONS + selectedJarFile.getName());
+					ServerVersion testVersion = new ServerVersion(
+							versionNameTextField.getText(),
+							Path.SERVER_VERSIONS + selectedJarFile.getName()
+					);
 					if (!ServerList.getServerList().existServerVersion(testVersion)) {
 						VersionInstallService vis = new VersionInstallService(selectedJarFile, progressBar);
 						vis.start();
-						DataStatus status = ServerList.getServerList().addServerVersion(testVersion);
-						switch (status) {
-						case SUCCESS:
-							progressBar.setProgress(1.0);
-							try {
-								Files.copy(Paths.get(selectedJarFile.getAbsolutePath()),
-										Paths.get(Path.SERVER_VERSIONS + selectedJarFile.getName()));
-							} catch (IOException e) {
-								e.printStackTrace();
+						vis.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+							@Override
+							public void handle(WorkerStateEvent event) {
+								DataStatus status = ServerList.getServerList().addServerVersion(testVersion);
+								switch (status) {
+								case SUCCESS:
+									try {
+										Files.copy(Paths.get(selectedJarFile.getAbsolutePath()),
+												Paths.get(Path.SERVER_VERSIONS + selectedJarFile.getName()));
+									} catch (IOException e) {
+										e.printStackTrace();
+									}
+									progressLabel.setText("Installation erfolgreich!");
+									alert.setTitle("Installation Erfolgreich!");
+									alert.setHeaderText(versionNameTextField.getText());
+									alert.setContentText("Minecraft Version " + versionNameTextField.getText()
+											+ " wurde erfolgreich installiert!\n");
+									alert.showAndWait();
+									break;
+								case ERROR:
+									progressLabel.setText("Installation fehlgeschlagen!");
+									alert.setAlertType(AlertType.ERROR);
+									alert.setTitle("Installation fehlgeschlagen!");
+									alert.setHeaderText(versionNameTextField.getText() + " konnte nicht installiert werden!");
+									alert.showAndWait();
+								default:
+									break;
+								}
+								refresh();
+								MSWStandalone.getMainStage().setScene(WindowManager.getWindowManager().getServerVersionsWindow());
+							};
+						});
+						vis.setOnFailed(new EventHandler<WorkerStateEvent>() {
+							@Override
+							public void handle(WorkerStateEvent event) {
+								System.out.println("onFailed [SERVICE]");
 							}
-							progressLabel.setText("Installation erfolgreich!");
-							alert.setTitle("Installation Erfolgreich!");
-							alert.setHeaderText(versionNameTextField.getText());
-							alert.setContentText("Minecraft Version " + versionNameTextField.getText()
-									+ " wurde erfolgreich installiert!\n");
-							alert.showAndWait();
-							break;
-						case EXISTS:
-							progressLabel.setText("Installation fehlgeschlagen!");
-							alert.setAlertType(AlertType.ERROR);
-							alert.setTitle("Installation fehlgeschlagen!");
-							alert.setHeaderText(versionNameTextField.getText());
-							alert.setContentText(
-									"Minecraft Version " + versionNameTextField.getText() + " existiert schon!\n");
-							alert.showAndWait();
-						default:
-							break;
-						}
-						refresh();
-						MSWStandalone.getMainStage().setScene(WindowManager.getWindowManager().getServerVersionsWindow());
+						});
 					} else {
-						System.out.println("Installation ERROR");
+						alert.setAlertType(AlertType.ERROR);
+						alert.setTitle("Fehler bei Installation!");
+						alert.setHeaderText("Minecraft Version existiert schon!");
+						alert.setContentText("Minecraft Version " + versionNameTextField.getText() + " existiert schon!");
+						alert.showAndWait();
 					}
 				}
 			}
