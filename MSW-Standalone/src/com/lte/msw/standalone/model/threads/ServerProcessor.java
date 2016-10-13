@@ -8,11 +8,9 @@ import javafx.scene.control.TextArea;
 public class ServerProcessor implements Runnable {
 
 	private File executablePath;
-	private TextArea console;
 
 	public ServerProcessor(File executablePath, TextArea console) {
 		this.executablePath = executablePath;
-		this.console = console;
 	}
 
 	@Override
@@ -29,7 +27,7 @@ public class ServerProcessor implements Runnable {
 		processBuilder.directory(executablePath.getParentFile());
 		try {
 			process = processBuilder.start();
-			Thread loggerThread = new Thread(new ServerLogger(process.getInputStream(), console));
+			Thread loggerThread = new Thread(new ServerLogger(process.getInputStream()));
 			loggerThread.start();
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -167,7 +167,6 @@ public class ServerList {
 			properties.addContent(new Element("gameMode").setText(saveServer.getServerProperties().getGameMode().toString()));
 			properties.addContent(new Element("playerIdleTime").setText(Integer.toString(saveServer.getServerProperties().getPlayerIdleTime())));
 			properties.addContent(new Element("maxPlayers").setText(Integer.toString(saveServer.getServerProperties().getMaxPlayers())));
-			properties.addContent(new Element("maxTickTime").setText(Integer.toString(saveServer.getServerProperties().getMaxTickTime())));
 			properties.addContent(new Element("spawnMonsters").setText(saveServer.getServerProperties().isSpawnMonsters() == true ? "true" : "false"));
 			properties.addContent(new Element("generateStructs").setText(saveServer.getServerProperties().isGenerateStructs() == true ? "true" : "false"));
 			properties.addContent(new Element("viewDistance").setText(Integer.toString(saveServer.getServerProperties().getViewDistance())));
@@ -244,7 +243,6 @@ public class ServerList {
 					serverProperties.setGameMode(GameMode.valueOf(properties.getChildText("gameMode")));
 					serverProperties.setPlayerIdleTime(Integer.parseInt(properties.getChildText("playerIdleTime")));
 					serverProperties.setMaxPlayers(Integer.parseInt(properties.getChildText("maxPlayers")));
-					serverProperties.setMaxTickTime(Integer.parseInt(properties.getChildText("maxTickTime")));
 					serverProperties.setSpawnMonsters(Boolean.parseBoolean(properties.getChildText("spawnMonsters")));
 					serverProperties.setGenerateStructs(Boolean.parseBoolean(properties.getChildText("generateStructs")));
 					serverProperties.setViewDistance(Integer.parseInt(properties.getChildText("viewDistance")));

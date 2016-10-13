@@ -1,4 +1,4 @@
-package com.lte.msw.standalone.model.threads;
+package com.lte.msw.standalone.model.threads.services;
 
 import java.io.File;
 import java.io.IOException;
@@ -97,7 +97,7 @@ public class VersionInstallService extends Service<Void> {
 							System.out.println("Dateien werden überprüft ...");
 							if (checkVersion()) {
 								cleanTestArea(new File(Path.SERVER_CHECK));
-								System.out.println("Version wird installiert .. ...");
+								System.out.println("Version wird installiert ...");
 								setProgress(1.0);
 							}
 						}

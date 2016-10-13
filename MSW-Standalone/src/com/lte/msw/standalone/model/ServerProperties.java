@@ -47,7 +47,6 @@ public class ServerProperties implements IPropertiesController {
 	private GameMode gameMode;
 	private int playerIdleTime;
 	private int maxPlayers;
-	private int maxTickTime;
 	private boolean spawnMonsters;
 	private boolean generateStructs;
 	private int viewDistance;
@@ -85,7 +84,6 @@ public class ServerProperties implements IPropertiesController {
 		this.gameMode = GameMode.SURVIVAL;
 		this.playerIdleTime = 0;
 		this.maxPlayers = 20;
-		this.maxTickTime = 60000;
 		this.spawnMonsters = true;
 		this.generateStructs = true;
 		this.viewDistance = 10;
@@ -164,7 +162,6 @@ public class ServerProperties implements IPropertiesController {
 			}
 			this.serverProperties.setProperty("player-idle-timeout", String.valueOf(this.getPlayerIdleTime()));
 			this.serverProperties.setProperty("max-players", String.valueOf(this.getMaxPlayers()));
-			this.serverProperties.setProperty("max-tick-time", String.valueOf(this.getMaxTickTime()));
 			this.serverProperties.setProperty("spawn-monsters", this.isSpawnMonsters() ? "true" : "false");
 			this.serverProperties.setProperty("generate-structures", this.isGenerateStructs() ? "true" : "false");
 			this.serverProperties.setProperty("view-distance", String.valueOf(this.getViewDistance()));
@@ -274,7 +271,6 @@ public class ServerProperties implements IPropertiesController {
 			}
 			this.setPlayerIdleTime(Integer.parseInt(serverProperties.getProperty("player-idle-timeout")));
 			this.setMaxPlayers(Integer.parseInt(serverProperties.getProperty("max-players")));
-			this.setMaxTickTime(Integer.parseInt(serverProperties.getProperty("max-tick-time")));
 			this.setSpawnMonsters(serverProperties.getProperty("spawn-monsters") == "true" ? true : false);
 			this.setGenerateStructs(serverProperties.getProperty("generate-structures") == "true" ? true : false);
 			this.setViewDistance(Integer.parseInt(serverProperties.getProperty("view-distance")));
@@ -540,14 +536,6 @@ public class ServerProperties implements IPropertiesController {
 
 	public void setMaxPlayers(int maxPlayers) {
 		this.maxPlayers = maxPlayers;
-	}
-
-	public int getMaxTickTime() {
-		return maxTickTime;
-	}
-
-	public void setMaxTickTime(int maxTickTime) {
-		this.maxTickTime = maxTickTime;
 	}
 
 	public boolean isSpawnMonsters() {

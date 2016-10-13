@@ -17,9 +17,10 @@ import com.lte.msw.standalone.model.ServerList;
 import com.lte.msw.standalone.model.ServerVersion;
 import com.lte.msw.standalone.model.enums.DataStatus;
 import com.lte.msw.standalone.model.interfaces.IRefreshable;
-import com.lte.msw.standalone.model.threads.ServerCreator;
+import com.lte.msw.standalone.model.threads.services.ServerCreateService;
 import com.lte.msw.standalone.view.style.Style;
 
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.NodeOrientation;
@@ -43,46 +44,36 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-
 public class CreateServerWindow extends Scene implements IRefreshable {
-	
-	private static AnchorPane 			mainPane = new AnchorPane();
-	private static File 				oldServerJar = null;
-	private static File 				newServerJar = null;
-	private ToolBar 					toolBar;
-	private Button 						closeButton;
-	private Pane 						createServerPane;
-	private Button 						createServerButton;
-	private Label 						createServerLabel;
-	private Label 						serverNameLabel;
-	private Label 						serverVersionLabel;
-	private Label 						serverEulaLabel;
-	private ImageView 					createServerImageView;
-	private TextField 					serverNameTextField;
-	private ChoiceBox<ServerVersion> 	serverVersionChoiceBox;
-	private CheckBox 					serverEulaCheckBox;
-	private Hyperlink 					serverEulaHyperlink;
-	private Pane 						installationPane;
-	private ProgressBar 				progressBar;
-	private Label 						progressLabel;
-	
+
+	private static AnchorPane mainPane = new AnchorPane();
+	private ToolBar toolBar;
+	private Button closeButton;
+	private Pane createServerPane;
+	private Button createServerButton;
+	private Label createServerLabel;
+	private Label serverNameLabel;
+	private Label serverVersionLabel;
+	private Label serverEulaLabel;
+	private ImageView createServerImageView;
+	private TextField serverNameTextField;
+	private ChoiceBox<ServerVersion> serverVersionChoiceBox;
+	private CheckBox serverEulaCheckBox;
+	private Hyperlink serverEulaHyperlink;
+	private Pane installationPane;
+	private ProgressBar progressBar;
+	private Label progressLabel;
+
 	public CreateServerWindow() {
 		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
 		try {
-			mainPane.setBackground(new Background(new BackgroundImage(new Image(
-					new FileInputStream(Path.BACKGROUND)), 
-					null,
-					null,
-					null,
-					null
-			)));
-			this.createServerImageView = new ImageView(new Image(new FileInputStream(
-					Path.CREATE_SERVER_PNG
-			)));
+			mainPane.setBackground(new Background(
+					new BackgroundImage(new Image(new FileInputStream(Path.BACKGROUND)), null, null, null, null)));
+			this.createServerImageView = new ImageView(new Image(new FileInputStream(Path.CREATE_SERVER_PNG)));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		this.progressLabel = new Label();
+		this.progressLabel = new Label("Server wird erstellt ...");
 		this.progressLabel.setFont(Font.font("System", FontWeight.BOLD, 14));
 		this.progressLabel.setLayoutX(400);
 		this.progressLabel.setLayoutY(40);
@@ -182,59 +173,66 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 				}
 				if ((!serverNameTextField.getText().equals("")) && serverEulaCheckBox.isSelected()) {
 					if (!ServerList.getServerList().existServer(serverNameTextField.getText())) {
+						installationPane.setVisible(true);
 						closeButton.setDisable(true);
 						createServerButton.setDisable(true);
 						serverNameTextField.setDisable(true);
 						serverVersionChoiceBox.setDisable(true);
 						serverEulaCheckBox.setDisable(true);
-						if (ServerCreator.createServerDirectory(Path.SERVER_DIRECTORY + serverNameTextField.getText())) {
-							oldServerJar = new File(serverVersionChoiceBox.getSelectionModel().getSelectedItem().getPath());
-							newServerJar = new File(Path.SERVER_DIRECTORY + serverNameTextField.getText() + "/" + oldServerJar.getName());
-							if (ServerCreator.copyServerJar(oldServerJar.getAbsolutePath(), newServerJar.getAbsolutePath())) {
-								if (ServerCreator.runServerJar(newServerJar.getAbsolutePath(), newServerJar.getParentFile().getPath(), true)) {
-									if (ServerCreator.editEula(Path.SERVER_DIRECTORY + serverNameTextField.getText() + "/eula.txt")) {
-										if (ServerCreator.runServerJar(newServerJar.getAbsolutePath(), newServerJar.getParentFile().getPath(), false)) {
-											if (ServerCreator.checkServer(serverNameTextField.getText())) {
-												DataStatus status = ServerList.getServerList().addServer(new Server(
-														serverNameTextField.getText(),
-														new ServerVersion(
-																serverVersionChoiceBox.getSelectionModel().getSelectedItem().getName(),
-																newServerJar.getPath()
-												)));
-												switch (status) {
-												case SUCCESS:
-													Alert successAlert = new Alert(AlertType.INFORMATION);
-													successAlert.setTitle("Server erstellen erfolgreich!");
-													successAlert.setHeaderText(serverNameTextField.getText());
-													successAlert.setContentText("Minecraft Server " + serverNameTextField.getText() + " wurde erfolgreich erstellt!");
-													successAlert.showAndWait();
-													break;
-												case ERROR:
-													Alert errorAlert = new Alert(AlertType.ERROR);
-													errorAlert.setTitle("Installation fehlgeschlagen!");
-													errorAlert.setHeaderText(serverNameTextField.getText());
-													errorAlert.setContentText("Fehler beim erstellen von " + serverNameTextField.getText() + " !");
-													errorAlert.showAndWait();
-													break;
-												default:
-													break;
-												}
-												refresh();
-												MSWStandalone.getMainStage().setScene(WindowManager.getWindowManager().getMainWindow());
-											} else {
-												Alert errorAlert = new Alert(AlertType.ERROR);
-												errorAlert.setTitle("Installation fehlgeschlagen!");
-												errorAlert.setHeaderText(serverNameTextField.getText());
-												errorAlert.setContentText("Fehler beim erstellen von " + serverNameTextField.getText() + " !");
-												errorAlert.showAndWait();
-												refresh();
-												MSWStandalone.getMainStage().setScene(WindowManager.getWindowManager().getMainWindow());
-											}
-										}
-									}
+						ServerCreateService scs = new ServerCreateService(
+								serverNameTextField.getText(), 
+								serverVersionChoiceBox.getSelectionModel().getSelectedItem(), 
+								progressBar
+						);
+						scs.start();
+						scs.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+							@Override
+							public void handle(WorkerStateEvent event) {
+								DataStatus status = ServerList.getServerList().addServer(
+										new Server(serverNameTextField.getText(),
+												new ServerVersion(
+														serverVersionChoiceBox.getSelectionModel().getSelectedItem().getName(),
+														Path.SERVER_DIRECTORY + serverNameTextField.getText() + 
+														new File(serverVersionChoiceBox.getSelectionModel().getSelectedItem().getPath()).getName()
+												)
+										)
+								);
+								switch (status) {
+								case SUCCESS:
+									Alert successAlert = new Alert(AlertType.INFORMATION);
+									successAlert.setTitle("Server erstellen erfolgreich!");
+									successAlert.setHeaderText(serverNameTextField.getText());
+									successAlert.setContentText("Minecraft Server " + serverNameTextField.getText()
+											+ " wurde erfolgreich erstellt!");
+									successAlert.showAndWait();
+									break;
+								case ERROR:
+									Alert errorAlert = new Alert(AlertType.ERROR);
+									errorAlert.setTitle("Installation fehlgeschlagen!");
+									errorAlert.setHeaderText(serverNameTextField.getText());
+									errorAlert.setContentText(
+											"Fehler beim erstellen von " + serverNameTextField.getText() + " !");
+									errorAlert.showAndWait();
+									break;
+								default:
+									break;
 								}
+								refresh();
+								MSWStandalone.getMainStage().setScene(WindowManager.getWindowManager().getMainWindow());
+							};
+						});
+						scs.setOnFailed(new EventHandler<WorkerStateEvent>() {
+							@Override
+							public void handle(WorkerStateEvent event) {									
+								Alert errorAlert = new Alert(AlertType.ERROR);
+								errorAlert.setTitle("Installation fehlgeschlagen!");
+								errorAlert.setHeaderText(serverNameTextField.getText());
+								errorAlert.setContentText("Fehler beim erstellen von " + serverNameTextField.getText() + " !");
+								errorAlert.showAndWait();
+								refresh();
+								MSWStandalone.getMainStage().setScene(WindowManager.getWindowManager().getMainWindow());
 							}
-						}
+						});
 					} else {
 						Alert alert = new Alert(AlertType.ERROR);
 						alert.setTitle("Fehler!");
@@ -251,24 +249,15 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 				MSWStandalone.getMainStage().setScene(WindowManager.getWindowManager().getMainWindow());
 			}
 		});
-		this.createServerPane.getChildren().addAll(
-				createServerLabel,
-				createServerButton,
-				createServerImageView, 
-				serverNameLabel,
-				serverNameTextField,
-				serverVersionLabel,
-				serverVersionChoiceBox,
-				serverEulaLabel,
-				serverEulaCheckBox,
-				serverEulaHyperlink
-		);
+		this.createServerPane.getChildren().addAll(createServerLabel, createServerButton, createServerImageView,
+				serverNameLabel, serverNameTextField, serverVersionLabel, serverVersionChoiceBox, serverEulaLabel,
+				serverEulaCheckBox, serverEulaHyperlink);
 		mainPane.getChildren().addAll(toolBar, createServerPane, installationPane);
 		AnchorPane.setLeftAnchor(toolBar, 0.00);
 		AnchorPane.setTopAnchor(toolBar, 0.00);
 		AnchorPane.setRightAnchor(toolBar, 0.00);
 	}
-	
+
 	@Override
 	public void refresh() {
 		this.serverNameTextField.setText("");
@@ -281,5 +270,5 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 		this.progressBar.setProgress(0.00);
 		this.progressLabel.setText("");
 	}
-	
+
 }
