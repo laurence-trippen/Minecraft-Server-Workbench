@@ -8,7 +8,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Properties;
 
-import com.lte.msw.serverapi.server.model.IPAdress;
 import com.lte.msw.serverapi.server.model.enums.Difficulty;
 import com.lte.msw.serverapi.server.model.enums.GameMode;
 import com.lte.msw.serverapi.server.model.enums.OpLevel;
@@ -435,7 +434,7 @@ public class ServerProperties implements IPropertiesController {
 		return serverIp;
 	}
 
-	public void setServerIp(IPAdress ipAdress) {
+	public void setServerIp(String serverIp) {
 		this.serverIp = serverIp;
 	}
 

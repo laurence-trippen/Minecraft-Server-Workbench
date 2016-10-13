@@ -15,7 +15,7 @@ import com.lte.msw.standalone.model.ServerList;
 import com.lte.msw.standalone.model.ServerVersion;
 import com.lte.msw.standalone.model.enums.DataStatus;
 import com.lte.msw.standalone.model.interfaces.IRefreshable;
-import com.lte.msw.standalone.model.threads.ServerVersionTester;
+import com.lte.msw.standalone.model.threads.VersionInstallService;
 import com.lte.msw.standalone.view.style.Style;
 
 import javafx.event.ActionEvent;
@@ -160,62 +160,43 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 					versionNameTextField.setDisable(true);
 					versionJarButton.setDisable(true);
 					installVersionButton.setDisable(true);
-					ServerVersion testVersion = new ServerVersion(
-							versionNameTextField.getText(),
-							Path.SERVER_VERSIONS + selectedJarFile.getName()
-					);
+					ServerVersion testVersion = new ServerVersion(versionNameTextField.getText(),
+							Path.SERVER_VERSIONS + selectedJarFile.getName());
 					if (!ServerList.getServerList().existServerVersion(testVersion)) {
-						ServerVersionTester tester = new ServerVersionTester(selectedJarFile, progressBar);
-						Thread versionTestThread = new Thread(tester, "Tester Thread");
-						versionTestThread.start();
-						try {
-							versionTestThread.join();
-						} catch (InterruptedException e1) {
-							e1.printStackTrace();
-						}
-						if (tester.isSuccessful()) {		
-							DataStatus status = ServerList.getServerList().addServerVersion(testVersion);
-							switch (status) {
-							case SUCCESS:
-								progressBar.setProgress(1.0);
-								try {
-									Files.copy(
-											Paths.get(selectedJarFile.getAbsolutePath()),
-											Paths.get(Path.SERVER_VERSIONS + selectedJarFile.getName())
-									);
-								} catch (IOException e) {
-									e.printStackTrace();
-								}
-								progressLabel.setText("Installation erfolgreich!");
-								alert.setTitle("Installation Erfolgreich!");
-								alert.setHeaderText(versionNameTextField.getText());
-								alert.setContentText("Minecraft Version " + versionNameTextField.getText()
-								+ " wurde erfolgreich installiert!\n");
-								alert.showAndWait();
-								break;
-							case EXISTS:
-								progressLabel.setText("Installation fehlgeschlagen!");
-								alert.setAlertType(AlertType.ERROR);
-								alert.setTitle("Installation fehlgeschlagen!");
-								alert.setHeaderText(versionNameTextField.getText());
-								alert.setContentText(
-										"Minecraft Version " + versionNameTextField.getText() + " existiert schon!\n");
-								alert.showAndWait();
-							default:
-								break;
+						VersionInstallService vis = new VersionInstallService(selectedJarFile, progressBar);
+						vis.start();
+						DataStatus status = ServerList.getServerList().addServerVersion(testVersion);
+						switch (status) {
+						case SUCCESS:
+							progressBar.setProgress(1.0);
+							try {
+								Files.copy(Paths.get(selectedJarFile.getAbsolutePath()),
+										Paths.get(Path.SERVER_VERSIONS + selectedJarFile.getName()));
+							} catch (IOException e) {
+								e.printStackTrace();
 							}
-							refresh();
-							MSWStandalone.getMainStage().setScene(WindowManager.getWindowManager().getServerVersionsWindow());
-						} else {
-							System.out.println("Installation ERROR");
+							progressLabel.setText("Installation erfolgreich!");
+							alert.setTitle("Installation Erfolgreich!");
+							alert.setHeaderText(versionNameTextField.getText());
+							alert.setContentText("Minecraft Version " + versionNameTextField.getText()
+									+ " wurde erfolgreich installiert!\n");
+							alert.showAndWait();
+							break;
+						case EXISTS:
+							progressLabel.setText("Installation fehlgeschlagen!");
+							alert.setAlertType(AlertType.ERROR);
+							alert.setTitle("Installation fehlgeschlagen!");
+							alert.setHeaderText(versionNameTextField.getText());
+							alert.setContentText(
+									"Minecraft Version " + versionNameTextField.getText() + " existiert schon!\n");
+							alert.showAndWait();
+						default:
+							break;
 						}
-					} else {
-						alert.setAlertType(AlertType.ERROR);
-						alert.setTitle("Fehler!");
-						alert.setContentText("Servername \"" + testVersion.getName() + " \" existiert schon!");
-						alert.showAndWait();
 						refresh();
 						MSWStandalone.getMainStage().setScene(WindowManager.getWindowManager().getServerVersionsWindow());
+					} else {
+						System.out.println("Installation ERROR");
 					}
 				}
 			}
