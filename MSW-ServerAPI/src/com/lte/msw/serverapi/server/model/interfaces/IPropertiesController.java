@@ -4,5 +4,6 @@ public interface IPropertiesController {
 	
 	void save();
 	void load();
+	void resetToStandard();
 
 }

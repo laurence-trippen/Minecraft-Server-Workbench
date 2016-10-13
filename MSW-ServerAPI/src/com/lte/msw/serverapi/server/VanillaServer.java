@@ -28,7 +28,7 @@ public class VanillaServer implements IServerController {
 
 	@Override
 	public void start() {
-
+		
 	}
 
 	@Override
