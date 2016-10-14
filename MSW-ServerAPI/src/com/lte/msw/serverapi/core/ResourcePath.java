@@ -1,4 +1,4 @@
-package com.lte.msw.serverapi;
+package com.lte.msw.serverapi.core;
 
 public class ResourcePath {
 	

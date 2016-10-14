@@ -1,6 +1,6 @@
 package com.lte.msw.serverapi.server.config;
 
-import com.lte.msw.serverapi.ResourcePath;
+import com.lte.msw.serverapi.core.ResourcePath;
 
 public class ServerPath {
 	
