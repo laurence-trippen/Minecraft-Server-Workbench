@@ -260,13 +260,18 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 
 	@Override
 	public void refresh() {
+		this.installationPane.setVisible(false);
+		this.closeButton.setDisable(false);
+		this.createServerButton.setDisable(false);
 		this.serverNameTextField.setText("");
 		this.serverNameTextField.setStyle("");
-		this.serverEulaCheckBox.setSelected(false);
+		this.serverNameTextField.setDisable(false);
+		this.serverVersionChoiceBox.setDisable(false);
 		this.serverEulaCheckBox.setStyle("");
+		this.serverEulaCheckBox.setSelected(false);
+		this.serverEulaCheckBox.setDisable(false);
 		this.serverVersionChoiceBox.getSelectionModel().selectFirst();
 		this.createServerButton.setDisable(false);
-		this.installationPane.setDisable(false);
 		this.progressBar.setProgress(0.00);
 		this.progressLabel.setText("");
 	}
