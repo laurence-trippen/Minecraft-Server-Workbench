@@ -3,7 +3,6 @@ package com.lte.msw.standalone.model;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.jdom2.Document;
@@ -22,12 +21,13 @@ import com.lte.msw.standalone.model.enums.OpLevel;
 import com.lte.msw.standalone.model.enums.WorldType;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 
 public class ServerList {
 	
 	private static ServerList instance = null;
-	private List<Server> serverList;
+	private ObservableList<Server> serverList;
 	private ObservableList<ServerVersion> serverVersions;
 	private int serverCounter;
 	private int serverVersionCounter;
@@ -40,7 +40,15 @@ public class ServerList {
 	}
 	
 	private ServerList() {
-		this.serverList = new ArrayList<Server>();
+		this.serverList = FXCollections.observableArrayList();
+		this.serverList.addListener(new ListChangeListener<Server>() {
+			@Override
+			public void onChanged(ListChangeListener.Change<? extends Server> c) {
+				while (c.next()) {
+					
+				}
+			}
+		});
 		this.serverVersions = FXCollections.observableArrayList();
 		this.serverCounter = 0;
 		this.serverVersionCounter = 0;
@@ -268,12 +276,8 @@ public class ServerList {
 		}
 	}
 
-	public List<Server> getServer() {
-		return serverList;
-	}
-
-	public void setServer(List<Server> server) {
-		this.serverList = server;
+	public void setServerList(ObservableList<Server> serverList) {
+		this.serverList = serverList;
 	}
 
 	public ObservableList<ServerVersion> getServerVersions() {
