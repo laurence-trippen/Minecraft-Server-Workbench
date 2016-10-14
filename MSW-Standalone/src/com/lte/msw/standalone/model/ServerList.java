@@ -275,17 +275,13 @@ public class ServerList {
 			ioe.printStackTrace();
 		}
 	}
-
-	public void setServerList(ObservableList<Server> serverList) {
-		this.serverList = serverList;
+	
+	public ObservableList<Server> getServer() {
+		return serverList;
 	}
 
 	public ObservableList<ServerVersion> getServerVersions() {
 		return serverVersions;
-	}
-
-	public void setServerVersions(ObservableList<ServerVersion> serverVersions) {
-		this.serverVersions = serverVersions;
 	}
 
 	public int getServerCount() {
@@ -302,10 +298,6 @@ public class ServerList {
 
 	public void setServerVersionCounter(int serverVersionCounter) {
 		this.serverVersionCounter = serverVersionCounter;
-	}
-
-	public static void setInstance(ServerList instance) {
-		ServerList.instance = instance;
 	}
 	
 }
