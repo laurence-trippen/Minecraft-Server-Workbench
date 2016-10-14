@@ -1,4 +1,4 @@
-package com.lte.msw.serverapi.server.model;
+package com.lte.msw.serverapi.core;
 
 public class IPAdressFactory {
 
