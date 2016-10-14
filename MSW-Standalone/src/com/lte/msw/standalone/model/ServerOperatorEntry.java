@@ -1,12 +1,12 @@
 package com.lte.msw.standalone.model;
 
-public class ServerOPEntry {
+public class ServerOperatorEntry {
 	
 	private String uuid;
 	private String name;
 	private String level;
 	
-	public ServerOPEntry(String uuid, String name, String level) {
+	public ServerOperatorEntry(String uuid, String name, String level) {
 		this.uuid = uuid;
 		this.name = name;
 		this.level = level;

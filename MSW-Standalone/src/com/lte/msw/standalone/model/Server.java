@@ -20,7 +20,7 @@ public class Server implements IServerController {
 	private ServerVersion serverVersion;
 	private ServerState serverState;
 	private ServerProperties serverProperties;
-	private ServerOPS serverOPS;
+	private ServerOperators serverOPS;
 	private ServerWhitelist serverWhitelist;
 	private ServerBannedIps serverBannedIps;
 	private ServerBannedPlayers serverBannedPlayers;
@@ -33,7 +33,7 @@ public class Server implements IServerController {
 		this.serverVersion = serverVersion;
 		this.serverState = ServerState.STOPPED;
 		this.serverProperties = new ServerProperties(this.getServerPath().getProperties());
-		this.serverOPS = new ServerOPS(this.getServerPath().getOps());
+		this.serverOPS = new ServerOperators(this.getServerPath().getOps());
 		this.serverWhitelist = new ServerWhitelist(this.getServerPath().getWhitlelist());
 		this.serverBannedIps = new ServerBannedIps(this.getServerPath().getBannedIps());
 		this.serverBannedPlayers = new ServerBannedPlayers(this.getServerPath().getBannedPlayers());
@@ -48,7 +48,7 @@ public class Server implements IServerController {
 		this.serverVersion = serverVersion;
 		this.serverState = ServerState.STOPPED;
 		this.serverProperties = new ServerProperties(this.getServerPath().getProperties());
-		this.serverOPS = new ServerOPS(this.getServerPath().getOps());
+		this.serverOPS = new ServerOperators(this.getServerPath().getOps());
 		this.serverWhitelist = new ServerWhitelist(this.getServerPath().getWhitlelist());
 		this.serverBannedIps = new ServerBannedIps(this.getServerPath().getBannedIps());
 		this.serverBannedPlayers = new ServerBannedPlayers(this.getServerPath().getBannedPlayers());
@@ -140,11 +140,11 @@ public class Server implements IServerController {
 		this.serverProperties = serverProperties;
 	}
 	
-	public ServerOPS getServerOPS() {
+	public ServerOperators getServerOPS() {
 		return serverOPS;
 	}
 
-	public void setServerOPS(ServerOPS serverOPS) {
+	public void setServerOPS(ServerOperators serverOPS) {
 		this.serverOPS = serverOPS;
 	}
 
