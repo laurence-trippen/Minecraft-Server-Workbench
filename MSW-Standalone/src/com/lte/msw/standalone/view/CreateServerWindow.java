@@ -179,6 +179,7 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 						serverNameTextField.setDisable(true);
 						serverVersionChoiceBox.setDisable(true);
 						serverEulaCheckBox.setDisable(true);
+						progressLabel.setText("Server wird erstellt ...");
 						ServerCreateService scs = new ServerCreateService(
 								serverNameTextField.getText(), 
 								serverVersionChoiceBox.getSelectionModel().getSelectedItem(), 
