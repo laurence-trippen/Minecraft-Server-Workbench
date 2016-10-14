@@ -3,13 +3,11 @@ package com.lte.msw.standalone.model.threads;
 import java.io.File;
 import java.io.IOException;
 
-import javafx.scene.control.TextArea;
-
 public class ServerProcessor implements Runnable {
 
 	private File executablePath;
 
-	public ServerProcessor(File executablePath, TextArea console) {
+	public ServerProcessor(File executablePath) {
 		this.executablePath = executablePath;
 	}
 

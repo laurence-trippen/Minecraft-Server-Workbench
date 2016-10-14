@@ -65,7 +65,7 @@ public class MainWindow extends Scene implements IRefreshable, IFetchable {
 		}
 		this.gridPane = new GridPane();
 		this.gridPane.getColumnConstraints().addAll(
-				new ColumnConstraints(635), 
+				new ColumnConstraints(635),
 				new ColumnConstraints(635),
 				new ColumnConstraints(635) 
 		);
