@@ -138,17 +138,16 @@ public class ServerCreateService extends Service<Void> {
 			@Override
 			protected Void call() throws Exception {
 				if (createServerDirectory()) {
-					setProgress(0.2);
+					setProgress(0.3);
 					if (copyServerJar()) {	
-						setProgress(0.3);
+						setProgress(0.4);
 						if (runServerJar(true)) {
-							setProgress(0.4);
+							setProgress(0.5);
 							if (editEula()) {
-								setProgress(0.6);
+								setProgress(0.7);
 								if (runServerJar(false)) {
-									setProgress(0.8);
+									setProgress(1.0);
 									if (checkServer()) {
-										setProgress(1.0);
 										return null;
 									}
 								}
