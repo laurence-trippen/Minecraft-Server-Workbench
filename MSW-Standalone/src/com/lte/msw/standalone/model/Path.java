@@ -4,11 +4,11 @@ public class Path {
 	
 	public static final String MOJANG_EULA			= "https://account.mojang.com/documents/minecraft_eula";
 	
-	public static final String SERVER_CHECK 		= "working/servercheck/";
-	public static final String SERVER_VERSIONS 		= "working/serverversions/";
-	public static final String SERVER_DIRECTORY 	= "working/serverpool/";
+	public static final String SERVER_CHECK 		= "workbench/servercheck/";
+	public static final String SERVER_VERSIONS 		= "workbench/serverversions/";
+	public static final String SERVER_DIRECTORY 	= "workbench/serverpool/";
 	
-	public static final String XML 					= "resources/data/Server.xml";
+	public static final String XML 					= "resources/data/msw-db.xml";
 	
 	public static final String INSTALL_VERSION_PNG 	= "resources/images/InstallVersion.png";
 	public static final String CREATE_SERVER_PNG 	= "resources/images/createServer.png";
@@ -27,7 +27,7 @@ public class Path {
 	public static final String DIFFICULTY_32_PNG	= "resources/images/difficulty32.png";
 	public static final String PVP_32_PNG			= "resources/images/pvp32.png";
 	
-	public static final String WORKING_DIRECTORY	= "working";
+	public static final String WORKBENCH_DIRECTORY	= "workbench";
 	
 	public static final String EULA					= "/eula.txt";
 	public static final String OPS 					= "/ops.json";

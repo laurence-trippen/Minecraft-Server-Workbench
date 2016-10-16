@@ -7,7 +7,7 @@ import com.lte.msw.standalone.model.Path;
 public class ProgramDirectory {
 	
 	public static void checkDirectories() {
-		File workingDirectory = new File(Path.WORKING_DIRECTORY);
+		File workingDirectory = new File(Path.WORKBENCH_DIRECTORY);
 		File servercheckDirectory = new File(Path.SERVER_CHECK);
 		File serverversionsDirectory = new File(Path.SERVER_VERSIONS);
 		File serverpoolDirectory = new File(Path.SERVER_DIRECTORY);
