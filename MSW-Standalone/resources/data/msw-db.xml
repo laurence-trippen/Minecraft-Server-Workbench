@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MCSM>
+  <MCServer>
+    <Server id="1">
+      <name>Laurence-Server</name>
+      <description>leer</description>
+      <creationDate />
+      <version>
+        <name>1.10.2</name>
+        <path>workbench/serverpool/Laurence-Serverminecraft_server.1.10.2.jar</path>
+      </version>
+      <properties>
+        <generator />
+        <opLevel>FOUR</opLevel>
+        <allowNether>false</allowNether>
+        <rpHash />
+        <levelName>world</levelName>
+        <enableQuery>false</enableQuery>
+        <allowFlight>false</allowFlight>
+        <showAchievements>false</showAchievements>
+        <serverPort>25565</serverPort>
+        <maxWorldSize>29999984</maxWorldSize>
+        <worldType>DEFAULT</worldType>
+        <enableRcon>false</enableRcon>
+        <levelSeed />
+        <forceGameMode>false</forceGameMode>
+        <serverIp />
+        <networkCompression>256</networkCompression>
+        <maxBuildHeight>256</maxBuildHeight>
+        <spawnNPCs>false</spawnNPCs>
+        <whitelist>false</whitelist>
+        <enabledSnooper>false</enabledSnooper>
+        <onlineMode>false</onlineMode>
+        <resourcePack />
+        <enabledPVP>false</enabledPVP>
+        <difficulty>EASY</difficulty>
+        <enabledCommandBlock>false</enabledCommandBlock>
+        <gameMode>SURVIVAL</gameMode>
+        <playerIdleTime>0</playerIdleTime>
+        <maxPlayers>20</maxPlayers>
+        <spawnMonsters>false</spawnMonsters>
+        <generateStructs>false</generateStructs>
+        <viewDistance>10</viewDistance>
+        <motd>A Minecraft Server</motd>
+      </properties>
+    </Server>
+    <Server id="2">
+      <name>Lars-Server</name>
+      <description>leer</description>
+      <creationDate />
+      <version>
+        <name>1.10.2</name>
+        <path>workbench/serverpool/Lars-Serverminecraft_server.1.10.2.jar</path>
+      </version>
+      <properties>
+        <generator />
+        <opLevel>FOUR</opLevel>
+        <allowNether>true</allowNether>
+        <rpHash />
+        <levelName>world</levelName>
+        <enableQuery>false</enableQuery>
+        <allowFlight>true</allowFlight>
+        <showAchievements>true</showAchievements>
+        <serverPort>25565</serverPort>
+        <maxWorldSize>29999984</maxWorldSize>
+        <worldType>DEFAULT</worldType>
+        <enableRcon>false</enableRcon>
+        <levelSeed />
+        <forceGameMode>false</forceGameMode>
+        <serverIp />
+        <networkCompression>256</networkCompression>
+        <maxBuildHeight>256</maxBuildHeight>
+        <spawnNPCs>true</spawnNPCs>
+        <whitelist>false</whitelist>
+        <enabledSnooper>true</enabledSnooper>
+        <onlineMode>true</onlineMode>
+        <resourcePack />
+        <enabledPVP>true</enabledPVP>
+        <difficulty>EASY</difficulty>
+        <enabledCommandBlock>false</enabledCommandBlock>
+        <gameMode>SURVIVAL</gameMode>
+        <playerIdleTime>0</playerIdleTime>
+        <maxPlayers>20</maxPlayers>
+        <spawnMonsters>true</spawnMonsters>
+        <generateStructs>true</generateStructs>
+        <viewDistance>10</viewDistance>
+        <motd>A Minecraft Server</motd>
+      </properties>
+    </Server>
+  </MCServer>
+  <MCVersions>
+    <ServerVersion id="1">
+      <name>1.10.2</name>
+      <path>workbench/serverversions/minecraft_server.1.10.2.jar</path>
+    </ServerVersion>
+    <ServerVersion id="2">
+      <name>1.9.4</name>
+      <path>workbench/serverversions/minecraft_server.1.9.4.jar</path>
+    </ServerVersion>
+  </MCVersions>
+</MCSM>
