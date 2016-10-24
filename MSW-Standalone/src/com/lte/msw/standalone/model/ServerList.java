@@ -41,14 +41,6 @@ public class ServerList {
 	
 	private ServerList() {
 		this.serverList = FXCollections.observableArrayList();
-		this.serverList.addListener(new ListChangeListener<Server>() {
-			@Override
-			public void onChanged(ListChangeListener.Change<? extends Server> c) {
-				while (c.next()) {
-					
-				}
-			}
-		});
 		this.serverVersions = FXCollections.observableArrayList();
 		this.serverCounter = 0;
 		this.serverVersionCounter = 0;
