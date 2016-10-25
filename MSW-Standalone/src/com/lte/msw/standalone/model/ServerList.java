@@ -21,7 +21,6 @@ import com.lte.msw.standalone.model.enums.OpLevel;
 import com.lte.msw.standalone.model.enums.WorldType;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 
 public class ServerList {
