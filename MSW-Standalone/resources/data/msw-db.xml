@@ -55,6 +55,49 @@
       <properties>
         <generator />
         <opLevel>FOUR</opLevel>
+        <allowNether>false</allowNether>
+        <rpHash />
+        <levelName>world</levelName>
+        <enableQuery>false</enableQuery>
+        <allowFlight>false</allowFlight>
+        <showAchievements>false</showAchievements>
+        <serverPort>25565</serverPort>
+        <maxWorldSize>29999984</maxWorldSize>
+        <worldType>DEFAULT</worldType>
+        <enableRcon>false</enableRcon>
+        <levelSeed />
+        <forceGameMode>false</forceGameMode>
+        <serverIp />
+        <networkCompression>256</networkCompression>
+        <maxBuildHeight>256</maxBuildHeight>
+        <spawnNPCs>false</spawnNPCs>
+        <whitelist>false</whitelist>
+        <enabledSnooper>false</enabledSnooper>
+        <onlineMode>false</onlineMode>
+        <resourcePack />
+        <enabledPVP>false</enabledPVP>
+        <difficulty>EASY</difficulty>
+        <enabledCommandBlock>false</enabledCommandBlock>
+        <gameMode>SURVIVAL</gameMode>
+        <playerIdleTime>0</playerIdleTime>
+        <maxPlayers>20</maxPlayers>
+        <spawnMonsters>false</spawnMonsters>
+        <generateStructs>false</generateStructs>
+        <viewDistance>10</viewDistance>
+        <motd>A Minecraft Server</motd>
+      </properties>
+    </Server>
+    <Server id="3">
+      <name>Test-02</name>
+      <description>leer</description>
+      <creationDate />
+      <version>
+        <name>1.10.2</name>
+        <path>workbench/serverpool/Test-02minecraft_server.1.10.2.jar</path>
+      </version>
+      <properties>
+        <generator />
+        <opLevel>FOUR</opLevel>
         <allowNether>true</allowNether>
         <rpHash />
         <levelName>world</levelName>

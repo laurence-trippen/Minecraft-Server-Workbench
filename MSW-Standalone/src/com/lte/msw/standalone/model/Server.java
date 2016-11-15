@@ -7,7 +7,7 @@ import java.util.Date;
 
 import com.lte.msw.standalone.model.enums.ServerState;
 import com.lte.msw.standalone.model.interfaces.IServerController;
-import com.lte.msw.standalone.model.threads.ServerProcessor;
+import com.lte.msw.standalone.model.threads.services.ServerProcessService;
 
 public class Server implements IServerController {
 	
@@ -15,7 +15,6 @@ public class Server implements IServerController {
 	private String name;
 	private String description;
 	private String creationDate;
-	private Thread serverThread;
 	private ServerPath serverPath;
 	private ServerVersion serverVersion;
 	private ServerState serverState;
@@ -24,6 +23,7 @@ public class Server implements IServerController {
 	private ServerWhitelist serverWhitelist;
 	private ServerBannedIps serverBannedIps;
 	private ServerBannedPlayers serverBannedPlayers;
+	private ServerProcessService serverProcessService;
 	
 	public Server(String name, ServerVersion serverVersion) {
 		this.id = 0;
@@ -37,6 +37,7 @@ public class Server implements IServerController {
 		this.serverWhitelist = new ServerWhitelist(this.getServerPath().getWhitlelist());
 		this.serverBannedIps = new ServerBannedIps(this.getServerPath().getBannedIps());
 		this.serverBannedPlayers = new ServerBannedPlayers(this.getServerPath().getBannedPlayers());
+		this.serverProcessService = new ServerProcessService(new File(serverVersion.getPath()));
 	}
 	
 	public Server(String name, ServerVersion serverVersion, int id) {
@@ -52,6 +53,7 @@ public class Server implements IServerController {
 		this.serverWhitelist = new ServerWhitelist(this.getServerPath().getWhitlelist());
 		this.serverBannedIps = new ServerBannedIps(this.getServerPath().getBannedIps());
 		this.serverBannedPlayers = new ServerBannedPlayers(this.getServerPath().getBannedPlayers());
+		this.serverProcessService = new ServerProcessService(new File(serverVersion.getPath()));
 	}
 	
 	@Override
@@ -61,10 +63,8 @@ public class Server implements IServerController {
 	
 	@Override
 	public void start() {
-		if (serverState == ServerState.STOPPED) {			
-			this.serverThread = new Thread(new ServerProcessor(new File(serverVersion.getPath())));
-			this.serverThread.setDaemon(true);
-			this.serverThread.start();
+		if (serverState == ServerState.STOPPED) {
+			this.serverProcessService.start();
 			this.setServerState(ServerState.STARTED);
 		} else {
 			System.out.println("Server " + this.getName() + "ist bereits gestartet!");
