@@ -73,7 +73,11 @@ public class Server implements IServerController {
 	
 	@Override
 	public void stop() {
-		
+		if (serverState == ServerState.STARTED) {
+			this.serverProcessService.cancel();
+		} else {
+			System.out.println("Server " + this.getName() + "ist bereits gestoppt!");
+		}
 	}
 
 	public int getId() {

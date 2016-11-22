@@ -22,7 +22,6 @@ public class ServerProcessService extends Service<Void> {
 		return new Task<Void>() {
 			@Override
 			protected Void call() throws Exception {
-				System.out.println("hall");
 				ProcessBuilder processBuilder = new ProcessBuilder(
 						"java", 
 						"-Xmx1024M",
