@@ -6,9 +6,9 @@ import java.util.ArrayList;
 
 import com.lte.msw.standalone.controller.VersionsWindowController;
 import com.lte.msw.standalone.manager.DesktopManager;
-import com.lte.msw.standalone.model.Path;
 import com.lte.msw.standalone.model.ServerList;
 import com.lte.msw.standalone.model.ServerVersion;
+import com.lte.msw.standalone.model.abstracts.Path;
 import com.lte.msw.standalone.model.interfaces.IFetchable;
 import com.lte.msw.standalone.view.components.ServerVersionItem;
 

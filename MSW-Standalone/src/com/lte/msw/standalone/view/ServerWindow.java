@@ -7,8 +7,8 @@ import com.lte.msw.standalone.main.MSWStandalone;
 import com.lte.msw.standalone.manager.DesktopManager;
 import com.lte.msw.standalone.manager.NetworkManager;
 import com.lte.msw.standalone.manager.WindowManager;
-import com.lte.msw.standalone.model.Path;
 import com.lte.msw.standalone.model.Server;
+import com.lte.msw.standalone.model.abstracts.Path;
 import com.lte.msw.standalone.model.interfaces.IRefreshable;
 import com.lte.msw.standalone.view.style.Style;
 

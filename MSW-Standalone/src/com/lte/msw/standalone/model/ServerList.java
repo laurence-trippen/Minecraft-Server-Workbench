@@ -14,6 +14,7 @@ import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
 import com.lte.msw.standalone.manager.WindowManager;
+import com.lte.msw.standalone.model.abstracts.Path;
 import com.lte.msw.standalone.model.enums.DataStatus;
 import com.lte.msw.standalone.model.enums.Difficulty;
 import com.lte.msw.standalone.model.enums.GameMode;

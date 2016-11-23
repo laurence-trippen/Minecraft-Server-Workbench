@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import com.lte.msw.standalone.model.Path;
+import com.lte.msw.standalone.model.abstracts.Path;
 
 import javafx.application.Platform;
 import javafx.concurrent.Service;
@@ -103,7 +103,7 @@ public class VersionInstallService extends Service<Void> {
 						}
 					}
 				}
-				System.out.println("Vorgnag wird benndet!");
+				System.out.println("Vorgang wird benndet!");
 				cleanTestArea(new File(Path.SERVER_CHECK));
 				return null;
 			}

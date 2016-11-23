@@ -1,5 +1,7 @@
 package com.lte.msw.standalone.model;
 
+import com.lte.msw.standalone.model.abstracts.Path;
+
 public class ServerPath {
 	
 	private String eula;

@@ -9,8 +9,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import com.lte.msw.standalone.model.Path;
 import com.lte.msw.standalone.model.ServerVersion;
+import com.lte.msw.standalone.model.abstracts.Path;
 import com.lte.msw.standalone.model.threads.ServerLogger;
 
 import javafx.application.Platform;

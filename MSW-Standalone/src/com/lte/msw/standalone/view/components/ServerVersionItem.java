@@ -4,9 +4,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Optional;
 
-import com.lte.msw.standalone.model.Path;
 import com.lte.msw.standalone.model.ServerList;
 import com.lte.msw.standalone.model.ServerVersion;
+import com.lte.msw.standalone.model.abstracts.Path;
 import com.lte.msw.standalone.model.enums.DataStatus;
 
 import javafx.event.ActionEvent;

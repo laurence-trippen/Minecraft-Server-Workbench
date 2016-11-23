@@ -1,6 +1,6 @@
-package com.lte.msw.standalone.model;
+package com.lte.msw.standalone.model.abstracts;
 
-public class Path {
+public abstract class Path {
 	
 	public static final String MOJANG_EULA			= "https://account.mojang.com/documents/minecraft_eula";
 	

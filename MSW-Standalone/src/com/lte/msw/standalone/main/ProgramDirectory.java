@@ -2,7 +2,7 @@ package com.lte.msw.standalone.main;
 
 import java.io.File;
 
-import com.lte.msw.standalone.model.Path;
+import com.lte.msw.standalone.model.abstracts.Path;
 
 public class ProgramDirectory {
 	
