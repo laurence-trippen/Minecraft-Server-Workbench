@@ -193,7 +193,7 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 										new Server(serverNameTextField.getText(),
 												new ServerVersion(
 														serverVersionChoiceBox.getSelectionModel().getSelectedItem().getName(),
-														Path.SERVER_DIRECTORY + serverNameTextField.getText() + 
+														Path.SERVER_DIRECTORY + serverNameTextField.getText() + "/" +
 														new File(serverVersionChoiceBox.getSelectionModel().getSelectedItem().getPath()).getName()
 												)
 										)

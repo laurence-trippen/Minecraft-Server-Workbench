@@ -11,7 +11,6 @@ import java.nio.file.Paths;
 
 import com.lte.msw.standalone.model.ServerVersion;
 import com.lte.msw.standalone.model.abstracts.Path;
-import com.lte.msw.standalone.model.threads.ServerLogger;
 
 import javafx.application.Platform;
 import javafx.concurrent.Service;
@@ -71,9 +70,6 @@ public class ServerCreateService extends Service<Void> {
 		processBuilder.directory(new File(newServerJar.getParentFile().getPath()));
 		try {
 			process = processBuilder.start();
-			ServerLogger logger = new ServerLogger(process.getInputStream());
-			Thread thread = new Thread(logger, "ServerLogger");
-			thread.start();
 			if (initMode) {
 				process.waitFor();
 			} else {
