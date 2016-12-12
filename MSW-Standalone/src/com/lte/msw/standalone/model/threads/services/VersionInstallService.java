@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import com.lte.msw.standalone.model.abstracts.Path;
+import com.lte.msw.standalone.model.abstracts.ResourcePath;
 
 import javafx.application.Platform;
 import javafx.concurrent.Service;
@@ -14,10 +14,10 @@ import javafx.scene.control.ProgressBar;
 
 public class VersionInstallService extends Service<Void> {
 	
-	private final static File versionLogsDir 		= new File(Path.SERVER_CHECK + "logs");
-	private final static File versionLogOldFile 	= new File(Path.SERVER_CHECK + "server.log");
-	private final static File versionEulaFile 		= new File(Path.SERVER_CHECK + "eula.txt");
-	private final static File versionPropertiesFile = new File(Path.SERVER_CHECK + "server.properties");
+	private final static File versionLogsDir 		= new File(ResourcePath.SERVER_CHECK + "logs");
+	private final static File versionLogOldFile 	= new File(ResourcePath.SERVER_CHECK + "server.log");
+	private final static File versionEulaFile 		= new File(ResourcePath.SERVER_CHECK + "eula.txt");
+	private final static File versionPropertiesFile = new File(ResourcePath.SERVER_CHECK + "server.properties");
 	private File sourceFile;
 	private File versionTestFile;
 	private ProgressBar progressBar;
@@ -53,10 +53,10 @@ public class VersionInstallService extends Service<Void> {
 				"-Xmx1024M", 
 				"-Xms1024M", 
 				"-jar",
-				new File(Path.SERVER_CHECK).getAbsolutePath() + "/" + versionTestFile.getName(),
+				new File(ResourcePath.SERVER_CHECK).getAbsolutePath() + "/" + versionTestFile.getName(),
 				"nogui"
 				);
-		processBuilder.directory(new File(Path.SERVER_CHECK));
+		processBuilder.directory(new File(ResourcePath.SERVER_CHECK));
 		try {
 			process = processBuilder.start();
 			Thread.sleep(20000);
@@ -80,7 +80,7 @@ public class VersionInstallService extends Service<Void> {
 			@Override
 			protected Void call() throws Exception {
 				if (sourceFile != null) {
-					versionTestFile = new File(Path.SERVER_CHECK + sourceFile.getName());
+					versionTestFile = new File(ResourcePath.SERVER_CHECK + sourceFile.getName());
 					try {
 						Files.copy(
 								Paths.get(sourceFile.getAbsolutePath()),
@@ -96,7 +96,7 @@ public class VersionInstallService extends Service<Void> {
 							setProgress(0.6);
 							System.out.println("Dateien werden überprüft ...");
 							if (checkVersion()) {
-								cleanTestArea(new File(Path.SERVER_CHECK));
+								cleanTestArea(new File(ResourcePath.SERVER_CHECK));
 								System.out.println("Version wird installiert ...");
 								setProgress(1.0);
 							}
@@ -104,7 +104,7 @@ public class VersionInstallService extends Service<Void> {
 					}
 				}
 				System.out.println("Vorgang wird benndet!");
-				cleanTestArea(new File(Path.SERVER_CHECK));
+				cleanTestArea(new File(ResourcePath.SERVER_CHECK));
 				return null;
 			}
 		};

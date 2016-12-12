@@ -1,6 +1,6 @@
 package com.lte.msw.standalone.model;
 
-import com.lte.msw.standalone.model.abstracts.Path;
+import com.lte.msw.standalone.model.abstracts.ResourcePath;
 
 public class ServerPath {
 	
@@ -16,16 +16,16 @@ public class ServerPath {
 	private String latestLog;
 	
 	public ServerPath(String serverName) {
-		this.eula 			= Path.SERVER_DIRECTORY + serverName + Path.EULA;
-		this.ops 			= Path.SERVER_DIRECTORY + serverName + Path.OPS;
-		this.whitelist 		= Path.SERVER_DIRECTORY + serverName + Path.WHITELIST;
-		this.bannedIps 		= Path.SERVER_DIRECTORY + serverName + Path.BANNED_IPS;
-		this.bannedPlayers 	= Path.SERVER_DIRECTORY + serverName + Path.BANNED_PLAYERS;
-		this.usercache 		= Path.SERVER_DIRECTORY + serverName + Path.USERCACHE;
-		this.properties 	= Path.SERVER_DIRECTORY + serverName + Path.PROPERTIES;
-		this.world 			= Path.SERVER_DIRECTORY + serverName + Path.WORLD;
-		this.logs 			= Path.SERVER_DIRECTORY + serverName + Path.LOGS;
-		this.latestLog  	= Path.SERVER_DIRECTORY + serverName + Path.LATEST_LOG;
+		this.eula 			= ResourcePath.SERVER_DIRECTORY + serverName + ResourcePath.EULA;
+		this.ops 			= ResourcePath.SERVER_DIRECTORY + serverName + ResourcePath.OPS;
+		this.whitelist 		= ResourcePath.SERVER_DIRECTORY + serverName + ResourcePath.WHITELIST;
+		this.bannedIps 		= ResourcePath.SERVER_DIRECTORY + serverName + ResourcePath.BANNED_IPS;
+		this.bannedPlayers 	= ResourcePath.SERVER_DIRECTORY + serverName + ResourcePath.BANNED_PLAYERS;
+		this.usercache 		= ResourcePath.SERVER_DIRECTORY + serverName + ResourcePath.USERCACHE;
+		this.properties 	= ResourcePath.SERVER_DIRECTORY + serverName + ResourcePath.PROPERTIES;
+		this.world 			= ResourcePath.SERVER_DIRECTORY + serverName + ResourcePath.WORLD;
+		this.logs 			= ResourcePath.SERVER_DIRECTORY + serverName + ResourcePath.LOGS;
+		this.latestLog  	= ResourcePath.SERVER_DIRECTORY + serverName + ResourcePath.LATEST_LOG;
 	}
 
 	public String getEula() {

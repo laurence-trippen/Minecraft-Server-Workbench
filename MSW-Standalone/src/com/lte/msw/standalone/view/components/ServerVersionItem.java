@@ -6,7 +6,7 @@ import java.util.Optional;
 
 import com.lte.msw.standalone.model.ServerList;
 import com.lte.msw.standalone.model.ServerVersion;
-import com.lte.msw.standalone.model.abstracts.Path;
+import com.lte.msw.standalone.model.abstracts.ResourcePath;
 import com.lte.msw.standalone.model.enums.DataStatus;
 
 import javafx.event.ActionEvent;
@@ -31,7 +31,7 @@ public class ServerVersionItem extends AnchorPane {
 	
 	public ServerVersionItem(ServerVersion serverVersion) {
 		try {
-			this.imageView = new ImageView(new Image(new FileInputStream(Path.SERVER_VERSION_PNG)));
+			this.imageView = new ImageView(new Image(new FileInputStream(ResourcePath.SERVER_VERSION_PNG)));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

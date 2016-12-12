@@ -10,7 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import com.lte.msw.standalone.model.ServerVersion;
-import com.lte.msw.standalone.model.abstracts.Path;
+import com.lte.msw.standalone.model.abstracts.ResourcePath;
 
 import javafx.application.Platform;
 import javafx.concurrent.Service;
@@ -27,7 +27,7 @@ public class ServerCreateService extends Service<Void> {
 	
 	public ServerCreateService(String serverName, ServerVersion serverVersion, ProgressBar progressBar) {
 		this.serverName = serverName;
-		this.serverPath = Path.SERVER_DIRECTORY + serverName;
+		this.serverPath = ResourcePath.SERVER_DIRECTORY + serverName;
 		this.oldServerJar = new File(serverVersion.getPath());
 		this.newServerJar = new File(serverPath + "/" + oldServerJar.getName());
 		this.progressBar = progressBar;
@@ -93,12 +93,12 @@ public class ServerCreateService extends Service<Void> {
 		try {
 			String eula = null;
 			StringBuilder stringBuilder = new StringBuilder();
-			BufferedReader bReader = new BufferedReader(new FileReader(serverPath + Path.EULA));
+			BufferedReader bReader = new BufferedReader(new FileReader(serverPath + ResourcePath.EULA));
 			while ((eula = bReader.readLine()) != null) {
 				stringBuilder.append(eula + "\n");
 			}
 			bReader.close();
-			FileWriter fileWriter = new FileWriter(serverPath + Path.EULA);
+			FileWriter fileWriter = new FileWriter(serverPath + ResourcePath.EULA);
 			BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 			bufferedWriter.write(stringBuilder.toString().replace("eula=false", "eula=true"));
 			bufferedWriter.close();

@@ -1,9 +1,10 @@
 package com.lte.msw.standalone.model.abstracts;
 
-public abstract class Path {
+public abstract class ResourcePath {
 	
 	public static final String MOJANG_EULA			= "https://account.mojang.com/documents/minecraft_eula";
 	
+	public static final String WORKBENCH_DIRECTORY	= "workbench";
 	public static final String SERVER_CHECK 		= "workbench/servercheck/";
 	public static final String SERVER_VERSIONS 		= "workbench/serverversions/";
 	public static final String SERVER_DIRECTORY 	= "workbench/serverpool/";
@@ -26,8 +27,6 @@ public abstract class Path {
 	public static final String DIFFICULTY_24_PNG	= "resources/images/difficulty24.png";
 	public static final String DIFFICULTY_32_PNG	= "resources/images/difficulty32.png";
 	public static final String PVP_32_PNG			= "resources/images/pvp32.png";
-	
-	public static final String WORKBENCH_DIRECTORY	= "workbench";
 	
 	public static final String EULA					= "/eula.txt";
 	public static final String OPS 					= "/ops.json";

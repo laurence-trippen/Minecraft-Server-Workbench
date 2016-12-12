@@ -8,7 +8,7 @@ import com.lte.msw.standalone.controller.VersionsWindowController;
 import com.lte.msw.standalone.manager.DesktopManager;
 import com.lte.msw.standalone.model.ServerList;
 import com.lte.msw.standalone.model.ServerVersion;
-import com.lte.msw.standalone.model.abstracts.Path;
+import com.lte.msw.standalone.model.abstracts.ResourcePath;
 import com.lte.msw.standalone.model.interfaces.IFetchable;
 import com.lte.msw.standalone.view.components.ServerVersionItem;
 
@@ -48,7 +48,7 @@ public class ServerVersionsWindow extends Scene implements IFetchable {
 		this.windowController = new VersionsWindowController(this);
 		this.serverVersionItems = new ArrayList<ServerVersionItem>();
 		try {
-			this.installVersionImage = new Image(new FileInputStream(Path.SERVER_VERSIONS_PNG));
+			this.installVersionImage = new Image(new FileInputStream(ResourcePath.SERVER_VERSIONS_PNG));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -57,7 +57,7 @@ public class ServerVersionsWindow extends Scene implements IFetchable {
 		this.gridPane.getRowConstraints().add(new RowConstraints(210));
 		this.anchorPane = new AnchorPane();
 		try {
-			this.anchorPane.setBackground(new Background(new BackgroundImage(new Image(new FileInputStream(Path.BACKGROUND)), null, null, null, null)));
+			this.anchorPane.setBackground(new Background(new BackgroundImage(new Image(new FileInputStream(ResourcePath.BACKGROUND)), null, null, null, null)));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
