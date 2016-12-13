@@ -8,7 +8,7 @@ import com.lte.msw.standalone.manager.DesktopManager;
 import com.lte.msw.standalone.manager.NetworkManager;
 import com.lte.msw.standalone.manager.WindowManager;
 import com.lte.msw.standalone.model.Server;
-import com.lte.msw.standalone.model.abstracts.Path;
+import com.lte.msw.standalone.model.abstracts.ResourcePath;
 import com.lte.msw.standalone.model.interfaces.IRefreshable;
 import com.lte.msw.standalone.view.style.Style;
 
@@ -64,12 +64,12 @@ public class ServerWindow extends Scene implements IRefreshable {
 		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
 		try {
 			mainPane.setBackground(new Background(
-					new BackgroundImage(new Image(new FileInputStream(Path.BACKGROUND)), null, null, null, null)
+					new BackgroundImage(new Image(new FileInputStream(ResourcePath.BACKGROUND)), null, null, null, null)
 			));
-			this.serverImageView = new ImageView(new Image(new FileInputStream(Path.SERVER_72_PNG)));
-			this.serverGameModeImageView = new ImageView(new Image(new FileInputStream(Path.GAMEMODE_32_PNG)));
-			this.serverDifficultyImageView = new ImageView(new Image(new FileInputStream(Path.DIFFICULTY_32_PNG)));
-			this.serverPvpImageView = new ImageView(new Image(new FileInputStream(Path.PVP_32_PNG)));
+			this.serverImageView = new ImageView(new Image(new FileInputStream(ResourcePath.SERVER_72_PNG)));
+			this.serverGameModeImageView = new ImageView(new Image(new FileInputStream(ResourcePath.GAMEMODE_32_PNG)));
+			this.serverDifficultyImageView = new ImageView(new Image(new FileInputStream(ResourcePath.DIFFICULTY_32_PNG)));
+			this.serverPvpImageView = new ImageView(new Image(new FileInputStream(ResourcePath.PVP_32_PNG)));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

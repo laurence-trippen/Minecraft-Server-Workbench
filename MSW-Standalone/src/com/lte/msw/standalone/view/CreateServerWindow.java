@@ -14,7 +14,7 @@ import com.lte.msw.standalone.manager.WindowManager;
 import com.lte.msw.standalone.model.Server;
 import com.lte.msw.standalone.model.ServerList;
 import com.lte.msw.standalone.model.ServerVersion;
-import com.lte.msw.standalone.model.abstracts.Path;
+import com.lte.msw.standalone.model.abstracts.ResourcePath;
 import com.lte.msw.standalone.model.enums.DataStatus;
 import com.lte.msw.standalone.model.interfaces.IRefreshable;
 import com.lte.msw.standalone.model.threads.services.ServerCreateService;
@@ -68,8 +68,8 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
 		try {
 			mainPane.setBackground(new Background(
-					new BackgroundImage(new Image(new FileInputStream(Path.BACKGROUND)), null, null, null, null)));
-			this.createServerImageView = new ImageView(new Image(new FileInputStream(Path.CREATE_SERVER_PNG)));
+					new BackgroundImage(new Image(new FileInputStream(ResourcePath.BACKGROUND)), null, null, null, null)));
+			this.createServerImageView = new ImageView(new Image(new FileInputStream(ResourcePath.CREATE_SERVER_PNG)));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -152,7 +152,7 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 			@Override
 			public void handle(ActionEvent event) {
 				try {
-					Desktop.getDesktop().browse(new URI(Path.MOJANG_EULA));
+					Desktop.getDesktop().browse(new URI(ResourcePath.MOJANG_EULA));
 				} catch (IOException | URISyntaxException e) {
 					e.printStackTrace();
 				}
@@ -193,7 +193,7 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 										new Server(serverNameTextField.getText(),
 												new ServerVersion(
 														serverVersionChoiceBox.getSelectionModel().getSelectedItem().getName(),
-														Path.SERVER_DIRECTORY + serverNameTextField.getText() + "/" +
+														ResourcePath.SERVER_DIRECTORY + serverNameTextField.getText() + "/" +
 														new File(serverVersionChoiceBox.getSelectionModel().getSelectedItem().getPath()).getName()
 												)
 										)

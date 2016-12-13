@@ -12,7 +12,7 @@ import com.lte.msw.standalone.manager.DesktopManager;
 import com.lte.msw.standalone.manager.WindowManager;
 import com.lte.msw.standalone.model.ServerList;
 import com.lte.msw.standalone.model.ServerVersion;
-import com.lte.msw.standalone.model.abstracts.Path;
+import com.lte.msw.standalone.model.abstracts.ResourcePath;
 import com.lte.msw.standalone.model.enums.DataStatus;
 import com.lte.msw.standalone.model.interfaces.IRefreshable;
 import com.lte.msw.standalone.model.threads.services.VersionInstallService;
@@ -66,9 +66,9 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
 		try {
 			mainPane.setBackground(new Background(
-					new BackgroundImage(new Image(new FileInputStream(Path.BACKGROUND)), null, null, null, null)));
-			this.installVersionImageView = new ImageView(new Image(new FileInputStream(Path.INSTALL_VERSION_PNG)));
-			this.jarVersionImageView = new ImageView(new Image(new FileInputStream(Path.JAR_PNG)));
+					new BackgroundImage(new Image(new FileInputStream(ResourcePath.BACKGROUND)), null, null, null, null)));
+			this.installVersionImageView = new ImageView(new Image(new FileInputStream(ResourcePath.INSTALL_VERSION_PNG)));
+			this.jarVersionImageView = new ImageView(new Image(new FileInputStream(ResourcePath.JAR_PNG)));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -163,7 +163,7 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 					installVersionButton.setDisable(true);
 					ServerVersion testVersion = new ServerVersion(
 							versionNameTextField.getText(),
-							Path.SERVER_VERSIONS + selectedJarFile.getName()
+							ResourcePath.SERVER_VERSIONS + selectedJarFile.getName()
 					);
 					if (!ServerList.getServerList().existServerVersion(testVersion)) {
 						VersionInstallService vis = new VersionInstallService(selectedJarFile, progressBar);
@@ -176,7 +176,7 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 								case SUCCESS:
 									try {
 										Files.copy(Paths.get(selectedJarFile.getAbsolutePath()),
-												Paths.get(Path.SERVER_VERSIONS + selectedJarFile.getName()));
+												Paths.get(ResourcePath.SERVER_VERSIONS + selectedJarFile.getName()));
 									} catch (IOException e) {
 										e.printStackTrace();
 									}

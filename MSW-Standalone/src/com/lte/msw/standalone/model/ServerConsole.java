@@ -9,8 +9,9 @@ public class ServerConsole {
 	private InputStream consoleInputStream;
 	private OutputStream consoleOutputStream;
 	
-	public ServerConsole(InputStream inputStream) {
+	public ServerConsole(InputStream inputStream, OutputStream outputStream) {
 		this.consoleInputStream = inputStream;
+		this.consoleOutputStream = outputStream;
 	}
 	
 	public void start() {

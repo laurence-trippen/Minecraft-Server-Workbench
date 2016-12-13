@@ -9,7 +9,7 @@ import com.lte.msw.standalone.manager.DesktopManager;
 import com.lte.msw.standalone.manager.GridManager;
 import com.lte.msw.standalone.model.Server;
 import com.lte.msw.standalone.model.ServerList;
-import com.lte.msw.standalone.model.abstracts.Path;
+import com.lte.msw.standalone.model.abstracts.ResourcePath;
 import com.lte.msw.standalone.model.interfaces.IFetchable;
 import com.lte.msw.standalone.model.interfaces.IRefreshable;
 import com.lte.msw.standalone.view.components.ServerItem;
@@ -51,10 +51,10 @@ public class MainWindow extends Scene implements IRefreshable, IFetchable {
 		this.anchorPane.setPrefWidth(DesktopManager.getScreenSize().getWidth());
 		this.anchorPane.setPrefHeight(2000);
 		try {
-			this.newServerImage = new Image(new FileInputStream(Path.NEW_SERVER_PNG));
-			this.showServerVersionsImage = new Image(new FileInputStream(Path.VERSIONS_24_PNG));
+			this.newServerImage = new Image(new FileInputStream(ResourcePath.NEW_SERVER_PNG));
+			this.showServerVersionsImage = new Image(new FileInputStream(ResourcePath.VERSIONS_24_PNG));
 			this.anchorPane.setBackground(new Background(new BackgroundImage(new Image(
-					new FileInputStream(Path.BACKGROUND)), 
+					new FileInputStream(ResourcePath.BACKGROUND)), 
 					null, 
 					null, 
 					null, 

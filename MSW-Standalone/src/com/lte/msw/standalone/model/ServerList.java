@@ -14,7 +14,7 @@ import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
 import com.lte.msw.standalone.manager.WindowManager;
-import com.lte.msw.standalone.model.abstracts.Path;
+import com.lte.msw.standalone.model.abstracts.ResourcePath;
 import com.lte.msw.standalone.model.enums.DataStatus;
 import com.lte.msw.standalone.model.enums.Difficulty;
 import com.lte.msw.standalone.model.enums.GameMode;
@@ -192,7 +192,7 @@ public class ServerList {
 		}
 		XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
 		try {
-			xmlOutputter.output(xml, new FileOutputStream(new File(Path.XML)));
+			xmlOutputter.output(xml, new FileOutputStream(new File(ResourcePath.XML)));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -200,7 +200,7 @@ public class ServerList {
 	
 	private void loadXML() {
 		try {
-			Document xml = new SAXBuilder().build(Path.XML);
+			Document xml = new SAXBuilder().build(ResourcePath.XML);
 			if (xml.hasRootElement()) {
 				Element root = xml.getRootElement();
 				List<Element> xmlServers = root.getChild("MCServer").getChildren();

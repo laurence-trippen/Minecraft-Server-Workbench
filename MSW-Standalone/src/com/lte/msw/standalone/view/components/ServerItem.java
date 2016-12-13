@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import com.lte.msw.standalone.main.MSWStandalone;
 import com.lte.msw.standalone.manager.WindowManager;
 import com.lte.msw.standalone.model.Server;
-import com.lte.msw.standalone.model.abstracts.Path;
+import com.lte.msw.standalone.model.abstracts.ResourcePath;
 import com.lte.msw.standalone.model.interfaces.IRefreshable;
 import com.lte.msw.standalone.view.ServerWindow;
 
@@ -42,7 +42,7 @@ public class ServerItem extends AnchorPane implements IRefreshable {
 	public ServerItem(Server server) {
 		this.server = server;
 		try {
-			this.imageView = new ImageView(new Image(new FileInputStream(Path.SERVER_PNG)));
+			this.imageView = new ImageView(new Image(new FileInputStream(ResourcePath.SERVER_PNG)));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
