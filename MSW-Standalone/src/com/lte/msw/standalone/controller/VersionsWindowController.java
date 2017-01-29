@@ -13,11 +13,11 @@ public class VersionsWindowController {
 	}
 	
 	public void installVersionHandler(ActionEvent event) {
-		MSWStandalone.getMainStage().setScene(SceneManager.getWindowManager().getVersionInstallWindow());
+		MSWStandalone.getMainStage().setScene(SceneManager.getSceneManager().getVersionInstallScene());
 	}
 	
 	public void closeHandler(ActionEvent event) {
-		MSWStandalone.getMainStage().setScene(SceneManager.getWindowManager().getMainWindow());
+		MSWStandalone.getMainStage().setScene(SceneManager.getSceneManager().getMainScene());
 	}
 
 }

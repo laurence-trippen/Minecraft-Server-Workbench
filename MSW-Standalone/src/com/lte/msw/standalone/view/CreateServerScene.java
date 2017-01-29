@@ -145,7 +145,7 @@ public class CreateServerScene extends Scene implements IRefreshable {
 			@Override
 			public void handle(ActionEvent event) {
 				refresh();
-				MSWStandalone.getMainStage().setScene(SceneManager.getWindowManager().getMainWindow());
+				MSWStandalone.getMainStage().setScene(SceneManager.getSceneManager().getMainScene());
 			}
 		});
 		this.serverEulaHyperlink.setOnAction(new EventHandler<ActionEvent>() {
@@ -219,7 +219,7 @@ public class CreateServerScene extends Scene implements IRefreshable {
 									break;
 								}
 								refresh();
-								MSWStandalone.getMainStage().setScene(SceneManager.getWindowManager().getMainWindow());
+								MSWStandalone.getMainStage().setScene(SceneManager.getSceneManager().getMainScene());
 							};
 						});
 						scs.setOnFailed(new EventHandler<WorkerStateEvent>() {
@@ -231,7 +231,7 @@ public class CreateServerScene extends Scene implements IRefreshable {
 								errorAlert.setContentText("Fehler beim erstellen von " + serverNameTextField.getText() + " !");
 								errorAlert.showAndWait();
 								refresh();
-								MSWStandalone.getMainStage().setScene(SceneManager.getWindowManager().getMainWindow());
+								MSWStandalone.getMainStage().setScene(SceneManager.getSceneManager().getMainScene());
 							}
 						});
 					} else {
@@ -247,7 +247,7 @@ public class CreateServerScene extends Scene implements IRefreshable {
 			@Override
 			public void handle(ActionEvent event) {
 				refresh();
-				MSWStandalone.getMainStage().setScene(SceneManager.getWindowManager().getMainWindow());
+				MSWStandalone.getMainStage().setScene(SceneManager.getSceneManager().getMainScene());
 			}
 		});
 		this.createServerPane.getChildren().addAll(createServerLabel, createServerButton, createServerImageView,

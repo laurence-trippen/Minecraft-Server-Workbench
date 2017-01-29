@@ -53,7 +53,7 @@ public class ServerList {
 			newServer.setId(serverCounter);
 			serverList.add(newServer);
 			saveXML();
-			SceneManager.getWindowManager().getMainWindow().fetch();
+			SceneManager.getSceneManager().getMainScene().fetch();
 			return DataStatus.SUCCESS;
 		}
 		return DataStatus.ERROR;
@@ -68,7 +68,7 @@ public class ServerList {
 					server.setId(counter);
 				}
 				saveXML();
-				SceneManager.getWindowManager().getMainWindow().fetch();
+				SceneManager.getSceneManager().getMainScene().fetch();
 				return DataStatus.SUCCESS;
 			} else {
 				return DataStatus.ERROR;
@@ -92,7 +92,7 @@ public class ServerList {
 			serverVersion.setId(serverVersionCounter);
 			serverVersions.add(serverVersion);
 			saveXML();
-			SceneManager.getWindowManager().getServerVersionsWindow().fetch();
+			SceneManager.getSceneManager().getServerVersionsScene().fetch();
 			return DataStatus.SUCCESS;
 		}
 		return DataStatus.ERROR;
@@ -111,7 +111,7 @@ public class ServerList {
 					version.setId(counter);
 				}
 				saveXML();
-				SceneManager.getWindowManager().getServerVersionsWindow().fetch();
+				SceneManager.getSceneManager().getServerVersionsScene().fetch();
 				return DataStatus.SUCCESS;
 			} else {
 				return DataStatus.ERROR;

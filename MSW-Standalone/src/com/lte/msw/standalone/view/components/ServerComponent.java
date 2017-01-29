@@ -63,9 +63,9 @@ public class ServerComponent extends AnchorPane implements IRefreshable {
 					System.out.println("[" + server.getName() + "] Stoppen");
 					break;
 				case ServerMenuComponent.SHOW:
-					ServerScene serverWindow = SceneManager.getWindowManager().getServerWindow();
-					serverWindow.setServer(server);
-					MSWStandalone.getMainStage().setScene(serverWindow);
+					ServerScene serverScene = SceneManager.getSceneManager().getServerScene();
+					serverScene.setServer(server);
+					MSWStandalone.getMainStage().setScene(serverScene);
 					System.out.println("[" + server.getName() + "] Anzeigen");
 					break;
 				default:

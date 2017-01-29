@@ -9,13 +9,13 @@ import com.lte.msw.standalone.view.VersionInstallScene;
 public class SceneManager {
 	
 	private static SceneManager instance = null;
-	private MainScene mainWindow;
-	private CreateServerScene createServerWindow;
-	private ServerVersionsScene serverVersionsWindow;
-	private VersionInstallScene versionInstallWindow;
-	private ServerScene serverWindow;
+	private MainScene mainScene;
+	private CreateServerScene createServerScene;
+	private ServerVersionsScene serverVersionsScene;
+	private VersionInstallScene versionInstallScene;
+	private ServerScene serverScene;
 	
-	public static SceneManager getWindowManager() {
+	public static SceneManager getSceneManager() {
 		if (instance == null) {
 			instance = new SceneManager();
 		}
@@ -23,31 +23,31 @@ public class SceneManager {
 	}
 	
 	private SceneManager() {
-		this.mainWindow = new MainScene();
-		this.createServerWindow = new CreateServerScene();
-		this.serverVersionsWindow = new ServerVersionsScene();
-		this.versionInstallWindow = new VersionInstallScene();
-		this.serverWindow = new ServerScene();
+		this.mainScene = new MainScene();
+		this.createServerScene = new CreateServerScene();
+		this.serverVersionsScene = new ServerVersionsScene();
+		this.versionInstallScene = new VersionInstallScene();
+		this.serverScene = new ServerScene();
 	}
 
-	public MainScene getMainWindow() {
-		return mainWindow;
+	public MainScene getMainScene() {
+		return mainScene;
 	}
 
-	public CreateServerScene getCreateServerWindow() {
-		return createServerWindow;
+	public CreateServerScene getCreateServerScene() {
+		return createServerScene;
 	}
 
-	public ServerVersionsScene getServerVersionsWindow() {
-		return serverVersionsWindow;
+	public ServerVersionsScene getServerVersionsScene() {
+		return serverVersionsScene;
 	}
 
-	public VersionInstallScene getVersionInstallWindow() {
-		return versionInstallWindow;
+	public VersionInstallScene getVersionInstallScene() {
+		return versionInstallScene;
 	}
 
-	public ServerScene getServerWindow() {
-		return serverWindow;
+	public ServerScene getServerScene() {
+		return serverScene;
 	}
 
 }

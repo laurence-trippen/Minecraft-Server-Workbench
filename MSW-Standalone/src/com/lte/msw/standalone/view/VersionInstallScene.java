@@ -197,7 +197,7 @@ public class VersionInstallScene extends Scene implements IRefreshable {
 									break;
 								}
 								refresh();
-								MSWStandalone.getMainStage().setScene(SceneManager.getWindowManager().getServerVersionsWindow());
+								MSWStandalone.getMainStage().setScene(SceneManager.getSceneManager().getMainScene());
 							};
 						});
 						vis.setOnFailed(new EventHandler<WorkerStateEvent>() {
@@ -230,7 +230,7 @@ public class VersionInstallScene extends Scene implements IRefreshable {
 			@Override
 			public void handle(ActionEvent event) {
 				refresh();
-				MSWStandalone.getMainStage().setScene(SceneManager.getWindowManager().getServerVersionsWindow());
+				MSWStandalone.getMainStage().setScene(SceneManager.getSceneManager().getMainScene());
 			}
 		});
 		this.toolBar = new ToolBar();

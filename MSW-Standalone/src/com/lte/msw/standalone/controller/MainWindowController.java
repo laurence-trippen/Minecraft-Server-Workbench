@@ -16,12 +16,12 @@ public class MainWindowController {
 	
 	public void addServerHandler(ActionEvent event) {
 		mainWindow.refresh();
-		MSWStandalone.getMainStage().setScene(SceneManager.getWindowManager().getCreateServerWindow());
+		MSWStandalone.getMainStage().setScene(SceneManager.getSceneManager().getCreateServerScene());
 	}
 	
 	public void showVersionsHandler(ActionEvent event) {
 		mainWindow.refresh();
-		MSWStandalone.getMainStage().setScene(SceneManager.getWindowManager().getServerVersionsWindow());
+		MSWStandalone.getMainStage().setScene(SceneManager.getSceneManager().getServerVersionsScene());
 	}
 
 }

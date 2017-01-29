@@ -183,7 +183,7 @@ public class ServerScene extends Scene implements IRefreshable {
 		this.closeButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				MSWStandalone.getMainStage().setScene(SceneManager.getWindowManager().getMainWindow());
+				MSWStandalone.getMainStage().setScene(SceneManager.getSceneManager().getMainScene());
 				refresh();
 			}
 		});

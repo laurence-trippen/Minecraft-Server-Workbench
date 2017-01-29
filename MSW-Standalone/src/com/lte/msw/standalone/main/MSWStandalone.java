@@ -12,7 +12,7 @@ public class MSWStandalone extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		mainStage = primaryStage;
-		primaryStage.setScene(SceneManager.getWindowManager().getMainWindow());
+		primaryStage.setScene(SceneManager.getSceneManager().getMainScene());
 		primaryStage.setMaximized(true);
 		primaryStage.setWidth(1920);
 		primaryStage.setHeight(1200);
