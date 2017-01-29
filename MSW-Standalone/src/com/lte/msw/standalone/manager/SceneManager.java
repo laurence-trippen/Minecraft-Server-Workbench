@@ -6,23 +6,23 @@ import com.lte.msw.standalone.view.ServerVersionsWindow;
 import com.lte.msw.standalone.view.ServerWindow;
 import com.lte.msw.standalone.view.VersionInstallWindow;
 
-public class WindowManager {
+public class SceneManager {
 	
-	private static WindowManager instance = null;
+	private static SceneManager instance = null;
 	private MainWindow mainWindow;
 	private CreateServerWindow createServerWindow;
 	private ServerVersionsWindow serverVersionsWindow;
 	private VersionInstallWindow versionInstallWindow;
 	private ServerWindow serverWindow;
 	
-	public static WindowManager getWindowManager() {
+	public static SceneManager getWindowManager() {
 		if (instance == null) {
-			instance = new WindowManager();
+			instance = new SceneManager();
 		}
 		return instance;
 	}
 	
-	private WindowManager() {
+	private SceneManager() {
 		this.mainWindow = new MainWindow();
 		this.createServerWindow = new CreateServerWindow();
 		this.serverVersionsWindow = new ServerVersionsWindow();

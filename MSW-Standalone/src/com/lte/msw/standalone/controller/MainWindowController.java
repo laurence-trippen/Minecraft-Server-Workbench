@@ -1,7 +1,7 @@
 package com.lte.msw.standalone.controller;
 
 import com.lte.msw.standalone.main.MSWStandalone;
-import com.lte.msw.standalone.manager.WindowManager;
+import com.lte.msw.standalone.manager.SceneManager;
 import com.lte.msw.standalone.view.MainWindow;
 
 import javafx.event.ActionEvent;
@@ -16,12 +16,12 @@ public class MainWindowController {
 	
 	public void addServerHandler(ActionEvent event) {
 		mainWindow.refresh();
-		MSWStandalone.getMainStage().setScene(WindowManager.getWindowManager().getCreateServerWindow());
+		MSWStandalone.getMainStage().setScene(SceneManager.getWindowManager().getCreateServerWindow());
 	}
 	
 	public void showVersionsHandler(ActionEvent event) {
 		mainWindow.refresh();
-		MSWStandalone.getMainStage().setScene(WindowManager.getWindowManager().getServerVersionsWindow());
+		MSWStandalone.getMainStage().setScene(SceneManager.getWindowManager().getServerVersionsWindow());
 	}
 
 }

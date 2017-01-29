@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 import com.lte.msw.standalone.main.MSWStandalone;
-import com.lte.msw.standalone.manager.WindowManager;
+import com.lte.msw.standalone.manager.SceneManager;
 import com.lte.msw.standalone.model.Server;
 import com.lte.msw.standalone.model.abstracts.ResourcePath;
 import com.lte.msw.standalone.model.interfaces.IRefreshable;
@@ -63,7 +63,7 @@ public class ServerItem extends AnchorPane implements IRefreshable {
 					System.out.println("[" + server.getName() + "] Stoppen");
 					break;
 				case ServerMenu.SHOW:
-					ServerWindow serverWindow = WindowManager.getWindowManager().getServerWindow();
+					ServerWindow serverWindow = SceneManager.getWindowManager().getServerWindow();
 					serverWindow.setServer(server);
 					MSWStandalone.getMainStage().setScene(serverWindow);
 					System.out.println("[" + server.getName() + "] Anzeigen");

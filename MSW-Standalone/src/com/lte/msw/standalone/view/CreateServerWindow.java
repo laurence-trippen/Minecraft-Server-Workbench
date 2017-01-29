@@ -10,7 +10,7 @@ import java.net.URISyntaxException;
 
 import com.lte.msw.standalone.main.MSWStandalone;
 import com.lte.msw.standalone.manager.DesktopManager;
-import com.lte.msw.standalone.manager.WindowManager;
+import com.lte.msw.standalone.manager.SceneManager;
 import com.lte.msw.standalone.model.Server;
 import com.lte.msw.standalone.model.ServerList;
 import com.lte.msw.standalone.model.ServerVersion;
@@ -145,7 +145,7 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 			@Override
 			public void handle(ActionEvent event) {
 				refresh();
-				MSWStandalone.getMainStage().setScene(WindowManager.getWindowManager().getMainWindow());
+				MSWStandalone.getMainStage().setScene(SceneManager.getWindowManager().getMainWindow());
 			}
 		});
 		this.serverEulaHyperlink.setOnAction(new EventHandler<ActionEvent>() {
@@ -219,7 +219,7 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 									break;
 								}
 								refresh();
-								MSWStandalone.getMainStage().setScene(WindowManager.getWindowManager().getMainWindow());
+								MSWStandalone.getMainStage().setScene(SceneManager.getWindowManager().getMainWindow());
 							};
 						});
 						scs.setOnFailed(new EventHandler<WorkerStateEvent>() {
@@ -231,7 +231,7 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 								errorAlert.setContentText("Fehler beim erstellen von " + serverNameTextField.getText() + " !");
 								errorAlert.showAndWait();
 								refresh();
-								MSWStandalone.getMainStage().setScene(WindowManager.getWindowManager().getMainWindow());
+								MSWStandalone.getMainStage().setScene(SceneManager.getWindowManager().getMainWindow());
 							}
 						});
 					} else {
@@ -247,7 +247,7 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 			@Override
 			public void handle(ActionEvent event) {
 				refresh();
-				MSWStandalone.getMainStage().setScene(WindowManager.getWindowManager().getMainWindow());
+				MSWStandalone.getMainStage().setScene(SceneManager.getWindowManager().getMainWindow());
 			}
 		});
 		this.createServerPane.getChildren().addAll(createServerLabel, createServerButton, createServerImageView,

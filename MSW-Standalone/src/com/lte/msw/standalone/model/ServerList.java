@@ -13,7 +13,7 @@ import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
-import com.lte.msw.standalone.manager.WindowManager;
+import com.lte.msw.standalone.manager.SceneManager;
 import com.lte.msw.standalone.model.abstracts.ResourcePath;
 import com.lte.msw.standalone.model.enums.DataStatus;
 import com.lte.msw.standalone.model.enums.Difficulty;
@@ -53,7 +53,7 @@ public class ServerList {
 			newServer.setId(serverCounter);
 			serverList.add(newServer);
 			saveXML();
-			WindowManager.getWindowManager().getMainWindow().fetch();
+			SceneManager.getWindowManager().getMainWindow().fetch();
 			return DataStatus.SUCCESS;
 		}
 		return DataStatus.ERROR;
@@ -68,7 +68,7 @@ public class ServerList {
 					server.setId(counter);
 				}
 				saveXML();
-				WindowManager.getWindowManager().getMainWindow().fetch();
+				SceneManager.getWindowManager().getMainWindow().fetch();
 				return DataStatus.SUCCESS;
 			} else {
 				return DataStatus.ERROR;
@@ -92,7 +92,7 @@ public class ServerList {
 			serverVersion.setId(serverVersionCounter);
 			serverVersions.add(serverVersion);
 			saveXML();
-			WindowManager.getWindowManager().getServerVersionsWindow().fetch();
+			SceneManager.getWindowManager().getServerVersionsWindow().fetch();
 			return DataStatus.SUCCESS;
 		}
 		return DataStatus.ERROR;
@@ -111,7 +111,7 @@ public class ServerList {
 					version.setId(counter);
 				}
 				saveXML();
-				WindowManager.getWindowManager().getServerVersionsWindow().fetch();
+				SceneManager.getWindowManager().getServerVersionsWindow().fetch();
 				return DataStatus.SUCCESS;
 			} else {
 				return DataStatus.ERROR;
