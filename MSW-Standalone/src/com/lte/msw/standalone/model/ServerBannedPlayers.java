@@ -11,9 +11,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import com.lte.msw.standalone.model.abstracts.JsonIO;
+import com.lte.msw.standalone.model.abstracts.AbstractJsonIO;
 
-public class ServerBannedPlayers extends JsonIO {
+public class ServerBannedPlayers extends AbstractJsonIO {
 	
 	private String bannedPlayersPath;
 	private List<ServerBannedPlayerEntry> serverBannedPlayerEntries;
