@@ -10,7 +10,7 @@ import com.lte.msw.standalone.model.ServerList;
 import com.lte.msw.standalone.model.ServerVersion;
 import com.lte.msw.standalone.model.abstracts.ResourcePath;
 import com.lte.msw.standalone.model.interfaces.IFetchable;
-import com.lte.msw.standalone.view.components.ServerVersionItem;
+import com.lte.msw.standalone.view.components.ServerVersionComponent;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -41,12 +41,12 @@ public class ServerVersionsScene extends Scene implements IFetchable {
 	private AnchorPane anchorPane;
 	private GridPane gridPane;
 	private Image installVersionImage;
-	private ArrayList<ServerVersionItem> serverVersionItems;
+	private ArrayList<ServerVersionComponent> serverVersionItems;
 		
 	public ServerVersionsScene() {
 		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
 		this.windowController = new VersionsWindowController(this);
-		this.serverVersionItems = new ArrayList<ServerVersionItem>();
+		this.serverVersionItems = new ArrayList<ServerVersionComponent>();
 		try {
 			this.installVersionImage = new Image(new FileInputStream(ResourcePath.SERVER_VERSIONS_PNG));
 		} catch (FileNotFoundException e) {
@@ -106,7 +106,7 @@ public class ServerVersionsScene extends Scene implements IFetchable {
 				if (counter > 0) {
 					this.gridPane.getRowConstraints().add(new RowConstraints(210));
 				}
-				ServerVersionItem serverVersionItem = new ServerVersionItem(serverVersion);
+				ServerVersionComponent serverVersionItem = new ServerVersionComponent(serverVersion);
 				serverVersionItems.add(serverVersionItem);
 				GridPane.setConstraints(serverVersionItem, 0, counter);
 				this.gridPane.getChildren().add(serverVersionItem);

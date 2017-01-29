@@ -1,6 +1,6 @@
 package com.lte.msw.standalone.view.components;
 
-public class ServerMenu {
+public class ServerMenuComponent {
 	
 	public static final String START = "Starten";
 	public static final String STOP = "Stoppen";

@@ -12,7 +12,7 @@ import com.lte.msw.standalone.model.ServerList;
 import com.lte.msw.standalone.model.abstracts.ResourcePath;
 import com.lte.msw.standalone.model.interfaces.IFetchable;
 import com.lte.msw.standalone.model.interfaces.IRefreshable;
-import com.lte.msw.standalone.view.components.ServerItem;
+import com.lte.msw.standalone.view.components.ServerComponent;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -41,12 +41,12 @@ public class MainScene extends Scene implements IRefreshable, IFetchable {
 	private ScrollPane scrollPane;
 	private AnchorPane anchorPane;
 	private GridPane gridPane;
-	private ArrayList<ServerItem> serverItems;
+	private ArrayList<ServerComponent> serverItems;
 
 	public MainScene() {
 		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
 		this.mController = new MainWindowController(this);
-		this.serverItems = new ArrayList<ServerItem>();
+		this.serverItems = new ArrayList<ServerComponent>();
 		this.anchorPane = new AnchorPane();
 		this.anchorPane.setPrefWidth(DesktopManager.getScreenSize().getWidth());
 		this.anchorPane.setPrefHeight(2000);
@@ -101,7 +101,7 @@ public class MainScene extends Scene implements IRefreshable, IFetchable {
 	
 	@Override
 	public void refresh() {
-		for (ServerItem sItem : serverItems) {
+		for (ServerComponent sItem : serverItems) {
 			sItem.refresh();
 		}
 	}
@@ -119,7 +119,7 @@ public class MainScene extends Scene implements IRefreshable, IFetchable {
 					counter += 3;
 					this.gridPane.getRowConstraints().add(new RowConstraints(312));
 				}
-				ServerItem serverItem = new ServerItem(server);
+				ServerComponent serverItem = new ServerComponent(server);
 				serverItems.add(serverItem);
 				GridPane.setConstraints(serverItem, x, y);
 				x = GridManager.getX(x);

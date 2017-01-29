@@ -22,14 +22,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class ServerVersionItem extends AnchorPane {
+public class ServerVersionComponent extends AnchorPane {
 	
 	private AnchorPane serverVersionPane;
 	private ImageView imageView;
 	private Label versionTextlabel;
 	private Button deleteVersionButton;
 	
-	public ServerVersionItem(ServerVersion serverVersion) {
+	public ServerVersionComponent(ServerVersion serverVersion) {
 		try {
 			this.imageView = new ImageView(new Image(new FileInputStream(ResourcePath.SERVER_VERSION_PNG)));
 		} catch (FileNotFoundException e) {

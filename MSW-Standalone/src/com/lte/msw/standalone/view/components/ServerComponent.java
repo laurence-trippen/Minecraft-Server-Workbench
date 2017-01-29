@@ -23,7 +23,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class ServerItem extends AnchorPane implements IRefreshable {
+public class ServerComponent extends AnchorPane implements IRefreshable {
 
 	private AnchorPane serverPane;
 	private MenuBar serverBar;
@@ -39,7 +39,7 @@ public class ServerItem extends AnchorPane implements IRefreshable {
 	private MenuItem miShow;
 	private Server server;
 
-	public ServerItem(Server server) {
+	public ServerComponent(Server server) {
 		this.server = server;
 		try {
 			this.imageView = new ImageView(new Image(new FileInputStream(ResourcePath.SERVER_PNG)));
@@ -47,7 +47,7 @@ public class ServerItem extends AnchorPane implements IRefreshable {
 			e.printStackTrace();
 		}
 		this.splitMenuButton = new SplitMenuButton();
-		this.splitMenuButton.setText(ServerMenu.OPTIONS);
+		this.splitMenuButton.setText(ServerMenuComponent.OPTIONS);
 		this.splitMenuButton.setPrefWidth(113);
 		this.splitMenuButton.setPrefHeight(25);
 		this.splitMenuButton.setLayoutX(335);
@@ -56,13 +56,13 @@ public class ServerItem extends AnchorPane implements IRefreshable {
 			@Override
 			public void handle(ActionEvent event) {
 				switch (splitMenuButton.getText()) {
-				case ServerMenu.START:
+				case ServerMenuComponent.START:
 					System.out.println("[" + server.getName() + "] Starten");
 					break;
-				case ServerMenu.STOP:
+				case ServerMenuComponent.STOP:
 					System.out.println("[" + server.getName() + "] Stoppen");
 					break;
-				case ServerMenu.SHOW:
+				case ServerMenuComponent.SHOW:
 					ServerScene serverWindow = SceneManager.getWindowManager().getServerWindow();
 					serverWindow.setServer(server);
 					MSWStandalone.getMainStage().setScene(serverWindow);
@@ -78,21 +78,21 @@ public class ServerItem extends AnchorPane implements IRefreshable {
 		this.miStart.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				splitMenuButton.setText(ServerMenu.START);
+				splitMenuButton.setText(ServerMenuComponent.START);
 			}
 		});
 		this.miStop = new MenuItem("Stoppen");
 		this.miStop.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				splitMenuButton.setText(ServerMenu.STOP);
+				splitMenuButton.setText(ServerMenuComponent.STOP);
 			}
 		});
 		this.miShow = new MenuItem("Anzeigen");
 		this.miShow.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				splitMenuButton.setText(ServerMenu.SHOW);
+				splitMenuButton.setText(ServerMenuComponent.SHOW);
 			}
 		});
 		this.splitMenuButton.getItems().addAll(miStart, miStop, miShow);
@@ -139,7 +139,7 @@ public class ServerItem extends AnchorPane implements IRefreshable {
 	
 	@Override
 	public void refresh() {
-		splitMenuButton.setText(ServerMenu.OPTIONS);
+		splitMenuButton.setText(ServerMenuComponent.OPTIONS);
 	}
 
 	public AnchorPane getServerPane() {
