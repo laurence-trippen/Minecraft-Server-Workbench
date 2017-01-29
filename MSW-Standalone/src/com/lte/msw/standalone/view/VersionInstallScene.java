@@ -42,7 +42,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 
-public class VersionInstallWindow extends Scene implements IRefreshable {
+public class VersionInstallScene extends Scene implements IRefreshable {
 
 	private static AnchorPane mainPane = new AnchorPane();
 	private File selectedJarFile;
@@ -62,7 +62,7 @@ public class VersionInstallWindow extends Scene implements IRefreshable {
 	private ImageView jarVersionImageView;
 	private ProgressBar progressBar;
 
-	public VersionInstallWindow() {
+	public VersionInstallScene() {
 		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
 		try {
 			mainPane.setBackground(new Background(

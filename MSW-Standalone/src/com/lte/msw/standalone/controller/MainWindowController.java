@@ -2,15 +2,15 @@ package com.lte.msw.standalone.controller;
 
 import com.lte.msw.standalone.main.MSWStandalone;
 import com.lte.msw.standalone.manager.SceneManager;
-import com.lte.msw.standalone.view.MainWindow;
+import com.lte.msw.standalone.view.MainScene;
 
 import javafx.event.ActionEvent;
 
 public class MainWindowController {
 	
-	private MainWindow mainWindow;
+	private MainScene mainWindow;
 	
-	public MainWindowController(MainWindow mainWindow) {
+	public MainWindowController(MainScene mainWindow) {
 		this.mainWindow = mainWindow;
 	}
 	

@@ -1,19 +1,19 @@
 package com.lte.msw.standalone.manager;
 
-import com.lte.msw.standalone.view.CreateServerWindow;
-import com.lte.msw.standalone.view.MainWindow;
-import com.lte.msw.standalone.view.ServerVersionsWindow;
-import com.lte.msw.standalone.view.ServerWindow;
-import com.lte.msw.standalone.view.VersionInstallWindow;
+import com.lte.msw.standalone.view.CreateServerScene;
+import com.lte.msw.standalone.view.MainScene;
+import com.lte.msw.standalone.view.ServerVersionsScene;
+import com.lte.msw.standalone.view.ServerScene;
+import com.lte.msw.standalone.view.VersionInstallScene;
 
 public class SceneManager {
 	
 	private static SceneManager instance = null;
-	private MainWindow mainWindow;
-	private CreateServerWindow createServerWindow;
-	private ServerVersionsWindow serverVersionsWindow;
-	private VersionInstallWindow versionInstallWindow;
-	private ServerWindow serverWindow;
+	private MainScene mainWindow;
+	private CreateServerScene createServerWindow;
+	private ServerVersionsScene serverVersionsWindow;
+	private VersionInstallScene versionInstallWindow;
+	private ServerScene serverWindow;
 	
 	public static SceneManager getWindowManager() {
 		if (instance == null) {
@@ -23,30 +23,30 @@ public class SceneManager {
 	}
 	
 	private SceneManager() {
-		this.mainWindow = new MainWindow();
-		this.createServerWindow = new CreateServerWindow();
-		this.serverVersionsWindow = new ServerVersionsWindow();
-		this.versionInstallWindow = new VersionInstallWindow();
-		this.serverWindow = new ServerWindow();
+		this.mainWindow = new MainScene();
+		this.createServerWindow = new CreateServerScene();
+		this.serverVersionsWindow = new ServerVersionsScene();
+		this.versionInstallWindow = new VersionInstallScene();
+		this.serverWindow = new ServerScene();
 	}
 
-	public MainWindow getMainWindow() {
+	public MainScene getMainWindow() {
 		return mainWindow;
 	}
 
-	public CreateServerWindow getCreateServerWindow() {
+	public CreateServerScene getCreateServerWindow() {
 		return createServerWindow;
 	}
 
-	public ServerVersionsWindow getServerVersionsWindow() {
+	public ServerVersionsScene getServerVersionsWindow() {
 		return serverVersionsWindow;
 	}
 
-	public VersionInstallWindow getVersionInstallWindow() {
+	public VersionInstallScene getVersionInstallWindow() {
 		return versionInstallWindow;
 	}
 
-	public ServerWindow getServerWindow() {
+	public ServerScene getServerWindow() {
 		return serverWindow;
 	}
 

@@ -28,7 +28,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 
-public class ServerVersionsWindow extends Scene implements IFetchable {
+public class ServerVersionsScene extends Scene implements IFetchable {
 	
 	private static AnchorPane mainPane = new AnchorPane();
 	private VersionsWindowController windowController;
@@ -43,7 +43,7 @@ public class ServerVersionsWindow extends Scene implements IFetchable {
 	private Image installVersionImage;
 	private ArrayList<ServerVersionItem> serverVersionItems;
 		
-	public ServerVersionsWindow() {
+	public ServerVersionsScene() {
 		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
 		this.windowController = new VersionsWindowController(this);
 		this.serverVersionItems = new ArrayList<ServerVersionItem>();

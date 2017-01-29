@@ -30,7 +30,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class ServerWindow extends Scene implements IRefreshable {
+public class ServerScene extends Scene implements IRefreshable {
 
 	private static AnchorPane 			mainPane = new AnchorPane();
 	private Server 						server;
@@ -60,7 +60,7 @@ public class ServerWindow extends Scene implements IRefreshable {
 	private TextArea					consoleTextArea;
 	private TextField					consoleTextField;
 
-	public ServerWindow() {
+	public ServerScene() {
 		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
 		try {
 			mainPane.setBackground(new Background(

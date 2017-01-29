@@ -27,7 +27,7 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 
-public class MainWindow extends Scene implements IRefreshable, IFetchable {
+public class MainScene extends Scene implements IRefreshable, IFetchable {
 
 	private static int x = 0;
 	private static int y = 0;
@@ -43,7 +43,7 @@ public class MainWindow extends Scene implements IRefreshable, IFetchable {
 	private GridPane gridPane;
 	private ArrayList<ServerItem> serverItems;
 
-	public MainWindow() {
+	public MainScene() {
 		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
 		this.mController = new MainWindowController(this);
 		this.serverItems = new ArrayList<ServerItem>();

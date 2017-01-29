@@ -44,7 +44,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class CreateServerWindow extends Scene implements IRefreshable {
+public class CreateServerScene extends Scene implements IRefreshable {
 
 	private static AnchorPane mainPane = new AnchorPane();
 	private ToolBar toolBar;
@@ -64,7 +64,7 @@ public class CreateServerWindow extends Scene implements IRefreshable {
 	private ProgressBar progressBar;
 	private Label progressLabel;
 
-	public CreateServerWindow() {
+	public CreateServerScene() {
 		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
 		try {
 			mainPane.setBackground(new Background(

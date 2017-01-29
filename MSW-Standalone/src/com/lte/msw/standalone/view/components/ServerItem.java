@@ -8,7 +8,7 @@ import com.lte.msw.standalone.manager.SceneManager;
 import com.lte.msw.standalone.model.Server;
 import com.lte.msw.standalone.model.abstracts.ResourcePath;
 import com.lte.msw.standalone.model.interfaces.IRefreshable;
-import com.lte.msw.standalone.view.ServerWindow;
+import com.lte.msw.standalone.view.ServerScene;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -63,7 +63,7 @@ public class ServerItem extends AnchorPane implements IRefreshable {
 					System.out.println("[" + server.getName() + "] Stoppen");
 					break;
 				case ServerMenu.SHOW:
-					ServerWindow serverWindow = SceneManager.getWindowManager().getServerWindow();
+					ServerScene serverWindow = SceneManager.getWindowManager().getServerWindow();
 					serverWindow.setServer(server);
 					MSWStandalone.getMainStage().setScene(serverWindow);
 					System.out.println("[" + server.getName() + "] Anzeigen");
