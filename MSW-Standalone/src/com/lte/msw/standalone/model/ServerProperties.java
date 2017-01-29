@@ -12,9 +12,9 @@ import com.lte.msw.standalone.model.enums.Difficulty;
 import com.lte.msw.standalone.model.enums.GameMode;
 import com.lte.msw.standalone.model.enums.OpLevel;
 import com.lte.msw.standalone.model.enums.WorldType;
-import com.lte.msw.standalone.model.interfaces.IPropertiesController;
+import com.lte.msw.standalone.model.interfaces.IPropertiesControl;
 
-public class ServerProperties implements IPropertiesController {
+public class ServerProperties implements IPropertiesControl {
 	
 	private Properties serverProperties;
 	private String propertiesPath;

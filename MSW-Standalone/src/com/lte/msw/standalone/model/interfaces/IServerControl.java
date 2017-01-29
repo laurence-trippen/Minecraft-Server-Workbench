@@ -1,6 +1,6 @@
 package com.lte.msw.standalone.model.interfaces;
 
-public interface IServerController {
+public interface IServerControl {
 	
 	public void init();
 	public void start();
