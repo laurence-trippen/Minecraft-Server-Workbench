@@ -11,7 +11,7 @@ import com.lte.msw.standalone.model.ServerList;
 import com.lte.msw.standalone.model.ServerVersion;
 import com.lte.msw.standalone.model.abstracts.ResourcePath;
 import com.lte.msw.standalone.model.interfaces.IFetchable;
-import com.lte.msw.standalone.view.scenes.components.ServerVersionComponent;
+import com.lte.msw.standalone.view.components.ServerVersionComponent;
 
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;

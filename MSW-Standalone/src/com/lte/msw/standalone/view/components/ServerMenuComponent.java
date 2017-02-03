@@ -1,4 +1,4 @@
-package com.lte.msw.standalone.view.scenes.components;
+package com.lte.msw.standalone.view.components;
 
 public class ServerMenuComponent {
 	

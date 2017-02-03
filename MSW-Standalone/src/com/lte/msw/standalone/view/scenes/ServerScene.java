@@ -10,7 +10,7 @@ import com.lte.msw.standalone.manager.SceneManager;
 import com.lte.msw.standalone.model.Server;
 import com.lte.msw.standalone.model.abstracts.ResourcePath;
 import com.lte.msw.standalone.model.interfaces.IRefreshable;
-import com.lte.msw.standalone.view.scenes.style.Style;
+import com.lte.msw.standalone.view.styles.Style;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

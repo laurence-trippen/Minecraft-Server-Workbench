@@ -13,7 +13,7 @@ import com.lte.msw.standalone.model.ServerList;
 import com.lte.msw.standalone.model.abstracts.ResourcePath;
 import com.lte.msw.standalone.model.interfaces.IFetchable;
 import com.lte.msw.standalone.model.interfaces.IRefreshable;
-import com.lte.msw.standalone.view.scenes.components.ServerComponent;
+import com.lte.msw.standalone.view.components.ServerComponent;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;

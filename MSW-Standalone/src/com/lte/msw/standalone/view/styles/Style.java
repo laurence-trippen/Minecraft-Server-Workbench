@@ -1,4 +1,4 @@
-package com.lte.msw.standalone.view.scenes.style;
+package com.lte.msw.standalone.view.styles;
 
 public class Style {
 	
