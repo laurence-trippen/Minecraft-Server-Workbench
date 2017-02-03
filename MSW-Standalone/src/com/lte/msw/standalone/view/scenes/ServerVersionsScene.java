@@ -4,14 +4,16 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-import com.lte.msw.standalone.controller.VersionsWindowController;
+import com.lte.msw.standalone.main.MSWStandalone;
 import com.lte.msw.standalone.manager.DesktopManager;
+import com.lte.msw.standalone.manager.SceneManager;
 import com.lte.msw.standalone.model.ServerList;
 import com.lte.msw.standalone.model.ServerVersion;
 import com.lte.msw.standalone.model.abstracts.ResourcePath;
 import com.lte.msw.standalone.model.interfaces.IFetchable;
 import com.lte.msw.standalone.view.scenes.components.ServerVersionComponent;
 
+import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -31,7 +33,6 @@ import javafx.scene.layout.RowConstraints;
 public class ServerVersionsScene extends Scene implements IFetchable {
 	
 	private static AnchorPane mainPane = new AnchorPane();
-	private VersionsWindowController windowController;
 	private ToolBar toolBar;
 	private Pane leftSpacerPane;
 	private Pane rightSpacerPane;
@@ -45,7 +46,6 @@ public class ServerVersionsScene extends Scene implements IFetchable {
 		
 	public ServerVersionsScene() {
 		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
-		this.windowController = new VersionsWindowController(this);
 		this.serverVersionItems = new ArrayList<ServerVersionComponent>();
 		try {
 			this.installVersionImage = new Image(new FileInputStream(ResourcePath.SERVER_VERSIONS_PNG));
@@ -70,9 +70,9 @@ public class ServerVersionsScene extends Scene implements IFetchable {
 		this.scrollPane.setContent(anchorPane);
 		this.installVersionButton = new Button("Server Version installieren");
 		this.installVersionButton.setGraphic(new ImageView(installVersionImage));
-		this.installVersionButton.setOnAction(windowController::installVersionHandler);
+		this.installVersionButton.setOnAction(this::installVersionHandler);
 		this.closeButton = new Button("Zurück");
-		this.closeButton.setOnAction(windowController::closeHandler);
+		this.closeButton.setOnAction(this::closeHandler);
 		this.leftSpacerPane = new Pane();
 		HBox.setHgrow(leftSpacerPane, Priority.SOMETIMES);
 		this.rightSpacerPane = new Pane();
@@ -113,6 +113,14 @@ public class ServerVersionsScene extends Scene implements IFetchable {
 				counter++;
 			}
 		}
+	}
+	
+	private void installVersionHandler(ActionEvent event) {
+		MSWStandalone.getMainStage().setScene(SceneManager.getSceneManager().getVersionInstallScene());
+	}
+	
+	private void closeHandler(ActionEvent event) {
+		MSWStandalone.getMainStage().setScene(SceneManager.getSceneManager().getMainScene());
 	}
 
 }

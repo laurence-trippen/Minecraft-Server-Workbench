@@ -4,9 +4,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-import com.lte.msw.standalone.controller.MainWindowController;
+import com.lte.msw.standalone.main.MSWStandalone;
 import com.lte.msw.standalone.manager.DesktopManager;
 import com.lte.msw.standalone.manager.GridManager;
+import com.lte.msw.standalone.manager.SceneManager;
 import com.lte.msw.standalone.model.Server;
 import com.lte.msw.standalone.model.ServerList;
 import com.lte.msw.standalone.model.abstracts.ResourcePath;
@@ -14,6 +15,7 @@ import com.lte.msw.standalone.model.interfaces.IFetchable;
 import com.lte.msw.standalone.model.interfaces.IRefreshable;
 import com.lte.msw.standalone.view.scenes.components.ServerComponent;
 
+import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -32,7 +34,6 @@ public class MainScene extends Scene implements IRefreshable, IFetchable {
 	private static int x = 0;
 	private static int y = 0;
 	private static AnchorPane mainPane = new AnchorPane();
-	private MainWindowController mController;
 	private ToolBar toolBar;
 	private Button addServerButton;
 	private Button showServerVersions;
@@ -45,7 +46,6 @@ public class MainScene extends Scene implements IRefreshable, IFetchable {
 
 	public MainScene() {
 		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
-		this.mController = new MainWindowController(this);
 		this.serverItems = new ArrayList<ServerComponent>();
 		this.anchorPane = new AnchorPane();
 		this.anchorPane.setPrefWidth(DesktopManager.getScreenSize().getWidth());
@@ -82,8 +82,8 @@ public class MainScene extends Scene implements IRefreshable, IFetchable {
 		this.toolBar = new ToolBar();
 		this.toolBar.setLayoutX(0.00);
 		this.toolBar.setLayoutY(0.00);
-		this.addServerButton.setOnAction(mController::addServerHandler);
-		this.showServerVersions.setOnAction(mController::showVersionsHandler);
+		this.addServerButton.setOnAction(this::addServerHandler);
+		this.showServerVersions.setOnAction(this::showVersionsHandler);
 		this.toolBar.getItems().addAll(addServerButton, showServerVersions);
 		mainPane.getChildren().addAll(toolBar, scrollPane);
 		AnchorPane.setLeftAnchor(toolBar, 0.00);
@@ -129,6 +129,16 @@ public class MainScene extends Scene implements IRefreshable, IFetchable {
 			x = 0;
 			y = 0;
 		}
+	}
+	
+	private void addServerHandler(ActionEvent event) {
+		this.refresh();
+		MSWStandalone.getMainStage().setScene(SceneManager.getSceneManager().getCreateServerScene());
+	}
+	
+	private void showVersionsHandler(ActionEvent event) {
+		this.refresh();
+		MSWStandalone.getMainStage().setScene(SceneManager.getSceneManager().getServerVersionsScene());
 	}
 
 }
