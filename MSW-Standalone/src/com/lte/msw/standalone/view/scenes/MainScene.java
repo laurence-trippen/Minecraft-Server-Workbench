@@ -45,10 +45,16 @@ public class MainScene extends MSWScene implements IRefreshable, IFetchable {
 
 	public MainScene() {
 		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
+		this.initNodes();
+		this.defineNodes();
+		this.registerNodeEvents();
+		fetch();
+	}
+	
+	@Override
+	protected void initNodes() {
 		this.serverItems = new ArrayList<ServerComponent>();
 		this.anchorPane = new AnchorPane();
-		this.anchorPane.setPrefWidth(DesktopManager.getScreenSize().getWidth());
-		this.anchorPane.setPrefHeight(2000);
 		try {
 			this.newServerImage = new Image(new FileInputStream(ResourcePath.NEW_SERVER_PNG));
 			this.showServerVersionsImage = new Image(new FileInputStream(ResourcePath.VERSIONS_24_PNG));
@@ -63,26 +69,30 @@ public class MainScene extends MSWScene implements IRefreshable, IFetchable {
 			e.printStackTrace();
 		}
 		this.gridPane = new GridPane();
+		this.scrollPane = new ScrollPane();
 		this.gridPane.getColumnConstraints().addAll(
 				new ColumnConstraints(635),
 				new ColumnConstraints(635),
 				new ColumnConstraints(635) 
 		);
 		this.gridPane.getRowConstraints().add(new RowConstraints(312));
-		this.anchorPane.getChildren().add(gridPane);
-		this.scrollPane = new ScrollPane();
-		this.scrollPane.setLayoutX(0.00);
-		this.scrollPane.setLayoutY(41.0);
-		this.scrollPane.setContent(anchorPane);
 		this.addServerButton = new Button("Server erstellen");
 		this.addServerButton.setGraphic(new ImageView(newServerImage));
 		this.showServerVersions = new Button("Server Versionen");
 		this.showServerVersions.setGraphic(new ImageView(showServerVersionsImage));
 		this.toolBar = new ToolBar();
+	}
+	
+	@Override
+	protected void defineNodes() {
+		this.anchorPane.setPrefWidth(DesktopManager.getScreenSize().getWidth());
+		this.anchorPane.setPrefHeight(2000);
+		this.anchorPane.getChildren().add(gridPane);
+		this.scrollPane.setLayoutX(0.00);
+		this.scrollPane.setLayoutY(41.0);
+		this.scrollPane.setContent(anchorPane);
 		this.toolBar.setLayoutX(0.00);
 		this.toolBar.setLayoutY(0.00);
-		this.addServerButton.setOnAction(this::addServerHandler);
-		this.showServerVersions.setOnAction(this::showVersionsHandler);
 		this.toolBar.getItems().addAll(addServerButton, showServerVersions);
 		mainPane.getChildren().addAll(toolBar, scrollPane);
 		AnchorPane.setLeftAnchor(toolBar, 0.00);
@@ -95,7 +105,12 @@ public class MainScene extends MSWScene implements IRefreshable, IFetchable {
 		AnchorPane.setLeftAnchor(gridPane, 0.00);
 		AnchorPane.setTopAnchor(gridPane, 0.00);
 		AnchorPane.setRightAnchor(gridPane, 0.00);
-		fetch();
+	}
+
+	@Override
+	protected void registerNodeEvents() {
+		this.addServerButton.setOnAction(this::addServerHandler);
+		this.showServerVersions.setOnAction(this::showVersionsHandler);
 	}
 	
 	@Override
@@ -138,24 +153,6 @@ public class MainScene extends MSWScene implements IRefreshable, IFetchable {
 	private void showVersionsHandler(ActionEvent event) {
 		this.refresh();
 		MSWStandalone.getMainStage().setScene(SceneManager.getSceneManager().getServerVersionsScene());
-	}
-
-	@Override
-	protected void initNodes() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void defineNodes() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void registerNodeEvents() {
-		// TODO Auto-generated method stub
-		
 	}
 
 }
