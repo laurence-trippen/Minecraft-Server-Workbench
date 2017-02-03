@@ -16,7 +16,6 @@ import com.lte.msw.standalone.model.interfaces.IRefreshable;
 import com.lte.msw.standalone.view.scenes.components.ServerComponent;
 
 import javafx.event.ActionEvent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToolBar;
@@ -29,7 +28,7 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 
-public class MainScene extends Scene implements IRefreshable, IFetchable {
+public class MainScene extends MSWScene implements IRefreshable, IFetchable {
 
 	private static int x = 0;
 	private static int y = 0;
@@ -139,6 +138,24 @@ public class MainScene extends Scene implements IRefreshable, IFetchable {
 	private void showVersionsHandler(ActionEvent event) {
 		this.refresh();
 		MSWStandalone.getMainStage().setScene(SceneManager.getSceneManager().getServerVersionsScene());
+	}
+
+	@Override
+	protected void initNodes() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void defineNodes() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void registerNodeEvents() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
