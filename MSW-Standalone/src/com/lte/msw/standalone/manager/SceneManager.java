@@ -1,10 +1,10 @@
 package com.lte.msw.standalone.manager;
 
-import com.lte.msw.standalone.view.CreateServerScene;
-import com.lte.msw.standalone.view.MainScene;
-import com.lte.msw.standalone.view.ServerVersionsScene;
-import com.lte.msw.standalone.view.ServerScene;
-import com.lte.msw.standalone.view.VersionInstallScene;
+import com.lte.msw.standalone.view.scenes.CreateServerScene;
+import com.lte.msw.standalone.view.scenes.MainScene;
+import com.lte.msw.standalone.view.scenes.ServerScene;
+import com.lte.msw.standalone.view.scenes.ServerVersionsScene;
+import com.lte.msw.standalone.view.scenes.VersionInstallScene;
 
 public class SceneManager {
 	

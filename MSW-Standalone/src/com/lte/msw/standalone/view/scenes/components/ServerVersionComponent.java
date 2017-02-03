@@ -1,4 +1,4 @@
-package com.lte.msw.standalone.view.components;
+package com.lte.msw.standalone.view.scenes.components;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

@@ -1,4 +1,4 @@
-package com.lte.msw.standalone.view;
+package com.lte.msw.standalone.view.scenes;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -12,7 +12,7 @@ import com.lte.msw.standalone.model.ServerList;
 import com.lte.msw.standalone.model.abstracts.ResourcePath;
 import com.lte.msw.standalone.model.interfaces.IFetchable;
 import com.lte.msw.standalone.model.interfaces.IRefreshable;
-import com.lte.msw.standalone.view.components.ServerComponent;
+import com.lte.msw.standalone.view.scenes.components.ServerComponent;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;

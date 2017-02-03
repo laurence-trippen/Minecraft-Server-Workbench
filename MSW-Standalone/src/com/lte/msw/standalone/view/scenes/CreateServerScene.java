@@ -1,4 +1,4 @@
-package com.lte.msw.standalone.view;
+package com.lte.msw.standalone.view.scenes;
 
 import java.awt.Desktop;
 import java.io.File;
@@ -18,7 +18,7 @@ import com.lte.msw.standalone.model.abstracts.ResourcePath;
 import com.lte.msw.standalone.model.enums.DataStatus;
 import com.lte.msw.standalone.model.interfaces.IRefreshable;
 import com.lte.msw.standalone.model.threads.services.ServerCreateService;
-import com.lte.msw.standalone.view.style.Style;
+import com.lte.msw.standalone.view.scenes.style.Style;
 
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
