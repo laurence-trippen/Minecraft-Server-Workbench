@@ -51,9 +51,16 @@ public class MainScene extends MSWScene implements IRefreshable, IFetchable {
 	
 	@Override
 	protected void initNodes() {
+		this.getStylesheets().clear();
+		this.getStylesheets().add(getClass().getResource(ResourcePath.CSS).toExternalForm());
 		this.mainPane = (AnchorPane)this.getRoot();
 		this.serverItems = new ArrayList<ServerComponent>();
 		this.anchorPane = new AnchorPane();
+		this.gridPane = new GridPane();
+		this.scrollPane = new ScrollPane();
+		this.addServerButton = new Button("Server erstellen");
+		this.showServerVersions = new Button("Server Versionen");
+		this.toolBar = new ToolBar();
 		try {
 			this.newServerImage = new Image(new FileInputStream(ResourcePath.NEW_SERVER_PNG));
 		} catch (FileNotFoundException e) {
@@ -64,53 +71,67 @@ public class MainScene extends MSWScene implements IRefreshable, IFetchable {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		this.gridPane = new GridPane();
-		this.scrollPane = new ScrollPane();
-		this.addServerButton = new Button("Server erstellen");
-		this.showServerVersions = new Button("Server Versionen");
-		this.toolBar = new ToolBar();
 	}
 	
 	@Override
 	protected void defineNodes() {
 		this.addServerButton.setGraphic(new ImageView(newServerImage));
 		this.showServerVersions.setGraphic(new ImageView(showServerVersionsImage));
+//		try {
+//			this.anchorPane.setBackground(new Background(new BackgroundImage(new Image(
+//					new FileInputStream(ResourcePath.BACKGROUND)), 
+//					null, 
+//					null, 
+//					null, 
+//					null
+//			)));
+//		} catch (FileNotFoundException e) {
+//			e.printStackTrace();
+//		}
+		
+		this.gridPane.getRowConstraints().add(new RowConstraints(312));
 		this.gridPane.getColumnConstraints().addAll(
 				new ColumnConstraints(635),
 				new ColumnConstraints(635),
 				new ColumnConstraints(635) 
 		);
-		this.gridPane.getRowConstraints().add(new RowConstraints(312));
+		
+		this.anchorPane.setPrefWidth(DesktopManager.getScreenSize().getWidth());
+		this.anchorPane.setPrefHeight(DesktopManager.getScreenSize().getHeight());
+		this.anchorPane.getChildren().add(gridPane);
+		
 		try {
-			this.anchorPane.setBackground(new Background(new BackgroundImage(new Image(
+			this.scrollPane.setBackground(new Background(new BackgroundImage(new Image(
 					new FileInputStream(ResourcePath.BACKGROUND)), 
 					null, 
 					null, 
 					null, 
 					null
-			)));
+					)));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		this.anchorPane.setPrefWidth(DesktopManager.getScreenSize().getWidth());
-		this.anchorPane.setPrefHeight(2000);
-		this.anchorPane.getChildren().add(gridPane);
 		this.scrollPane.setLayoutX(0.00);
 		this.scrollPane.setLayoutY(41.0);
 		this.scrollPane.setContent(anchorPane);
+		
 		this.toolBar.setLayoutX(0.00);
 		this.toolBar.setLayoutY(0.00);
 		this.toolBar.getItems().addAll(addServerButton, showServerVersions);
+		
 		mainPane.getChildren().addAll(toolBar, scrollPane);
-		AnchorPane.setLeftAnchor(toolBar, 0.00);
+		
 		AnchorPane.setTopAnchor(toolBar, 0.00);
+		AnchorPane.setLeftAnchor(toolBar, 0.00);
 		AnchorPane.setRightAnchor(toolBar, 0.00);
-		AnchorPane.setLeftAnchor(scrollPane, 0.00);
+		
 		AnchorPane.setTopAnchor(scrollPane, 41.0);
+		AnchorPane.setLeftAnchor(scrollPane, 0.00);
 		AnchorPane.setRightAnchor(scrollPane, 0.00);
 		AnchorPane.setBottomAnchor(scrollPane, 0.00);
-		AnchorPane.setLeftAnchor(gridPane, 0.00);
+		
 		AnchorPane.setTopAnchor(gridPane, 0.00);
+		AnchorPane.setLeftAnchor(gridPane, 0.00);
 		AnchorPane.setRightAnchor(gridPane, 0.00);
 	}
 
