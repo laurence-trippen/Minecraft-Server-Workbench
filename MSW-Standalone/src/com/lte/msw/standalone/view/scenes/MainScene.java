@@ -30,8 +30,6 @@ import javafx.scene.layout.RowConstraints;
 
 public class MainScene extends MSWScene implements IRefreshable, IFetchable {
 
-	private static int x = 0;
-	private static int y = 0;
 	private AnchorPane mainPane;
 	private ToolBar toolBar;
 	private Button addServerButton;
@@ -131,6 +129,8 @@ public class MainScene extends MSWScene implements IRefreshable, IFetchable {
 	
 	@Override
 	public void fetch() {
+		int x = 0;
+		int y = 0;
 		int counter = 3;
 		ServerList serverList = ServerList.getServerList();
 		if (serverList.getServerCount() != 0) {	
