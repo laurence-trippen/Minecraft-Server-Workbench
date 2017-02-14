@@ -24,6 +24,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
@@ -77,37 +80,24 @@ public class MainScene extends MSWScene implements IRefreshable, IFetchable {
 	protected void defineNodes() {
 		this.addServerButton.setGraphic(new ImageView(newServerImage));
 		this.showServerVersions.setGraphic(new ImageView(showServerVersionsImage));
-//		try {
-//			this.anchorPane.setBackground(new Background(new BackgroundImage(new Image(
-//					new FileInputStream(ResourcePath.BACKGROUND)), 
-//					null, 
-//					null, 
-//					null, 
-//					null
-//			)));
-//		} catch (FileNotFoundException e) {
-//			e.printStackTrace();
-//		}
-		
 		this.gridPane.getRowConstraints().add(new RowConstraints(312));
 		this.gridPane.getColumnConstraints().addAll(
-				new ColumnConstraints(635),
-				new ColumnConstraints(635),
-				new ColumnConstraints(635) 
+			new ColumnConstraints(635),
+			new ColumnConstraints(635),
+			new ColumnConstraints(635) 
 		);
 		
-		this.anchorPane.setPrefWidth(DesktopManager.getScreenSize().getWidth());
-		this.anchorPane.setPrefHeight(DesktopManager.getScreenSize().getHeight());
+		this.anchorPane.prefWidthProperty().bind(scrollPane.widthProperty().subtract(5));
 		this.anchorPane.getChildren().add(gridPane);
 		
 		try {
-			this.scrollPane.setBackground(new Background(new BackgroundImage(new Image(
-					new FileInputStream(ResourcePath.BACKGROUND)), 
-					null, 
-					null, 
-					null, 
-					null
-					)));
+			this.scrollPane.setBackground(new Background(new BackgroundImage(
+				new Image(new FileInputStream(ResourcePath.BACKGROUND)), 
+				BackgroundRepeat.REPEAT, 
+				BackgroundRepeat.REPEAT, 
+				BackgroundPosition.DEFAULT, 
+				BackgroundSize.DEFAULT
+			)));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
