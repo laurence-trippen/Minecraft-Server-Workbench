@@ -32,7 +32,7 @@ public class MainScene extends MSWScene implements IRefreshable, IFetchable {
 
 	private static int x = 0;
 	private static int y = 0;
-	private static AnchorPane mainPane = new AnchorPane();
+	private AnchorPane mainPane;
 	private ToolBar toolBar;
 	private Button addServerButton;
 	private Button showServerVersions;
@@ -44,20 +44,46 @@ public class MainScene extends MSWScene implements IRefreshable, IFetchable {
 	private ArrayList<ServerComponent> serverItems;
 
 	public MainScene() {
-		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
+		super(new AnchorPane(), DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
 		this.initNodes();
 		this.defineNodes();
 		this.registerNodeEvents();
-		fetch();
+		this.fetch();
 	}
 	
 	@Override
 	protected void initNodes() {
+		this.mainPane = (AnchorPane)this.getRoot();
 		this.serverItems = new ArrayList<ServerComponent>();
 		this.anchorPane = new AnchorPane();
 		try {
 			this.newServerImage = new Image(new FileInputStream(ResourcePath.NEW_SERVER_PNG));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		try {
 			this.showServerVersionsImage = new Image(new FileInputStream(ResourcePath.VERSIONS_24_PNG));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		this.gridPane = new GridPane();
+		this.scrollPane = new ScrollPane();
+		this.addServerButton = new Button("Server erstellen");
+		this.showServerVersions = new Button("Server Versionen");
+		this.toolBar = new ToolBar();
+	}
+	
+	@Override
+	protected void defineNodes() {
+		this.addServerButton.setGraphic(new ImageView(newServerImage));
+		this.showServerVersions.setGraphic(new ImageView(showServerVersionsImage));
+		this.gridPane.getColumnConstraints().addAll(
+				new ColumnConstraints(635),
+				new ColumnConstraints(635),
+				new ColumnConstraints(635) 
+		);
+		this.gridPane.getRowConstraints().add(new RowConstraints(312));
+		try {
 			this.anchorPane.setBackground(new Background(new BackgroundImage(new Image(
 					new FileInputStream(ResourcePath.BACKGROUND)), 
 					null, 
@@ -68,23 +94,6 @@ public class MainScene extends MSWScene implements IRefreshable, IFetchable {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		this.gridPane = new GridPane();
-		this.scrollPane = new ScrollPane();
-		this.gridPane.getColumnConstraints().addAll(
-				new ColumnConstraints(635),
-				new ColumnConstraints(635),
-				new ColumnConstraints(635) 
-		);
-		this.gridPane.getRowConstraints().add(new RowConstraints(312));
-		this.addServerButton = new Button("Server erstellen");
-		this.addServerButton.setGraphic(new ImageView(newServerImage));
-		this.showServerVersions = new Button("Server Versionen");
-		this.showServerVersions.setGraphic(new ImageView(showServerVersionsImage));
-		this.toolBar = new ToolBar();
-	}
-	
-	@Override
-	protected void defineNodes() {
 		this.anchorPane.setPrefWidth(DesktopManager.getScreenSize().getWidth());
 		this.anchorPane.setPrefHeight(2000);
 		this.anchorPane.getChildren().add(gridPane);
