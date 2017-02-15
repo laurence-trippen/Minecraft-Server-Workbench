@@ -121,7 +121,7 @@ public class ServerComponent extends AnchorPane implements IRefreshable {
 		this.serverBar.setPrefHeight(25.00);
 		this.serverBar.getMenus().add(serverMenu);
 		this.serverPane = new AnchorPane();
-		this.serverPane.setStyle("-fx-background-color: white; -fx-background-radius: 5");
+		this.serverPane.setStyle("-fx-background-color: white; -fx-background-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);");
 		this.serverPane.setLayoutX(89);
 		this.serverPane.setLayoutY(68);
 		this.serverPane.setPrefWidth(468.0);

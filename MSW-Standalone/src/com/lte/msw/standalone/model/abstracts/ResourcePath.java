@@ -21,7 +21,7 @@ public abstract class ResourcePath {
 	public static final String SERVER_VERSION_PNG 	= "resources/images/serverVersion.png";
 	public static final String SERVER_VERSIONS_PNG 	= "resources/images/serverVersions.png";
 	public static final String VERSIONS_24_PNG 		= "resources/images/serverVersions24.png";
-	public static final String BACKGROUND 			= "resources/images/Background.png";
+	public static final String BACKGROUND 			= "resources/images/banner1.jpg";
 	public static final String JAR_PNG 				= "resources/images/jar.png";
 	public static final String GAMEMODE_48_PNG		= "resources/images/GameMode48.png";
 	public static final String GAMEMODE_32_PNG		= "resources/images/GameMode32.png";

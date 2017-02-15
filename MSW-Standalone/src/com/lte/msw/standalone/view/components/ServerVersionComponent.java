@@ -76,7 +76,7 @@ public class ServerVersionComponent extends AnchorPane {
 		this.imageView.setLayoutX(33);
 		this.imageView.setLayoutY(28);
 		this.serverVersionPane = new AnchorPane();
-		this.serverVersionPane.setStyle("-fx-background-color: white; -fx-background-radius: 5");
+		this.serverVersionPane.setStyle("-fx-background-color: white; -fx-background-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);");
 		this.serverVersionPane.setLayoutX(552.5);
 		this.serverVersionPane.setLayoutY(68);
 		this.serverVersionPane.setPrefWidth(700);
