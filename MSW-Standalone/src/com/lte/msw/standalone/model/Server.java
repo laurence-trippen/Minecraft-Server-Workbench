@@ -6,10 +6,10 @@ import java.io.File;
 import java.util.Date;
 
 import com.lte.msw.standalone.model.enums.ServerState;
-import com.lte.msw.standalone.model.interfaces.IServerController;
+import com.lte.msw.standalone.model.interfaces.IServerControl;
 import com.lte.msw.standalone.model.threads.services.ServerProcessService;
 
-public class Server implements IServerController {
+public class Server implements IServerControl {
 	
 	private int id;
 	private String name;

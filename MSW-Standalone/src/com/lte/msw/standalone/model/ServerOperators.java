@@ -11,9 +11,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import com.lte.msw.standalone.model.abstracts.JsonIO;
+import com.lte.msw.standalone.model.abstracts.AbstractJsonIO;
 
-public class ServerOperators extends JsonIO {
+public class ServerOperators extends AbstractJsonIO {
 	
 	private String opsPath;
 	private List<ServerOperatorEntry> serverOPEntries;

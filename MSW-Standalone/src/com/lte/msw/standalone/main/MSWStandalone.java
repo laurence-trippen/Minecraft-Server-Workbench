@@ -1,6 +1,6 @@
 package com.lte.msw.standalone.main;
 
-import com.lte.msw.standalone.manager.WindowManager;
+import com.lte.msw.standalone.manager.SceneManager;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -12,7 +12,7 @@ public class MSWStandalone extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		mainStage = primaryStage;
-		primaryStage.setScene(WindowManager.getWindowManager().getMainWindow());
+		primaryStage.setScene(SceneManager.getSceneManager().getMainScene());
 		primaryStage.setMaximized(true);
 		primaryStage.setWidth(1920);
 		primaryStage.setHeight(1200);
