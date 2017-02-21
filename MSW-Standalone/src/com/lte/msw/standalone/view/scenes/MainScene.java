@@ -118,8 +118,8 @@ public class MainScene extends MSWScene implements IRefreshable, IFetchable {
 
 	@Override
 	protected void registerNodeEvents() {
-		this.addServerButton.setOnAction(this::addServerHandler);
-		this.showServerVersions.setOnAction(this::showVersionsHandler);
+		this.addServerButton.setOnAction(this::onAddServerEvent);
+		this.showServerVersions.setOnAction(this::onShowVersionsEvent);
 	}
 	
 	@Override
@@ -142,12 +142,12 @@ public class MainScene extends MSWScene implements IRefreshable, IFetchable {
 		}
 	}
 	
-	private void addServerHandler(ActionEvent event) {
+	private void onAddServerEvent(ActionEvent event) {
 		this.refresh();
 		MSWStandalone.getMainStage().setScene(SceneManager.getSceneManager().getCreateServerScene());
 	}
 	
-	private void showVersionsHandler(ActionEvent event) {
+	private void onShowVersionsEvent(ActionEvent event) {
 		this.refresh();
 		MSWStandalone.getMainStage().setScene(SceneManager.getSceneManager().getServerVersionsScene());
 	}
