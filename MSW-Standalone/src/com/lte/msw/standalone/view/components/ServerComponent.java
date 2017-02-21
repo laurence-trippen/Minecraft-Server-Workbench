@@ -40,6 +40,8 @@ public class ServerComponent extends AnchorPane implements IRefreshable {
 	private Server server;
 
 	public ServerComponent(Server server) {
+		this.setPrefWidth(635);
+		this.setPrefHeight(312);
 		this.server = server;
 		try {
 			this.imageView = new ImageView(new Image(new FileInputStream(ResourcePath.SERVER_PNG)));
