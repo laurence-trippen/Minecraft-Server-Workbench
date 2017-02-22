@@ -13,6 +13,7 @@ public class MSWStandalone extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		mainStage = primaryStage;
 		primaryStage.setScene(SceneManager.getSceneManager().getMainScene());
+		primaryStage.setMaximized(true);
 		primaryStage.setWidth(800);
 		primaryStage.setHeight(600);
 		primaryStage.setTitle("Minecraft Server Workbench");

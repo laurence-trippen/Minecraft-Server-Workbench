@@ -54,20 +54,20 @@ public class CreateServerScene extends MSWScene implements IRefreshable {
 	private Pane vboxPane;
 	private Pane createServerPane;
 	private Pane installationPane;
-	private ToolBar toolBar;
 	private Button closeButton;
 	private Button createServerButton;
 	private Label createServerLabel;
 	private Label serverNameLabel;
 	private Label serverVersionLabel;
 	private Label serverEulaLabel;
+	private Label progressLabel;
 	private ImageView createServerImageView;
 	private TextField serverNameTextField;
 	private ChoiceBox<ServerVersion> serverVersionChoiceBox;
 	private CheckBox serverEulaCheckBox;
 	private Hyperlink serverEulaHyperlink;
+	private ToolBar toolBar;
 	private ProgressBar progressBar;
-	private Label progressLabel;
 	
 	public CreateServerScene() {
 		super(new AnchorPane(), DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
