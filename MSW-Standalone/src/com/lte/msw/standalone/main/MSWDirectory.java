@@ -4,7 +4,7 @@ import java.io.File;
 
 import com.lte.msw.standalone.model.abstracts.ResourcePath;
 
-public class ProgramDirectory {
+public class MSWDirectory {
 	
 	public static void checkDirectories() {
 		File workingDirectory = new File(ResourcePath.WORKBENCH_DIRECTORY);
