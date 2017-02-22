@@ -24,6 +24,7 @@ import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.NodeOrientation;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -39,16 +40,22 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 public class CreateServerScene extends MSWScene implements IRefreshable {
 
 	private AnchorPane mainPane;
+	private HBox hBox;
+	private VBox vBox;
+	private Pane vboxPane;
+	private Pane createServerPane;
+	private Pane installationPane;
 	private ToolBar toolBar;
 	private Button closeButton;
-	private Pane createServerPane;
 	private Button createServerButton;
 	private Label createServerLabel;
 	private Label serverNameLabel;
@@ -59,7 +66,6 @@ public class CreateServerScene extends MSWScene implements IRefreshable {
 	private ChoiceBox<ServerVersion> serverVersionChoiceBox;
 	private CheckBox serverEulaCheckBox;
 	private Hyperlink serverEulaHyperlink;
-	private Pane installationPane;
 	private ProgressBar progressBar;
 	private Label progressLabel;
 	
@@ -73,6 +79,9 @@ public class CreateServerScene extends MSWScene implements IRefreshable {
 	@Override
 	protected void initNodes() {
 		this.mainPane = (AnchorPane)this.getRoot();
+		this.hBox = new HBox();
+		this.vBox = new VBox();
+		this.vboxPane = new Pane();
 		this.progressLabel = new Label("Server wird erstellt ...");
 		this.progressBar = new ProgressBar(0);
 		this.installationPane = new Pane();
@@ -111,8 +120,7 @@ public class CreateServerScene extends MSWScene implements IRefreshable {
 		this.installationPane.setStyle("-fx-background-color: white; -fx-background-radius: 5");
 		this.installationPane.setPrefWidth(600);
 		this.installationPane.setPrefHeight(100);
-		this.installationPane.setLayoutX(660);
-		this.installationPane.setLayoutY(780);
+		this.installationPane.setLayoutY(480);
 		this.installationPane.setVisible(false);
 		this.installationPane.getChildren().addAll(progressBar, progressLabel);
 
@@ -148,6 +156,7 @@ public class CreateServerScene extends MSWScene implements IRefreshable {
 
 		this.serverEulaHyperlink.setLayoutX(388);
 		this.serverEulaHyperlink.setLayoutY(293);
+		
 		this.createServerImageView.setLayoutX(90);
 		this.createServerImageView.setLayoutY(50);
 
@@ -155,16 +164,14 @@ public class CreateServerScene extends MSWScene implements IRefreshable {
 		this.createServerLabel.setLayoutX(185);
 		this.createServerLabel.setLayoutY(62);
 
-		this.createServerPane.setStyle(Style.WHITE_PANE);
-		this.createServerPane.setPrefWidth(600);
-		this.createServerPane.setPrefHeight(450);
-		this.createServerPane.setLayoutX(660);
-		this.createServerPane.setLayoutY(300);
-
 		this.createServerButton.setPrefWidth(120);
 		this.createServerButton.setPrefHeight(30);
 		this.createServerButton.setLayoutX(355);
 		this.createServerButton.setLayoutY(350);
+		
+		this.createServerPane.setStyle(Style.WHITE_PANE);
+		this.createServerPane.setPrefWidth(600);
+		this.createServerPane.setPrefHeight(450);
 		this.createServerPane.getChildren().addAll(
 			createServerLabel, 
 			createServerButton,
@@ -177,10 +184,25 @@ public class CreateServerScene extends MSWScene implements IRefreshable {
 			serverEulaCheckBox, 
 			serverEulaHyperlink
 		);
-		mainPane.getChildren().addAll(toolBar, createServerPane, installationPane);
-		AnchorPane.setLeftAnchor(toolBar, 0.00);
-		AnchorPane.setTopAnchor(toolBar, 0.00);
-		AnchorPane.setRightAnchor(toolBar, 0.00);
+		
+		this.vboxPane.setPrefHeight(580);
+		this.vboxPane.getChildren().addAll(createServerPane, installationPane);
+		
+		this.vBox.setAlignment(Pos.CENTER);
+		this.vBox.setPrefWidth(600);
+		this.vBox.getChildren().add(vboxPane);
+		
+		this.hBox.setAlignment(Pos.CENTER);
+		this.hBox.getChildren().add(vBox);
+		
+		mainPane.getChildren().addAll(hBox, toolBar);
+		AnchorPane.setLeftAnchor(toolBar, 0.0);
+		AnchorPane.setTopAnchor(toolBar, 0.0);
+		AnchorPane.setRightAnchor(toolBar, 0.0);
+		AnchorPane.setTopAnchor(hBox, 0.0);
+		AnchorPane.setLeftAnchor(hBox, 0.0);
+		AnchorPane.setRightAnchor(hBox, 0.0);
+		AnchorPane.setBottomAnchor(hBox, 0.0);
 	}
 
 	@Override
