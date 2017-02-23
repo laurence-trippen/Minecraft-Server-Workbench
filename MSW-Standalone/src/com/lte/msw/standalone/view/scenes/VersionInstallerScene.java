@@ -16,7 +16,6 @@ import com.lte.msw.standalone.model.abstracts.ResourcePath;
 import com.lte.msw.standalone.model.enums.DataStatus;
 import com.lte.msw.standalone.model.interfaces.IRefreshable;
 import com.lte.msw.standalone.model.threads.services.VersionInstallerService;
-import com.lte.msw.standalone.view.styles.Style;
 
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
@@ -42,7 +41,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 
-public class VersionInstallScene extends Scene implements IRefreshable {
+public class VersionInstallerScene extends Scene implements IRefreshable {
 
 	private static AnchorPane mainPane = new AnchorPane();
 	private File selectedJarFile;
@@ -62,7 +61,7 @@ public class VersionInstallScene extends Scene implements IRefreshable {
 	private ImageView jarVersionImageView;
 	private ProgressBar progressBar;
 
-	public VersionInstallScene() {
+	public VersionInstallerScene() {
 		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
 		this.getStylesheets().clear();
 		this.getStylesheets().add(getClass().getResource(ResourcePath.CSS).toExternalForm());
@@ -84,7 +83,7 @@ public class VersionInstallScene extends Scene implements IRefreshable {
 		this.progressBar.setPrefWidth(340);
 		this.progressBar.setPrefHeight(20);
 		this.installationPane = new Pane();
-		this.installationPane.setStyle("-fx-background-color: white; -fx-background-radius: 5");
+		this.installationPane.getStyleClass().add("msw-white-pane");
 		this.installationPane.setPrefWidth(600);
 		this.installationPane.setPrefHeight(100);
 		this.installationPane.setLayoutX(660);
@@ -258,8 +257,8 @@ public class VersionInstallScene extends Scene implements IRefreshable {
 		jarNameLabel.setText("");
 		selectedJarFile = null;
 		installationPane.setVisible(false);
-		versionNameTextField.setStyle("");
-		versionJarButton.setStyle("");
+		versionNameTextField.getStyleClass().remove("msw-error-border");
+		versionJarButton.getStyleClass().remove("msw-error-border");
 	}
 
 }

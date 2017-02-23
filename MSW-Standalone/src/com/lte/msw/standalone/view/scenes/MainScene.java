@@ -51,8 +51,6 @@ public class MainScene extends MSWScene implements IRefreshable, IFetchable {
 	
 	@Override
 	protected void initNodes() {
-		this.getStylesheets().clear();
-		this.getStylesheets().add(getClass().getResource(ResourcePath.CSS).toExternalForm());
 		this.mainPane = (AnchorPane)this.getRoot();
 		this.serverItems = new ArrayList<ServerComponent>();
 		this.anchorPane = new AnchorPane();
@@ -75,6 +73,8 @@ public class MainScene extends MSWScene implements IRefreshable, IFetchable {
 	
 	@Override
 	protected void defineNodes() {
+		this.getStylesheets().clear();
+		this.getStylesheets().add(getClass().getResource(ResourcePath.CSS).toExternalForm());
 		this.addServerButton.setGraphic(new ImageView(newServerImage));
 		this.showServerVersions.setGraphic(new ImageView(showServerVersionsImage));
 		
@@ -144,7 +144,7 @@ public class MainScene extends MSWScene implements IRefreshable, IFetchable {
 	
 	private void onAddServerEvent(ActionEvent event) {
 		this.refresh();
-		MSWStandalone.getMainStage().setScene(SceneManager.getSceneManager().getCreateServerScene());
+		MSWStandalone.getMainStage().setScene(SceneManager.getSceneManager().getServerCreatorScene());
 	}
 	
 	private void onShowVersionsEvent(ActionEvent event) {

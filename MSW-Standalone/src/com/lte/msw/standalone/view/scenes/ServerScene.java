@@ -10,7 +10,6 @@ import com.lte.msw.standalone.manager.SceneManager;
 import com.lte.msw.standalone.model.Server;
 import com.lte.msw.standalone.model.abstracts.ResourcePath;
 import com.lte.msw.standalone.model.interfaces.IRefreshable;
-import com.lte.msw.standalone.view.styles.Style;
 
 import javafx.event.ActionEvent;
 import javafx.geometry.NodeOrientation;
@@ -101,6 +100,8 @@ public class ServerScene extends MSWScene implements IRefreshable {
 
 	@Override
 	protected void defineNodes() {
+		this.getStylesheets().clear();
+		this.getStylesheets().add(getClass().getResource(ResourcePath.CSS).toExternalForm());
 		try {
 			mainPane.setBackground(new Background(
 					new BackgroundImage(new Image(new FileInputStream(ResourcePath.BACKGROUND)), null, null, null, null)
@@ -194,17 +195,17 @@ public class ServerScene extends MSWScene implements IRefreshable {
 		this.consoleTextArea.setPrefHeight(170);
 
 		this.consoleTextField.setPromptText("Befehl eingeben");
-		this.consoleTextField.setStyle(Style.LEFT_RADIUS);
+		this.consoleTextField.getStyleClass().add("msw-left-border-radius");
 		this.consoleTextField.setLayoutX(30);
 		this.consoleTextField.setLayoutY(250);
 		this.consoleTextField.setPrefWidth(600);
 
-		this.consoleExecuteButton.setStyle(Style.RIGHT_RADIUS);
+		this.consoleExecuteButton.getStyleClass().add("msw-right-border-radius");
 		this.consoleExecuteButton.setLayoutX(630);
 		this.consoleExecuteButton.setLayoutY(250);
 		this.consoleExecuteButton.setPrefWidth(140);
 
-		this.consolePane.setStyle(Style.WHITE_PANE);
+		this.consolePane.getStyleClass().add("msw-white-pane");
 		this.consolePane.setLayoutY(500);
 		this.consolePane.setPrefWidth(800);
 		this.consolePane.setPrefHeight(300);
@@ -214,19 +215,19 @@ public class ServerScene extends MSWScene implements IRefreshable {
 				consoleLabel,
 				consoleExecuteButton
 		);
-		this.serverLogButton.setStyle(Style.RIGHT_RADIUS);
+		this.serverLogButton.getStyleClass().add("msw-right-border-radius");
 		this.serverLogButton.setPrefWidth(150);
 		this.serverLogButton.setPrefHeight(25);
 		this.serverLogButton.setLayoutX(550);
 		this.serverLogButton.setLayoutY(370);
 		
-		this.serverBackupButton.setStyle(Style.BUTTON_NON_RADIUS);
+		this.serverBackupButton.getStyleClass().add("msw-none-border-radius");
 		this.serverBackupButton.setPrefWidth(150);
 		this.serverBackupButton.setPrefHeight(25);
 		this.serverBackupButton.setLayoutX(400);
 		this.serverBackupButton.setLayoutY(370);
 		
-		this.serverConfigureButton.setStyle(Style.LEFT_RADIUS);
+		this.serverConfigureButton.getStyleClass().add("msw-left-border-radius");
 		this.serverConfigureButton.setPrefWidth(150);
 		this.serverConfigureButton.setPrefHeight(25);
 		this.serverConfigureButton.setLayoutX(250);

@@ -18,7 +18,6 @@ import com.lte.msw.standalone.model.abstracts.ResourcePath;
 import com.lte.msw.standalone.model.enums.DataStatus;
 import com.lte.msw.standalone.model.interfaces.IRefreshable;
 import com.lte.msw.standalone.model.threads.services.ServerCreatorService;
-import com.lte.msw.standalone.view.styles.Style;
 
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
@@ -46,7 +45,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class CreateServerScene extends MSWScene implements IRefreshable {
+public class ServerCreatorScene extends MSWScene implements IRefreshable {
 
 	private AnchorPane mainPane;
 	private HBox hBox;
@@ -69,7 +68,7 @@ public class CreateServerScene extends MSWScene implements IRefreshable {
 	private ToolBar toolBar;
 	private ProgressBar progressBar;
 	
-	public CreateServerScene() {
+	public ServerCreatorScene() {
 		super(new AnchorPane(), DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
 		this.initNodes();
 		this.defineNodes();
@@ -108,6 +107,9 @@ public class CreateServerScene extends MSWScene implements IRefreshable {
 	
 	@Override
 	protected void defineNodes() {
+		this.getStylesheets().clear();
+		this.getStylesheets().add(getClass().getResource(ResourcePath.CSS).toExternalForm());
+		
 		this.progressLabel.setFont(Font.font("System", FontWeight.BOLD, 14));
 		this.progressLabel.setLayoutX(400);
 		this.progressLabel.setLayoutY(40);
@@ -117,7 +119,7 @@ public class CreateServerScene extends MSWScene implements IRefreshable {
 		this.progressBar.setPrefWidth(340);
 		this.progressBar.setPrefHeight(20);
 
-		this.installationPane.setStyle("-fx-background-color: white; -fx-background-radius: 5");
+		this.installationPane.getStyleClass().add("msw-white-pane");
 		this.installationPane.setPrefWidth(600);
 		this.installationPane.setPrefHeight(100);
 		this.installationPane.setLayoutY(480);
@@ -169,7 +171,7 @@ public class CreateServerScene extends MSWScene implements IRefreshable {
 		this.createServerButton.setLayoutX(355);
 		this.createServerButton.setLayoutY(350);
 		
-		this.createServerPane.setStyle(Style.WHITE_PANE);
+		this.createServerPane.getStyleClass().add("msw-white-pane");
 		this.createServerPane.setPrefWidth(600);
 		this.createServerPane.setPrefHeight(450);
 		this.createServerPane.getChildren().addAll(
@@ -218,10 +220,10 @@ public class CreateServerScene extends MSWScene implements IRefreshable {
 		this.closeButton.setDisable(false);
 		this.createServerButton.setDisable(false);
 		this.serverNameTextField.setText("");
-		this.serverNameTextField.setStyle("");
+		this.serverNameTextField.getStyleClass().remove("msw-error-border");
 		this.serverNameTextField.setDisable(false);
 		this.serverVersionChoiceBox.setDisable(false);
-		this.serverEulaCheckBox.setStyle("");
+		this.serverEulaCheckBox.getStyleClass().remove("msw-error-border");
 		this.serverEulaCheckBox.setSelected(false);
 		this.serverEulaCheckBox.setDisable(false);
 		this.serverVersionChoiceBox.getSelectionModel().selectFirst();
@@ -245,14 +247,14 @@ public class CreateServerScene extends MSWScene implements IRefreshable {
 	
 	private void onCreateServerEvent(ActionEvent event) {
 		if (serverNameTextField.getText().equals("")) {
-			serverNameTextField.setStyle(Style.ERROR_BORDER);
+			serverNameTextField.getStyleClass().add("msw-error-border");
 		} else {
-			serverNameTextField.setStyle("");
+			serverNameTextField.getStyleClass().remove("msw-error-border");
 		}
 		if (!serverEulaCheckBox.isSelected()) {
-			serverEulaCheckBox.setStyle(Style.ERROR_BORDER);
+			serverEulaCheckBox.getStyleClass().add("msw-error-border");
 		} else {
-			serverEulaCheckBox.setStyle("");
+			serverEulaCheckBox.getStyleClass().remove("msw-error-border");
 		}
 		if ((!serverNameTextField.getText().equals("")) && serverEulaCheckBox.isSelected()) {
 			if (!ServerList.getServerList().existServer(serverNameTextField.getText())) {
