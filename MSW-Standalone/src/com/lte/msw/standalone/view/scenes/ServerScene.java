@@ -160,7 +160,7 @@ public class ServerScene extends MSWScene implements IRefreshable {
 		this.serverPvpValue.setLayoutX(330);
 		this.serverPvpValue.setLayoutY(290);
 
-		this.serverPane.setStyle(Style.WHITE_PANE);
+		this.serverPane.getStyleClass().add("msw-white-pane");
 		this.serverPane.setPrefWidth(800);
 		this.serverPane.setPrefHeight(460);
 		this.serverPane.getChildren().addAll(

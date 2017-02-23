@@ -64,6 +64,8 @@ public class VersionInstallScene extends Scene implements IRefreshable {
 
 	public VersionInstallScene() {
 		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
+		this.getStylesheets().clear();
+		this.getStylesheets().add(getClass().getResource(ResourcePath.CSS).toExternalForm());
 		try {
 			mainPane.setBackground(new Background(
 					new BackgroundImage(new Image(new FileInputStream(ResourcePath.BACKGROUND)), null, null, null, null)));
@@ -144,14 +146,14 @@ public class VersionInstallScene extends Scene implements IRefreshable {
 			@Override
 			public void handle(ActionEvent event) {
 				if (versionNameTextField.getText().equals("")) {
-					versionNameTextField.setStyle(Style.ERROR_BORDER);
+					versionNameTextField.getStyleClass().add("msw-error-border");
 				} else {
-					versionNameTextField.setStyle("");
+					versionNameTextField.getStyleClass().remove("msw-error-border");
 				}
 				if (selectedJarFile == null) {
-					versionJarButton.setStyle(Style.ERROR_BORDER);
+					versionJarButton.getStyleClass().add("msw-error-border");
 				} else {
-					versionJarButton.setStyle("");
+					versionJarButton.getStyleClass().remove("msw-error-border");
 				}
 				if ((!versionNameTextField.getText().equals("")) && selectedJarFile != null) {
 					Alert alert = new Alert(AlertType.INFORMATION);
@@ -217,7 +219,7 @@ public class VersionInstallScene extends Scene implements IRefreshable {
 			}
 		});
 		this.installSetupPane = new Pane();
-		this.installSetupPane.setStyle(Style.WHITE_PANE);
+		this.installSetupPane.getStyleClass().add("msw-white-pane");
 		this.installSetupPane.setPrefWidth(600);
 		this.installSetupPane.setPrefHeight(410);
 		this.installSetupPane.setLayoutX(660);
