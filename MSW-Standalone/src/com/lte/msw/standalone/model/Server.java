@@ -19,10 +19,10 @@ public class Server implements IServerControl {
 	private ServerVersion serverVersion;
 	private ServerState serverState;
 	private ServerProperties serverProperties;
-	private ServerOperators serverOPS;
-	private ServerWhitelist serverWhitelist;
-	private ServerBannedIps serverBannedIps;
-	private ServerBannedPlayers serverBannedPlayers;
+	private Operators serverOPS;
+	private Whitelist serverWhitelist;
+	private BannedAdresses serverBannedIps;
+	private BannedPlayers serverBannedPlayers;
 	private ServerProcessService serverProcessService;
 	
 	public Server(String name, ServerVersion serverVersion) {
@@ -33,10 +33,10 @@ public class Server implements IServerControl {
 		this.serverVersion = serverVersion;
 		this.serverState = ServerState.STOPPED;
 		this.serverProperties = new ServerProperties(this.getServerPath().getProperties());
-		this.serverOPS = new ServerOperators(this.getServerPath().getOps());
-		this.serverWhitelist = new ServerWhitelist(this.getServerPath().getWhitlelist());
-		this.serverBannedIps = new ServerBannedIps(this.getServerPath().getBannedIps());
-		this.serverBannedPlayers = new ServerBannedPlayers(this.getServerPath().getBannedPlayers());
+		this.serverOPS = new Operators(this.getServerPath().getOps());
+		this.serverWhitelist = new Whitelist(this.getServerPath().getWhitlelist());
+		this.serverBannedIps = new BannedAdresses(this.getServerPath().getBannedIps());
+		this.serverBannedPlayers = new BannedPlayers(this.getServerPath().getBannedPlayers());
 		this.serverProcessService = new ServerProcessService(new File(serverVersion.getPath()));
 	}
 	
@@ -49,10 +49,10 @@ public class Server implements IServerControl {
 		this.serverVersion = serverVersion;
 		this.serverState = ServerState.STOPPED;
 		this.serverProperties = new ServerProperties(this.getServerPath().getProperties());
-		this.serverOPS = new ServerOperators(this.getServerPath().getOps());
-		this.serverWhitelist = new ServerWhitelist(this.getServerPath().getWhitlelist());
-		this.serverBannedIps = new ServerBannedIps(this.getServerPath().getBannedIps());
-		this.serverBannedPlayers = new ServerBannedPlayers(this.getServerPath().getBannedPlayers());
+		this.serverOPS = new Operators(this.getServerPath().getOps());
+		this.serverWhitelist = new Whitelist(this.getServerPath().getWhitlelist());
+		this.serverBannedIps = new BannedAdresses(this.getServerPath().getBannedIps());
+		this.serverBannedPlayers = new BannedPlayers(this.getServerPath().getBannedPlayers());
 		this.serverProcessService = new ServerProcessService(new File(serverVersion.getPath()));
 	}
 	
@@ -144,35 +144,35 @@ public class Server implements IServerControl {
 		this.serverProperties = serverProperties;
 	}
 	
-	public ServerOperators getServerOPS() {
+	public Operators getServerOPS() {
 		return serverOPS;
 	}
 
-	public void setServerOPS(ServerOperators serverOPS) {
+	public void setServerOPS(Operators serverOPS) {
 		this.serverOPS = serverOPS;
 	}
 
-	public ServerWhitelist getServerWhitelist() {
+	public Whitelist getServerWhitelist() {
 		return serverWhitelist;
 	}
 
-	public void setServerWhitelist(ServerWhitelist serverWhitelist) {
+	public void setServerWhitelist(Whitelist serverWhitelist) {
 		this.serverWhitelist = serverWhitelist;
 	}
 
-	public ServerBannedIps getServerBannedIps() {
+	public BannedAdresses getServerBannedIps() {
 		return serverBannedIps;
 	}
 
-	public void setServerBannedIps(ServerBannedIps serverBannedIps) {
+	public void setServerBannedIps(BannedAdresses serverBannedIps) {
 		this.serverBannedIps = serverBannedIps;
 	}
 
-	public ServerBannedPlayers getServerBannedPlayers() {
+	public BannedPlayers getServerBannedPlayers() {
 		return serverBannedPlayers;
 	}
 
-	public void setServerBannedPlayers(ServerBannedPlayers serverBannedPlayers) {
+	public void setServerBannedPlayers(BannedPlayers serverBannedPlayers) {
 		this.serverBannedPlayers = serverBannedPlayers;
 	}
 

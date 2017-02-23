@@ -1,15 +1,13 @@
 package com.lte.msw.standalone.model;
 
-public class ServerOperatorEntry {
+public class WhitelistEntry {
 	
 	private String uuid;
 	private String name;
-	private String level;
 	
-	public ServerOperatorEntry(String uuid, String name, String level) {
+	public WhitelistEntry(String uuid, String name) {
 		this.uuid = uuid;
 		this.name = name;
-		this.level = level;
 	}
 
 	public String getUuid() {
@@ -26,14 +24,6 @@ public class ServerOperatorEntry {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getLevel() {
-		return level;
-	}
-
-	public void setLevel(String level) {
-		this.level = level;
 	}
 	
 }

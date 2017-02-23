@@ -13,14 +13,14 @@ import org.json.simple.parser.ParseException;
 
 import com.lte.msw.standalone.model.abstracts.AbstractJsonIO;
 
-public class ServerBannedPlayers extends AbstractJsonIO {
+public class BannedPlayers extends AbstractJsonIO {
 	
 	private String bannedPlayersPath;
-	private List<ServerBannedPlayerEntry> serverBannedPlayerEntries;
+	private List<BannedPlayerEntry> serverBannedPlayerEntries;
 	
-	public ServerBannedPlayers(String bannedPlayersPath) {
+	public BannedPlayers(String bannedPlayersPath) {
 		this.bannedPlayersPath = bannedPlayersPath;
-		this.serverBannedPlayerEntries = new ArrayList<ServerBannedPlayerEntry>();
+		this.serverBannedPlayerEntries = new ArrayList<BannedPlayerEntry>();
 	}
 	
 	@Override
@@ -31,7 +31,7 @@ public class ServerBannedPlayers extends AbstractJsonIO {
 			JSONArray array = (JSONArray)obj;
 			for (int i = 0; i < array.size(); i++) {
 				JSONObject jsonEntry = (JSONObject)array.get(i);
-				this.addBannedPlayerEntry(new ServerBannedPlayerEntry(
+				this.addBannedPlayerEntry(new BannedPlayerEntry(
 						jsonEntry.get("uuid").toString(), 
 						jsonEntry.get("name").toString(), 
 						jsonEntry.get("created").toString(), 
@@ -49,9 +49,9 @@ public class ServerBannedPlayers extends AbstractJsonIO {
 		}
 	}
 	
-	private void addBannedPlayerEntry(ServerBannedPlayerEntry newBannedPlayerEntry) {
+	private void addBannedPlayerEntry(BannedPlayerEntry newBannedPlayerEntry) {
 		if (serverBannedPlayerEntries != null && newBannedPlayerEntry != null) {
-			for (ServerBannedPlayerEntry existingEntry : serverBannedPlayerEntries) {
+			for (BannedPlayerEntry existingEntry : serverBannedPlayerEntries) {
 				if (newBannedPlayerEntry.getUuid().equals(existingEntry.getUuid())) {
 					System.out.println("Spieler " + newBannedPlayerEntry.getName() + " hat schon BannedPlayer-Eintrag!");
 					return;
@@ -66,7 +66,7 @@ public class ServerBannedPlayers extends AbstractJsonIO {
 	@Override
 	public void printEntries() {
 		if (!serverBannedPlayerEntries.isEmpty()) {
-			for (ServerBannedPlayerEntry entry : serverBannedPlayerEntries) {
+			for (BannedPlayerEntry entry : serverBannedPlayerEntries) {
 				System.out.println(
 						"uuid: " + entry.getUuid() + "\n" +
 						"name: " + entry.getName() + "\n" +
@@ -87,11 +87,11 @@ public class ServerBannedPlayers extends AbstractJsonIO {
 		this.bannedPlayersPath = bannedPlayersPath;
 	}
 
-	public List<ServerBannedPlayerEntry> getServerBannedPlayerEntries() {
+	public List<BannedPlayerEntry> getServerBannedPlayerEntries() {
 		return serverBannedPlayerEntries;
 	}
 
-	public void setServerBannedPlayerEntries(List<ServerBannedPlayerEntry> serverBannedPlayerEntries) {
+	public void setServerBannedPlayerEntries(List<BannedPlayerEntry> serverBannedPlayerEntries) {
 		this.serverBannedPlayerEntries = serverBannedPlayerEntries;
 	}
 	

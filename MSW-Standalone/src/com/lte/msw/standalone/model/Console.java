@@ -3,13 +3,13 @@ package com.lte.msw.standalone.model;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public class ServerConsole {
+public class Console {
 	
 	private String consoleLog;
 	private InputStream consoleInputStream;
 	private OutputStream consoleOutputStream;
 	
-	public ServerConsole(InputStream inputStream, OutputStream outputStream) {
+	public Console(InputStream inputStream, OutputStream outputStream) {
 		this.consoleInputStream = inputStream;
 		this.consoleOutputStream = outputStream;
 	}

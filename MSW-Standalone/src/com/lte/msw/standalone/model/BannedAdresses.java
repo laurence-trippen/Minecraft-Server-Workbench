@@ -13,14 +13,14 @@ import org.json.simple.parser.ParseException;
 
 import com.lte.msw.standalone.model.abstracts.AbstractJsonIO;
 
-public class ServerBannedIps extends AbstractJsonIO {
+public class BannedAdresses extends AbstractJsonIO {
 	
 	private String bannedIpsPath;
-	private List<ServerBannedIpEntry> serverBannedIpEntries;
+	private List<BannedAdressEntry> serverBannedIpEntries;
 	
-	public ServerBannedIps(String bannedIpsPath) {
+	public BannedAdresses(String bannedIpsPath) {
 		this.bannedIpsPath = bannedIpsPath;
-		this.serverBannedIpEntries = new ArrayList<ServerBannedIpEntry>();
+		this.serverBannedIpEntries = new ArrayList<BannedAdressEntry>();
 	}
 	
 	@Override
@@ -31,7 +31,7 @@ public class ServerBannedIps extends AbstractJsonIO {
 			JSONArray array = (JSONArray)obj;
 			for (int i = 0; i < array.size(); i++) {
 				JSONObject jsonEntry = (JSONObject)array.get(i);
-				this.addBannedIpEntry(new ServerBannedIpEntry(
+				this.addBannedIpEntry(new BannedAdressEntry(
 						jsonEntry.get("ip").toString(), 
 						jsonEntry.get("created").toString(), 
 						jsonEntry.get("source").toString(), 
@@ -48,9 +48,9 @@ public class ServerBannedIps extends AbstractJsonIO {
 		}
 	}
 	
-	private void addBannedIpEntry(ServerBannedIpEntry newBannedIpsEntry) {
+	private void addBannedIpEntry(BannedAdressEntry newBannedIpsEntry) {
 		if (serverBannedIpEntries != null && newBannedIpsEntry != null) {
-			for (ServerBannedIpEntry existingEntry : serverBannedIpEntries) {
+			for (BannedAdressEntry existingEntry : serverBannedIpEntries) {
 				if (newBannedIpsEntry.getIp().equals(existingEntry.getIp())) {
 					System.out.println(
 							"IP-Adresse " + 
@@ -69,7 +69,7 @@ public class ServerBannedIps extends AbstractJsonIO {
 	@Override
 	public void printEntries() {
 		if (!serverBannedIpEntries.isEmpty()) {
-			for (ServerBannedIpEntry entry : serverBannedIpEntries) {
+			for (BannedAdressEntry entry : serverBannedIpEntries) {
 				System.out.println(
 						"ip: " + entry.getIp() + "\n" +
 						"created: " + entry.getCreated() + "\n" +
@@ -89,11 +89,11 @@ public class ServerBannedIps extends AbstractJsonIO {
 		this.bannedIpsPath = bannedIpsPath;
 	}
 
-	public List<ServerBannedIpEntry> getServerBannedIpEntries() {
+	public List<BannedAdressEntry> getServerBannedIpEntries() {
 		return serverBannedIpEntries;
 	}
 
-	public void setServerBannedIpEntries(List<ServerBannedIpEntry> serverBannedIpEntries) {
+	public void setServerBannedIpEntries(List<BannedAdressEntry> serverBannedIpEntries) {
 		this.serverBannedIpEntries = serverBannedIpEntries;
 	}
 
