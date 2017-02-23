@@ -7,7 +7,7 @@ import java.util.Date;
 
 import com.lte.msw.standalone.model.enums.ServerState;
 import com.lte.msw.standalone.model.interfaces.IServerControl;
-import com.lte.msw.standalone.model.threads.services.ServerProcessService;
+import com.lte.msw.standalone.model.threads.services.ServerProcessorService;
 
 public class Server implements IServerControl {
 	
@@ -23,7 +23,7 @@ public class Server implements IServerControl {
 	private Whitelist serverWhitelist;
 	private BannedAdresses serverBannedIps;
 	private BannedPlayers serverBannedPlayers;
-	private ServerProcessService serverProcessService;
+	private ServerProcessorService serverProcessService;
 	
 	public Server(String name, ServerVersion serverVersion) {
 		this.id = 0;
@@ -37,7 +37,7 @@ public class Server implements IServerControl {
 		this.serverWhitelist = new Whitelist(this.getServerPath().getWhitlelist());
 		this.serverBannedIps = new BannedAdresses(this.getServerPath().getBannedIps());
 		this.serverBannedPlayers = new BannedPlayers(this.getServerPath().getBannedPlayers());
-		this.serverProcessService = new ServerProcessService(new File(serverVersion.getPath()));
+		this.serverProcessService = new ServerProcessorService(new File(serverVersion.getPath()));
 	}
 	
 	public Server(String name, ServerVersion serverVersion, int id) {
@@ -53,7 +53,7 @@ public class Server implements IServerControl {
 		this.serverWhitelist = new Whitelist(this.getServerPath().getWhitlelist());
 		this.serverBannedIps = new BannedAdresses(this.getServerPath().getBannedIps());
 		this.serverBannedPlayers = new BannedPlayers(this.getServerPath().getBannedPlayers());
-		this.serverProcessService = new ServerProcessService(new File(serverVersion.getPath()));
+		this.serverProcessService = new ServerProcessorService(new File(serverVersion.getPath()));
 	}
 	
 	@Override

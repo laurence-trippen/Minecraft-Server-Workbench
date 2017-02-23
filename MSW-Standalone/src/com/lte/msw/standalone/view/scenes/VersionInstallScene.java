@@ -15,7 +15,7 @@ import com.lte.msw.standalone.model.ServerVersion;
 import com.lte.msw.standalone.model.abstracts.ResourcePath;
 import com.lte.msw.standalone.model.enums.DataStatus;
 import com.lte.msw.standalone.model.interfaces.IRefreshable;
-import com.lte.msw.standalone.model.threads.services.VersionInstallService;
+import com.lte.msw.standalone.model.threads.services.VersionInstallerService;
 import com.lte.msw.standalone.view.styles.Style;
 
 import javafx.concurrent.WorkerStateEvent;
@@ -166,7 +166,7 @@ public class VersionInstallScene extends Scene implements IRefreshable {
 							ResourcePath.SERVER_VERSIONS + selectedJarFile.getName()
 					);
 					if (!ServerList.getServerList().existServerVersion(testVersion)) {
-						VersionInstallService vis = new VersionInstallService(selectedJarFile, progressBar);
+						VersionInstallerService vis = new VersionInstallerService(selectedJarFile, progressBar);
 						vis.start();
 						vis.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
 							@Override

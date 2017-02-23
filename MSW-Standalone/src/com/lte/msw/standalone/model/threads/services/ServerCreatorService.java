@@ -17,7 +17,7 @@ import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.scene.control.ProgressBar;
 
-public class ServerCreateService extends Service<Void> {
+public class ServerCreatorService extends Service<Void> {
 	
 	private String serverName;
 	private String serverPath;
@@ -25,7 +25,7 @@ public class ServerCreateService extends Service<Void> {
 	private File newServerJar;
 	private ProgressBar progressBar;
 	
-	public ServerCreateService(String serverName, ServerVersion serverVersion, ProgressBar progressBar) {
+	public ServerCreatorService(String serverName, ServerVersion serverVersion, ProgressBar progressBar) {
 		this.serverName = serverName;
 		this.serverPath = ResourcePath.SERVER_DIRECTORY + serverName;
 		this.oldServerJar = new File(serverVersion.getPath());

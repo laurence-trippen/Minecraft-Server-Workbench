@@ -12,7 +12,7 @@ import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.scene.control.ProgressBar;
 
-public class VersionInstallService extends Service<Void> {
+public class VersionInstallerService extends Service<Void> {
 	
 	private final static File versionLogsDir 		= new File(ResourcePath.SERVER_CHECK + "logs");
 	private final static File versionLogOldFile 	= new File(ResourcePath.SERVER_CHECK + "server.log");
@@ -22,7 +22,7 @@ public class VersionInstallService extends Service<Void> {
 	private File versionTestFile;
 	private ProgressBar progressBar;
 	
-	public VersionInstallService(File sourceFile, ProgressBar progressBar) {
+	public VersionInstallerService(File sourceFile, ProgressBar progressBar) {
 		this.sourceFile = sourceFile;
 		this.progressBar = progressBar;
 		this.versionTestFile = null;

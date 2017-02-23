@@ -17,7 +17,7 @@ import com.lte.msw.standalone.model.ServerVersion;
 import com.lte.msw.standalone.model.abstracts.ResourcePath;
 import com.lte.msw.standalone.model.enums.DataStatus;
 import com.lte.msw.standalone.model.interfaces.IRefreshable;
-import com.lte.msw.standalone.model.threads.services.ServerCreateService;
+import com.lte.msw.standalone.model.threads.services.ServerCreatorService;
 import com.lte.msw.standalone.view.styles.Style;
 
 import javafx.concurrent.WorkerStateEvent;
@@ -263,7 +263,7 @@ public class CreateServerScene extends MSWScene implements IRefreshable {
 				serverVersionChoiceBox.setDisable(true);
 				serverEulaCheckBox.setDisable(true);
 				progressLabel.setText("Server wird erstellt ...");
-				ServerCreateService scs = new ServerCreateService(
+				ServerCreatorService scs = new ServerCreatorService(
 						serverNameTextField.getText(), 
 						serverVersionChoiceBox.getSelectionModel().getSelectedItem(), 
 						progressBar
