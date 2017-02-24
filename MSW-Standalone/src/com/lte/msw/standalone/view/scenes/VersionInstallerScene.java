@@ -21,6 +21,7 @@ import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.NodeOrientation;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -33,7 +34,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.FileChooser;
@@ -43,9 +46,12 @@ import javafx.stage.Stage;
 public class VersionInstallerScene extends MSWScene implements IRefreshable {
 
 	private AnchorPane mainPane;
-	private File selectedJarFile;
+	private HBox hBox;
+	private VBox vBox;
+	private Pane vboxPane;
 	private Pane installSetupPane;
 	private Pane installationPane;
+	private File selectedJarFile;
 	private ToolBar toolBar;
 	private Button closeButton;
 	private Label versionNameLabel;
@@ -70,6 +76,9 @@ public class VersionInstallerScene extends MSWScene implements IRefreshable {
 	@Override
 	protected void initNodes() {
 		this.mainPane = (AnchorPane)this.getRoot();
+		this.hBox = new HBox();
+		this.vBox = new VBox();
+		this.vboxPane = new Pane();
 		this.progressLabel = new Label("Wird vorbereitet ...");
 		this.progressBar = new ProgressBar(0);
 		this.installationPane = new Pane();
@@ -116,8 +125,7 @@ public class VersionInstallerScene extends MSWScene implements IRefreshable {
 		this.installationPane.getStyleClass().add("msw-white-pane");
 		this.installationPane.setPrefWidth(600);
 		this.installationPane.setPrefHeight(100);
-		this.installationPane.setLayoutX(660);
-		this.installationPane.setLayoutY(740);
+		this.installationPane.setLayoutY(440);
 		this.installationPane.setVisible(false);
 		this.installationPane.getChildren().addAll(progressBar, progressLabel);
 		
@@ -160,8 +168,6 @@ public class VersionInstallerScene extends MSWScene implements IRefreshable {
 		this.installSetupPane.getStyleClass().add("msw-white-pane");
 		this.installSetupPane.setPrefWidth(600);
 		this.installSetupPane.setPrefHeight(410);
-		this.installSetupPane.setLayoutX(660);
-		this.installSetupPane.setLayoutY(300);
 		this.installSetupPane.getChildren().addAll(
 			versionNameLabel, 
 			versionNameTextField, 
@@ -179,10 +185,24 @@ public class VersionInstallerScene extends MSWScene implements IRefreshable {
 		this.toolBar.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
 		this.toolBar.getItems().add(closeButton);
 		
-		mainPane.getChildren().addAll(toolBar, installSetupPane, installationPane);
+		this.vboxPane.setPrefHeight(540);
+		this.vboxPane.getChildren().addAll(installSetupPane, installationPane);
+		
+		this.vBox.setAlignment(Pos.CENTER);
+		this.vBox.setPrefWidth(600);
+		this.vBox.getChildren().add(vboxPane);
+		
+		this.hBox.setAlignment(Pos.CENTER);
+		this.hBox.getChildren().add(vBox);
+		
+		mainPane.getChildren().addAll(hBox, toolBar);
 		AnchorPane.setLeftAnchor(toolBar, 0.00);
 		AnchorPane.setTopAnchor(toolBar, 0.00);
 		AnchorPane.setRightAnchor(toolBar, 0.00);
+		AnchorPane.setTopAnchor(hBox, 0.0);
+		AnchorPane.setLeftAnchor(hBox, 0.0);
+		AnchorPane.setRightAnchor(hBox, 0.0);
+		AnchorPane.setBottomAnchor(hBox, 0.0);
 	}
 
 	@Override
