@@ -14,6 +14,7 @@ public class NetworkManager {
 		return null;
 	}
 	
+	@Deprecated
 	public static int getFreePort() {return 0;}
 
 }
