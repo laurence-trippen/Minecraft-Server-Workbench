@@ -1,10 +1,10 @@
-package com.lte.msw.standalone.main;
+package com.lte.msw.standalone.manager;
 
 import java.io.File;
 
 import com.lte.msw.standalone.model.abstracts.ResourcePath;
 
-public class MSWDirectory {
+public class DirectoryManager {
 	
 	public static void checkDirectories() {
 		File workingDirectory = new File(ResourcePath.WORKBENCH_DIRECTORY);

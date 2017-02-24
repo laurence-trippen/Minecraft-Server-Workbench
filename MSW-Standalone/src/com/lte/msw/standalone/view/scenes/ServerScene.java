@@ -293,7 +293,7 @@ public class ServerScene extends MSWScene implements IRefreshable {
 		this.serverPvpLabel.setText("Player vs. Player:");
 		this.serverPvpValue.setText(server.getServerProperties().isEnabledPVP() ? "Aktiviert" : "Deaktiviert");
 		this.serverAdressLabel
-				.setText(NetworkManager.getMyIPAdress() + ":" + server.getServerProperties().getServerPort());
+				.setText(NetworkManager.getLocalhost() + ":" + server.getServerProperties().getServerPort());
 	}
 
 	private void onCloseEvent(ActionEvent event) {
