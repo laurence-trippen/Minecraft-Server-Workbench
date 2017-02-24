@@ -14,6 +14,7 @@ import com.lte.msw.standalone.model.interfaces.IFetchable;
 import com.lte.msw.standalone.view.components.ServerVersionComponent;
 
 import javafx.event.ActionEvent;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToolBar;
@@ -32,6 +33,7 @@ import javafx.scene.layout.RowConstraints;
 public class ServerVersionsScene extends MSWScene implements IFetchable {
 	
 	private AnchorPane mainPane;
+	private HBox hBox;
 	private ToolBar toolBar;
 	private Pane leftSpacerPane;
 	private Pane rightSpacerPane;
@@ -54,6 +56,7 @@ public class ServerVersionsScene extends MSWScene implements IFetchable {
 	@Override
 	protected void initNodes() {
 		this.mainPane = (AnchorPane)this.getRoot();
+		this.hBox = new HBox();
 		this.serverVersionItems = new ArrayList<ServerVersionComponent>();
 		this.gridPane = new GridPane();
 		this.anchorPane = new AnchorPane();
@@ -80,17 +83,18 @@ public class ServerVersionsScene extends MSWScene implements IFetchable {
 		
 		this.gridPane.getColumnConstraints().add(new ColumnConstraints(1905));
 		this.gridPane.getRowConstraints().add(new RowConstraints(210));
-
-		this.anchorPane.setPrefWidth(DesktopManager.getScreenSize().getWidth());
-		this.anchorPane.setPrefHeight(2000);
-		this.anchorPane.getChildren().add(gridPane);
+		
+		this.hBox.setAlignment(Pos.CENTER);
+		this.hBox.getChildren().add(gridPane);
+		
+		this.anchorPane.prefWidthProperty().bind(scrollPane.widthProperty().subtract(5));
+		this.anchorPane.getChildren().add(hBox);
 
 		this.scrollPane.setLayoutX(0.00);
 		this.scrollPane.setLayoutY(41.0);
 		this.scrollPane.setContent(anchorPane);
 
 		this.installVersionButton.setGraphic(new ImageView(installVersionImage));
-
 
 		this.toolBar.setLayoutX(0.00);
 		this.toolBar.setLayoutY(0.00);
@@ -115,6 +119,10 @@ public class ServerVersionsScene extends MSWScene implements IFetchable {
 		AnchorPane.setLeftAnchor(gridPane, 0.00);
 		AnchorPane.setTopAnchor(gridPane, 0.00);
 		AnchorPane.setRightAnchor(gridPane, 0.00);
+		AnchorPane.setTopAnchor(hBox, 0.0);
+		AnchorPane.setLeftAnchor(hBox, 0.0);
+		AnchorPane.setRightAnchor(hBox, 0.0);
+		AnchorPane.setBottomAnchor(hBox, 0.0);
 	}
 	
 	@Override
