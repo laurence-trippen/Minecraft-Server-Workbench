@@ -14,7 +14,6 @@ import com.lte.msw.standalone.model.interfaces.IFetchable;
 import com.lte.msw.standalone.view.components.ServerVersionComponent;
 
 import javafx.event.ActionEvent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToolBar;
@@ -30,9 +29,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 
-public class ServerVersionsScene extends Scene implements IFetchable {
+public class ServerVersionsScene extends MSWScene implements IFetchable {
 	
-	private static AnchorPane mainPane = new AnchorPane();
+	private AnchorPane mainPane;
 	private ToolBar toolBar;
 	private Pane leftSpacerPane;
 	private Pane rightSpacerPane;
@@ -43,45 +42,69 @@ public class ServerVersionsScene extends Scene implements IFetchable {
 	private GridPane gridPane;
 	private Image installVersionImage;
 	private ArrayList<ServerVersionComponent> serverVersionItems;
-		
+	
 	public ServerVersionsScene() {
-		super(mainPane, DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
+		super(new AnchorPane(), DesktopManager.getScreenSize().getWidth(), DesktopManager.getScreenSize().getHeight());
+		this.initNodes();
+		this.defineNodes();
+		this.registerNodeEvents();
+		this.fetch();
+	}
+	
+	@Override
+	protected void initNodes() {
+		this.mainPane = (AnchorPane)this.getRoot();
 		this.serverVersionItems = new ArrayList<ServerVersionComponent>();
+		this.gridPane = new GridPane();
+		this.anchorPane = new AnchorPane();
+		this.scrollPane = new ScrollPane();
+		this.installVersionButton = new Button("Server Version installieren");
+		this.closeButton = new Button("Zurück");
+		this.leftSpacerPane = new Pane();
+		this.rightSpacerPane = new Pane();
+		this.toolBar = new ToolBar();
+	}
+	
+	@Override
+	protected void defineNodes() {
 		try {
 			this.installVersionImage = new Image(new FileInputStream(ResourcePath.SERVER_VERSIONS_PNG));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		this.gridPane = new GridPane();
-		this.gridPane.getColumnConstraints().add(new ColumnConstraints(1905));
-		this.gridPane.getRowConstraints().add(new RowConstraints(210));
-		this.anchorPane = new AnchorPane();
 		try {
 			this.anchorPane.setBackground(new Background(new BackgroundImage(new Image(new FileInputStream(ResourcePath.BACKGROUND)), null, null, null, null)));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		
+		this.gridPane.getColumnConstraints().add(new ColumnConstraints(1905));
+		this.gridPane.getRowConstraints().add(new RowConstraints(210));
+
 		this.anchorPane.setPrefWidth(DesktopManager.getScreenSize().getWidth());
 		this.anchorPane.setPrefHeight(2000);
 		this.anchorPane.getChildren().add(gridPane);
-		this.scrollPane = new ScrollPane();
+
 		this.scrollPane.setLayoutX(0.00);
 		this.scrollPane.setLayoutY(41.0);
 		this.scrollPane.setContent(anchorPane);
-		this.installVersionButton = new Button("Server Version installieren");
+
 		this.installVersionButton.setGraphic(new ImageView(installVersionImage));
-		this.installVersionButton.setOnAction(this::installVersionHandler);
-		this.closeButton = new Button("Zurück");
-		this.closeButton.setOnAction(this::closeHandler);
-		this.leftSpacerPane = new Pane();
-		HBox.setHgrow(leftSpacerPane, Priority.SOMETIMES);
-		this.rightSpacerPane = new Pane();
-		HBox.setHgrow(rightSpacerPane, Priority.SOMETIMES);
-		this.toolBar = new ToolBar();
+
+
 		this.toolBar.setLayoutX(0.00);
 		this.toolBar.setLayoutY(0.00);
-		this.toolBar.getItems().addAll(installVersionButton, leftSpacerPane, rightSpacerPane, closeButton);
+		this.toolBar.getItems().addAll(
+			installVersionButton, 
+			leftSpacerPane, 
+			rightSpacerPane, 
+			closeButton
+		);
 		mainPane.getChildren().addAll(toolBar, scrollPane);
+		
+		HBox.setHgrow(leftSpacerPane, Priority.SOMETIMES);
+		HBox.setHgrow(rightSpacerPane, Priority.SOMETIMES);
+		
 		AnchorPane.setLeftAnchor(toolBar, 0.00);
 		AnchorPane.setTopAnchor(toolBar, 0.00);
 		AnchorPane.setRightAnchor(toolBar, 0.00);
@@ -92,7 +115,12 @@ public class ServerVersionsScene extends Scene implements IFetchable {
 		AnchorPane.setLeftAnchor(gridPane, 0.00);
 		AnchorPane.setTopAnchor(gridPane, 0.00);
 		AnchorPane.setRightAnchor(gridPane, 0.00);
-		fetch();
+	}
+	
+	@Override
+	protected void registerNodeEvents() {
+		this.closeButton.setOnAction(this::closeHandler);
+		this.installVersionButton.setOnAction(this::installVersionHandler);
 	}
 
 	@Override
