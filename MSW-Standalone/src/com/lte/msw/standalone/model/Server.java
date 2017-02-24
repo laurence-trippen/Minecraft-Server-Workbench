@@ -1,8 +1,8 @@
 package com.lte.msw.standalone.model;
 
-import static com.lte.msw.standalone.config.AppConfig.dateFormat;
-
 import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.lte.msw.standalone.model.enums.ServerState;
@@ -10,6 +10,8 @@ import com.lte.msw.standalone.model.interfaces.IServerControl;
 import com.lte.msw.standalone.model.threads.services.ServerProcessorService;
 
 public class Server implements IServerControl {
+	
+	private static DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy - HH:mm:ss");
 	
 	private int id;
 	private String name;
