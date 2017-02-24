@@ -23,6 +23,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -70,18 +73,24 @@ public class ServerVersionsScene extends MSWScene implements IFetchable {
 	
 	@Override
 	protected void defineNodes() {
+		this.getStylesheets().clear();
+		this.getStylesheets().add(getClass().getResource(ResourcePath.CSS).toExternalForm());
+		
 		try {
 			this.installVersionImage = new Image(new FileInputStream(ResourcePath.SERVER_VERSIONS_PNG));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		try {
-			this.anchorPane.setBackground(new Background(new BackgroundImage(new Image(new FileInputStream(ResourcePath.BACKGROUND)), null, null, null, null)));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+		this.installVersionButton.setGraphic(new ImageView(installVersionImage));
 		
-		this.gridPane.getColumnConstraints().add(new ColumnConstraints(1905));
+		this.toolBar.getItems().addAll(
+			installVersionButton, 
+			leftSpacerPane, 
+			rightSpacerPane, 
+			closeButton
+		);
+		
+		this.gridPane.getColumnConstraints().add(new ColumnConstraints(700));
 		this.gridPane.getRowConstraints().add(new RowConstraints(210));
 		
 		this.hBox.setAlignment(Pos.CENTER);
@@ -89,21 +98,22 @@ public class ServerVersionsScene extends MSWScene implements IFetchable {
 		
 		this.anchorPane.prefWidthProperty().bind(scrollPane.widthProperty().subtract(5));
 		this.anchorPane.getChildren().add(hBox);
-
+		
 		this.scrollPane.setLayoutX(0.00);
 		this.scrollPane.setLayoutY(41.0);
 		this.scrollPane.setContent(anchorPane);
+		try {
+			this.scrollPane.setBackground(new Background(new BackgroundImage(
+					new Image(new FileInputStream(ResourcePath.BACKGROUND)), 
+					BackgroundRepeat.REPEAT, 
+					BackgroundRepeat.REPEAT, 
+					BackgroundPosition.DEFAULT, 
+					BackgroundSize.DEFAULT
+					)));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 
-		this.installVersionButton.setGraphic(new ImageView(installVersionImage));
-
-		this.toolBar.setLayoutX(0.00);
-		this.toolBar.setLayoutY(0.00);
-		this.toolBar.getItems().addAll(
-			installVersionButton, 
-			leftSpacerPane, 
-			rightSpacerPane, 
-			closeButton
-		);
 		mainPane.getChildren().addAll(toolBar, scrollPane);
 		
 		HBox.setHgrow(leftSpacerPane, Priority.SOMETIMES);
