@@ -1,6 +1,6 @@
 package com.lte.msw.standalone.model;
 
-public class BannedAdressEntry {
+public class BannedAdress {
 	
 	private String ip;
 	private String created;
@@ -8,7 +8,7 @@ public class BannedAdressEntry {
 	private String expires;
 	private String reason;
 	
-	public BannedAdressEntry(String ip, String created, String source, String expires, String reason) {
+	public BannedAdress(String ip, String created, String source, String expires, String reason) {
 		this.ip = ip;
 		this.created = created;
 		this.source = source;

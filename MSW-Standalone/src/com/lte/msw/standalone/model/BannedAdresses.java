@@ -16,11 +16,11 @@ import com.lte.msw.standalone.model.abstracts.AbstractJsonIO;
 public class BannedAdresses extends AbstractJsonIO {
 	
 	private String bannedIpsPath;
-	private List<BannedAdressEntry> serverBannedIpEntries;
+	private List<BannedAdress> serverBannedIpEntries;
 	
 	public BannedAdresses(String bannedIpsPath) {
 		this.bannedIpsPath = bannedIpsPath;
-		this.serverBannedIpEntries = new ArrayList<BannedAdressEntry>();
+		this.serverBannedIpEntries = new ArrayList<BannedAdress>();
 	}
 	
 	@Override
@@ -31,7 +31,7 @@ public class BannedAdresses extends AbstractJsonIO {
 			JSONArray array = (JSONArray)obj;
 			for (int i = 0; i < array.size(); i++) {
 				JSONObject jsonEntry = (JSONObject)array.get(i);
-				this.addBannedIpEntry(new BannedAdressEntry(
+				this.addBannedIpEntry(new BannedAdress(
 						jsonEntry.get("ip").toString(), 
 						jsonEntry.get("created").toString(), 
 						jsonEntry.get("source").toString(), 
@@ -48,9 +48,9 @@ public class BannedAdresses extends AbstractJsonIO {
 		}
 	}
 	
-	private void addBannedIpEntry(BannedAdressEntry newBannedIpsEntry) {
+	private void addBannedIpEntry(BannedAdress newBannedIpsEntry) {
 		if (serverBannedIpEntries != null && newBannedIpsEntry != null) {
-			for (BannedAdressEntry existingEntry : serverBannedIpEntries) {
+			for (BannedAdress existingEntry : serverBannedIpEntries) {
 				if (newBannedIpsEntry.getIp().equals(existingEntry.getIp())) {
 					System.out.println(
 							"IP-Adresse " + 
@@ -69,7 +69,7 @@ public class BannedAdresses extends AbstractJsonIO {
 	@Override
 	public void printEntries() {
 		if (!serverBannedIpEntries.isEmpty()) {
-			for (BannedAdressEntry entry : serverBannedIpEntries) {
+			for (BannedAdress entry : serverBannedIpEntries) {
 				System.out.println(
 						"ip: " + entry.getIp() + "\n" +
 						"created: " + entry.getCreated() + "\n" +
@@ -89,11 +89,11 @@ public class BannedAdresses extends AbstractJsonIO {
 		this.bannedIpsPath = bannedIpsPath;
 	}
 
-	public List<BannedAdressEntry> getServerBannedIpEntries() {
+	public List<BannedAdress> getServerBannedIpEntries() {
 		return serverBannedIpEntries;
 	}
 
-	public void setServerBannedIpEntries(List<BannedAdressEntry> serverBannedIpEntries) {
+	public void setServerBannedIpEntries(List<BannedAdress> serverBannedIpEntries) {
 		this.serverBannedIpEntries = serverBannedIpEntries;
 	}
 

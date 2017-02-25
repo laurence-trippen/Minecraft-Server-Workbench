@@ -16,11 +16,11 @@ import com.lte.msw.standalone.model.abstracts.AbstractJsonIO;
 public class BannedPlayers extends AbstractJsonIO {
 	
 	private String bannedPlayersPath;
-	private List<BannedPlayerEntry> serverBannedPlayerEntries;
+	private List<BannedPlayer> serverBannedPlayerEntries;
 	
 	public BannedPlayers(String bannedPlayersPath) {
 		this.bannedPlayersPath = bannedPlayersPath;
-		this.serverBannedPlayerEntries = new ArrayList<BannedPlayerEntry>();
+		this.serverBannedPlayerEntries = new ArrayList<BannedPlayer>();
 	}
 	
 	@Override
@@ -31,7 +31,7 @@ public class BannedPlayers extends AbstractJsonIO {
 			JSONArray array = (JSONArray)obj;
 			for (int i = 0; i < array.size(); i++) {
 				JSONObject jsonEntry = (JSONObject)array.get(i);
-				this.addBannedPlayerEntry(new BannedPlayerEntry(
+				this.addBannedPlayerEntry(new BannedPlayer(
 						jsonEntry.get("uuid").toString(), 
 						jsonEntry.get("name").toString(), 
 						jsonEntry.get("created").toString(), 
@@ -49,9 +49,9 @@ public class BannedPlayers extends AbstractJsonIO {
 		}
 	}
 	
-	private void addBannedPlayerEntry(BannedPlayerEntry newBannedPlayerEntry) {
+	private void addBannedPlayerEntry(BannedPlayer newBannedPlayerEntry) {
 		if (serverBannedPlayerEntries != null && newBannedPlayerEntry != null) {
-			for (BannedPlayerEntry existingEntry : serverBannedPlayerEntries) {
+			for (BannedPlayer existingEntry : serverBannedPlayerEntries) {
 				if (newBannedPlayerEntry.getUuid().equals(existingEntry.getUuid())) {
 					System.out.println("Spieler " + newBannedPlayerEntry.getName() + " hat schon BannedPlayer-Eintrag!");
 					return;
@@ -66,7 +66,7 @@ public class BannedPlayers extends AbstractJsonIO {
 	@Override
 	public void printEntries() {
 		if (!serverBannedPlayerEntries.isEmpty()) {
-			for (BannedPlayerEntry entry : serverBannedPlayerEntries) {
+			for (BannedPlayer entry : serverBannedPlayerEntries) {
 				System.out.println(
 						"uuid: " + entry.getUuid() + "\n" +
 						"name: " + entry.getName() + "\n" +
@@ -87,11 +87,11 @@ public class BannedPlayers extends AbstractJsonIO {
 		this.bannedPlayersPath = bannedPlayersPath;
 	}
 
-	public List<BannedPlayerEntry> getServerBannedPlayerEntries() {
+	public List<BannedPlayer> getServerBannedPlayerEntries() {
 		return serverBannedPlayerEntries;
 	}
 
-	public void setServerBannedPlayerEntries(List<BannedPlayerEntry> serverBannedPlayerEntries) {
+	public void setServerBannedPlayerEntries(List<BannedPlayer> serverBannedPlayerEntries) {
 		this.serverBannedPlayerEntries = serverBannedPlayerEntries;
 	}
 	

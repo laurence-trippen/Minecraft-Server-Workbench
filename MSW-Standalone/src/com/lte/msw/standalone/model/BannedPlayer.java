@@ -1,6 +1,6 @@
 package com.lte.msw.standalone.model;
 
-public class BannedPlayerEntry {
+public class BannedPlayer {
 	
 	private String uuid;
 	private String name;
@@ -9,7 +9,7 @@ public class BannedPlayerEntry {
 	private String expires;
 	private String reason;
 	
-	public BannedPlayerEntry(
+	public BannedPlayer(
 			String uuid, 
 			String name, 
 			String created, 
