@@ -41,11 +41,13 @@ public class ServerVersionsScene extends MSWScene implements IFetchable {
 	private Pane leftSpacerPane;
 	private Pane rightSpacerPane;
 	private Button installVersionButton;
+	private Button downloadVersionButton;
 	private Button closeButton;
 	private ScrollPane scrollPane;
 	private AnchorPane anchorPane;
 	private GridPane gridPane;
 	private Image installVersionImage;
+	private Image downloadVersionImage;
 	private ArrayList<ServerVersionComponent> serverVersionItems;
 	
 	public ServerVersionsScene() {
@@ -64,7 +66,8 @@ public class ServerVersionsScene extends MSWScene implements IFetchable {
 		this.gridPane = new GridPane();
 		this.anchorPane = new AnchorPane();
 		this.scrollPane = new ScrollPane();
-		this.installVersionButton = new Button("Server Version installieren");
+		this.installVersionButton = new Button("Manuelle Installation");
+		this.downloadVersionButton = new Button("Download");
 		this.closeButton = new Button("Zurück");
 		this.leftSpacerPane = new Pane();
 		this.rightSpacerPane = new Pane();
@@ -81,10 +84,19 @@ public class ServerVersionsScene extends MSWScene implements IFetchable {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		
+		try {
+			this.downloadVersionImage = new Image(new FileInputStream(ResourcePath.IMPORT_PNG));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
 		this.installVersionButton.setGraphic(new ImageView(installVersionImage));
+		this.downloadVersionButton.setGraphic(new ImageView(downloadVersionImage));
 		
 		this.toolBar.getItems().addAll(
-			installVersionButton, 
+			installVersionButton,
+			downloadVersionButton,
 			leftSpacerPane, 
 			rightSpacerPane, 
 			closeButton

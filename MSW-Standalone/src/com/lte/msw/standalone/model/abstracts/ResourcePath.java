@@ -12,6 +12,7 @@ public abstract class ResourcePath {
 	public static final String XML 					= "resources/data/msw-db.xml";
 	public static final String CSS					= "msw.css";
 	
+	public static final String IMPORT_PNG			= "resources/images/import.png";
 	public static final String INSTALL_VERSION_PNG 	= "resources/images/InstallVersion.png";
 	public static final String CREATE_SERVER_PNG 	= "resources/images/createServer.png";
 	public static final String SERVER_PNG 			= "resources/images/Server.png";
