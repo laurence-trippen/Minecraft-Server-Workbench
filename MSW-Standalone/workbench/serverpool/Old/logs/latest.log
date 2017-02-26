@@ -1,0 +1,61 @@
+[15:50:55] [Server thread/INFO]: Starting minecraft server version 1.9.4
+[15:50:55] [Server thread/INFO]: Loading properties
+[15:50:55] [Server thread/INFO]: Default game type: SURVIVAL
+[15:50:55] [Server thread/INFO]: Generating keypair
+[15:50:55] [Server thread/INFO]: Starting Minecraft server on *:25565
+[15:50:55] [Server thread/INFO]: Using default channel type
+[15:50:55] [Server thread/WARN]: Failed to load user banlist: 
+java.io.FileNotFoundException: banned-players.json (Das System kann die angegebene Datei nicht finden)
+	at java.io.FileInputStream.open0(Native Method) ~[?:1.8.0_121]
+	at java.io.FileInputStream.open(Unknown Source) ~[?:1.8.0_121]
+	at java.io.FileInputStream.<init>(Unknown Source) ~[?:1.8.0_121]
+	at com.google.common.io.Files.newReader(Files.java:86) ~[minecraft_server.1.9.4.jar:?]
+	at mr.g(SourceFile:136) ~[minecraft_server.1.9.4.jar:?]
+	at la.z(SourceFile:99) [minecraft_server.1.9.4.jar:?]
+	at la.<init>(SourceFile:25) [minecraft_server.1.9.4.jar:?]
+	at lb.j(SourceFile:184) [minecraft_server.1.9.4.jar:?]
+	at net.minecraft.server.MinecraftServer.run(SourceFile:428) [minecraft_server.1.9.4.jar:?]
+	at java.lang.Thread.run(Unknown Source) [?:1.8.0_121]
+[15:50:55] [Server thread/WARN]: Failed to load ip banlist: 
+java.io.FileNotFoundException: banned-ips.json (Das System kann die angegebene Datei nicht finden)
+	at java.io.FileInputStream.open0(Native Method) ~[?:1.8.0_121]
+	at java.io.FileInputStream.open(Unknown Source) ~[?:1.8.0_121]
+	at java.io.FileInputStream.<init>(Unknown Source) ~[?:1.8.0_121]
+	at com.google.common.io.Files.newReader(Files.java:86) ~[minecraft_server.1.9.4.jar:?]
+	at mr.g(SourceFile:136) ~[minecraft_server.1.9.4.jar:?]
+	at la.y(SourceFile:91) [minecraft_server.1.9.4.jar:?]
+	at la.<init>(SourceFile:27) [minecraft_server.1.9.4.jar:?]
+	at lb.j(SourceFile:184) [minecraft_server.1.9.4.jar:?]
+	at net.minecraft.server.MinecraftServer.run(SourceFile:428) [minecraft_server.1.9.4.jar:?]
+	at java.lang.Thread.run(Unknown Source) [?:1.8.0_121]
+[15:50:55] [Server thread/WARN]: Failed to load operators list: 
+java.io.FileNotFoundException: ops.json (Das System kann die angegebene Datei nicht finden)
+	at java.io.FileInputStream.open0(Native Method) ~[?:1.8.0_121]
+	at java.io.FileInputStream.open(Unknown Source) ~[?:1.8.0_121]
+	at java.io.FileInputStream.<init>(Unknown Source) ~[?:1.8.0_121]
+	at com.google.common.io.Files.newReader(Files.java:86) ~[minecraft_server.1.9.4.jar:?]
+	at mr.g(SourceFile:136) ~[minecraft_server.1.9.4.jar:?]
+	at la.A(SourceFile:107) [minecraft_server.1.9.4.jar:?]
+	at la.<init>(SourceFile:29) [minecraft_server.1.9.4.jar:?]
+	at lb.j(SourceFile:184) [minecraft_server.1.9.4.jar:?]
+	at net.minecraft.server.MinecraftServer.run(SourceFile:428) [minecraft_server.1.9.4.jar:?]
+	at java.lang.Thread.run(Unknown Source) [?:1.8.0_121]
+[15:50:55] [Server thread/WARN]: Failed to load white-list: 
+java.io.FileNotFoundException: whitelist.json (Das System kann die angegebene Datei nicht finden)
+	at java.io.FileInputStream.open0(Native Method) ~[?:1.8.0_121]
+	at java.io.FileInputStream.open(Unknown Source) ~[?:1.8.0_121]
+	at java.io.FileInputStream.<init>(Unknown Source) ~[?:1.8.0_121]
+	at com.google.common.io.Files.newReader(Files.java:86) ~[minecraft_server.1.9.4.jar:?]
+	at mr.g(SourceFile:136) ~[minecraft_server.1.9.4.jar:?]
+	at la.C(SourceFile:123) [minecraft_server.1.9.4.jar:?]
+	at la.<init>(SourceFile:30) [minecraft_server.1.9.4.jar:?]
+	at lb.j(SourceFile:184) [minecraft_server.1.9.4.jar:?]
+	at net.minecraft.server.MinecraftServer.run(SourceFile:428) [minecraft_server.1.9.4.jar:?]
+	at java.lang.Thread.run(Unknown Source) [?:1.8.0_121]
+[15:50:55] [Server thread/INFO]: Preparing level "world"
+[15:50:57] [Server thread/INFO]: Preparing start region for level 0
+[15:50:58] [Server thread/INFO]: Preparing spawn area: 5%
+[15:50:59] [Server thread/INFO]: Preparing spawn area: 10%
+[15:51:00] [Server thread/INFO]: Preparing spawn area: 17%
+[15:51:01] [Server thread/INFO]: Preparing spawn area: 24%
+[15:51:02] [Server thread/INFO]: Preparing spawn area: 33%
