@@ -1,24 +1,11 @@
-[14:35:14] [Server thread/INFO]: Starting minecraft server version 1.10.2
-[14:35:14] [Server thread/INFO]: Loading properties
-[14:35:14] [Server console handler/ERROR]: Exception handling console input
-java.io.IOException: Das Handle ist ungültig
-	at java.io.FileInputStream.readBytes(Native Method) ~[?:1.8.0_111]
-	at java.io.FileInputStream.read(Unknown Source) ~[?:1.8.0_111]
-	at java.io.BufferedInputStream.read1(Unknown Source) ~[?:1.8.0_111]
-	at java.io.BufferedInputStream.read(Unknown Source) ~[?:1.8.0_111]
-	at sun.nio.cs.StreamDecoder.readBytes(Unknown Source) ~[?:1.8.0_111]
-	at sun.nio.cs.StreamDecoder.implRead(Unknown Source) ~[?:1.8.0_111]
-	at sun.nio.cs.StreamDecoder.read(Unknown Source) ~[?:1.8.0_111]
-	at java.io.InputStreamReader.read(Unknown Source) ~[?:1.8.0_111]
-	at java.io.BufferedReader.fill(Unknown Source) ~[?:1.8.0_111]
-	at java.io.BufferedReader.readLine(Unknown Source) ~[?:1.8.0_111]
-	at java.io.BufferedReader.readLine(Unknown Source) ~[?:1.8.0_111]
-	at ld$2.run(SourceFile:95) [minecraft_server.1.10.2.jar:?]
-[14:35:14] [Server thread/INFO]: Default game type: SURVIVAL
-[14:35:14] [Server thread/INFO]: Generating keypair
-[14:35:15] [Server thread/INFO]: Starting Minecraft server on *:25565
-[14:35:15] [Server thread/INFO]: Using default channel type
-[14:35:15] [Server thread/WARN]: **** FAILED TO BIND TO PORT!
-[14:35:15] [Server thread/WARN]: The exception was: java.net.BindException: Address already in use: bind
-[14:35:15] [Server thread/WARN]: Perhaps a server is already running on that port?
-[14:35:15] [Server thread/INFO]: Stopping server
+[23:42:53] [Server thread/INFO]: Starting minecraft server version 1.10.2
+[23:42:53] [Server thread/INFO]: Loading properties
+[23:42:53] [Server thread/INFO]: Default game type: SURVIVAL
+[23:42:53] [Server thread/INFO]: Generating keypair
+[23:42:53] [Server thread/INFO]: Starting Minecraft server on *:25565
+[23:42:53] [Server thread/INFO]: Using default channel type
+[23:42:54] [Server thread/INFO]: Preparing level "world"
+[23:42:54] [Server thread/INFO]: Preparing start region for level 0
+[23:42:55] [Server thread/INFO]: Preparing spawn area: 18%
+[23:42:56] [Server thread/INFO]: Preparing spawn area: 87%
+[23:42:56] [Server thread/INFO]: Done (2,427s)! For help, type "help" or "?"
