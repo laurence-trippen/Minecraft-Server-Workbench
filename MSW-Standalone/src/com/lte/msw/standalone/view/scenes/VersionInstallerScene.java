@@ -318,7 +318,7 @@ public class VersionInstallerScene extends MSWScene implements IRefreshable {
 	
 	private void onCloseEvent(ActionEvent event) {
 		refresh();
-		MSWStandalone.getMainStage().setScene(SceneManager.getSceneManager().getMainScene());
+		MSWStandalone.getMainStage().setScene(SceneManager.getSceneManager().getServerVersionsScene());
 	}
 
 }

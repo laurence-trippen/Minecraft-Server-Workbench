@@ -57,9 +57,6 @@ public class ServerScene extends MSWScene implements IRefreshable {
 	private Label serverAdressLabel;
 	private Label consoleLabel;
 	private Button serverControlButton;
-	private Button serverConfigureButton;
-	private Button serverBackupButton;
-	private Button serverLogButton;
 	private TextArea consoleTextArea;
 	private TextField consoleTextField;
 
@@ -91,10 +88,7 @@ public class ServerScene extends MSWScene implements IRefreshable {
 		this.consoleTextArea = new TextArea();
 		this.consoleTextField = new TextField();
 		this.closeButton = new Button("Zurück");
-		this.serverLogButton = new Button("Server Log");
-		this.serverBackupButton = new Button("Server Backup");
 		this.consoleExecuteButton = new Button("Ausführen");
-		this.serverConfigureButton = new Button("Server Konfigurieren");
 		this.serverControlButton = new Button("Starten");
 	}
 
@@ -121,7 +115,7 @@ public class ServerScene extends MSWScene implements IRefreshable {
 		this.serverNameLabel.setLayoutY(60);
 
 		this.serverAdressLabel.setFont(Font.font("System", FontWeight.BOLD, 22));
-		this.serverAdressLabel.setLayoutX(450);
+		this.serverAdressLabel.setLayoutX(350);
 		this.serverAdressLabel.setLayoutY(60);
 
 		this.serverVersionLabel.setFont(Font.font("System", 20));
@@ -160,14 +154,19 @@ public class ServerScene extends MSWScene implements IRefreshable {
 		this.serverPvpValue.setFont(Font.font("System", 18));
 		this.serverPvpValue.setLayoutX(330);
 		this.serverPvpValue.setLayoutY(290);
+		
+		this.serverControlButton.setPrefWidth(140);
+		this.serverControlButton.setPrefHeight(25);
+		this.serverControlButton.setLayoutX(60);
+		this.serverControlButton.setLayoutY(345);
 
 		this.serverPane.getStyleClass().add("msw-white-pane");
-		this.serverPane.setPrefWidth(800);
-		this.serverPane.setPrefHeight(460);
+		this.serverPane.setPrefWidth(700);
+		this.serverPane.setPrefHeight(400);
 		this.serverPane.getChildren().addAll(serverImageView, serverNameLabel, serverVersionLabel, serverGameModeLabel,
 				serverDifficultyLabel, serverPvpLabel, serverGameModeImageView, serverDifficultyImageView,
 				serverPvpImageView, serverGameModeValue, serverDifficultyValue, serverPvpValue, serverAdressLabel,
-				serverControlButton, serverConfigureButton, serverBackupButton, serverLogButton);
+				serverControlButton);
 
 		this.consoleLabel.setFont(Font.font("System", FontWeight.BOLD, 14));
 		this.consoleLabel.setLayoutX(30);
@@ -176,47 +175,25 @@ public class ServerScene extends MSWScene implements IRefreshable {
 		this.consoleTextArea.setEditable(false);
 		this.consoleTextArea.setLayoutX(30);
 		this.consoleTextArea.setLayoutY(60);
-		this.consoleTextArea.setPrefWidth(740);
+		this.consoleTextArea.setPrefWidth(640);
 		this.consoleTextArea.setPrefHeight(170);
 
 		this.consoleTextField.setPromptText("Befehl eingeben");
 		this.consoleTextField.getStyleClass().add("msw-left-border-radius");
 		this.consoleTextField.setLayoutX(30);
 		this.consoleTextField.setLayoutY(250);
-		this.consoleTextField.setPrefWidth(600);
+		this.consoleTextField.setPrefWidth(500);
 
 		this.consoleExecuteButton.getStyleClass().add("msw-right-border-radius");
-		this.consoleExecuteButton.setLayoutX(630);
+		this.consoleExecuteButton.setLayoutX(530);
 		this.consoleExecuteButton.setLayoutY(250);
 		this.consoleExecuteButton.setPrefWidth(140);
 
 		this.consolePane.getStyleClass().add("msw-white-pane");
-		this.consolePane.setLayoutY(500);
-		this.consolePane.setPrefWidth(800);
+		this.consolePane.setLayoutY(440);
+		this.consolePane.setPrefWidth(700);
 		this.consolePane.setPrefHeight(300);
 		this.consolePane.getChildren().addAll(consoleTextArea, consoleTextField, consoleLabel, consoleExecuteButton);
-		this.serverLogButton.getStyleClass().add("msw-right-border-radius");
-		this.serverLogButton.setPrefWidth(150);
-		this.serverLogButton.setPrefHeight(25);
-		this.serverLogButton.setLayoutX(550);
-		this.serverLogButton.setLayoutY(370);
-
-		this.serverBackupButton.getStyleClass().add("msw-none-border-radius");
-		this.serverBackupButton.setPrefWidth(150);
-		this.serverBackupButton.setPrefHeight(25);
-		this.serverBackupButton.setLayoutX(400);
-		this.serverBackupButton.setLayoutY(370);
-
-		this.serverConfigureButton.getStyleClass().add("msw-left-border-radius");
-		this.serverConfigureButton.setPrefWidth(150);
-		this.serverConfigureButton.setPrefHeight(25);
-		this.serverConfigureButton.setLayoutX(250);
-		this.serverConfigureButton.setLayoutY(370);
-
-		this.serverControlButton.setPrefWidth(140);
-		this.serverControlButton.setPrefHeight(25);
-		this.serverControlButton.setLayoutX(60);
-		this.serverControlButton.setLayoutY(370);
 
 		this.toolBar = new ToolBar();
 		this.toolBar.setLayoutX(0.00);
@@ -224,11 +201,11 @@ public class ServerScene extends MSWScene implements IRefreshable {
 		this.toolBar.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
 		this.toolBar.getItems().add(closeButton);
 
-		this.vboxPane.setPrefHeight(800);
+		this.vboxPane.setPrefHeight(740);
 		this.vboxPane.getChildren().addAll(serverPane, consolePane);
 
 		this.vBox.setAlignment(Pos.CENTER);
-		this.vBox.setPrefWidth(800);
+		this.vBox.setPrefWidth(700);
 		this.vBox.getChildren().add(vboxPane);
 
 		this.hBox.setAlignment(Pos.CENTER);
