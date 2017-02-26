@@ -5,7 +5,7 @@ import java.net.UnknownHostException;
 
 public class NetworkManager {
 	
-	public static String getMyIPAdress() {
+	public static String getLocalhost() {
 		try {
 			return InetAddress.getLocalHost().getHostAddress();
 		} catch (UnknownHostException e) {
@@ -13,5 +13,8 @@ public class NetworkManager {
 		}
 		return null;
 	}
+	
+	@Deprecated
+	public static int getFreePort() {return 0;}
 
 }

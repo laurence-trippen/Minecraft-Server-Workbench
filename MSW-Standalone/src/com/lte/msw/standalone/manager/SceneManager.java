@@ -1,18 +1,18 @@
 package com.lte.msw.standalone.manager;
 
-import com.lte.msw.standalone.view.scenes.CreateServerScene;
 import com.lte.msw.standalone.view.scenes.MainScene;
+import com.lte.msw.standalone.view.scenes.ServerCreatorScene;
 import com.lte.msw.standalone.view.scenes.ServerScene;
 import com.lte.msw.standalone.view.scenes.ServerVersionsScene;
-import com.lte.msw.standalone.view.scenes.VersionInstallScene;
+import com.lte.msw.standalone.view.scenes.VersionInstallerScene;
 
 public class SceneManager {
 	
 	private static SceneManager instance = null;
 	private MainScene mainScene;
-	private CreateServerScene createServerScene;
+	private ServerCreatorScene serverCreatorScene;
 	private ServerVersionsScene serverVersionsScene;
-	private VersionInstallScene versionInstallScene;
+	private VersionInstallerScene versionInstallScene;
 	private ServerScene serverScene;
 	
 	public static SceneManager getSceneManager() {
@@ -24,9 +24,9 @@ public class SceneManager {
 	
 	private SceneManager() {
 		this.mainScene = new MainScene();
-		this.createServerScene = new CreateServerScene();
+		this.serverCreatorScene = new ServerCreatorScene();
 		this.serverVersionsScene = new ServerVersionsScene();
-		this.versionInstallScene = new VersionInstallScene();
+		this.versionInstallScene = new VersionInstallerScene();
 		this.serverScene = new ServerScene();
 	}
 
@@ -34,15 +34,15 @@ public class SceneManager {
 		return mainScene;
 	}
 
-	public CreateServerScene getCreateServerScene() {
-		return createServerScene;
+	public ServerCreatorScene getServerCreatorScene() {
+		return serverCreatorScene;
 	}
 
 	public ServerVersionsScene getServerVersionsScene() {
 		return serverVersionsScene;
 	}
 
-	public VersionInstallScene getVersionInstallScene() {
+	public VersionInstallerScene getVersionInstallScene() {
 		return versionInstallScene;
 	}
 

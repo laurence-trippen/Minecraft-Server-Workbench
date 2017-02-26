@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import com.lte.msw.standalone.main.MSWStandalone;
 import com.lte.msw.standalone.manager.DesktopManager;
-import com.lte.msw.standalone.manager.GridManager;
 import com.lte.msw.standalone.manager.SceneManager;
 import com.lte.msw.standalone.model.Server;
 import com.lte.msw.standalone.model.ServerList;
@@ -27,9 +26,7 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.RowConstraints;
+import javafx.scene.layout.FlowPane;
 
 public class MainScene extends MSWScene implements IRefreshable, IFetchable {
 
@@ -41,7 +38,7 @@ public class MainScene extends MSWScene implements IRefreshable, IFetchable {
 	private Image showServerVersionsImage;
 	private ScrollPane scrollPane;
 	private AnchorPane anchorPane;
-	private GridPane gridPane;
+	private FlowPane flowPane;
 	private ArrayList<ServerComponent> serverItems;
 
 	public MainScene() {
@@ -54,13 +51,11 @@ public class MainScene extends MSWScene implements IRefreshable, IFetchable {
 	
 	@Override
 	protected void initNodes() {
-		this.getStylesheets().clear();
-		this.getStylesheets().add(getClass().getResource(ResourcePath.CSS).toExternalForm());
 		this.mainPane = (AnchorPane)this.getRoot();
 		this.serverItems = new ArrayList<ServerComponent>();
 		this.anchorPane = new AnchorPane();
-		this.gridPane = new GridPane();
 		this.scrollPane = new ScrollPane();
+		this.flowPane = new FlowPane();
 		this.addServerButton = new Button("Server erstellen");
 		this.showServerVersions = new Button("Server Versionen");
 		this.toolBar = new ToolBar();
@@ -78,17 +73,13 @@ public class MainScene extends MSWScene implements IRefreshable, IFetchable {
 	
 	@Override
 	protected void defineNodes() {
+		this.getStylesheets().clear();
+		this.getStylesheets().add(getClass().getResource(ResourcePath.CSS).toExternalForm());
 		this.addServerButton.setGraphic(new ImageView(newServerImage));
 		this.showServerVersions.setGraphic(new ImageView(showServerVersionsImage));
-		this.gridPane.getRowConstraints().add(new RowConstraints(312));
-		this.gridPane.getColumnConstraints().addAll(
-			new ColumnConstraints(635),
-			new ColumnConstraints(635),
-			new ColumnConstraints(635) 
-		);
 		
 		this.anchorPane.prefWidthProperty().bind(scrollPane.widthProperty().subtract(5));
-		this.anchorPane.getChildren().add(gridPane);
+		this.anchorPane.getChildren().add(flowPane);
 		
 		try {
 			this.scrollPane.setBackground(new Background(new BackgroundImage(
@@ -120,15 +111,15 @@ public class MainScene extends MSWScene implements IRefreshable, IFetchable {
 		AnchorPane.setRightAnchor(scrollPane, 0.00);
 		AnchorPane.setBottomAnchor(scrollPane, 0.00);
 		
-		AnchorPane.setTopAnchor(gridPane, 0.00);
-		AnchorPane.setLeftAnchor(gridPane, 0.00);
-		AnchorPane.setRightAnchor(gridPane, 0.00);
+		AnchorPane.setTopAnchor(flowPane, 0.00);
+		AnchorPane.setLeftAnchor(flowPane, 0.00);
+		AnchorPane.setRightAnchor(flowPane, 0.00);
 	}
 
 	@Override
 	protected void registerNodeEvents() {
-		this.addServerButton.setOnAction(this::addServerHandler);
-		this.showServerVersions.setOnAction(this::showVersionsHandler);
+		this.addServerButton.setOnAction(this::onAddServerEvent);
+		this.showServerVersions.setOnAction(this::onShowVersionsEvent);
 	}
 	
 	@Override
@@ -140,37 +131,23 @@ public class MainScene extends MSWScene implements IRefreshable, IFetchable {
 	
 	@Override
 	public void fetch() {
-		int x = 0;
-		int y = 0;
-		int counter = 3;
 		ServerList serverList = ServerList.getServerList();
-		if (serverList.getServerCount() != 0) {	
-			gridPane.getChildren().clear();
-			serverItems.clear();
-			for (Server server : serverList.getServer()) {
-				server.init();
-				if (serverList.getServerCount() > counter) {
-					counter += 3;
-					this.gridPane.getRowConstraints().add(new RowConstraints(312));
-				}
-				ServerComponent serverItem = new ServerComponent(server);
-				serverItems.add(serverItem);
-				GridPane.setConstraints(serverItem, x, y);
-				x = GridManager.getX(x);
-				y = GridManager.getY(y, x);
-				gridPane.getChildren().add(serverItem);
-			}
-			x = 0;
-			y = 0;
+		flowPane.getChildren().clear();
+		serverItems.clear();
+		for (Server server : serverList.getServer()) {
+			server.init();
+			ServerComponent serverComponent = new ServerComponent(server);
+			serverItems.add(serverComponent);
+			flowPane.getChildren().add(serverComponent);
 		}
 	}
 	
-	private void addServerHandler(ActionEvent event) {
+	private void onAddServerEvent(ActionEvent event) {
 		this.refresh();
-		MSWStandalone.getMainStage().setScene(SceneManager.getSceneManager().getCreateServerScene());
+		MSWStandalone.getMainStage().setScene(SceneManager.getSceneManager().getServerCreatorScene());
 	}
 	
-	private void showVersionsHandler(ActionEvent event) {
+	private void onShowVersionsEvent(ActionEvent event) {
 		this.refresh();
 		MSWStandalone.getMainStage().setScene(SceneManager.getSceneManager().getServerVersionsScene());
 	}
