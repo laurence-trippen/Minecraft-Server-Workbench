@@ -60,7 +60,7 @@ public class Server implements IServerControl {
 	
 	@Override
 	public void init() {
-		this.getServerProperties().loadProperties();
+		this.getServerProperties().load();
 	}
 	
 	@Override

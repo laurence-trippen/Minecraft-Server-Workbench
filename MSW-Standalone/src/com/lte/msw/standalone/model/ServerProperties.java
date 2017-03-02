@@ -91,7 +91,7 @@ public class ServerProperties implements IPropertiesControl {
 	}
 	
 	@Override
-	public void saveProperties() {
+	public void save() {
 		OutputStream output = null;
 		try {
 			output = new FileOutputStream(propertiesPath);
@@ -183,7 +183,7 @@ public class ServerProperties implements IPropertiesControl {
 	}
 	
 	@Override
-	public void loadProperties() {
+	public void load() {
 		InputStream input = null;
 		try {
 			input = new FileInputStream(propertiesPath);
