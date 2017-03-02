@@ -57,7 +57,7 @@ public class MainScene extends MSWScene implements IRefreshable, IFetchable {
 		this.scrollPane = new ScrollPane();
 		this.flowPane = new FlowPane();
 		this.addServerButton = new Button("Server erstellen");
-		this.showServerVersions = new Button("Server Versionen");
+		this.showServerVersions = new Button("Minecraft Versionen");
 		this.toolBar = new ToolBar();
 		try {
 			this.newServerImage = new Image(new FileInputStream(ResourcePath.NEW_SERVER_PNG));
