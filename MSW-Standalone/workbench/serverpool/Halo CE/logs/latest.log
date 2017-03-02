@@ -1,11 +1,11 @@
-[23:42:53] [Server thread/INFO]: Starting minecraft server version 1.10.2
-[23:42:53] [Server thread/INFO]: Loading properties
-[23:42:53] [Server thread/INFO]: Default game type: SURVIVAL
-[23:42:53] [Server thread/INFO]: Generating keypair
-[23:42:53] [Server thread/INFO]: Starting Minecraft server on *:25565
-[23:42:53] [Server thread/INFO]: Using default channel type
-[23:42:54] [Server thread/INFO]: Preparing level "world"
-[23:42:54] [Server thread/INFO]: Preparing start region for level 0
-[23:42:55] [Server thread/INFO]: Preparing spawn area: 18%
-[23:42:56] [Server thread/INFO]: Preparing spawn area: 87%
-[23:42:56] [Server thread/INFO]: Done (2,427s)! For help, type "help" or "?"
+[22:56:58] [Server thread/INFO]: Starting minecraft server version 1.10.2
+[22:56:58] [Server thread/INFO]: Loading properties
+[22:56:59] [Server thread/INFO]: Default game type: SURVIVAL
+[22:56:59] [Server thread/INFO]: Generating keypair
+[22:56:59] [Server thread/INFO]: Starting Minecraft server on *:25565
+[22:56:59] [Server thread/INFO]: Using default channel type
+[22:56:59] [Server thread/WARN]: **** FAILED TO BIND TO PORT!
+[22:56:59] [Server thread/WARN]: The exception was: java.net.BindException: Address already in use: bind
+[22:56:59] [Server thread/WARN]: Perhaps a server is already running on that port?
+[22:56:59] [Server thread/INFO]: Stopping server
+[22:56:59] [Server Shutdown Thread/INFO]: Stopping server
