@@ -59,7 +59,7 @@ public class ServerScene extends MSWScene implements IRefreshable {
 	private Button serverControlButton;
 	private Button serverConfigButton;
 	private Button serverBackupButton;
-	private Button serverLogButton;
+	private Button serverMapButton;
 	private TextArea consoleTextArea;
 	private TextField consoleTextField;
 
@@ -95,7 +95,7 @@ public class ServerScene extends MSWScene implements IRefreshable {
 		this.serverControlButton = new Button("Starten");
 		this.serverConfigButton = new Button("Konfigurieren");
 		this.serverBackupButton = new Button("Backup");
-		this.serverLogButton = new Button("Log");
+		this.serverMapButton = new Button("Weltkarte");
 	}
 
 	@Override
@@ -178,11 +178,11 @@ public class ServerScene extends MSWScene implements IRefreshable {
 		this.serverBackupButton.setLayoutY(345);
 		this.serverBackupButton.getStyleClass().add("msw-none-border-radius");
 		
-		this.serverLogButton.setPrefWidth(140);
-		this.serverLogButton.setPrefHeight(25);
-		this.serverLogButton.setLayoutX(490);
-		this.serverLogButton.setLayoutY(345);
-		this.serverLogButton.getStyleClass().add("msw-left-border-radius");
+		this.serverMapButton.setPrefWidth(140);
+		this.serverMapButton.setPrefHeight(25);
+		this.serverMapButton.setLayoutX(490);
+		this.serverMapButton.setLayoutY(345);
+		this.serverMapButton.getStyleClass().add("msw-left-border-radius");
 
 		this.serverPane.getStyleClass().add("msw-white-pane");
 		this.serverPane.setPrefWidth(700);
@@ -190,7 +190,7 @@ public class ServerScene extends MSWScene implements IRefreshable {
 		this.serverPane.getChildren().addAll(serverImageView, serverNameLabel, serverVersionLabel, serverGameModeLabel,
 				serverDifficultyLabel, serverPvpLabel, serverGameModeImageView, serverDifficultyImageView,
 				serverPvpImageView, serverGameModeValue, serverDifficultyValue, serverPvpValue, serverAdressLabel,
-				serverControlButton, serverConfigButton, serverBackupButton, serverLogButton);
+				serverControlButton, serverConfigButton, serverBackupButton, serverMapButton);
 
 		this.consoleLabel.setFont(Font.font("System", FontWeight.BOLD, 14));
 		this.consoleLabel.setLayoutX(30);
@@ -250,6 +250,7 @@ public class ServerScene extends MSWScene implements IRefreshable {
 		this.closeButton.setOnAction(this::onCloseEvent);
 		this.consoleExecuteButton.setOnAction(this::onConsoleExecuteEvent);
 		this.serverControlButton.setOnAction(this::onServerStartEvent);
+		this.serverMapButton.setOnAction(this::onServerMapEvent);
 	}
 
 	@Override
@@ -309,6 +310,12 @@ public class ServerScene extends MSWScene implements IRefreshable {
 
 	private void onServerStartEvent(ActionEvent event) {
 		server.start();
+	}
+	
+	private void onServerMapEvent(ActionEvent event) {
+		if (server.isWorldGenerated()) {
+			
+		}
 	}
 
 }

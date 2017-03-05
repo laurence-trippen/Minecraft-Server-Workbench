@@ -81,6 +81,13 @@ public class Server implements IServerControl {
 			System.out.println("Server " + this.getName() + "ist bereits gestoppt!");
 		}
 	}
+	
+	public boolean isWorldGenerated() {
+		if (new File(serverPath.getWorld() + "/level.dat").exists()) {
+			return true;
+		}
+		return false;
+	}
 
 	public int getId() {
 		return id;

@@ -8,6 +8,7 @@ public abstract class ResourcePath {
 	public static final String SERVER_CHECK 		= "workbench/servercheck/";
 	public static final String SERVER_VERSIONS 		= "workbench/serverversions/";
 	public static final String SERVER_DIRECTORY 	= "workbench/serverpool/";
+	public static final String SERVER_MAPS			= "workbench/servermaps/";
 	
 	public static final String XML 					= "resources/data/msw-db.xml";
 	public static final String CSS					= "msw.css";
