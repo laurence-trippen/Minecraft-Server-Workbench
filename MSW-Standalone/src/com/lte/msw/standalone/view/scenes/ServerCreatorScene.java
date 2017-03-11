@@ -17,7 +17,7 @@ import com.lte.msw.standalone.model.ServerVersion;
 import com.lte.msw.standalone.model.abstracts.ResourcePath;
 import com.lte.msw.standalone.model.enums.DataStatus;
 import com.lte.msw.standalone.model.interfaces.IRefreshable;
-import com.lte.msw.standalone.model.threads.services.ServerCreatorService;
+import com.lte.msw.standalone.model.services.ServerCreatorService;
 
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;

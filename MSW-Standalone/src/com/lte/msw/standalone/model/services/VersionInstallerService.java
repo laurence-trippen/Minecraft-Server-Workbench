@@ -1,4 +1,4 @@
-package com.lte.msw.standalone.model.threads.services;
+package com.lte.msw.standalone.model.services;
 
 import java.io.File;
 import java.io.IOException;

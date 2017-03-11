@@ -7,7 +7,7 @@ import java.util.Date;
 
 import com.lte.msw.standalone.model.enums.ServerState;
 import com.lte.msw.standalone.model.interfaces.IServerControl;
-import com.lte.msw.standalone.model.threads.services.ServerProcessorService;
+import com.lte.msw.standalone.model.services.ServerProcessorService;
 
 public class Server implements IServerControl {
 	
