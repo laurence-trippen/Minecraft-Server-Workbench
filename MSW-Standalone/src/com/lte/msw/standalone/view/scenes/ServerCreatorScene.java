@@ -12,7 +12,7 @@ import com.lte.msw.standalone.main.MSWStandalone;
 import com.lte.msw.standalone.manager.DesktopManager;
 import com.lte.msw.standalone.manager.SceneManager;
 import com.lte.msw.standalone.model.Server;
-import com.lte.msw.standalone.model.ServerList;
+import com.lte.msw.standalone.model.MSWStorage;
 import com.lte.msw.standalone.model.ServerVersion;
 import com.lte.msw.standalone.model.abstracts.ResourcePath;
 import com.lte.msw.standalone.model.enums.DataStatus;
@@ -143,7 +143,7 @@ public class ServerCreatorScene extends MSWScene implements IRefreshable {
 		this.serverVersionLabel.setLayoutX(90);
 		this.serverVersionLabel.setLayoutY(230);
 
-		this.serverVersionChoiceBox.setItems(ServerList.getServerList().getServerVersions());
+		this.serverVersionChoiceBox.setItems(MSWStorage.getInstance().getServerVersions());
 		this.serverVersionChoiceBox.getSelectionModel().selectFirst();
 		this.serverVersionChoiceBox.setPrefWidth(80);
 		this.serverVersionChoiceBox.setLayoutX(260);
@@ -257,7 +257,7 @@ public class ServerCreatorScene extends MSWScene implements IRefreshable {
 			serverEulaCheckBox.getStyleClass().remove("msw-error-border");
 		}
 		if ((!serverNameTextField.getText().equals("")) && serverEulaCheckBox.isSelected()) {
-			if (!ServerList.getServerList().existServer(serverNameTextField.getText())) {
+			if (!MSWStorage.getInstance().existServer(serverNameTextField.getText())) {
 				installationPane.setVisible(true);
 				closeButton.setDisable(true);
 				createServerButton.setDisable(true);
@@ -274,7 +274,7 @@ public class ServerCreatorScene extends MSWScene implements IRefreshable {
 				scs.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
 					@Override
 					public void handle(WorkerStateEvent event) {
-						DataStatus status = ServerList.getServerList().addServer(
+						DataStatus status = MSWStorage.getInstance().addServer(
 								new Server(serverNameTextField.getText(),
 										new ServerVersion(
 												serverVersionChoiceBox.getSelectionModel().getSelectedItem().getName(),

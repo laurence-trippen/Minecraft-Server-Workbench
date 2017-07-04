@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Optional;
 
-import com.lte.msw.standalone.model.ServerList;
+import com.lte.msw.standalone.model.MSWStorage;
 import com.lte.msw.standalone.model.ServerVersion;
 import com.lte.msw.standalone.model.abstracts.ResourcePath;
 import com.lte.msw.standalone.model.enums.DataStatus;
@@ -82,7 +82,7 @@ public class ServerVersionComponent extends MSWComponent {
 		alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == buttonTypeYes) {
-			DataStatus status = ServerList.getServerList().deleteServerVersion(serverVersion);
+			DataStatus status = MSWStorage.getInstance().deleteServerVersion(serverVersion);
 			switch (status) {
 			case SUCCESS:
 				Alert successAlert = new Alert(AlertType.INFORMATION);

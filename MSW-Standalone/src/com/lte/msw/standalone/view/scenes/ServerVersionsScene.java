@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import com.lte.msw.standalone.main.MSWStandalone;
 import com.lte.msw.standalone.manager.DesktopManager;
 import com.lte.msw.standalone.manager.SceneManager;
-import com.lte.msw.standalone.model.ServerList;
+import com.lte.msw.standalone.model.MSWStorage;
 import com.lte.msw.standalone.model.ServerVersion;
 import com.lte.msw.standalone.model.abstracts.ResourcePath;
 import com.lte.msw.standalone.model.interfaces.IFetchable;
@@ -145,7 +145,7 @@ public class ServerVersionsScene extends MSWScene implements IFetchable {
 	@Override
 	public void fetch() {
 		int counter = 0;
-		ServerList serverList = ServerList.getServerList();
+		MSWStorage serverList = MSWStorage.getInstance();
 		if (serverList.getServerVersionCounter() != 0) {
 			gridPane.getChildren().clear();
 			serverVersionItems.clear();

@@ -24,22 +24,22 @@ import com.lte.msw.standalone.model.enums.WorldType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class ServerList {
+public class MSWStorage {
 	
-	private static ServerList instance = null;
+	private static MSWStorage instance = null;
 	private ObservableList<Server> serverList;
 	private ObservableList<ServerVersion> serverVersions;
 	private int serverCounter;
 	private int serverVersionCounter;
 	
-	public static ServerList getServerList() {
+	public static MSWStorage getInstance() {
 		if (instance == null) {
-			instance = new ServerList();
+			instance = new MSWStorage();
 		}
 		return instance;
 	}
 	
-	private ServerList() {
+	private MSWStorage() {
 		this.serverList = FXCollections.observableArrayList();
 		this.serverVersions = FXCollections.observableArrayList();
 		this.serverCounter = 0;

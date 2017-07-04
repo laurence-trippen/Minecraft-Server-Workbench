@@ -8,7 +8,7 @@ import com.lte.msw.standalone.main.MSWStandalone;
 import com.lte.msw.standalone.manager.DesktopManager;
 import com.lte.msw.standalone.manager.SceneManager;
 import com.lte.msw.standalone.model.Server;
-import com.lte.msw.standalone.model.ServerList;
+import com.lte.msw.standalone.model.MSWStorage;
 import com.lte.msw.standalone.model.abstracts.ResourcePath;
 import com.lte.msw.standalone.model.interfaces.IFetchable;
 import com.lte.msw.standalone.model.interfaces.IRefreshable;
@@ -131,7 +131,7 @@ public class MainScene extends MSWScene implements IRefreshable, IFetchable {
 	
 	@Override
 	public void fetch() {
-		ServerList serverList = ServerList.getServerList();
+		MSWStorage serverList = MSWStorage.getInstance();
 		flowPane.getChildren().clear();
 		serverItems.clear();
 		for (Server server : serverList.getServer()) {

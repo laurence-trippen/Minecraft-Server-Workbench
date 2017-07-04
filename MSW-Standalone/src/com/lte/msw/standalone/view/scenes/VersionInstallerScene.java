@@ -10,7 +10,7 @@ import java.nio.file.Paths;
 import com.lte.msw.standalone.main.MSWStandalone;
 import com.lte.msw.standalone.manager.DesktopManager;
 import com.lte.msw.standalone.manager.SceneManager;
-import com.lte.msw.standalone.model.ServerList;
+import com.lte.msw.standalone.model.MSWStorage;
 import com.lte.msw.standalone.model.ServerVersion;
 import com.lte.msw.standalone.model.abstracts.ResourcePath;
 import com.lte.msw.standalone.model.enums.DataStatus;
@@ -265,13 +265,13 @@ public class VersionInstallerScene extends MSWScene implements IRefreshable {
 					versionNameTextField.getText(),
 					ResourcePath.SERVER_VERSIONS + selectedJarFile.getName()
 			);
-			if (!ServerList.getServerList().existServerVersion(testVersion)) {
+			if (!MSWStorage.getInstance().existServerVersion(testVersion)) {
 				VersionInstallerService vis = new VersionInstallerService(selectedJarFile, progressBar);
 				vis.start();
 				vis.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
 					@Override
 					public void handle(WorkerStateEvent event) {
-						DataStatus status = ServerList.getServerList().addServerVersion(testVersion);
+						DataStatus status = MSWStorage.getInstance().addServerVersion(testVersion);
 						switch (status) {
 						case SUCCESS:
 							try {
