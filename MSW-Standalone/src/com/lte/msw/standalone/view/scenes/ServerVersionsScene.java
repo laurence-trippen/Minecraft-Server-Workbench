@@ -97,7 +97,7 @@ public class ServerVersionsScene extends MSWScene implements IFetchable {
 		this.hBox.setAlignment(Pos.CENTER);
 		this.hBox.getChildren().add(gridPane);
 		
-		this.anchorPane.prefWidthProperty().bind(scrollPane.widthProperty().subtract(5));
+		this.anchorPane.prefWidthProperty().bind(scrollPane.widthProperty().subtract(15));
 		this.anchorPane.getChildren().add(hBox);
 		
 		this.scrollPane.setLayoutX(0.00);

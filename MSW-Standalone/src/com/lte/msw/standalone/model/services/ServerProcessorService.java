@@ -30,6 +30,7 @@ public class ServerProcessorService extends Service<Void> {
 						executableFile.getAbsolutePath(), 
 						"nogui"
 				);
+				
 				processBuilder.directory(executableFile.getParentFile());
 				Process process = processBuilder.start();
 				Thread consoleLogger = new Thread(new Task<Void>() {

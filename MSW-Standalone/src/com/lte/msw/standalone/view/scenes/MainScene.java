@@ -78,7 +78,7 @@ public class MainScene extends MSWScene implements IRefreshable, IFetchable {
 		this.addServerButton.setGraphic(new ImageView(newServerImage));
 		this.showServerVersions.setGraphic(new ImageView(showServerVersionsImage));
 		
-		this.anchorPane.prefWidthProperty().bind(scrollPane.widthProperty().subtract(5));
+		this.anchorPane.prefWidthProperty().bind(scrollPane.widthProperty().subtract(15));
 		this.anchorPane.getChildren().add(flowPane);
 		
 		try {
