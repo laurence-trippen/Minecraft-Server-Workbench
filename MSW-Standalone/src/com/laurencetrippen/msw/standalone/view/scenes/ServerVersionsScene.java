@@ -65,7 +65,7 @@ public class ServerVersionsScene extends MSWScene implements IFetchable {
 		this.anchorPane = new AnchorPane();
 		this.scrollPane = new ScrollPane();
 		this.installVersionButton = new Button("Version installieren");
-		this.closeButton = new Button("Zurück");
+		this.closeButton = new Button("ZurÃ¼ck");
 		this.leftSpacerPane = new Pane();
 		this.rightSpacerPane = new Pane();
 		this.toolBar = new ToolBar();

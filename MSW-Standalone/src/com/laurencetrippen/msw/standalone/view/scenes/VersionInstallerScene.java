@@ -86,7 +86,7 @@ public class VersionInstallerScene extends MSWScene implements IRefreshable {
 		this.versionNameLabel = new Label("Server Versions Name:");
 		this.versionNameTextField = new TextField();
 		this.versionJarLabel = new Label("Server Version: (*.jar)");
-		this.versionJarButton = new Button("Minecraft-Server JAR ausw‰hlen ...");
+		this.versionJarButton = new Button("Minecraft-Server JAR ausw√§hlen ...");
 		this.installVersionLabel = new Label("Server Version installieren");
 		this.installVersionButton = new Button("Installieren");
 		this.installSetupPane = new Pane();
@@ -232,7 +232,7 @@ public class VersionInstallerScene extends MSWScene implements IRefreshable {
 		Stage fileChooserStage = new Stage();
 		fileChooserStage.centerOnScreen();
 		FileChooser fileChooser = new FileChooser();
-		fileChooser.setTitle("Minecraft Server JAR ausw‰hlen");
+		fileChooser.setTitle("Minecraft Server JAR ausw√§hlen");
 		fileChooser.getExtensionFilters().addAll(new ExtensionFilter("Minecraft Server JAR", "*.jar"));
 		selectedJarFile = fileChooser.showOpenDialog(fileChooserStage);
 		if (selectedJarFile != null) {

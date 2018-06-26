@@ -90,8 +90,8 @@ public class ServerScene extends MSWScene implements IRefreshable {
 		this.vBox = new VBox();
 		this.consoleTextArea = new TextArea();
 		this.consoleTextField = new TextField();
-		this.closeButton = new Button("Zurück");
-		this.consoleExecuteButton = new Button("Ausführen");
+		this.closeButton = new Button("ZurÃ¼ck");
+		this.consoleExecuteButton = new Button("AusfÃ¼hren");
 		this.serverControlButton = new Button("Starten");
 		this.serverConfigButton = new Button("Konfigurieren");
 		this.serverBackupButton = new Button("Backup");
@@ -271,7 +271,7 @@ public class ServerScene extends MSWScene implements IRefreshable {
 			this.serverGameModeValue.setText("Hardcore");
 			break;
 		case SURVIVAL:
-			this.serverGameModeValue.setText("Überlebensmodus");
+			this.serverGameModeValue.setText("Ãœberlebensmodus");
 			break;
 		case VISITOR:
 			this.serverGameModeValue.setText("Besuchermodus");
